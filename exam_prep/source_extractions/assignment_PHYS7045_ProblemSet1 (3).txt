@@ -1,0 +1,171 @@
+# Source: source_material/assignments/questions/PHYS7045_ProblemSet1 (3).pdf
+# Pages: 4
+# Machine-extracted text: verify mathematical notation against original PDF.
+
+
+==================== PAGE 1 ====================
+
+The University of Queensland
+PHYS4045/7045 - Quantum Technologies
+Quantum information, communication, and computation
+Problem Set 1
+Semester 2, 2026
+Due 5 pm on Friday 21 Aug.
+Submit your problem set (typed, or hand written and photographed/scanned) via Blackboard.
+Answers should include detailed comments and reasoning. A grade up to 5 can be obtained by answering only
+questions in Part A. Higher grades require all questions to be answered (with clear, well reasoned arguments
+showing originality and insight). Refer to the Grading Criteria document for details.
+Problem 1.1
+Part A
+We looked at how Pauli matrices help describe rotations of qubits on the Bloch sphere. We will now prove this
+rotation property by using the Bloch-vector representation of qubits. Note the notation r•σ ≡rxσx+ryσz+rzσz.
+(a) Prove for an arbitrary qubit state |ψ⟩= (cos( θ
+2), eiϕ sin( θ
+2)), the density operator defined as ρ = |ψ⟩⟨ψ|
+simplifies into ρ = 1
+2(I2 + r • σ). Note that r = (rx, ry, rz) is termed the Bloch vector and is a convenient
+representation of qubits on the Bloch sphere.
+(b) Prove the Euler identity for Pauli matrices: eiθ·r•σ = I2 cos(θ) + i(r • σ) sin(θ).
+Hint: use the Taylor
+expansion/definition for the matrix exponential and notice the values of σ2
+x, σ2
+y and σ2
+z.
+(c) Show that Pauli matrices satisfy:
+σxσy = −σyσx = iσz
+σyσz = −σzσy = iσx
+σzσx = −σxσz = iσy
+or equivalently: σpσq = δpqI2 + i P3
+r=1 εpqrσr.
+(d) Prove for m ∈x, y, z, the operator to rotate a qubit state on the Bloch sphere by angle α around the axis
+m is Rm(α) = e−i α
+2 σm. Hint: ρ is an operator, think about how Rm(α) transforms ρ into ρ′ via a sandwich.
+Then calculate ρ′ due to a rotation about axis m and simplify as much as possible using trigonometric
+identities and the previous results. Finally, insert m = x, y, z and separately show that the resulting Bloch
+vector (rx, ry, rz) is transformed via rotations (c.f. the form of 3D axial rotation matrices).
+Part B - Advanced
+(a) In the previous section, the rotations were proved for the axes. Now prove that any general rotation can be
+given as discussed in the lectures: Rn(φ) = ei φ
+2 ·(n•σ). Hint: use the Euler identity and show that it leads
+to a general rotation transformation; that is, pick a general rotation representation such as ZY ZY Z.
+(b) Prove the no-cloning theorem (that is, given an arbitrary quantum state |ψ⟩and an known initial state
+|ψ0⟩, there is no unitary operator ˆQ where ˆQ(|ψ⟩⊗|ψ0⟩) = |ψ⟩⊗|ψ⟩). Comment on the particular axioms
+of quantum mechanics that enforce the no-cloning theorem.
+continued over ...
+1
+
+
+==================== PAGE 2 ====================
+
+The University of Queensland
+PHYS4045/7045 - Quantum Technologies
+Problem 1.2
+In a circuit-based quantum computer (e.g. spin qubits, atomic qubits, superconducting qubits, ion-trapped
+qubits etc.), gates are implemented by carefully manipulating the Hamiltonian parameters over time.
+The
+following exercise schematically represents the basic considerations/intuition used when operating such devices.
+Assume that each qubit in this quantum computer follows the Hamiltonian H = ℏ(tcσx+∆σz) and the values of
+tc, and ∆can be independently and precisely controlled/set over time (note that the units of these parameters
+are in angular frequency). We note that the system constrains 0 ⩽tc/(2π) ⩽5 GHz and 0 ⩽∆/(2π) ⩽40 GHz.
+(a) Describe how we can achieve qubit rotations about the x or z axes by setting appropriate values for the
+Hamiltonian parameters and waiting. Calculate the fastest possible Xπ and Zπ gates.
+(b) Describe how we may implement Yπ. Hint: can a y-rotation be described as a concatenation of x-axis and
+z-axis rotations?
+(c) Describe how the Hadamard gate H can be implemented.
+(d) The machinery setting the pulses has a time-resolution of 1 ns. That is, it can only set values for tc and ∆
+in 1 ns time-steps. While respecting all given constraints, implement a timing-diagram for the values of tc
+and ∆to implement the following circuit:
+H
+Xπ
+Yπ
+Zπ/2
+Xπ/2
+Yπ/2
+Zπ
+Note that the qubit must be in a Hamiltonian state that will not change the measurement result during the
+measurement phase in the final step.
+Part B - Advanced
+Continuing from the previous section, let’s introduce 2-qubit gates. Consider 2 qubits. We have the ability
+to tune the interaction via a binary pulse on parameter C, where we set C to 0 or 1 to completely turn the
+two-qubit interaction off or on. When the interaction is off, the two qubits each obey the Hamiltonian outlined
+in the previous section. To keep things simple, when the interaction is on, the effective Hamiltonian leaves the
+first qubit’s Hamiltonian the same, while only perturbing the second qubit via:
+HQubit 2 =
+(
+ℏ(tcσx + (∆+ δ0)σz)
+Qubit 1 is |0⟩
+ℏ(tcσx + (∆+ δ1)σz)
+Qubit 1 is |1⟩
+where δ0/(2π) = 1 MHz and δ1/(2π) = 51 MHz.
+(a) Describe how a CZ gate can be performed by setting tc, ∆and C. What is the fastest CZ gate that can be
+performed? Note that a compensating phase gate may be required (on either/both qubits) to ensure that
+no relative phase accumulation occurs between the qubits as that would imply a residual z-rotation gate
+(remember, global phases across qubits do not affect their dynamics).
+(b) Describe how we may implement a CX gate.
+(c) The machinery setting the analogue and digital pulses still has a time-resolution of 1 ns. While respecting
+all given constraints, implement a timing-diagram for the values of tc, ∆and C to implement the following
+circuit:
+H
+Yπ
+Z
+2
+
+
+==================== PAGE 3 ====================
+
+The University of Queensland
+PHYS4045/7045 - Quantum Technologies
+Problem 1.3
+Part A
+For this problem, we will consider the Schmidt decomposition and the entangled state |Ψ⟩given by,
+|Ψ⟩=
+1
+√
+2 (|α1⟩A |0⟩B + |α2⟩A |1⟩B)
+where
+|α1⟩= cos θ|0⟩+ sin θ|1⟩
+|α2⟩= cos θ|0⟩−sin θ|1⟩.
+Talk about von Neumann entropy.
+(a) What is the physical significance of the Schmidt decomposition?
+(b) Is the Schmidt decomposition unique? Justify your answer.
+(c) What is the Schmidt decomposition of the state |Ψ⟩
+(d) What is the reduced density matrix for subsystem B?
+Part B
+Suppose that qubit A of the entangled state |Ψ⟩is with Alice, and qubit B is with Bob. If Alice can determine
+that her qubit is in the state |α1⟩and not in the state |α2⟩, she can conclude that Bob’s qubit is in the state
+|0⟩. Similarly, if she can determine that her qubit is in the state |α2⟩and not in the state |α1⟩, she can conclude
+that Bob’s qubit is in the state |1⟩. Failure of such unambiguous state discrimination will result to Bob’s qubit
+being in some other state (i.e. not |0⟩or |1⟩).
+What is the upper bound on the probability for unambiguous state discrimination? (Hint: Use the no-signalling
+theorem.)
+3
+
+
+==================== PAGE 4 ====================
+
+The University of Queensland
+PHYS4045/7045 - Quantum Technologies
+Problem 1.4
+Part A
+Suppose that Alice wishes to teleport an unknown pure state of a qubit to Bob of the form:
+|a⟩= cos
+θ
+2
+
+|0⟩+ eiϕ sin
+θ
+2
+
+|1⟩.
+Unfortunately, their entangled state generator can produce only non-maximally entangled states given by
+|AB⟩= cos β|0⟩A|1⟩B −sin β|1⟩A|0⟩B. Talk about Tsirelson bound.
+(a) For each of the Alice’s Bell basis measurement, list the states obtained by Bob.
+(b) Find an expression for the fidelity of the qubit teleported as function of θ and ϕ.
+(c) What is the average fidelity of teleportation for this unknown qubit?
+Part B
+Suppose that Alice wishes to teleport an unknown pure state of a qubit to Bob. Unfortunately, their entangled
+state generator is not reliable, so they can only share an imperfect entangled state in the form of a Werner state
+ˆρW = p
+4ˆI ⊗ˆI + (1 −p) |Ψ−⟩⟨Ψ−|. Calculate the fidelity of the qubit that Bob receives, with respect to the qubit
+that Alice wished to send.
+4

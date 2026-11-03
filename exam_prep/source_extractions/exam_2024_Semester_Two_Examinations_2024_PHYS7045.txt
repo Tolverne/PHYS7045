@@ -1,0 +1,289 @@
+# Source: source_material/past_exams/2024/Semester_Two_Examinations_2024_PHYS7045.pdf
+# Pages: 4
+# Machine-extracted text: verify mathematical notation against original PDF.
+
+
+==================== PAGE 1 ====================
+
+Semester Two Examinations, 2024 
+ 
+PHYS7045 
+ 
+Page 1 of 4 
+ 
+ 
+This exam paper must not be removed from the venue 
+ 
+Venue 
+____________________ 
+Seat Number 
+__________ 
+Student Number 
+|__|__|__|__|__|__|__|__| 
+Family Name 
+____________________ 
+First Name 
+____________________ 
+ 
+ 
+School of Mathematics & Physics 
+Semester Two Examinations, 2024 
+PHYS7045 Quantum Technologies 
+This paper is for St Lucia Campus students. 
+ 
+Examination Duration: 120 minutes 
+ 
+Planning Time: 
+10 minutes 
+ 
+Exam Conditions: 
+ 
+•Any written or printed material is permitted; material may also be 
+annotated. 
+•Casio FX82 series or UQ approved and labelled calculator only 
+•During Planning Time - Students are encouraged to review and plan 
+responses to the exam questions 
+ 
+Materials Permitted in the Exam Venue: 
+(No electronic aids are permitted e.g. laptops, phones) 
+ 
+Any additional written or printed material is permitted; material may also 
+be annotated. 
+ 
+Materials to be supplied to Students: 
+Additional exam materials (e.g. answer booklets, rough paper) will 
+be provided upon request. 
+ 
+1 x 14-Page Answer Booklet 
+ 
+Instructions to Students: 
+If you believe there is missing or incorrect information impacting 
+your ability to answer any question, please state this when writing 
+your answer. 
+ 
+ 
+For Examiner Use Only 
+ 
+Question 
+ 
+Mark 
+ 
+1 
+ 
+ 
+2 
+ 
+ 
+3 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Total _________ 
+ 
+ 
+ 
+
+
+==================== PAGE 2 ====================
+
+Semester Two Examinations, 2024 
+ 
+PHYS7045 
+ 
+Page 2 of 4 
+Question 1. 
+ 
+A code defined on five qubits has the following stabiliser generators 
+ 
+𝑆! = 𝑍 𝑍 𝑍 𝐼 𝐼 
+𝑆" = 𝐼 𝐼 𝑍 𝑍 𝑍 
+𝑆# = 𝑋 𝐼 𝑋 𝑋 𝐼 
+𝑆$ = 𝐼 𝑋 𝑋 𝐼 𝑋 
+ 
+Part A (grade: 1-5) 
+1. Do you expect 𝑆! to commute with all the other stabilisers listed in the table, or not? Explain 
+your answer.  Confirm whether this is true (and show your reasoning). 
+2. A logical 𝑋% operator is defined for this code as 𝑋% = 𝑋 𝑋 𝐼 𝐼 𝐼.  Verify whether this commutes 
+with the stabilisers. 
+3. Is this code able to detect a single qubit bit-flip error (i.e. an 𝑋 error) on any one qubit? Give 
+reasons based on possible syndromes. Can it correct such an error? 
+4. Is this code able to detect a single qubit phase error (i.e. a 𝑍 error) on any one qubit. Give 
+reasons based on possible syndromes.  Can it correct such an error? 
+5. Explain whether the code can correct any single qubit 𝑋, 𝑌 or 𝑍 error?  If so, what is the 
+lower bound on the code distance? 
+ 
+Part B (Advanced: grade +0,+1,+2)  
+a) Find a logical 𝑍% operator for the code, and verify whether it has the correct commutation 
+and anticommutation relations with the stabilisers and with 𝑋%. 
+b) Calculate the code distance, and explain whether this is consistent with questions A3, A4 
+and A5 above.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+==================== PAGE 3 ====================
+
+Semester Two Examinations, 2024 
+ 
+PHYS7045 
+ 
+Page 3 of 4 
+ 
+Question 2. 
+ 
+A bosonic qubit, in dual rail format, is encoded in the tensor product Hilbert space of two 
+modes as an eigenstate of total photon number with eigenvalue 1: 
+|𝟎⟩= |1⟩ ⊗ |0⟩ 
+ |𝟏⟩= |0⟩ ⊗ |1⟩, 
+where |𝑛⟩ is a photon number eigenstate. 
+ 
+Part A (grade: 1-5) 
+1. Given the unitary ‘beam-splitter’ transformation for two modes: 
+𝑎→𝑎cos 𝜃+ 𝑏𝑒&' sin 𝜃 
+𝑏→𝑏cos 𝜃−𝑎𝑒(&' sin 𝜃 
+𝑎) →𝑎) cos 𝜃+ 𝑏)𝑒&' sin 𝜃 
+𝑏) →𝑏) cos 𝜃−𝑎)𝑒(&' sin 𝜃, 
+where 𝑎, 𝑏, 𝑎), 𝑏), are the annihilation and creation operators for the two modes. Show how 
+to implement a Hadamard gate, in the logical basis, with a suitable choice of 𝜃, 𝜙.  
+ 
+Part B (Advanced: grade +0,+1,+2)  
+It is not possible to do teleportation with dual rail encoded qubits using linear optics alone. 
+However, a non-deterministic scheme exists and can be constructed for single photon 
+states. 
+ 
+ 
+a) Prove that teleportation of the input state 𝛼|0⟩+ 𝛽|1⟩ works 50% of the time, provided the 
+total count at the top two detectors equals one. 
+ 
+|1i
+iF+IX6tFLIzHxhLsG1CPRi0dMXCBDemWLjR0u5u2a0I2/AYvHjTGqz/Im/GAntQ8CWTvLw3k5l5QSK4No7zjQpr6xubW8Xt0s7u3v5B+fCopeNUebRWMSqExDNBJfM9wI1kUI1Eg
+WDsY38389hNTmsfy0UwS5kdkKHnIKTFW8urORd3plytO1ZkDrxI3JxXI0eyXv3qDmKYRk4YKonXdRLjZ0QZTgWblnqpZgmhYzJkXUsliZj2s/mxU3xmlQEOY2VLGjxXf09kJNJ6EgW2M
+yJmpJe9mfif101NeONnXCapYZIuFoWpwCbGs8/xgCtGjZhYQqji9lZMR0QRamw+JRuCu/zyKmldVt2rau2hVmnc5nEU4QRO4RxcuIYG3EMTPKDA4Rle4Q1J9ILe0ceitYDymWP4A/T5A0
+Jcja4=</latexit>50/50
+50/50
+|0i
+a0
+a1
+a2
+state preparation
+↵|0i + β|1i
+n0
+n1
+n0 + n1 = 1
+|t1i12 = |01i12 + |10i12
+
+
+==================== PAGE 4 ====================
+
+Semester Two Examinations, 2024 
+ 
+PHYS7045 
+ 
+Page 4 of 4 
+Question 3. 
+ 
+The two atom Rydberg CNOT gate described in lectures used a series of sequential 
+applications of localised pulses to the two atoms. Since there are technical challenges in 
+implementing this approach, the use of simultaneous pulses can provide technical 
+advantages. 
+In the approach shown in the figure, a simultaneous |0⟩→|𝑟⟩ pulse Ω! is applied to two 
+adjacent atoms, and a second |𝑟⟩→|1⟩ pulse Ω" is simultaneously applied to the second 
+atom only. Note that applying the two wavelength pulses simultaneously results in a two-
+photon transition, coupling the |1⟩ and |0⟩ states.  
+ 
+Part A (grade: 1-5) 
+1. What are the pulse areas needed (2𝜋, 𝜋, etc.) needed for the control and target pulses? 
+Explain your answer. 
+2. Assuming double-excitation to the Rydberg state is blockaded, show the effect of applying 
+the pulse sequence on the qubit basis states |1*0+⟩, |1*1+⟩, |0*1+⟩, |0*0+⟩, demonstrating that 
+this results in a CNOT gate. Explain your reasoning. 
+3. In comparison to the scheme described in class, describe one technical advantage of this 
+approach to realising a two-qubit gate with Rydberg atoms. 
+ 
+Part B (Advanced: grade +0,+1,+2)  
+a) Show how the above scheme can be used to realise a Toffoli gate with three qubits and the 
+same global pulses, with Ω" again applied to the target only. Hint: consider the geometric 
+arrangement of the atoms, noting that the Rydberg blockade applies to nearest neighbours. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+END OF EXAMINATION 
+|ri
+|1i
+|0i
+Control
+|ri
+|1i
+|0i
+Target
+⌦1
+⌦1
+⌦2

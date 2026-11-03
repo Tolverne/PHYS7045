@@ -1,0 +1,84 @@
+# Source: source_material/assignments/questions/2026 QuantumTech Assignment 2 (2).pdf
+# Pages: 2
+# Machine-extracted text: verify mathematical notation against original PDF.
+
+
+==================== PAGE 1 ====================
+
+PHYS7045/4045 Quantum Technology 
+ 
+Assignment 2. Due: 5:00 pm, 25/9/2026 
+Note: You may use Mathematica or other computer languages to help you solve these problems.  If you do, 
+you must show your code and describe your reasoning to get full marks.  Do not use generative AI to assist 
+you in this assignment.  Please upload your scanned or typeset solutions to Blackboard.  The upload should: 
+n be a single pdf file.  Include any code you have written as part of the PDF. 
+n include your name in the file name as: “surname_student#_assigment#.pdf” and on page 1 
+ 
+Question 1 
+Part A (grade: 1-5) 
+The evolution of the state of a qubit experiencing both coherent driving at frequency Ω and 
+dephasing at rate γ is described by the master equation  
+𝑑𝜌
+𝑑𝑡= −𝑖Ω[𝜎!, 𝜌]
+2
++ 𝛾 𝒟[𝜎"]𝜌,
+where    𝒟[𝑎]𝜌= 𝑎 𝜌𝑎# −(𝑎#𝑎 𝜌+ 𝜌𝑎#𝑎)/2 
+1. Solve for the dynamics of the qubit, assuming an arbitrary initial state.  
+2. What is the steady state?   
+3. Does the steady state depend on the initial condition? 
+4. Assume the initial state is the state |0⟩.  Plot the evolution as a function of time (i.e. plot 
+components of the Bloch vector) 
+5. Plot the evolution of the purity as a function of time,  
+ 
+Part B (Advanced: grade +0,+1,+2)  
+Use the Master equation for a damped 2-level atom in the interaction picture 
+𝑑𝜌
+𝑑𝑡= 𝛾
+(𝑛+ 1)
+2
+ 𝒟[𝜎$]𝜌+ 𝛾𝑛
+2 𝒟[𝜎%]𝜌 
+where 𝜎% = |𝑒⟩⟨𝑔| and 𝜎$ = (𝜎%)# . 
+a) obtain the general solution for 𝜌 for some arbitrary initial state, 𝜌&. 
+b) Does the steady state depend on the initial state? 
+c) Express the total evolution (from the initial time to the final time) in the Krauss 
+operator-sum representation. 
+ 
+ 
+
+
+==================== PAGE 2 ====================
+
+PHYS7045/4045 Quantum Technology 
+ 
+Assignment 2. Due: 5:00 pm, 25/9/2026 
+Question 2 
+The “Steane” code is a ‘self-dual’ code on 7 physical qubits, in which the 𝑋-like stabiliser generators are: 
+𝑆! = 𝐼𝐼𝐼𝑋𝑋𝑋𝑋 
+𝑆" = 𝐼𝑋𝑋𝐼𝐼𝑋𝑋 
+𝑆# = 𝑋𝐼𝑋𝐼𝑋𝐼𝑋 
+and the 𝑍-like stabilisers, 𝑆$, 𝑆%, 𝑆&  are the same but with the replacement 𝑋→𝑍.   
+An experimental demonstration of the Steane code in operation was recently shown with an ion-trap quantum 
+computer, see https://arxiv.org/pdf/2107.07505.pdf.  
+ 
+Part A (grade: 1-5) 
+1. How many logical qubits are encoded in this code? 
+2. Draw the tanner graph for the stabilisers, and check that the stabilisers commute with each other. 
+3. Find a pair of operators 𝑋' and 𝑍' that mutually anti-commute, but commute with all stabilisers.  By 
+multiplying the logical operators by stabilisers, the weight of 𝑋' and 𝑍' can be varied; what is the smallest-
+weight form of these operators?  This is the distance of the code. 
+4. Assuming an “independent 𝑋−𝑍 error model” in which pauli X errors happen with probability 𝑝(, and 
+Z errors happen with probability 𝑝), describe a “lookup-table” decoding algorithm for the code (you can 
+make reference to the symmetry of this code).  Provide a bound on the probability of the decoder failing 
+as a function of  𝑝( and 𝑝). 
+5. Can this code correct a single qubit 𝑌 error?  Check this using the Quantum Error Correction Criteria, and 
+if so, give a practical answer based on your decoder. 
+ 
+ 
+Part B (Advanced: grade +0,+1,+2)  
+a) Calculate the failure rate of the decoder as a function of the bit flip error rate (assuming no phase-flip errors)?  
+b) Suppose two logical qubits are encoded in two separate instances of the Steane code.  Show that the CNOT 
+gate is “transversal”; that is a logical CNOT gate can be effected by application of independent physical CNOT 
+gates between some of the physical qubits.  You may find it helpful to use the “Heisenberg picture” 
+transformation laws of stabilisers under a gate. 
+ 

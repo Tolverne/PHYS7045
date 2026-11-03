@@ -1,0 +1,410 @@
+# Source: source_material/past_exams/2025/Semester_Two_Examinations_2025_PHYS7045.pdf
+# Pages: 5
+# Machine-extracted text: verify mathematical notation against original PDF.
+
+
+==================== PAGE 1 ====================
+
+Semester 2 Examinations, 2025 
+ 
+PHYS7045 
+ 
+Page 1 of 5 
+ 
+ 
+This exam paper must not be removed from the venue 
+ 
+Venue 
+____________________ 
+Seat Number 
+__________ 
+Student Number 
+|__|__|__|__|__|__|__|__| 
+Family Name 
+____________________ 
+First Name 
+____________________ 
+ 
+ 
+School of Mathematics & Physics 
+Semester 2 Examinations, 2025 
+PHYS7045 Quantum Technologies 
+This paper is for St Lucia Campus students. 
+ 
+Examination Duration: 120 minutes 
+ 
+Planning Time: 
+10 minutes 
+ 
+Exam Conditions: 
+ 
+•Any written or printed material is permitted; material may also be 
+annotated. 
+•Casio FX82 series or UQ approved and labelled calculator only 
+•During Planning Time - Students are encouraged to review and plan 
+responses to the exam questions 
+ 
+Materials Permitted in the Exam Venue: 
+(No electronic aids are permitted e.g. laptops, phones) 
+ 
+Any additional written or printed material is permitted; material may also 
+be annotated. 
+ 
+ 
+Materials to be supplied to Students: 
+Additional exam materials (e.g. answer booklets, rough paper) will 
+be provided upon request. 
+ 
+1 x 14-Page Answer Booklet 
+1 x 1cm x 1cm Graph Paper 
+ 
+Instructions to Students: 
+If you believe there is missing or incorrect information impacting 
+your ability to answer any question, please state this when writing 
+your answer. 
+ 
+ 
+For Examiner Use Only 
+ 
+Question 
+ 
+Mark 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Total _________ 
+ 
+ 
+ 
+
+
+==================== PAGE 2 ====================
+
+Semester 2 Examinations, 2025 
+ 
+PHYS7045 
+ 
+Page 2 of 5 
+Question 1. 
+A code defined on nine qubits has the following stabiliser generators.   
+ 
+Qubit 
+Stabiliser 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+8 
+9 
+𝑆! 
+𝑍 
+𝑍 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝑆" 
+𝐼 
+𝑍 
+𝑍 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝑆# 
+𝐼 
+𝐼 
+𝐼 
+𝑍 
+𝑍 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝑆$ 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝑍 
+𝑍 
+𝐼 
+𝐼 
+𝐼 
+𝑆% 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝑍 
+𝑍 
+𝐼 
+𝑆& 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝐼 
+𝑍 
+𝑍 
+𝑆' 
+𝑋 
+𝑋 
+𝑋 
+𝑋 
+𝑋 
+𝑋 
+𝐼 
+𝐼 
+𝐼 
+𝑆( 
+𝐼 
+𝐼 
+𝐼 
+𝑋 
+𝑋 
+𝑋 
+𝑋 
+𝑋 
+𝑋 
+ 
+Note that in this notation, the “tensor product” symbol is suppressed, e.g  𝑍 𝐼. . . ≡𝑍 ⨂  𝐼 ⨂ . .. 
+ 
+Part A (grade: 1-5) 
+1. Do you expect 𝑆! to commute with all the other stabilisers listed in the table?  Justify your 
+answers and show whether this holds or not. 
+2. A logical 𝑋) operator for this code is a non-trivial operator that commutes with all 
+stabilisers.  Find an operator that does this and show that it commutes with the 
+stabilisers. 
+3. Describe the effect of a single-qubit bit flip error (i.e. an 𝑋 error) on the syndrome.  Can 
+this code detect this error?  Can it correct the error?  Justify your answers. 
+4. Describe the effect of a single-qubit phase error (i.e. an 𝑍 error) on the syndrome.  Can 
+this code detect this error?  Can it correct the error?  Justify your answers. 
+5. Explain whether the code can correct any single qubit 𝑋, 𝑌 or 𝑍 error. 
+ 
+Part B (Advanced: grade +0,+1,+2)  
+a) Find a logical 𝑍) operator for the code, and evaluate its commutation and 
+anticommutation relations with the stabilisers and with 𝑋) from part A.  Do these make 
+sense?  Justify your answers. 
+b) What is the code distance for this code.  Justify your answers. 
+ 
+ 
+
+
+==================== PAGE 3 ====================
+
+Semester 2 Examinations, 2025 
+ 
+PHYS7045 
+ 
+Page 3 of 5 
+Question 2. 
+Consider a pair of trapped ions, that will share collective phonon modes. The ions are 
+prepared initially in the collective motional ground state. The following 3-pulse sequence is 
+applied to the ions to realise an entangling gate between the two ions.  
+1. Red side band 𝜋-pulse on ion A that couples the ground state |𝑔⟩ and the excited 
+electronic state |𝑒⟩. 
+2. A red sideband 2𝜋-pulse applied to ion B that couples to an |𝑔⟩ to an auxiliary excited 
+state |𝑎⟩. 
+3. A red sideband 𝜋-pulse applied ion A coupling the ground state |𝑔⟩ and the excited 
+electronic state |𝑒⟩. 
+ 
+Part A (grade: 1-5) 
+1. Determine the action of step 1 of the gate to the basis states of the two-qubit system, 
+|𝑔𝑔⟩, |𝑔𝑒⟩, |𝑒𝑔⟩, |𝑒𝑒⟩. 
+2. Starting from the result of step 1, determine the action of step 2. 
+3. Starting from the result of step 2, determine the action of step 3. 
+4. Write down the resulting 4x4 matrix for this gate and identify its action. 
+5. Describe how one could realise a CNOT gate using this entangling gate along with single 
+qubit gates (you do not need to calculate the result of the circuit). 
+ 
+Part B (Advanced: grade +0,+1,+2)  
+Now consider three qubits labelled 𝐴, 𝐵, 𝐶. Consider how the sequence can be modified to 
+extend the gate to a controlled-controlled gate architecture. 
+a) Write down the mapping of the qubit states |𝐴𝐵𝐶⟩*+*,*-. →|𝐴𝐵𝐶⟩/*+-. for the controlled-
+controlled operation. 
+ 
+b) Determine a modification that realises the operation by adding an additional two pulses 
+to the sequence. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+==================== PAGE 4 ====================
+
+Semester 2 Examinations, 2025 
+ 
+PHYS7045 
+ 
+Page 4 of 5 
+Question 3. 
+Consider the remote state preparation protocol represented by the following circuit:  
+                                      
+ 
+In this protocol, Alice and Bob share in advance an entangled qubit pair in the |𝜓0⟩ state, i.e. 
+one part of the pair is with Alice, and the other part is with Bob. The goal is to remotely 
+prepare the state  |𝛽⟩= (|0⟩+ 𝑒*1|1⟩)/√2  on Bob’s side with Alice sending just one bit to 
+Bob.   To do this, Alice applies to her qubit a Bloch sphere rotation by 𝜋/2 about the axis 𝑛A =
+(−sin 𝜑, cos 𝜑, 0).  Then she performs a measurement in the computational basis and sends 
+the result to Bob.  
+ 
+Part A (grade: 1-5) 
+1. Show that the state of Bob’s qubit after Alice does a measurement is (up to a global 
+phase factor) either |𝛽⟩= (|0⟩+ 𝑒*1|1⟩)/√2  or |𝛽2⟩= (|0⟩−𝑒*1|1⟩)/√2.  
+2. Draw and describe an experimental setup that uses polarisation-entangled photons to 
+achieve the remote state preparation described above. 
+3. The remote state preparation protocol described above is constrained in that the 
+quantum state given by |𝛽⟩ lies along the equator of the Bloch sphere (i.e. |𝛽⟩ is an 
+equatorial state). Consider a state |𝛽′⟩ which is an arbitrary point anywhere on the Bloch 
+sphere. How would the experimental setup you drew for A.2 change to implement the 
+remote state preparation of |𝛽′⟩? 
+4. Compare the remote state preparation to the quantum teleportation protocol. Discuss 
+similarities and differences. 
+ 
+Part B (Advanced: grade +0,+1,+2)  
+Although quantum teleportation is often done with photons, it is also possible to do quantum 
+teleportation using continuous variables (CV) of the electromagnetic field. Discuss 
+advantages and disadvantages of using CV for quantum teleportation. 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+==================== PAGE 5 ====================
+
+Semester 2 Examinations, 2025 
+ 
+PHYS7045 
+ 
+Page 5 of 5 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+END OF EXAMINATION 

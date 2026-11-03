@@ -1,0 +1,297 @@
+# Source: source_material/past_exams/2023/Semester_Two_Examinations_2023_PHYS7045.pdf
+# Pages: 4
+# Machine-extracted text: verify mathematical notation against original PDF.
+
+
+==================== PAGE 1 ====================
+
+Semester Two Examinations, 2023 
+ 
+PHYS7045 
+ 
+Page 1 of 4 
+ 
+ 
+This exam paper must not be removed from the venue 
+ 
+Venue 
+____________________ 
+Seat Number 
+__________ 
+Student Number 
+|__|__|__|__|__|__|__|__| 
+Family Name 
+____________________ 
+First Name 
+____________________ 
+ 
+ 
+School of Mathematics & Physics 
+Semester Two Examinations, 2023 
+PHYS7045 Quantum Technologies 
+This paper is for St Lucia Campus students. 
+ 
+Examination Duration: 120 minutes 
+ 
+Planning Time: 
+10 minutes 
+ 
+Exam Conditions: 
+ 
+•This is an Open Book examination 
+•Any calculator permitted - unrestricted 
+•During Planning Time - Students are encouraged to review and plan 
+responses to the exam questions 
+•This examination paper will be released to the Library 
+ 
+Materials Permitted in the Exam Venue: 
+(No electronic aids are permitted e.g. laptops, phones) 
+ 
+* Open-book: Any additional written or printed material is permitted; 
+material may also be annotated. 
+ 
+Materials to be supplied to Students: 
+Additional exam materials (e.g. answer booklets, rough paper) will 
+be provided upon request. 
+ 
+2 x 14-Page Answer Booklet 
+ 
+Instructions to Students: 
+If you believe there is missing or incorrect information impacting 
+your ability to answer any question, please state this when writing 
+your answer. 
+ 
+ 
+For Examiner Use Only 
+ 
+Question 
+ 
+Mark 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Total _________ 
+ 
+ 
+ 
+
+
+==================== PAGE 2 ====================
+
+Semester Two Examinations, 2023 
+ 
+PHYS7045 
+ 
+Page 2 of 4 
+ 
+Question 1. 
+The Mølmer-Sørensen gate is often used in ion trap quantum computing as its operation is 
+independent of the vibrational state of the ion, so does not require cooling to the motional 
+ground state. 
+The scheme is shown below and consists of a bichromatic (two frequencies) laser 
+interacting with each of the ions. This results in a two-photon transition from the ground 
+|𝑔⟩|𝑔⟩|𝑛⟩ state, where |𝑛⟩ represents the phonon occupation, to the doubly excited state 
+|𝑒〉|𝑒〉|𝑛⟩. The frequencies 𝜔! and 𝜔" drive the 1st red and blue sidebands respectively, and 
+the lasers are detuned by ±𝛿 from the transitions so that the intermediate states are not 
+extensively populated. The frequency 𝜈 is the vibrational transition frequency. 
+ 
+ 
+ 
+Part A (grade 1-5) 
+1. Focusing on a single ion, and for the transitions from the ground state to the intermediate 
+states only, show the effect of the red and blue sideband transitions and determine their 
+respective Rabi frequencies. 
+ 
+2. Completing the transitions to the |𝑒〉|𝑒〉|𝑛⟩ state and noting that a two-photon Rabi 
+frequency is (Ω#Ω$)/2𝛿, determine the two photon Rabi frequency for the upper and 
+lower two photon transitions. 
+ 
+3. Using the formula Ω%&& = |Ω'((%! + Ω)*+%!| show that the resulting effective Rabi 
+frequency is independent of the vibrational state |𝑛⟩. 
+Part B (Advanced: grade +0, +1, +2) 
+(a) Determine a pulse that results in a maximally entangled Bell State of the two ions, 
+explaining your reasoning. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+==================== PAGE 3 ====================
+
+Semester Two Examinations, 2023 
+ 
+PHYS7045 
+ 
+Page 3 of 4 
+ 
+ 
+Question 2. 
+A code defined on six qubits has the following stabilisers: 
+ 
+ 
+Part A (grade: 1-5) 
+1. Do you expect 𝑆# to commute with all the other stabilisers listed in the table, or not (give 
+reasons)?  Confirm whether this is true (and show your reasoning). 
+2. A logical 𝑍, operator is defined for this code as 𝑍, = 𝑋 𝑌 𝑌 𝑋 𝕝 𝕝.  Verify whether this 
+commutes with the stabilisers. 
+3. Is the 6-qubit code able to detect a single qubit bit-flip error (i.e. an 𝑋 error) on any one 
+qubit (give reasons based on possible syndromes)?  Can it correct such an error? 
+4. Is the 6-qubit code able to detect a single qubit bit-and-phase error (i.e. a 𝑌 error) on any 
+one qubit (give reasons based on possible syndromes)?  Can it correct such an error? 
+5. Explain whether the 6-qubit code can correct any single qubit 𝑋, 𝑌 or 𝑍 error. If so, what 
+is the lower bound on the code distance? 
+ 
+Part B (Advanced: grade +0,+1,+2)  
+a) A logical 𝑋, operator can be found of the form 𝑋, = 𝐴 𝐵 𝐴 𝐵 𝕝 𝕝, where 𝐴 and 𝐵 are Pauli 
+operators.  Fill in the blanks to find 𝑋,, and verify that it anti-commutes with 𝑍, and 
+commutes with the stabilisers. 
+b) Recall that the weight of an operator is the number of non-identity operators in the tensor 
+product.  The weight of the logical operators presented here is 4, so the code distance 
+satisfies 𝑑≤4.  Can you find a product of stabilisers and logical operators with weight 
+less than 4?  Given part A5 above, what is the code distance? 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Qubit
+S1
+S2
+S3
+S4
+S5
+1
+2
+3
+4
+5
+6
+Z 11 Z 11 11 11
+X Z Y Y X 11
+X X X X Z 11
+11 Z Z X 11 X
+X Y X Y
+11 Z
+
+
+==================== PAGE 4 ====================
+
+Semester Two Examinations, 2023 
+ 
+PHYS7045 
+ 
+Page 4 of 4 
+ 
+ 
+ 
+Question 3. 
+A two-qubit system has the Hamiltonian: 
+ 
+𝐻= ℏ𝑔
+2 (𝑌# + 𝑌$)$,  
+where 𝑌- is the Pauli y-matrix. 
+ 
+Part A (grade 1-5) 
+1. Show that the dynamics is determined by the Unitary operator 
+ 
+𝑈(𝑡) = cos(𝑔𝑡) 𝕝⨂𝕝−𝑖sin(𝑔𝑡)𝑌# ⨂ 𝑌$. 
+ 
+2. If the system starts in the initial state |ψ(0)⟩ = |0⟩ ⨂|0⟩, find a time such that the state 
+evolves to a maximally entangled state. 
+Part B (Advanced: grade +0,+1,+2)  
+a) Find a circuit that uses this entangling unitary to implement a CNOT gate.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+END OF EXAMINATION 
