@@ -1,0 +1,435 @@
+% PHYS7045 Part I -- conceptual course overview
+% Companion to the separate Part II worked examples (not yet authored).
+\begin{center}
+{\huge\bfseries PHYS7045: Quantum Technologies}\par
+\vspace{2mm}
+{\Large\color{accent}Part I --- The Big Picture}\par
+\vspace{2mm}
+{\small A connected course overview for reading before the exam and consulting during it}\par
+\vspace{2mm}
+{\small Prepared from the 2026 lecture transcripts and assignments, with the 2023--2025 past examinations as a guide to emphasis.}\par
+\end{center}
+\vspace{-2mm}
+\begin{bigidea}
+\textbf{The central story.} Quantum technologies are about \emph{encoding} information in quantum states, \emph{manipulating} it using controlled interactions, and \emph{preserving} it against noise long enough to measure a useful result. These three tasks lead naturally to the course's mathematical framework, quantum error correction, and the different physical implementations of qubits.
+\end{bigidea}
+\tableofcontents
+\vspace{2mm}
+\begin{examtip}
+\textbf{How to use this booklet.} Read in order the first time: later sections deliberately refer back to earlier ideas. During the exam, identify the physical model (state, channel, stabiliser code, or hardware gate), locate the matching section, and then use the separate \emph{Part II: Worked Examples} for the algebraic procedure. A \textbf{checklist of problem types} is given in \S\ref{sec:navigate}.
+\end{examtip}
+
+\section{The framework: quantum states, controls and measurements}\label{sec:states}
+Quantum computers and communication devices are not different because they use a different kind of logic gate: they are different because the objects being manipulated are \emph{amplitudes} in a Hilbert space. Probabilities are obtained only when those amplitudes are projected onto measurement outcomes. Relative phase, interference, and entanglement therefore matter as much as occupation probabilities.
+
+\subsection{A single qubit and the Bloch sphere}
+Choose an orthonormal computational basis $\{\ket{0},\ket{1}\}$. An arbitrary \emph{pure} qubit can be written as
+\begin{equation}\label{eq:qubit}
+\ket{\psi}=\alpha\ket{0}+\beta\ket{1},\qquad |\alpha|^2+|\beta|^2=1.
+\end{equation}
+The overall phase $\ee^{i\chi}\ket{\psi}$ is not observable, but the \emph{relative} phase between $\alpha$ and $\beta$ is. Removing an irrelevant global phase gives the Bloch-sphere form
+\begin{equation}\label{eq:blochket}
+\ket{\psi}=\cos\frac{\theta}{2}\ket{0}+\ee^{i\phi}\sin\frac{\theta}{2}\ket{1},\quad
+\bm r=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta).
+\end{equation}
+Thus $\ket{0}$ is the north pole, $\ket{1}$ the south pole, and equal-magnitude superpositions lie on the equator. An $\alpha\ket{0}+\beta\ket{1}$ state is a \emph{coherent} superposition, not a classical coin toss: its phase changes what happens when the basis is rotated.
+
+\subsection{Measurement and Pauli matrices}
+Measuring $\ket{\psi}$ in the computational basis gives outcomes $0$ and $1$ with probabilities $|\alpha|^2$ and $|\beta|^2$. A projective outcome $m$ has probability $p_m=\bra{\psi}P_m\ket{\psi}$ and, conditional on that outcome, the state becomes $P_m\ket{\psi}/\sqrt{p_m}$. For a general observable $A$, its expectation value is $\langle A\rangle=\bra{\psi}A\ket{\psi}$.
+
+The operators used throughout this course are
+\begin{equation}\label{eq:pauli}
+X=\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad
+Y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\quad
+Z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\end{equation}
+Each squares to $\I$, and different Paulis anticommute: $XY=-YX=iZ$ (and cyclic permutations). They describe bit flips ($X$), phase flips ($Z$), and combined bit-and-phase flips ($Y=iXZ$). Up to a phase, every single-qubit Pauli error is one of $I,X,Y,Z$. This simple classification is the basis of stabiliser error correction.
+
+\subsection{Unitary gates are controlled Hamiltonian evolution}
+For a closed system with time-independent Hamiltonian $H$, the Schr\"odinger equation gives
+\begin{equation}\label{eq:unitary}
+U(t)=\ee^{-iHt/\hbar},\qquad \ket{\psi(t)}=U(t)\ket{\psi(0)}.
+\end{equation}
+For a rotation by $\vartheta$ about the unit Bloch axis $\bm n$,
+\begin{equation}\label{eq:rotation}
+R_{\bm n}(\vartheta)=\ee^{-i\vartheta\bm n\cdot\bm\sigma/2}
+=\cos\frac{\vartheta}{2}\,\I-i\sin\frac{\vartheta}{2}\,\bm n\cdot\bm\sigma.
+\end{equation}
+The second equality follows because $(\bm n\cdot\bm\sigma)^2=\I$; even powers of the exponential give a cosine and odd powers a sine. This is one of the most useful identities in the course.
+
+For example, $H=\hbar( t_c X+\Delta Z)$ rotates about the axis proportional to $(t_c,0,\Delta)$, with angular speed $2\sqrt{t_c^2+\Delta^2}$. Pure $X$ and $Z$ rotations arise by setting $\Delta=0$ or $t_c=0$, respectively. \textbf{Check the factor of two:} the Hamiltonian here has no $1/2$, whereas $H=\hbar\Omega X/2$ generates $X$ rotation angle $\Omega t$.
+
+\subsection{Two qubits and controlled operations}
+Two qubits live in $\mathcal H_A\otimes\mathcal H_B$, with basis $\{\ket{00},\ket{01},\ket{10},\ket{11}\}$. A gate acting only on the second qubit is $\I\otimes U$. A controlled-$U$ is $\ket{0}\bra{0}\otimes\I+\ket{1}\bra{1}\otimes U$ for the usual control-on-$1$ convention. Some hardware problems deliberately control on $\ket{0}$ instead: \emph{always read the stated gate action before constructing its $4\times4$ matrix}.
+
+The CNOT maps $\ket{a,b}\mapsto\ket{a,b\oplus a}$; the CZ multiplies $\ket{11}$ by $-1$. They are locally equivalent:
+\begin{equation}\label{eq:cnotcz}
+\mathrm{CNOT}_{A\to B}=(\I\otimes H)\,\mathrm{CZ}\,(\I\otimes H),\qquad H=\frac{X+Z}{\sqrt2}.
+\end{equation}
+Entanglement appears when a two-qubit operation cannot be reduced to separate single-qubit operations: for example, $\mathrm{CNOT}(\ket{+}\ket{0})=(\ket{00}+\ket{11})/\sqrt2$.
+
+\begin{examtip}
+\textbf{Recognition cue.} If a question gives a Hamiltonian containing a Pauli product such as $Y\otimes Y$, simplify its square first. If $A^2=\I$, then $\ee^{-i\vartheta A}=\cos\vartheta\,\I-i\sin\vartheta\,A$. Apply the resulting operator to \emph{each specified input state}; do not guess the gate from its name.
+\end{examtip}
+
+\section{Entanglement and quantum information protocols}\label{sec:entanglement}
+\subsection{Entanglement is more than correlated measurement results}
+A pure two-qubit state is \emph{separable} if it can be written as $\ket{u}_A\otimes\ket{v}_B$. Otherwise it is entangled. Four central examples are the Bell states:
+\begin{align}\label{eq:bellstates}
+\ket{\Phi^\pm}&=\frac{\ket{00}\pm\ket{11}}{\sqrt2},&
+\ket{\Psi^\pm}&=\frac{\ket{01}\pm\ket{10}}{\sqrt2}.
+\end{align}
+The state $\ket{\Phi^+}$ gives perfectly correlated computational-basis outcomes. Yet neither qubit separately has a definite pure state: tracing out either subsystem gives $\I/2$. Thus the global pair is pure, while the local description is maximally mixed. This is a distinctively quantum feature.
+
+Every pure bipartite state has a \emph{Schmidt decomposition}
+\begin{equation}\label{eq:schmidt}
+\ket{\psi}_{AB}=\sum_j\sqrt{\lambda_j}\ket{u_j}_A\ket{v_j}_B,\qquad
+\lambda_j\geq0,\quad\sum_j\lambda_j=1,
+\end{equation}
+where both sets of vectors are orthonormal. The nonzero $\lambda_j$ are the eigenvalues of the reduced density matrices $\rho_A$ and $\rho_B$. There is one nonzero coefficient for a product state; a maximally entangled two-qubit state has $\lambda_1=\lambda_2=1/2$. The entanglement entropy for a pure pair is
+\begin{equation}\label{eq:entropy}
+S(\rho_A)=-\Tr(\rho_A\log_2\rho_A)=-\sum_j\lambda_j\log_2\lambda_j.
+\end{equation}
+A Bell pair has $S=1$ bit; a pure product state has $S=0$. The Schmidt decomposition is a mathematical tool for finding the natural paired bases, not an extra physical operation on the particles.
+
+\subsection{Teleportation and remote state preparation}
+The standard teleportation protocol consumes one shared Bell pair and two classical bits to transfer an \emph{unknown} input state $\ket{\psi}$ from Alice to Bob:
+\begin{enumerate}
+\item Alice holds the unknown input and her half of a Bell pair. Bob holds the other half.
+\item Alice performs a \emph{Bell-basis measurement} on her two qubits, obtaining one of four outcomes.
+\item She sends the two-bit outcome to Bob; the state on his qubit is a Pauli-rotated version of $\ket{\psi}$.
+\item Bob applies the corresponding $I,X,Z,$ or $XZ$ correction and recovers $\ket{\psi}$.
+\end{enumerate}
+No unknown state is physically copied: Alice's input is destroyed by measurement, and Bob cannot recover the state without the classical message. This respects both \emph{no cloning} and \emph{no faster-than-light signalling}. For a pure target $\ket{\psi}$ and output $\rho_{\rm out}$, fidelity is $F=\bra{\psi}\rho_{\rm out}\ket{\psi}$.
+
+\emph{Remote state preparation} differs because Alice \emph{knows} the state she wants Bob to receive. For restricted ensembles, such as states on the Bloch equator $\ket{\beta}=(\ket{0}+\ee^{i\phi}\ket{1})/\sqrt2$, one shared Bell pair and one classical bit can suffice when Alice chooses an appropriate measurement. It is not an arbitrary-unknown-state teleportation protocol; knowing the target state changes the resources needed.
+
+\subsection{No cloning, Bell inequalities and classical communication}
+Suppose a unitary machine cloned both $\ket{u}$ and $\ket{v}$. Preservation of inner products would imply
+\begin{equation}
+\braket{u}{v}=\braket{u}{v}^{\,2}.
+\end{equation}
+This is impossible for generic distinct nonorthogonal states. Consequently, arbitrary quantum states cannot be perfectly copied, even though known orthogonal basis states can be copied by a CNOT. Bell-inequality violations provide another distinction between entanglement and classical shared randomness: the CHSH quantity obeys $|S_{\rm CHSH}|\leq2$ in local-hidden-variable models, whereas quantum states and measurements can reach $2\sqrt2$ (Tsirelson's bound).
+
+\textbf{Useful distinction:} entanglement enables correlations and information protocols, but by itself sends no controllable message. Classical communication remains necessary in teleportation and is also used to compare measurement bases in quantum key distribution.
+
+\section{Density matrices and quantum channels}\label{sec:channels}
+The pure-state vector is insufficient if the preparation is uncertain, an environment is ignored, or part of an entangled system is inaccessible. The density operator unifies these cases:
+\begin{equation}\label{eq:density}
+\rho=\sum_j p_j\ket{\psi_j}\bra{\psi_j},\quad p_j\geq0,\quad\sum_jp_j=1.
+\end{equation}
+A valid $\rho$ is Hermitian, positive semidefinite and has unit trace. An observable is predicted by $\langle A\rangle=\Tr(\rho A)$; under a closed-system gate $\rho\mapsto U\rho U^\dagger$. A one-qubit density matrix can always be written as
+\begin{equation}\label{eq:blochrho}
+\rho=\tfrac12(\I+\bm r\cdot\bm\sigma)
+=\frac12\begin{pmatrix}1+r_z&r_x-ir_y\\r_x+ir_y&1-r_z\end{pmatrix}.
+\end{equation}
+The Bloch vector has $|\bm r|\leq1$. Pure states lie on the surface ($|\bm r|=1$); noisy mixtures lie inside the sphere. The \emph{purity} is
+\begin{equation}\label{eq:purity}
+\mathcal P=\Tr(\rho^2)=\frac{1+|\bm r|^2}{2}.
+\end{equation}
+Thus $\mathcal P=1$ for a pure qubit and $1/2$ for $\rho=\I/2$. The off-diagonal matrix elements $\rho_{01}$ and $\rho_{10}$ are \emph{coherences}; their loss suppresses interference even when populations remain unchanged.
+
+\subsection{Partial trace and thermal states}
+If Alice and Bob share $\rho_{AB}$ but we observe only Bob, the local state is $\rho_B=\Tr_A\rho_{AB}$. The partial trace sums over Alice's basis indices, not over Bob's. For $\ket{\Phi^+}$,
+\begin{equation}
+\rho_B=\Tr_A\big(\ket{\Phi^+}\bra{\Phi^+}\big)
+=\tfrac12\big(\ket0\bra0+\ket1\bra1\big)=\I/2.
+\end{equation}
+A density matrix can represent either a classical mixture of preparations or a subsystem of an entangled pure state; local measurements cannot distinguish descriptions with the same $\rho$.
+
+A system in equilibrium with a thermal bath at temperature $T$ has Gibbs state
+\begin{equation}\label{eq:gibbs}
+\rho_{\rm th}=\frac{\ee^{-\beta H}}{Z},\quad Z=\Tr(\ee^{-\beta H}),\quad \beta=(k_BT)^{-1}.
+\end{equation}
+If $H\ket{n}=E_n\ket{n}$, the energy-basis populations are proportional to $\ee^{-\beta E_n}$. High temperature tends towards an approximately uniform mixture; low temperature favours the ground state. The equilibrium state does not, by itself, specify \emph{how quickly} the system approaches equilibrium: that is a dynamical question.
+
+\subsection{Why a quantum channel is more general than a unitary}
+A qubit interacts with an environment $E$. The joint system evolves unitarily, but an experimenter usually measures only the qubit:
+\begin{equation}\label{eq:channel}
+\rho_S\longmapsto \mathcal E(\rho_S)=
+\Tr_E\!\left[U_{SE}(\rho_S\otimes\rho_E)U_{SE}^\dagger\right]
+=\sum_jK_j\rho_SK_j^\dagger.
+\end{equation}
+The $K_j$ are \emph{Kraus operators}. The completeness condition $\sum_jK_j^\dagger K_j=\I$ guarantees preservation of total probability. These completely positive, trace-preserving (CPTP) maps describe ordinary gate evolution, measurement with outcomes discarded, dephasing, relaxation and other noise processes.
+
+Two standard examples clarify the physics:
+\begin{itemize}
+\item \textbf{Dephasing:} the environment randomises the relative phase of $\ket0$ and $\ket1$. Off-diagonal elements shrink, but the populations $\rho_{00},\rho_{11}$ are unchanged. On the Bloch sphere, $r_x,r_y$ decay while $r_z$ stays fixed (if there is no driving).
+\item \textbf{Amplitude damping:} an excited qubit loses energy to its environment. With $\ket0$ the lower state and loss probability $p$, Kraus operators are
+\begin{equation}\label{eq:amplitudedamp}
+K_0=\begin{pmatrix}1&0\\0&\sqrt{1-p}\end{pmatrix},\qquad
+K_1=\begin{pmatrix}0&\sqrt p\\0&0\end{pmatrix}.
+\end{equation}
+The excited-state population decreases and the Bloch vector moves toward $\ket0$. This is \emph{non-unital}: generally $\mathcal E(\I/2)\ne\I/2$.
+\end{itemize}
+A useful distinction is that a \emph{channel} connects input and output states over some interval; a \emph{master equation} describes their continuous-time evolution.
+
+\section{Lindblad master equations: dynamics with noise}\label{sec:lindblad}
+A Markovian open system, under standard weak-memory assumptions, is described by a generator that combines coherent dynamics and dissipative processes:
+\begin{equation}\label{eq:lindblad}
+\boxed{\dot\rho=-\frac{i}{\hbar}[H,\rho]+\sum_j\gamma_j\D[L_j]\rho},\qquad
+\D[L]\rho=L\rho L^\dagger-\tfrac12\{L^\dagger L,\rho\}.
+\end{equation}
+Here $H$ produces unitary rotation, $L_j$ specifies the physical jump or noise process, and $\gamma_j\geq0$ is its rate. The anticommutator term ensures trace preservation. Common jump operators are $Z$ (dephasing), $\sigma_-=\ket0\bra1$ (decay) and $\sigma_+=\ket1\bra0$ (excitation). A steady state satisfies $\dot\rho=0$; it need not be pure or unique.
+
+\subsection{Convert a matrix equation into Bloch-vector equations}
+This is the most useful practical method for one-qubit master equations. Substitute Eq.~\eqref{eq:blochrho}, evaluate the commutator and dissipator, and compare coefficients of $X,Y,Z$. For the driven-dephasing model appearing in the 2026 assignment,
+\begin{equation}\label{eq:drivendephase}
+\dot\rho=-\frac{i\Omega}{2}[X,\rho]+\gamma\D[Z]\rho,
+\end{equation}
+we use $ZXZ=-X$, $ZYZ=-Y$, $ZZZ=Z$ and obtain
+\begin{equation}\label{eq:blochdephase}
+\boxed{\dot r_x=-2\gamma r_x,\qquad
+\dot r_y=-\Omega r_z-2\gamma r_y,\qquad
+\dot r_z=\Omega r_y.}
+\end{equation}
+\textbf{Physical interpretation:} $\Omega$ tries to rotate the vector about the $x$ axis while $\gamma$ erases transverse coherence. Driving couples population difference $r_z$ to $r_y$; noise damps that rotating component. If $\Omega\ne0$ and $\gamma>0$, the unique steady state is $\bm r=0$, i.e. $\rho_{\rm ss}=\I/2$. In the absence of driving, $r_z$ is conserved: pure dephasing alone does \emph{not} force every state to $\I/2$.
+
+The coherent rotation and dissipator can be expressed as a linear system $\dot{\bm r}=A\bm r+\bm b$. Constant-coefficient methods then solve the dynamics (or, more generally, one may vectorise $\rho$ and exponentiate the Liouvillian). The steady state solves $A\bm r_{\rm ss}+\bm b=0$; if $A$ is singular, additional conserved quantities or multiple steady states may exist.
+
+\subsection{Relaxation versus coherence times}
+Energy relaxation drives a system toward its lower-energy state and is characterised by $T_1$. Phase coherence decays on a time $T_2$; in a common simple model
+\begin{equation}\label{eq:T1T2}
+\frac1{T_2}=\frac1{2T_1}+\frac1{T_\phi},
+\end{equation}
+where $T_\phi$ represents pure dephasing. This is why a device can maintain stable populations while still lose the phase information needed for quantum computation.
+
+\begin{examtip}
+\textbf{When solving a master equation:} identify $H$ and each $L_j$; choose a basis; write $\rho=\frac12(\I+\bm r\cdot\bm\sigma)$; derive a small ODE system; solve for a general or specified initial condition; find $\dot\rho=0$; and verify $\Tr\rho=1$ and $0\leq\Tr(\rho^2)\leq1$. Beware that the numerical damping factor depends on whether a rate is included inside $L$ or in front of $\D[L]$.
+\end{examtip}
+
+\section{Quantum error correction: protect information without reading it}\label{sec:qec}
+The problem is that the environment introduces $X$-like, $Z$-like, and combined $Y$-like errors, but measuring the data qubits directly would destroy the encoded superposition. \emph{Quantum error correction measures relationships between physical qubits rather than the logical information they encode.} It turns errors into classical syndrome data on which a decoder can act.
+
+\subsection{From parity checks to stabilisers}
+A classical repetition code stores one bit as $000$ or $111$, allowing a single incorrect bit to be identified by neighbouring parity checks. The quantum bit-flip repetition code makes the analogous encoding
+\begin{equation}\label{eq:bitflipcode}
+\ket{0_L}=\ket{000},\quad\ket{1_L}=\ket{111},\quad
+\alpha\ket{0_L}+\beta\ket{1_L}.
+\end{equation}
+The commuting \emph{stabiliser generators} $S_1=Z_1Z_2$ and $S_2=Z_2Z_3$ both have eigenvalue $+1$ on every valid encoded state. An error may reverse one or more eigenvalues; those two bits of information make up its \emph{syndrome}.
+\begin{center}
+\small
+\begin{tabular}{@{}llll@{}}\toprule
+Physical error&$S_1$ outcome&$S_2$ outcome&Interpretation\\\midrule
+$I$&$+1$&$+1$&No detected bit flip\\
+$X_1$&$-1$&$+1$&Flip qubit 1\\
+$X_2$&$-1$&$-1$&Flip qubit 2\\
+$X_3$&$+1$&$-1$&Flip qubit 3\\\bottomrule
+\end{tabular}
+\end{center}
+Crucially, syndrome measurements do not distinguish $\alpha$ from $\beta$: the same stabiliser eigenvalues apply to every state in the code space. After identifying an $X_j$, applying the corresponding $X_j$ again restores the original state.
+
+A \emph{stabiliser code} is the common $+1$ eigenspace of a commuting, independent set of Pauli-product generators $S_i$. If there are $n$ physical qubits and $r$ independent generators that do not include $-\I$, the code encodes
+\begin{equation}\label{eq:encodedqubits}
+k=n-r\qquad\text{logical qubits.}
+\end{equation}
+\textbf{Pauli commutation rule:} two tensor-product Pauli operators commute if the number of qubit positions where they have \emph{different non-identity Paulis} is even; they anticommute if it is odd. A single-qubit Pauli error $E$ produces syndrome $s_i=+1$ when $[E,S_i]=0$ and $s_i=-1$ when $\{E,S_i\}=0$. Therefore, one can build a syndrome table without writing large $2^n\times2^n$ matrices.
+
+\subsection{Detecting, correcting and decoding are different tasks}
+An error is \emph{detectable} if it moves the code space into a distinguishable syndrome sector or otherwise satisfies the formal detectability condition. To \emph{correct} a family of errors, the syndrome and decoder must identify the appropriate recovery \emph{up to an action that is harmless on the code space}. Different errors can have the same syndrome and still be correctable if their difference is a stabiliser (a \emph{degenerate} code). A zero syndrome does not guarantee no error: a nontrivial logical operator can commute with every stabiliser and corrupt encoded information without announcing itself.
+
+The precise quantum error-correction criterion is
+\begin{equation}\label{eq:knill}
+P E_a^\dagger E_b P=c_{ab}P\qquad\text{for all errors $E_a,E_b$ in the correctable set},
+\end{equation}
+where $P$ projects onto the code space. In words, no correctable error pair may reveal information about which logical state was encoded. This is why correcting arbitrary qubit errors requires protection against \emph{both} bit and phase errors.
+
+\subsection{Logical operators and code distance}
+The encoded logical Pauli operators $X_L$ and $Z_L$ commute with every stabiliser but are not themselves stabilisers. For one logical qubit they must anticommute with one another:
+\begin{equation}\label{eq:logical}
+[X_L,S_i]=[Z_L,S_i]=0,\qquad X_LZ_L=-Z_LX_L.
+\end{equation}
+They act like ordinary $X$ and $Z$ on the encoded $\ket{0_L},\ket{1_L}$ states. Multiplying a logical operator by any stabiliser produces an equivalent logical action on the code space, often with fewer non-identity factors.
+
+The \emph{weight} of a Pauli product is the number of non-identity tensor factors. For a stabiliser code, the \emph{distance} is the smallest weight of a Pauli operator that commutes with all stabilisers but acts nontrivially on the encoded space (equivalently, is in the normaliser but not the stabiliser group):
+\begin{equation}\label{eq:distance}
+d=\min_{L\in\mathcal N(\mathcal S)\setminus\mathcal S}\operatorname{wt}(L),\quad
+t=\left\lfloor\frac{d-1}{2}\right\rfloor.
+\end{equation}
+A code of distance $d$ detects all errors of weight less than $d$ and is guaranteed to correct any error affecting at most $t$ qubits. The three-qubit repetition code has distance $1$ as a \emph{general quantum code}: $Z_1$ commutes with both checks yet implements logical $Z_L$. It nevertheless corrects a single \emph{bit-flip} error. This distinction is worth remembering in exam answers.
+
+\subsection{CSS codes and the Steane example}
+A Calderbank--Shor--Steane (CSS) code uses separate $X$-type and $Z$-type parity checks. The Steane code encodes one logical qubit into seven physical qubits, with six independent generators, and has parameters $[[7,1,3]]$. It corrects any \emph{single-qubit} Pauli error. $Z$-type checks diagnose $X$ errors, $X$-type checks diagnose $Z$ errors, and a $Y$ error triggers both syndromes. It follows that an error decoder can combine two classical syndrome tables.
+
+In a \emph{transversal} logical CNOT, physical CNOTs act between corresponding qubits of two encoded blocks. For the Steane code this maps logical Pauli operators as
+\begin{equation}\label{eq:transversal}
+X_L^{(c)}\mapsto X_L^{(c)}X_L^{(t)},\quad
+Z_L^{(t)}\mapsto Z_L^{(c)}Z_L^{(t)},
+\end{equation}
+while $Z_L^{(c)}$ and $X_L^{(t)}$ remain unchanged. These are exactly the Heisenberg-picture relations for a logical CNOT. Transversal gates help prevent a single physical fault from spreading within one encoded block.
+
+\begin{examtip}
+\textbf{Three consecutive past exams use essentially the same method.} For an unfamiliar code: (1) check that all stabilisers commute; (2) count independent generators to find $k$; (3) calculate the syndrome of each single-qubit $X,Y,Z$ error; (4) distinguish detection from correctability; (5) test candidate $X_L,Z_L$ for commutation with stabilisers and mutual anticommutation; (6) search for the lowest-weight nontrivial logical operator to determine $d$. The examples in Part II will work this procedure with the supplied 2023--2025 codes.
+\end{examtip}
+
+\section{Physical implementations: what makes a qubit controllable?}\label{sec:platforms}
+Every hardware platform must supply the same logical ingredients: an identifiable two-level subspace; preparation and readout; long enough coherence; single-qubit rotations; and at least one entangling interaction between qubits. The platforms differ in what carries the state and what physical parameter controls its Hamiltonian.
+
+\subsection{A universal picture of driven transitions}
+For two levels of energy difference $\hbar\omega_0$, a near-resonant drive with amplitude $\Omega$ and detuning $\delta=\omega_0-\omega_d$ is often described, in a suitable rotating frame and after the rotating-wave approximation, by
+\begin{equation}\label{eq:rabi}
+H_{\rm rot}=\frac\hbar2\big(\Omega X+\delta Z\big).
+\end{equation}
+On resonance ($\delta=0$), a pulse of duration $\tau$ produces a rotation angle $\vartheta=\Omega\tau$. A $\pi$ pulse swaps the populations of $\ket0$ and $\ket1$ (up to phases); a $2\pi$ pulse returns the state to itself with phase $-1$ for an ideal two-level resonant rotation. Off resonance, the rotation axis tilts away from $x$ and the effective Rabi frequency becomes $\sqrt{\Omega^2+\delta^2}$. Selectivity is obtained by changing level splittings or by shifting an unwanted transition out of resonance.
+
+For \emph{two} qubits, a useful interaction must make the evolution of one depend on the state of the other. This may be a conditional shift, an exchange interaction, an optical blockade, or a shared vibrational mode. Several apparently unrelated past-exam questions are variations on this same mechanism.
+
+\subsection{Spin and charge qubits in semiconductor quantum dots}
+A \emph{charge qubit} can encode $\ket0,\ket1$ in an electron occupying the left or right of a double dot. Tunnel coupling mixes the locations (an $X$-like term); electrical detuning favours one location (a $Z$-like term):
+\begin{equation}\label{eq:chargequbit}
+H_{\rm charge}=\hbar(t_c X+\Delta Z).
+\end{equation}
+The energy splitting is $2\hbar\sqrt{t_c^2+\Delta^2}$. Gates are made by pulsing $t_c$ and/or $\Delta$. The trade-off is clear: electric fields provide fast control, but the qubit may be sensitive to charge noise.
+
+A \emph{single-spin qubit} instead uses electron spin states $\ket\uparrow$ and $\ket\downarrow$ in a quantum dot. A magnetic field produces Zeeman splitting and an oscillating magnetic or effective electrical drive induces spin rotations. Two neighbouring electron spins interact through an \emph{exchange coupling} of the form
+\begin{equation}\label{eq:exchange}
+H_{\rm ex}=J\,\bm S_1\cdot\bm S_2,
+\end{equation}
+with $J$ controlled by the overlap of their wavefunctions. Exchange causes spin-dependent energy shifts and enables two-qubit gates. In \emph{singlet--triplet} qubits, the logical information is encoded in the two-electron spin subspace: the singlet $\ket S=(\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow})/\sqrt2$ and triplet $\ket{T_0}=(\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow})/\sqrt2$ have different exchange energy. A gradient in magnetic field supplies another axis of control.
+
+\textbf{Physical picture:} electrostatic gates shape confinement potentials; tunnel coupling controls delocalisation; exchange converts electron overlap into an entangling resource. Charge and spin devices differ in speed, coherence, and vulnerability to electric or magnetic noise, even when the same abstract Pauli matrices describe their gates.
+
+\subsection{Superconducting qubits: quantise an electrical circuit}
+A superconducting island coupled by a capacitor and Josephson junction behaves like an engineered quantum particle. Instead of position and momentum, use \emph{node flux} $\Phi$ (the time integral of voltage) and its canonical charge $Q$. For the Cooper-pair-box-style circuit in the 2026 assignment, with shunt capacitance $C_0$, gate capacitance $C_c$ and gate voltage $V_g$,
+\begin{align}\label{eq:cpblagrangian}
+\mathcal L&=\tfrac12C_0\dot\Phi^2+\tfrac12C_c(\dot\Phi-V_g)^2
++E_J\cos\!\left(\frac{2\pi\Phi}{\Phi_0}\right),\\
+Q&=\frac{\partial\mathcal L}{\partial\dot\Phi}
+=(C_0+C_c)\dot\Phi-C_cV_g,
+\end{align}
+where $\Phi_0=h/(2e)$ is the superconducting flux quantum. The Legendre transform $H=Q\dot\Phi-\mathcal L$ gives, dropping an energy constant independent of $Q,\Phi$,
+\begin{equation}\label{eq:cpbham}
+\boxed{H=\frac{(Q+C_cV_g)^2}{2C_\Sigma}
+-E_J\cos\!\left(\frac{2\pi\Phi}{\Phi_0}\right),\quad C_\Sigma=C_0+C_c.}
+\end{equation}
+Quantise by imposing $[\Phi,Q]=i\hbar$. The Josephson junction acts like a \emph{nonlinear inductor}: its cosine potential creates energy levels that are not equally spaced, allowing the two lowest levels to be addressed as a qubit while higher excitations remain off resonance.
+
+Writing the dimensionless phase $\varphi=2\pi\Phi/\Phi_0$, Cooper-pair number $n=Q/(2e)$, charging energy $E_C=e^2/(2C_\Sigma)$ and offset $n_g=-C_cV_g/(2e)$ leads to the standard form
+\begin{equation}\label{eq:transmonham}
+H=4E_C(n-n_g)^2-E_J\cos\varphi,\qquad [\varphi,n]=i.
+\end{equation}
+Near a minimum, $\cos\varphi\simeq1-\varphi^2/2$, giving the approximate harmonic-oscillator level spacing $\hbar\omega_p\simeq\sqrt{8E_JE_C}$. The next-order nonlinearity separates the $0\leftrightarrow1$ and $1\leftrightarrow2$ transition frequencies.
+
+A \emph{transmon} uses $E_J/E_C\gg1$ to reduce sensitivity to fluctuations in offset charge. This improves coherence but makes the potential more nearly harmonic, reducing anharmonicity. A more charge-sensitive \emph{Cooper-pair box} operates at smaller $E_J/E_C$. In either case the recipe is the same: circuit $\to$ Lagrangian $\to$ conjugate charge $\to$ Hamiltonian $\to$ eigenenergies $\to$ gates.
+
+\begin{examtip}
+\textbf{Circuit question cue.} Capacitors contribute quadratic terms in voltage $\dot\Phi$; a Josephson junction contributes $-E_J\cos\varphi$ to the potential energy and therefore $+E_J\cos\varphi$ to $\mathcal L=T-V$. When performing the Legendre transform, substitute $\dot\Phi$ in terms of $Q$ \emph{before} simplifying, and keep track of the gate-voltage sign convention.
+\end{examtip}
+
+\subsection{Photonic qubits, beam splitters and interference}
+Photons have several possible two-level encodings. A \emph{polarisation qubit} uses $\ket H,\ket V$. A \emph{dual-rail qubit} uses a \emph{single} photon in one of two modes:
+\begin{equation}\label{eq:dualrail}
+\ket{0_L}=\ket{1,0},\qquad \ket{1_L}=\ket{0,1},
+\end{equation}
+where the pair of numbers gives the occupations of the two optical modes. Wave plates rotate polarisation; phase shifters and beam splitters mix modes to implement dual-rail single-qubit gates.
+
+The natural language for multiphoton states uses \emph{creation operators}: $\ket{n,m}=(a^\dagger)^n(b^\dagger)^m\ket{\mathrm{vac}}/\sqrt{n!m!}$. For one convenient lossless $50{:}50$ beam-splitter convention,
+\begin{equation}\label{eq:bs}
+a^\dagger\longmapsto\frac{c^\dagger+d^\dagger}{\sqrt2},\qquad
+b^\dagger\longmapsto\frac{c^\dagger-d^\dagger}{\sqrt2}.
+\end{equation}
+The signs depend on how the ports and phases are defined, so a solution must declare a convention and use it consistently. Substituting the two input operators into $\ket{1,1}=a^\dagger b^\dagger\ket{\mathrm{vac}}$ gives
+\begin{equation}\label{eq:hom}
+\ket{1,1}\longmapsto\frac{\ket{2,0}-\ket{0,2}}{\sqrt2}.
+\end{equation}
+This is the \emph{Hong--Ou--Mandel (HOM) effect}: indistinguishable photons entering opposite ports of a balanced beam splitter leave together. The coincidence term $\ket{1,1}$ cancels by destructive interference of two indistinguishable alternatives. If the photons become distinguishable, their alternatives no longer interfere completely and coincidences return.
+
+With polarisation-entangled inputs, symmetry matters. The antisymmetric Bell state $\ket{\Psi^-}=(\ket{H,V}-\ket{V,H})/\sqrt2$ produces an \emph{antibunched} spatial signature under the usual common-mode beam-splitter analysis, unlike the symmetric Bell states. This allows partial Bell-state analysis, but passive linear optics and standard photon counting cannot deterministically distinguish all four Bell states without additional resources. Hence optical entangling gates and teleportation schemes are frequently \emph{probabilistic and heralded}: successful detector outcomes signal that the intended operation occurred.
+
+\textbf{What makes photons attractive?} They travel quickly and are comparatively robust carriers of quantum information. \textbf{What makes them difficult?} Photons interact only weakly with one another, so deterministic entangling operations are harder than single-photon mode transformations. Loss and photon distinguishability directly reduce experimental performance.
+
+\subsection{Neutral atoms and Rydberg blockade}
+Neutral atoms can be held in arrays of optical tweezers. Two stable ground/hyperfine levels encode $\ket0$ and $\ket1$; laser excitation couples a chosen state to a highly excited \emph{Rydberg} level $\ket r$. Rydberg atoms have large electric dipole interactions, so excitation of one atom shifts the energy required to excite a neighbour. This is the \emph{blockade} mechanism: two nearby atoms cannot both be resonantly driven to $\ket r$ when the doubly excited state is strongly shifted.
+
+A common entangling-gate construction uses a $\pi$ pulse on the control atom, a $2\pi$ pulse on the target, and another $\pi$ pulse on the control. The physical logic is:
+\begin{enumerate}
+\item Excite the control conditionally to $\ket r$.
+\item Attempt a $2\pi$ target rotation. If the control is not in $\ket r$, the target completes the cycle and acquires a phase. If the control is in $\ket r$, the target transition is shifted off resonance and its rotation is suppressed.
+\item Return the control to its computational state. The result is a \emph{conditional phase gate}, locally equivalent to CZ (and hence CNOT after Hadamards on the target).
+\end{enumerate}
+For example, depending on the chosen control level and laser phases, one obtains $\operatorname{diag}(1,-1,-1,-1)$ rather than exactly CZ; multiplication by suitable single-qubit $Z$ rotations converts it into the usual $\operatorname{diag}(1,1,1,-1)$. These relative phases matter even though an overall global phase does not.
+
+High-fidelity blockade requires the \emph{interaction-induced detuning} to be much greater than the Rabi angular frequency:
+\begin{equation}\label{eq:blockade}
+|U_{rr}|/\hbar\gg\Omega
+\qquad\text{or equivalently}\qquad |\Delta_{rr}|\gg\Omega,
+\end{equation}
+if $\Delta_{rr}=U_{rr}/\hbar$. This suppresses unwanted double excitation. Larger arrays introduce additional challenges: finite blockade range, nonuniform interaction strengths, laser addressing errors, and spontaneous decay of Rydberg levels.
+
+\subsection{Trapped ions: electronic states coupled by phonons}
+An ion trap confines charged atoms. Each ion has long-lived internal qubit levels, but the ions also undergo \emph{collective quantised motion}. Their shared vibrational excitations (phonons) become a bus that allows a laser on one ion to influence another.
+
+There are three important laser transitions in the resolved-sideband and Lamb--Dicke limits:
+\begin{center}
+\small
+\begin{tabular}{@{}lll@{}}\toprule
+Interaction&State transition&Approx. Rabi rate\\\midrule
+Carrier&$\ket{g,n}\leftrightarrow\ket{e,n}$&$\Omega$\\
+Red sideband&$\ket{g,n}\leftrightarrow\ket{e,n-1}$&$\eta\Omega\sqrt n$\\
+Blue sideband&$\ket{g,n}\leftrightarrow\ket{e,n+1}$&$\eta\Omega\sqrt{n+1}$\\\bottomrule
+\end{tabular}
+\end{center}
+Here $\eta$ is the Lamb--Dicke parameter and $n$ is the phonon occupation. The \emph{red sideband} trades one vibrational quantum for one electronic excitation; the \emph{blue sideband} creates an electronic excitation \emph{and} a phonon. Sideband cooling repeatedly removes phonons, preparing low-$n$ motion before certain gates. Note the key selection rule: $\ket{g,0}$ is dark to red-sideband excitation because $\sqrt0=0$.
+
+One entangling gate uses three sideband pulses of areas $\pi$, $2\pi$, $\pi$. The first maps an ion's internal excitation into shared motion; the middle pulse conditionally adds a $-1$ phase to a coupled path; the last returns the excitation. The motional mode ends where it started, but the \emph{relative} phase of a computational state has changed. To establish the gate, it is essential to follow all four input states $\ket{gg},\ket{ge},\ket{eg},\ket{ee}$ \emph{including phonon number and phases} at every step. This is precisely the structure of the 2025 exam's ion-trap question and your 2026 Assignment 3.
+
+The \emph{M\o lmer--S\o rensen} (MS) gate offers a different route: a bichromatic field drives red and blue sidebands off resonance, so the motion is excited virtually and returns to its initial phase-space position at the end of the gate. The effective spin--spin interaction can entangle ions \emph{without requiring the exact motional ground state}. In simplified pathway calculations, the $n$-dependent factors from the two sidebands can cancel because $(n+1)-n=1$. The detailed phases and detunings matter, but that cancellation captures why the MS mechanism can be insensitive to initial phonon occupation.
+
+\begin{examtip}
+\textbf{Ion-gate question cue.} Keep a third register for motion: $\ket{e,g,n}$, not just $\ket{e,g}$. A red sideband annihilates one phonon when exciting $g\to e$ and creates one when reversing $e\to g$. For every resonant two-state subspace, a $\pi$ pulse contributes a factor $-i$ (for the standard $x$-rotation convention) and a $2\pi$ pulse contributes $-1$. The gate matrix is assembled only after the motion has been returned to its initial state.
+\end{examtip}
+
+\subsection{Compare the engineering trade-offs}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.14}
+\begin{tabularx}{\linewidth}{@{}p{22mm}p{29mm}Xp{31mm}@{}}\toprule
+Platform&Qubit encoding&Typical control / entangling resource&Key limitation\\\midrule
+Quantum dots&Charge location or electron spin&Gate detuning, tunnel coupling, exchange&Charge / magnetic noise\\
+Superconducting&Lowest circuit eigenstates&Microwave drives; capacitive / inductive couplings&Relaxation, dephasing, leakage\\
+Photons&Polarisation or optical modes&Wave plates, beam splitters, interference&Loss; weak photon interactions\\
+Neutral atoms&Hyperfine / ground states&Rydberg-mediated conditional shifts&Finite blockade; laser errors\\
+Trapped ions&Internal levels and collective motion&Carrier and motional sideband pulses&Motion, heating, gate time\\\bottomrule
+\end{tabularx}
+\end{center}
+\textbf{Unifying idea:} the abstract circuit notation hides the hardware details. Each physical gate is generated by a controllable Hamiltonian; each error channel comes from imperfect isolation or control. A successful quantum processor has to balance strong intentional interactions (for fast gates) against weak unintentional interactions (for coherence).
+
+\section{Connecting the course: what an exam problem is really testing}\label{sec:navigate}
+The three supplied past examinations strongly emphasise \emph{reasoning from a model}, not recalling a named formula. In every case, first identify the objects being transformed and the conditions under which the ideal model applies.
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.13}
+\begin{tabularx}{\linewidth}{@{}p{37mm}Xp{41mm}@{}}\toprule
+Problem wording&First move&Check before concluding\\\midrule
+``Rotation'', ``Hamiltonian'', ``unitary''&Express $H$ using Pauli products and exponentiate&Angle conventions; global vs relative phase\\
+``Teleportation'', ``Bell measurement''&Write all initial registers and expand in Bell basis&Classical bits; correction; normalisation\\
+``Master equation'', ``steady state''&Expand $\rho$ in $I,X,Y,Z$ to obtain Bloch ODEs&Correct dissipator rate; trace; steady state\\
+``Stabiliser'', ``syndrome''&Check commutation and count anticommuting positions&Detect versus correct; degenerate errors\\
+``Logical operator'', ``distance''&Find a commuting non-stabiliser Pauli; minimise weight&Correct logical commutation relations\\
+``Rydberg blockade''&Trace each basis input through conditional pulses&Blockade condition; phase on $2\pi$ cycle\\
+``Red/blue sideband''&Include electronic state \emph{and} phonon number&$\sqrt n$ factors; dark states; pulse phases\\
+``Beam splitter'', ``HOM''&Transform \emph{creation operators} consistently&Fock normalisation; distinguishability\\
+``Cooper pair box'', ``transmon''&Construct $\mathcal L$, then $Q$, then $H$&Flux / charge signs; $E_J/E_C$ regime\\\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{bigidea}
+\textbf{One mental map for the whole course:} \emph{A physical system supplies quantum states. A Hamiltonian controls their amplitudes and phases. Measurement extracts probabilities. Entanglement creates useful multi-system correlations. Coupling to an environment turns unitary evolution into noisy channels. Error correction protects the logical information by measuring stabilisers, not the state itself.} The remaining challenge---and the focus of many exam problems---is to derive these abstract operations from concrete physical pulse sequences and interactions.
+\end{bigidea}
+
+\vspace{2mm}
+\subsection*{Past examinations: the practical emphasis}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}p{15mm}XXX@{}}\toprule
+Paper&Question 1&Question 2&Question 3\\\midrule
+2023&Ion-trap M\o lmer--S\o rensen interaction&Six-qubit stabiliser code&Two-qubit Pauli-product Hamiltonian\\
+2024&Five-qubit stabiliser code&Dual-rail optics and teleportation&Rydberg CNOT / Toffoli\\
+2025&Nine-qubit stabiliser code&Ion-trap three-pulse entangler&Remote state preparation\\\bottomrule
+\end{tabularx}
+\end{center}
+\textbf{Final checks when adapting an example:} (i) state the basis order; (ii) keep complex phases; (iii) verify normalisation / trace; (iv) distinguish a global sign from a conditional sign; (v) check that any auxiliary phonon or Rydberg excitation returns to the desired state; (vi) explain what the final mathematical result means in the physical device.
+
+\vspace{2mm}
+{\footnotesize\color{muted}\textbf{Source and scope note.} This overview was prepared using the PHYS7045/4045 2026 lecture transcripts and the supplied 2026 assignment questions, cross-checked against the 2023--2025 examination topics. It is a study synthesis, not a replacement for the original lecture diagrams and notes. The manuscript of Part II will use the near-full-mark assignment solutions as reference models for expected mathematical detail. Past-exam coverage cannot guarantee this year's question selection.}

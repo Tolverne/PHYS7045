@@ -1,0 +1,50 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,top=18mm,bottom=18mm,left=19mm,right=19mm,headsep=7mm,footskip=8mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{libertinus}
+\usepackage[final]{microtype}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs,tabularx,array,enumitem,multicol}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!40!black,pdfauthor={PHYS7045 Study Reference},pdftitle={PHYS7045 Quantum Technologies: Part I - The Big Picture}}
+\definecolor{ink}{HTML}{243449}
+\definecolor{muted}{HTML}{536274}
+\definecolor{accent}{HTML}{165A75}
+\definecolor{soft}{HTML}{F0F5F7}
+\definecolor{warm}{HTML}{F7F4ED}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt plus 1pt minus 1pt}
+\setlength{\emergencystretch}{3em}
+\setlist[itemize]{leftmargin=*,topsep=3pt,itemsep=1.5pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=*,topsep=3pt,itemsep=1.5pt,parsep=0pt}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+\AtBeginDocument{\color{ink}}
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries\color{accent}}{\thesection}{.65em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{accent}}{\thesubsection}{.65em}{}
+\titlespacing*{\section}{0pt}{12pt plus 3pt minus 2pt}{5pt}
+\titlespacing*{\subsection}{0pt}{8pt plus 2pt minus 1pt}{3pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{muted}PHYS7045 \textbar\ Quantum Technologies}
+\fancyhead[R]{\small\color{muted}Part I: Course Overview}
+\fancyfoot[C]{\small\color{muted}\thepage}
+\renewcommand{\headrulewidth}{0.25pt}
+\newtcolorbox{bigidea}{colback=soft,colframe=accent!35!white,boxrule=.4pt,arc=1.5mm,left=2mm,right=2mm,top=1mm,bottom=1mm,before skip=6pt,after skip=6pt}
+\newtcolorbox{examtip}{colback=warm,colframe=black!16,boxrule=.4pt,arc=1.5mm,left=2mm,right=2mm,top=1mm,bottom=1mm,before skip=6pt,after skip=6pt}
+\newcommand{\ket}[1]{\left\lvert #1\right\rangle}
+\newcommand{\bra}[1]{\left\langle #1\right\rvert}
+\newcommand{\braket}[2]{\left\langle #1\middle\vert #2\right\rangle}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\red}[1]{\textcolor{accent}{#1}}
+\begin{document}
+\input{part1_overview}
+\end{document}
