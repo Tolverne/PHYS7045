@@ -1,31 +1,32 @@
-# PHYS7045 open-book exam companion
+# PHYS7045 — Open-book exam companion
 
-## Part I — The Big Picture
+Two printable A4 booklets with editable LaTeX source, designed for the PHYS7045 Quantum Technologies exam. Source material remains unchanged in `source_material/`.
 
-**Print-ready PDF:** [PHYS7045_Part1_Course_Overview.pdf](PHYS7045_Part1_Course_Overview.pdf)
+| Booklet | Purpose | PDF | LaTeX entry point | Content source |
+| --- | --- | --- | --- | --- |
+| **Part I — The Big Picture** | Course-wide conceptual overview, illustrated with Bloch spheres, quantum channels, stabilisers, and hardware diagrams | [PHYS7045_Part1_Course_Overview.pdf](PHYS7045_Part1_Course_Overview.pdf) | `main.tex` | `part1_overview.tex` |
+| **Part II — Worked Problems and Exam Methods** | Fully explained examples modelled on 2023–2025 exams and 2026 assignments, with state-by-state tracking and exam checks | [PHYS7045_Part2_Worked_Examples.pdf](PHYS7045_Part2_Worked_Examples.pdf) | `part2_main.tex` | `part2_worked_examples.tex` |
 
-This is a self-contained, approximately ten-page course overview written as a connected explanation rather than as a lecture-by-lecture slide summary. It covers:
+Part I is **12 pages** with nine inline, editable vector diagrams created in TikZ, including the Bloch sphere, density matrices and Bloch vectors, channel dynamics, a stabiliser example, quantum dots, superconducting circuits, beam splitters, Rydberg levels, and ion sidebands. It retains the original course-overview narrative, with references added to the figures.
 
-1. Qubits, measurements, Pauli gates and Hamiltonian control
-2. Entanglement, Schmidt decomposition and information protocols
-3. Density matrices, thermal states and quantum channels
-4. Lindblad master equations and coherence
-5. Quantum error correction, stabilisers and the Steane code
-6. Physical qubits: semiconductor spins/charge, superconducting circuits, photons, Rydberg atoms and trapped ions
-7. Problem-recognition and exam-navigation guide
+Part II is **10 pages** with detailed worked methods: Pauli-product evolution, Bell pairs and remote preparation, driven-dephasing Lindblad dynamics, stabiliser code syndromes/logicals/distance, Rydberg blockade, a three-pulse trapped-ion gate, photonic Hadamard/HOM, superconducting circuit quantisation, pulse timings, and the Mølmer–Sørensen mechanism. It closes with a short method index.
 
-**Source:** `main.tex` inputs `part1_overview.tex`. The sources are editable and can be uploaded to Overleaf together. The GitHub Actions workflow builds and commits the PDF after changes to these files.
+## Building locally
 
-To compile locally:
+Using a TeX Live installation with `latexmk`, TikZ/PGF, Libertinus, and the packages listed in the preambles:
 
 ```bash
 cd exam_prep/reference_booklet
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
+latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+latexmk -pdf -interaction=nonstopmode -halt-on-error part2_main.tex
 ```
 
-The original source materials in `source_material/` remain unchanged. Mathematical expressions transcribed from source PDFs should always be checked against the originals, particularly signs, phases and diagram labels.
+You can upload the four `.tex` files in this folder to Overleaf to build either booklet. `main.tex` is the Part I entry point; `part2_main.tex` is the Part II entry point. All figures are self-contained TikZ drawings, so there are no external image dependencies.
 
-## Part II — Worked Examples
+The GitHub Actions workflow in `.github/workflows/build-reference-booklet.yml` builds both PDFs and commits the latest compiled versions to this directory whenever the `.tex` sources change.
 
-The worked-example companion has been scoped separately under [`EXAM_REFERENCE_PLAN.md`](../EXAM_REFERENCE_PLAN.md) and will be developed next. Part I deliberately uses the same modelling conventions and topic index to make that second part easy to navigate.
+## Source and verification notes
+
+See [the assessment-source audit](../EXAM_REFERENCE_PLAN.md) and [the searchable extracted questions](../source_extractions/) for the original question mapping. **Always verify phases, operator labels, and diagram conventions against the source exam PDFs**. The worked examples are explanatory adaptations rather than facsimiles of official solutions. The 2026 assignment solutions are a guide to the level of mathematical detail; any example may require adaptation if the exam uses different state conventions.
+
+The repository was public at setup. Check permissions or make it private before redistributing lecturer material and exam papers.

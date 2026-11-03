@@ -1,4 +1,4 @@
-name: Build printable PHYS7045 course overview
+name: Build printable PHYS7045 course overview and worked examples
 
 on:
   push:
@@ -16,19 +16,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build LaTeX PDF
+      - name: Build both LaTeX PDFs
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex
+          root_file: |
+            main.tex
+            part2_main.tex
           working_directory: exam_prep/reference_booklet
           args: -pdf -file-line-error -interaction=nonstopmode -halt-on-error
-      - name: Publish the printable PDF
+      - name: Publish both printable PDFs
         run: |
           cp exam_prep/reference_booklet/main.pdf exam_prep/reference_booklet/PHYS7045_Part1_Course_Overview.pdf
+          cp exam_prep/reference_booklet/part2_main.pdf exam_prep/reference_booklet/PHYS7045_Part2_Worked_Examples.pdf
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add exam_prep/reference_booklet/PHYS7045_Part1_Course_Overview.pdf
+          git add exam_prep/reference_booklet/PHYS7045_Part1_Course_Overview.pdf exam_prep/reference_booklet/PHYS7045_Part2_Worked_Examples.pdf
           if ! git diff --cached --quiet; then
-            git commit -m 'Build PHYS7045 Part I course overview PDF'
+            git commit -m 'Build PHYS7045 Part I and II printable exam PDFs'
             git push
           fi

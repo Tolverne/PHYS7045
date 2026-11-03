@@ -88,6 +88,8 @@ Empty directories are kept visible in Git using `.gitkeep` files; you can leave 
 
 ## 2026 open-book exam reference project
 
+- **[Part II — 10-page worked problems and exam methods (PDF)](exam_prep/reference_booklet/PHYS7045_Part2_Worked_Examples.pdf)**
+
 - **[Part I — 10-page printable course overview (PDF)](exam_prep/reference_booklet/PHYS7045_Part1_Course_Overview.pdf)**
 - [Editable LaTeX source](exam_prep/reference_booklet/)
 

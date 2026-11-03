@@ -1,0 +1,521 @@
+% PHYS7045 Part II -- worked examples and exam methods
+% Worked solutions derived from recurring questions in 2023--2025 past papers
+% and the 2026 assignment question sheets. All conventions are specified locally.
+\begin{center}
+{\huge\bfseries PHYS7045: Quantum Technologies}\par
+\vspace{2mm}
+{\Large\color{accent}Part II --- Worked Problems and Exam Methods}\par
+\vspace{2mm}
+{\small Step-by-step methods, intermediate quantum states, physical explanations, and checks}\par
+\vspace{2mm}
+{\small Companion to \emph{Part I: The Big Picture}. Adapted from the 2023--2025 exams and 2026 assignments.}\par
+\end{center}
+\vspace{-2mm}
+\begin{bigidea}
+\textbf{A method rather than an answer bank.} Past papers repeatedly require you to take a \emph{new} Hamiltonian, code or pulse sequence and work out what it does. In each example below, the key is the reasoning procedure. Every calculation states its basis, its phase convention, and a quick check you can perform under exam conditions.
+\end{bigidea}
+\tableofcontents
+\vspace{1mm}
+\begin{examtip}
+\textbf{During the 10-minute planning period:} choose a question, identify the model, and mark the corresponding example in this booklet. Start with the core Part A method, then tackle Part B extensions. The three historical papers each have three main questions, but their content changes from year to year; this booklet is preparation, not a prediction.
+\end{examtip}
+
+\section{Pauli Hamiltonians, entanglement and CNOT construction}\label{sec:yy}
+\textbf{Model question (2023 exam, Q3).} Given $H=\frac{\hbar g}{2}(Y_1+Y_2)^2$, derive the unitary, determine when $\ket{00}$ becomes maximally entangled, and explain how this interaction can be converted into a CNOT.
+
+\subsection{Recognise that a Pauli product squares to the identity}
+Write $Y_1=Y\otimes\I$ and $Y_2=\I\otimes Y$. They commute because they act on different qubits, and $Y^2=\I$. Consequently,
+\begin{align}
+(Y_1+Y_2)^2&=Y_1^2+Y_2^2+2Y_1Y_2=2\I\otimes\I+2Y\otimes Y,\\
+H&=\hbar g(\I\otimes\I+Y\otimes Y).\label{eq:yyH}
+\end{align}
+The two terms commute, so exponentiate separately:
+\begin{equation}
+U(t)=\ee^{-igt}\!\left[\cos(gt)\I\otimes\I-i\sin(gt)Y\otimes Y\right].\label{eq:yyU}
+\end{equation}
+The prefactor $\ee^{-igt}$ is a \emph{global phase} and can be discarded when describing observable gate action. The remaining expression follows from $(Y\otimes Y)^2=\I\otimes\I$.
+
+\subsection{Apply it to the state, then choose the gate time}
+Since $Y\ket0=i\ket1$, we have $(Y\otimes Y)\ket{00}=-\ket{11}$. Hence, up to global phase,
+\begin{equation}
+U(t)\ket{00}=\cos(gt)\ket{00}+i\sin(gt)\ket{11}.\label{eq:yyout}
+\end{equation}
+Both Schmidt coefficients have equal magnitude when $|\cos(gt)|=|\sin(gt)|=1/\sqrt2$. The shortest positive time is
+\begin{equation}
+\boxed{t_{\rm ent}=\frac{\pi}{4g},\qquad
+\ket{\psi(t_{\rm ent})}=\frac{\ket{00}+i\ket{11}}{\sqrt2}.}
+\end{equation}
+The relative $i$ is physically meaningful, but a local $Z$ rotation can convert this to a conventional Bell state. The reduced state of either qubit is $\I/2$, which verifies maximal entanglement.
+
+\subsection{Construct a standard controlled gate by local changes of basis}
+Define $U_{YY}=\exp(-i\pi Y\otimes Y/4)$ and $V=R_x(\pi/2)\otimes R_x(\pi/2)$. Because $R_x(\pi/2)\,Y\,R_x(-\pi/2)=Z$,
+\begin{align}
+V U_{YY}V^\dagger &=\exp(-i\pi Z\otimes Z/4),\\
+\mathrm{CZ}&\sim (S^\dagger\otimes S^\dagger)\,V U_{YY}V^\dagger,
+\qquad S=\operatorname{diag}(1,i),\label{eq:yyCZ}\\
+\mathrm{CNOT}_{1\to2}&=(\I\otimes H)\,\mathrm{CZ}\,(\I\otimes H),
+\quad H=\tfrac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}.
+\end{align}
+Here $\sim$ means equality up to global phase; specifically, the second line differs by $\ee^{-i\pi/4}$. This is a general pattern: \emph{rotate the interaction axis into $Z\otimes Z$, correct local phases, then place Hadamards around CZ.}
+\begin{examtip}
+\textbf{Check:} a Pauli-product exponential is unitary since its generator is Hermitian. Do not forget the identity term in $H$ when writing the exact $U(t)$; it contributes a global phase but not the gate truth table. For a state-specific entangling time, it is often faster to apply $U$ to the given input than to write the full $4\times4$ matrix.
+\end{examtip}
+
+\section{Entanglement, reduced states and remote preparation}\label{sec:rsp}
+\textbf{Related sources:} 2025 exam Q3 (remote state preparation); 2026 Assignment 1, Problems 1.3--1.4 (Schmidt decomposition and imperfect teleportation).
+
+\subsection{First trace one qubit out of a Bell pair}
+For $\ket{\Phi^+}_{AB}=(\ket{00}+\ket{11})/\sqrt2$,
+\begin{align}
+\rho_{AB}&=\tfrac12\big(\ket{00}\bra{00}+\ket{00}\bra{11}+\ket{11}\bra{00}+\ket{11}\bra{11}\big),\\
+\rho_B=\Tr_A\rho_{AB}&=\tfrac12\big(\ket0\bra0+\ket1\bra1\big)=\frac\I2.
+\end{align}
+The off-diagonal \emph{global} terms vanish under $\Tr_A$ because $\braket01=0$. Locally, Bob sees a maximally mixed state: $\Tr(\rho_B^2)=1/2$, although the joint Bell pair is pure. This is the key reason Alice cannot signal a state choice to Bob without sending a classical message.
+
+\subsection{Remote preparation of an equatorial state with one classical bit}
+Suppose Alice \emph{knows} the target $\ket\beta=(\ket0+\ee^{i\phi}\ket1)/\sqrt2$. They share $\ket{\Phi^+}$ and Alice measures her half in the orthonormal basis
+\begin{equation}
+\ket{m_+}=\frac{\ket0+\ee^{-i\phi}\ket1}{\sqrt2},\qquad
+\ket{m_-}=\frac{\ket0-\ee^{-i\phi}\ket1}{\sqrt2}.
+\end{equation}
+The minus sign in the exponent is important: a Bell pair transmits the \emph{complex conjugate} of Alice's measurement coefficients to Bob. Compute Bob's unnormalised post-measurement state:
+\begin{align}
+(\bra{m_+}\otimes\I)\ket{\Phi^+}&=\tfrac12(\ket0+\ee^{i\phi}\ket1)=\frac1{\sqrt2}\ket\beta,\\
+(\bra{m_-}\otimes\I)\ket{\Phi^+}&=\tfrac12(\ket0-\ee^{i\phi}\ket1)=\frac1{\sqrt2}Z\ket\beta.
+\end{align}
+Each outcome occurs with probability $1/2$. Alice sends \emph{one bit}: $0$ for $m_+$ or $1$ for $m_-$. Bob applies $I$ or $Z$, respectively, obtaining $\ket\beta$ in both cases.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Latex,scale=0.95]
+ \node[draw,rounded corners,fill=soft,minimum width=1.55cm,minimum height=.7cm] (source) at (0,0) {Bell source};
+ \node[draw,rounded corners,fill=soft,minimum width=2.2cm,minimum height=.7cm] (alice) at (4,1.2) {Alice measures $m_\pm$};
+ \node[draw,rounded corners,fill=warm,minimum width=2.3cm,minimum height=.7cm] (bob) at (9,-1.2) {Bob applies $I$ or $Z$};
+ \draw[thick,accent,->] (source.east) -- (alice.west) node[midway,above] {qubit $A$};
+ \draw[thick,accent,->] (source.east) .. controls (3,-1.2) and (6,-1.2) .. (bob.west) node[midway,below] {qubit $B$};
+ \draw[thick,dashed,->] (alice.east) -- (bob.north) node[pos=.56,right] {1 classical bit};
+ \node[align=left,font=\small] at (4.2,-2.15) {Before Alice's message Bob's reduced state is still $\I/2$.};
+\end{tikzpicture}
+\caption{Remote state preparation uses a shared Bell pair, a target-dependent measurement at Alice, and one classical bit to select Bob's correction.}
+\label{fig:rsp}
+\end{figure}
+
+\subsection{Distinguish this protocol from ordinary teleportation}
+Teleportation must transfer an \emph{unknown} state, so Alice uses a fixed Bell measurement with four possible outcomes and sends \emph{two} classical bits identifying Bob's Pauli correction. For the restricted equatorial ensemble, Alice can tailor her measurement to a \emph{known} $\phi$, reducing the communication requirement.
+
+\textbf{Useful advanced check (Werner resource).} If the shared state is $\rho_W=(1-p)\ket{\Psi^-}\bra{\Psi^-}+p\I_4/4$, standard teleportation with corrections matched to $\ket{\Psi^-}$ produces
+\begin{equation}
+\rho_{\rm out}=(1-p)\ket\psi\bra\psi+p\frac\I2,\qquad
+\boxed{F=\bra\psi\rho_{\rm out}\ket\psi=1-\frac p2.}
+\end{equation}
+The result is independent of the unknown pure input state; $F=1$ for $p=0$ and $F=1/2$ for a completely mixed resource.
+
+\begin{examtip}
+\textbf{Check:} for a conditional measurement on Alice, first calculate $(\bra m\otimes\I)\ket\Psi$, then square its norm to obtain the probability, and \emph{only then} normalise Bob's state. Averaging over Alice's outcomes \emph{before} receiving the classical message must return Bob's original reduced state.
+\end{examtip}
+
+\section{Quantum channels and a Lindblad master equation}\label{sec:lindsol}
+\textbf{Model question (2026 Assignment 2, Q1).} A qubit undergoes coherent $X$ driving and dephasing:
+\begin{equation}\label{eq:driven_master}
+\dot\rho=-\frac{i\Omega}{2}[X,\rho]+\gamma\D[Z]\rho,\qquad
+\D[L]\rho=L\rho L^\dagger-\frac12\{L^\dagger L,\rho\}.
+\end{equation}
+Find the evolution for arbitrary $\rho(0)$, the steady state, and the purity when $\ket\psi(0)=\ket0$.
+
+\subsection{Translate the matrix equation into three real ODEs}
+Write $\rho=(\I+xX+yY+zZ)/2$. The coherent part $-i\Omega[X,\rho]/2$ rotates the vector about $x$. For the noise part use $ZXZ=-X$, $ZYZ=-Y$ and $ZZZ=Z$, giving
+\begin{equation}
+\D[Z]\rho=Z\rho Z-\rho=-xX-yY.
+\end{equation}
+Equating coefficients of $X,Y,Z$ therefore gives the \emph{Bloch equations}
+\begin{equation}\label{eq:blochode}
+\boxed{\dot x=-2\gamma x,\qquad \dot y=-\Omega z-2\gamma y,\qquad \dot z=\Omega y.}
+\end{equation}
+Notice the factor $2\gamma$: $\D[Z]$ \emph{without} a prefactor $1/2$ causes the transverse components to decay at twice the quoted coefficient. The $y,z$ components are coupled because a drive about $x$ rotates them into one another.
+
+\subsection{Solve the linear dynamics (underdamped case)}
+The $x$ component is immediate: $x(t)=x_0\ee^{-2\gamma t}$. For $v=(y,z)^{T}$ write
+\begin{equation}
+\frac{\dd v}{\dd t}=Mv,\quad M=\begin{pmatrix}-2\gamma&-\Omega\\\Omega&0\end{pmatrix},\quad
+M+\gamma\I=\begin{pmatrix}-\gamma&-\Omega\\\Omega&\gamma\end{pmatrix}.
+\end{equation}
+As $(M+\gamma\I)^2=-(\Omega^2-\gamma^2)\I$, define $\omega=\sqrt{\Omega^2-\gamma^2}$ when $\Omega>\gamma$ and exponentiate:
+\begin{equation}\label{eq:yzmatrix}
+\boxed{\begin{pmatrix}y(t)\\z(t)\end{pmatrix}=\ee^{-\gamma t}
+\begin{pmatrix}
+\cos\omega t-\frac\gamma\omega\sin\omega t & -\frac\Omega\omega\sin\omega t\\[1mm]
+\frac\Omega\omega\sin\omega t & \cos\omega t+\frac\gamma\omega\sin\omega t
+\end{pmatrix}
+\begin{pmatrix}y_0\\z_0\end{pmatrix}.}
+\end{equation}
+For $\Omega<\gamma$ replace $\omega$ by $i\kappa$ ($\kappa=\sqrt{\gamma^2-\Omega^2}$), equivalently replacing $\cos,\sin/\omega$ with $\cosh,\sinh/\kappa$. For $\Omega=\gamma$ use $\sin(\omega t)/\omega\to t$.
+
+\subsection{Initial state $\ket0$, steady state and purity}
+For $\ket0$: $(x_0,y_0,z_0)=(0,0,1)$, so
+\begin{equation}\label{eq:ket0sol}
+\boxed{x(t)=0,\quad y(t)=-\frac\Omega\omega\ee^{-\gamma t}\sin\omega t,\quad
+z(t)=\ee^{-\gamma t}\!\left(\cos\omega t+\frac\gamma\omega\sin\omega t\right).}
+\end{equation}
+The time-dependent density matrix is $\rho(t)=\frac12\left(\begin{smallmatrix}1+z&-iy\\iy&1-z\end{smallmatrix}\right)$. Since the purity is $(1+x^2+y^2+z^2)/2$, substitute the above expressions:
+\begin{equation}
+\boxed{\mathcal P(t)=\frac12\!\left[1+\ee^{-2\gamma t}\!\left(\frac{\Omega^2}{\omega^2}\sin^2\omega t+
+\left(\cos\omega t+\frac\gamma\omega\sin\omega t\right)^2\right)\right].}
+\end{equation}
+At $t=0$, $\mathcal P(0)=1$. When $\gamma>0$ and $\Omega\ne0$, all components eventually decay to zero and $\rho_{\rm ss}=\I/2$, $\mathcal P(\infty)=1/2$. If $\Omega=0$, $z$ is conserved and there is \emph{no unique steady state}; pure dephasing does not relax populations.
+
+\begin{examtip}
+\textbf{Channel picture:} a dephasing channel maps $(x,y,z)\mapsto(\lambda x,\lambda y,z)$. An amplitude-damping channel with excited-state decay probability $p$ maps $(x,y,z)\mapsto(\sqrt{1-p}\,x,\sqrt{1-p}\,y,(1-p)z+p)$, when $\ket0$ is the ground state. The first is unital; the second moves the Bloch-ball centre upward toward $z=1$. For master equations, always state which convention defines the rate $\gamma$.
+\end{examtip}
+
+\section{Stabiliser error correction: from checks to logical operators}\label{sec:qecsol}
+\textbf{Why this has priority.} All three supplied past exams include a stabiliser-code question. The 2025 nine-qubit paper (Q1) is an especially effective model for applying the \emph{same algorithm} to a code you have not memorised.
+
+\subsection{Commutation without multiplying large matrices}
+Represent each Pauli product as a string, inserting $I$ where a qubit is untouched. On a given qubit, $X,Y,Z$ anticommute pairwise when different; $I$ commutes with everything. Two \emph{strings} commute if the number of local anticommutations is even. For instance,
+\begin{equation}
+\underbrace{(X\otimes Y\otimes I)}_{A}
+\underbrace{(Z\otimes X\otimes I)}_{B}
+=(-1)^2BA=BA,
+\end{equation}
+because $X$ versus $Z$ anticommutes on qubit 1, and $Y$ versus $X$ anticommutes on qubit 2. A one-mismatch pair would instead anticommute.
+
+\subsection{A complete worked syndrome: the three-qubit bit-flip code}
+Start with $\ket{0_L}=\ket{000}$, $\ket{1_L}=\ket{111}$, stabilisers $S_1=Z_1Z_2$ and $S_2=Z_2Z_3$. Their measurement eigenvalues are $+1$ on both codewords, and on any superposition $\alpha\ket{0_L}+\beta\ket{1_L}$.
+\begin{center}
+\small
+\begin{tabular}{@{}cccl@{}}\toprule
+Error $E$&$S_1$&$S_2$&Decoder correction\\\midrule
+$I$&$+$&$+$&Do nothing\\
+$X_1$&$-$&$+$&Apply $X_1$\\
+$X_2$&$-$&$-$&Apply $X_2$\\
+$X_3$&$+$&$-$&Apply $X_3$\\\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Reasoning example:} $X_2$ anticommutes with both $Z_1Z_2$ and $Z_2Z_3$, so both checks return $-1$. This is an error location, not a measurement of $\alpha$ or $\beta$. Apply $X_2$ again because $X_2^2=I$.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Latex,scale=0.95]
+  \foreach \y/\lab in {1.65/$q_1$,0.75/$q_2$,-0.2/$a$}{\draw[thick] (0,\y)--(8.6,\y) node[left,pos=0] {\lab};}
+  \node[left,muted] at (0,-0.2) {$\ket0$};
+  \foreach \x/\y in {2.3/1.65,4.6/0.75}{\fill (\x,\y) circle (2.7pt);\draw[thick] (\x,\y)--(\x,-0.2);\draw[fill=white,thick] (\x,-0.2) circle (0.15);\draw[thick] (\x-0.15,-0.2)--(\x+0.15,-0.2);}
+  \node[draw,rounded corners,fill=soft,minimum width=.65cm,minimum height=.5cm] (m) at (7,-0.2) {$M_Z$};
+  \node[below=5mm] at (4.0,-0.6) {measure $Z_1Z_2$ without measuring $q_1$ or $q_2$ separately};
+  \node[right=3mm,align=left] at (m.east) {even parity $\to+1$\\odd parity $\to-1$};
+\end{tikzpicture}
+\caption{One stabiliser measurement with an ancilla. Two CNOTs accumulate $Z$-parity on an ancilla initialised in $\ket0$. Measuring it reads the error syndrome while preserving superpositions inside a fixed parity sector.}
+\label{fig:syndromecircuit}
+\end{figure}
+
+\subsection{The nine-qubit code from the 2025 paper}
+For clarity, show the 2025 stabilisers in blocks of three qubits (spaces separate blocks, not tensor factors):
+\begin{equation}\label{eq:shorcheck}
+\begin{aligned}
+S_1&=ZZI\;III\;III,& S_2&=IZZ\;III\;III,\\
+S_3&=III\;ZZI\;III,& S_4&=III\;IZZ\;III,\\
+S_5&=III\;III\;ZZI,& S_6&=III\;III\;IZZ,\\
+S_7&=XXX\;XXX\;III,& S_8&=III\;XXX\;XXX.
+\end{aligned}
+\end{equation}
+Every pair of $Z$-type checks commutes. Each $Z$-type check meets $S_7$ or $S_8$ in either $0$ or \emph{two} $X$--$Z$ mismatches, so they commute. The $X$-type checks also commute with each other. There are $n=9$ qubits and $r=8$ independent generators, hence $k=n-r=1$ logical qubit.
+
+\textbf{Bit-flip syndrome:} $X_j$ anticommutes only with $Z$-checks that touch qubit $j$. The local pair of parity checks within each three-qubit block gives the \emph{same pattern}:
+\begin{center}
+\small
+\begin{tabular}{@{}ccccl@{}}\toprule
+Position within block&First $Z$ check&Second $Z$ check&Error example&Interpretation\\\midrule
+1&$-$&$+$&$X_1$ (or $X_4$, $X_7$)&first qubit in block\\
+2&$-$&$-$&$X_2$ (or $X_5$, $X_8$)&middle qubit in block\\
+3&$+$&$-$&$X_3$ (or $X_6$, $X_9$)&third qubit in block\\\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Phase-flip syndrome:} $Z_j$ commutes with every $Z$-check but anticommutes with each $X$-type check that touches $j$:
+\begin{center}
+\small
+\begin{tabular}{@{}ccccl@{}}\toprule
+Block&$S_7$&$S_8$&Possible error&Correction representative\\\midrule
+1 (qubits 1--3)&$-$&$+$&$Z_1,Z_2,$ or $Z_3$&apply $Z_1$\\
+2 (qubits 4--6)&$-$&$-$&$Z_4,Z_5,$ or $Z_6$&apply $Z_4$\\
+3 (qubits 7--9)&$+$&$-$&$Z_7,Z_8,$ or $Z_9$&apply $Z_7$\\\bottomrule
+\end{tabular}
+\end{center}
+The three $Z$ errors \emph{within} a block have the same syndrome, but that is not a failure of correction: e.g. $Z_1$ and $Z_2$ differ by the stabiliser $Z_1Z_2=S_1$. After correcting by $Z_1$, either error becomes the identity \emph{or a stabiliser}, both harmless on the code space. A $Y_j=iX_jZ_j$ triggers \emph{both} kinds of syndrome, so the combined table identifies the qubit position and the error type up to stabiliser equivalence.
+
+\subsection{Find logical Pauli operators and the distance}
+Choose a pair of nontrivial operators commuting with all $S_i$ but anticommuting with each other:
+\begin{equation}
+\boxed{X_L=XXX\;III\;III,\qquad Z_L=ZII\;ZII\;ZII.}\label{eq:logicalshor}
+\end{equation}
+$X_L$ crosses each $Z$-pair in its first block twice, so it commutes with all $Z$ checks; it also commutes with the two $X$ checks. $Z_L$ meets $S_7$ at qubits 1 and 4 (two mismatches) and $S_8$ at 4 and 7 (two mismatches); it commutes with all other checks. Yet $X_L$ and $Z_L$ overlap in \emph{one} $X$--$Z$ mismatch, hence $X_LZ_L=-Z_LX_L$. They are weight-3 nontrivial logical operators.
+
+The syndrome table shows that all single-qubit Pauli errors are correctable, so $d\ge3$; Eq.~\eqref{eq:logicalshor} gives $d\le3$. Therefore
+\begin{equation}
+\boxed{\text{code parameters }[[9,1,3]],\qquad d=3,\qquad
+ t=\left\lfloor\frac{d-1}{2}\right\rfloor=1.}
+\end{equation}
+\textbf{Important nuance:} which nontrivial commuting operator is called $X_L$ rather than $Z_L$ depends on the chosen logical basis. The invariant exam requirements are (i) commute with every stabiliser, (ii) are not themselves stabilisers, and (iii) the chosen pair anticommutes.
+
+\begin{examtip}
+\textbf{Six-step recipe for any stabiliser exam question:} verify pairwise commutation; count independent generators; compute syndromes of all $X_j,Z_j,Y_j$; distinguish \emph{detect} from \emph{correct} (including degenerate syndromes); construct $X_L,Z_L$ and check their algebra; minimise nontrivial logical weight to obtain $d$. Never infer distance solely from the weight of the first logical operator you happen to find.
+\end{examtip}
+
+\section{Rydberg blockade: derive a controlled phase gate}\label{sec:rydsol}
+\textbf{Related sources:} 2024 exam Q3 and 2026 Assignment 3 Q1. The examples differ in their chosen logical levels; here the driven computational level is $\ket1$ and a control excited to $\ket r$ blocks the target.
+
+\subsection{Set the physical assumptions before tracing states}
+Take a coherent pulse sequence: $\pi$ on control ($\ket1\leftrightarrow\ket r$), $2\pi$ on target ($\ket1\leftrightarrow\ket r$), and $\pi$ again on control. A resonant $x$-axis $\pi$ pulse maps $\ket1\leftrightarrow-i\ket r$; a full $2\pi$ rotation produces $-1$. The interaction shift $|\Delta_{rr}|\gg\Omega$ suppresses target excitation whenever the control occupies $\ket r$.
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\linewidth}{@{}cXXXX@{}}\toprule
+Input&After control $\pi$&After target $2\pi$&After control $\pi$&Result\\\midrule
+$\ket{00}$&$\ket{00}$&$\ket{00}$&$\ket{00}$&$+\ket{00}$\\
+$\ket{01}$&$\ket{01}$&$-\ket{01}$&$-\ket{01}$&$-\ket{01}$\\
+$\ket{10}$&$-i\ket{r0}$&$-i\ket{r0}$&$-\ket{10}$&$-\ket{10}$\\
+$\ket{11}$&$-i\ket{r1}$&$-i\ket{r1}$ (blocked)&$-\ket{11}$&$-\ket{11}$\\\bottomrule
+\end{tabularx}
+\end{center}
+In the ordered basis $(\ket{00},\ket{01},\ket{10},\ket{11})$,
+\begin{equation}
+U_{\rm ryd}=\operatorname{diag}(1,-1,-1,-1),\qquad
+(Z\otimes Z)U_{\rm ryd}=\operatorname{diag}(1,1,1,-1)=\mathrm{CZ}.
+\end{equation}
+Only \emph{relative} phase differences matter. With a Hadamard on the target before and after CZ, we obtain CNOT.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Latex,scale=0.90]
+ \node[font=\small\bfseries,accent] at (1.5,2.2) {No control excitation};
+ \draw[thick] (0,0)--(2.8,0) node[right] {$\ket1_T$};
+ \draw[thick] (0,1.45)--(2.8,1.45) node[right] {$\ket r_T$};
+ \draw[very thick,accent,->] (1.4,.1)--(1.4,1.32) node[midway,right] {$2\pi$};
+ \node[font=\small\bfseries,accent] at (8.2,2.2) {Control in $\ket r$};
+ \draw[thick] (6.8,0)--(9.6,0) node[right] {$\ket1_T$};
+ \draw[thick,dashed,muted] (6.8,1.45)--(9.6,1.45);
+ \draw[thick] (6.8,1.85)--(9.6,1.85) node[right] {$\ket r_T$ (shifted)};
+ \draw[very thick,muted,->] (8.2,.1)--(8.2,1.32);
+ \draw[decorate,decoration={brace,amplitude=4pt}] (9.9,1.45)--(9.9,1.85) node[midway,right=4pt] {$\Delta_{rr}$};
+ \node[font=\small] at (1.4,-.55) {resonant $2\pi$ cycle};
+ \node[font=\small] at (8.2,-.55) {target off resonance};
+\end{tikzpicture}
+\caption{The target transition is selectively detuned by excitation of the control atom. The conditional phase survives after the control has been returned to its logical state.}
+\end{figure}
+
+\begin{examtip}
+\textbf{Check:} explicitly multiply $(-i)(-i)=-1$ for a control qubit that traverses two $\pi$ pulses. Omitting this phase can change which computational basis states receive minus signs. Different pulse conventions and which logical level is driven produce locally equivalent matrices, not necessarily the exact same diagonal signs.
+\end{examtip}
+
+\section{Trapped ions: red-sideband three-pulse gate}\label{sec:ionsol}
+\textbf{Direct source match (pulse areas $\pi,2\pi,\pi$):} 2025 exam Q2 and 2026 Assignment 3 Q2. This is one of the strongest examples to take into the exam because its format---track all states after each pulse, including motion---is highly reusable.
+
+\subsection{Choose the three-register basis: ion A, ion B, phonon number}
+Denote $\ket{g_Ag_B;n}$ by $\ket{gg;n}$ and similarly for $e$; a collective motional mode starts in $n=0$. Ion B has an auxiliary level $\ket a$ used only by its middle pulse. For a \emph{red} sideband,
+\begin{equation}
+\ket{e,n}\longleftrightarrow\ket{g,n+1},\qquad
+\ket{g,n}\longleftrightarrow\ket{e,n-1}\ (n\ge1).
+\end{equation}
+Thus $\ket{g,0}$ is \emph{dark}, whereas $\ket{e,0}$ is coupled to $\ket{g,1}$. A resonant $\pi$ pulse maps either participating state to $-i$ times its partner; a $2\pi$ pulse gives $-1$ on the addressed two-level subspace.
+
+The pulses are: (1) red sideband $\pi$ on A, $g\leftrightarrow e$; (2) red sideband $2\pi$ on B, $g\leftrightarrow a$; (3) repeat red sideband $\pi$ on A. At each stage, apply the pulse \emph{only} if its addressed transition is allowed.
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.17}
+\begin{tabularx}{\linewidth}{@{}cXXXc@{}}\toprule
+Input&After A $\pi$&After B $2\pi$&After A $\pi$&Output\\\midrule
+$\ket{gg;0}$&$\ket{gg;0}$&$\ket{gg;0}$&$\ket{gg;0}$&$\ket{gg;0}$\\
+$\ket{ge;0}$&$\ket{ge;0}$&$\ket{ge;0}$&$\ket{ge;0}$&$\ket{ge;0}$\\
+$\ket{eg;0}$&$-i\ket{gg;1}$&$+i\ket{gg;1}$&$+\ket{eg;0}$&$+\ket{eg;0}$\\
+$\ket{ee;0}$&$-i\ket{ge;1}$&$-i\ket{ge;1}$&$-\ket{ee;0}$&$-\ket{ee;0}$\\\bottomrule
+\end{tabularx}
+\end{center}
+\textbf{Explain the two nontrivial rows:} for $\ket{eg;0}$, ion A maps $\ket{e,0}\to-i\ket{g,1}$, B's $\ket{g,1}\leftrightarrow\ket{a,0}$ transition completes a $2\pi$ cycle and adds a minus sign, and A maps back with another $-i$. The product $(-i)(-1)(-i)=+1$. For $\ket{ee;0}$, B is in $e$ so its $g\leftrightarrow a$ pulse does not act; the two A pulses contribute $(-i)^2=-1$.
+
+\subsection{Assemble the matrix only after checking motion disentangles}
+Every row has returned to phonon number $n=0$. Therefore the operation on the \emph{electronic} computational subspace, ordered as $(gg,ge,eg,ee)$, is
+\begin{equation}
+\boxed{U=\operatorname{diag}(1,1,1,-1)=\mathrm{CZ}.}
+\end{equation}
+Applying $H$ to B before and after gives $\mathrm{CNOT}_{A\to B}=(I\otimes H)\,\mathrm{CZ}\,(I\otimes H)$.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Latex,scale=0.90]
+ \draw[thick] (0,0)--(10.5,0) node[right] {time};
+ \foreach \x/\label/\who in {1.8/$\pi$/A,5/$2\pi$/B,8.2/$\pi$/A}{
+    \draw[thick,fill=soft] (\x-0.65,0) rectangle (\x+0.65,1);
+    \node at (\x,.5) {\label};
+    \node[above] at (\x,1) {ion \who};
+ }
+ \node[align=left] at (5,-.95) {A transfers an excitation into motion $\to$ B applies a conditional phase $\to$ A restores motion.};
+\end{tikzpicture}
+\caption{The shared phonon acts as a temporary information bus. The final gate is logical only after the motional degree of freedom has been returned to its initial state.}
+\end{figure}
+
+\begin{examtip}
+\textbf{Check:} in ion problems, $\ket{eg}$ alone is insufficient notation: track $\ket{eg;n}$ at every step. The red sideband \emph{destroys a phonon when raising an ion} and \emph{creates one when lowering it}. The direction of the transition matters for determining which states are dark.
+\end{examtip}
+
+\section{Photons: dual-rail Hadamard and HOM interference}\label{sec:optics}
+\textbf{Related sources:} 2024 exam Q2 and 2026 Assignment 3 Q4. A central habit is to transform the \emph{creation operators}, then apply them to the vacuum while retaining bosonic normalisation.
+
+\subsection{Single-photon mode transformation is a logical gate}
+Use $\ket{0_L}=a^\dagger\ket{\mathrm{vac}}=\ket{1,0}$ and $\ket{1_L}=b^\dagger\ket{\mathrm{vac}}=\ket{0,1}$. For the following lossless balanced beam-splitter convention,
+\begin{equation}\label{eq:bstwo}
+a^\dagger\mapsto\frac{c^\dagger+d^\dagger}{\sqrt2},\qquad
+b^\dagger\mapsto\frac{c^\dagger-d^\dagger}{\sqrt2},
+\end{equation}
+we get
+\begin{align}
+\ket{0_L}&\mapsto\frac{\ket{0_L}+\ket{1_L}}{\sqrt2},\\
+\ket{1_L}&\mapsto\frac{\ket{0_L}-\ket{1_L}}{\sqrt2}.
+\end{align}
+Thus $U_{\rm logical}=\frac1{\sqrt2}\left(\begin{smallmatrix}1&1\\1&-1\end{smallmatrix}\right)=H$. Note that a different port-phase convention may insert $Z$ or single-mode phase shifts without changing the physical functionality.
+
+\subsection{Two indistinguishable photons reveal interference between paths}
+With one photon in each input, 
+\begin{align}
+\ket{1,1}_{ab}&=a^\dagger b^\dagger\ket{\mathrm{vac}}\\
+&\longmapsto\frac{(c^\dagger+d^\dagger)(c^\dagger-d^\dagger)}2\ket{\mathrm{vac}}\\
+&=\frac{(c^\dagger)^2-(d^\dagger)^2}{2}\ket{\mathrm{vac}}\\
+&=\boxed{\frac{\ket{2,0}_{cd}-\ket{0,2}_{cd}}{\sqrt2}}.
+\end{align}
+The \emph{cross terms cancel} because $c^\dagger d^\dagger=d^\dagger c^\dagger$ for bosons. Also $(c^\dagger)^2\ket{\mathrm{vac}}=\sqrt2\ket{2,0}$, so the output amplitudes are properly normalised. No $\ket{1,1}$ term remains: this is the Hong--Ou--Mandel dip for identical photons, detected as the absence of coincidences.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Latex,scale=0.93]
+ \draw[thick,fill=soft] (3.2,-.5) rectangle (4.5,.8);
+ \draw[thick] (3.4,-.3)--(4.3,.6);
+ \draw[thick,->] (.2,.5)--(3.2,.5) node[pos=.3,above] {$a$: one photon};
+ \draw[thick,->] (.2,-.2)--(3.2,-.2) node[pos=.3,below] {$b$: one photon};
+ \draw[thick,->] (4.5,.5)--(7.5,.5) node[pos=.8,above] {$c$};
+ \draw[thick,->] (4.5,-.2)--(7.5,-.2) node[pos=.8,below] {$d$};
+ \node[align=center] at (3.85,-1.05) {50:50 beam splitter};
+ \node[align=center] at (9.8,.65) {both in $c$\\or both in $d$};
+ \node[align=center,accent] at (9.8,-.3) {no $c$--$d$ coincidence};
+\end{tikzpicture}
+\caption{The output alternatives ``both in $c$'' and ``both in $d$'' survive, while the two indistinguishable amplitudes for one photon in each output cancel.}
+\end{figure}
+
+\subsection{Explain why distinguishability changes the answer}
+If the photons carry orthogonal distinguishable labels (arrival time, frequency, polarisation not erased by detection), the two histories giving a coincidence no longer describe identical final states. Their \emph{probabilities} add rather than their \emph{amplitudes} cancelling. For two fully distinguishable photons at a balanced splitter, the coincidence probability is $1/2$; for two identical simultaneous photons it is $0$. Detector patterns for polarisation-entangled Bell states depend additionally on symmetric versus antisymmetric polarisation amplitudes.
+\begin{examtip}
+\textbf{Check:} do not transform $\ket{1,1}$ as if each photon were distinguishable. Apply the creation-operator map to the \emph{product}, commute the output creation operators, and remember the factor $\sqrt{2!}$ in a two-photon Fock state.\end{examtip}
+
+\section{Superconducting circuits: Lagrangian to qubit energies}\label{sec:cpbsol}
+\textbf{Model question (2026 Assignment 3, Q3).} Given a node of flux $\Phi$, a shunt capacitor $C_0$, gate-coupling capacitor $C_c$ at voltage $V_g$, and a Josephson element of energy $E_J$, derive $\mathcal L$, its conjugate momentum, the Hamiltonian, and its low-lying harmonic energies.
+
+\subsection{Identify capacitive and Josephson energies}
+The node voltage is $\dot\Phi$. Capacitors contribute kinetic terms and the junction contributes potential $U_J=-E_J\cos\varphi$, with $\varphi=2\pi\Phi/\Phi_0$ and $\Phi_0=h/(2e)$. Therefore
+\begin{equation}\label{eq:cpblag}
+\boxed{\mathcal L=\frac{C_0\dot\Phi^2}{2}+\frac{C_c(\dot\Phi-V_g)^2}{2}+E_J\cos\varphi.}
+\end{equation}
+The sign of the final term is \emph{positive in $\mathcal L=T-U$}, since the Josephson potential itself is negative.
+
+\subsection{Perform the Legendre transform without skipping the algebra}
+Let $C_\Sigma=C_0+C_c$. The charge conjugate to node flux is
+\begin{equation}
+Q=\frac{\partial\mathcal L}{\partial\dot\Phi}=C_\Sigma\dot\Phi-C_cV_g,
+\qquad \dot\Phi=\frac{Q+C_cV_g}{C_\Sigma}.
+\end{equation}
+The Hamiltonian $H=Q\dot\Phi-\mathcal L$ becomes, after substituting for $\dot\Phi$,
+\begin{equation}
+\boxed{H=\frac{(Q+C_cV_g)^2}{2C_\Sigma}-E_J\cos\varphi,}\label{eq:cpbfinal}
+\end{equation}
+where the additive constant $-C_cV_g^2/2$ has been dropped because it shifts all energy levels equally. Now promote $Q$ and $\Phi$ to conjugate operators satisfying $[\Phi,Q]=i\hbar$.
+
+Define $n=Q/(2e)$, $E_C=e^2/(2C_\Sigma)$ and $n_g=-C_cV_g/(2e)$. Equation~\eqref{eq:cpbfinal} is then
+\begin{equation}
+\boxed{H=4E_C(n-n_g)^2-E_J\cos\varphi,\qquad [\varphi,n]=i.}
+\end{equation}
+
+\subsection{Approximate the low energies near a cosine minimum}
+For $V_g=0$, expand $\cos\varphi\simeq1-\varphi^2/2$ near $\varphi=0$:
+\begin{equation}
+H\simeq 4E_Cn^2+\frac{E_J}{2}\varphi^2-E_J.
+\end{equation}
+This is a harmonic oscillator because $n$ and $\varphi$ are canonical conjugates. Its quantum is $\hbar\omega_p=\sqrt{8E_JE_C}$, so
+\begin{equation}
+\boxed{E_0\simeq -E_J+\frac12\sqrt{8E_JE_C},\quad
+E_1\simeq -E_J+\frac32\sqrt{8E_JE_C},\quad
+E_1-E_0\simeq\sqrt{8E_JE_C}.}
+\end{equation}
+The \emph{cosine}, rather than a perfect quadratic potential, creates anharmonic energy levels; this allows selective control of the $0\leftrightarrow1$ transition. The transmon regime $E_J/E_C\gg1$ reduces charge dispersion but also decreases anharmonicity.
+
+\begin{examtip}
+\textbf{Check:} a sign error in the gate offset $n_g$ can come from defining the gate-capacitor voltage as $V_g-\dot\Phi$ rather than $\dot\Phi-V_g$; these give the same squared capacitive energy, but the canonical sign convention must be tracked consistently. Only \emph{energy differences} enter transition frequencies, so state explicitly when you drop an additive constant.
+\end{examtip}
+
+\section{Semiconductor pulse control: from $H$ to a timing diagram}\label{sec:pulses}
+\textbf{Model question (2026 Assignment 1, Problem 1.2).} The device Hamiltonian is $H=\hbar(t_cX+\Delta Z)$, with $t_c/(2\pi)\le5\,\mathrm{GHz}$ and $\Delta/(2\pi)\le40\,\mathrm{GHz}$. Find $X_\pi$ and $Z_\pi$ gate times and show how a $Y$ rotation can be assembled using only $X$ and $Z$ controls.
+
+\textbf{Step 1: identify the factor of two.} A rotation of angle $\vartheta$ has $R_j(\vartheta)=\ee^{-i\vartheta\sigma_j/2}$. In the $X$-only case, $U(t)=\ee^{-it_ctX}$, so $\vartheta=2t_ct$; similarly a $Z$-only rotation has $\vartheta=2\Delta t$. The fastest ideal $\pi$ pulses, ignoring hardware time-step limits, are
+\begin{equation}
+\boxed{t_{X_\pi}^{\rm min}=\frac\pi{2t_c^{\rm max}}=50\,\mathrm{ps},\qquad
+ t_{Z_\pi}^{\rm min}=\frac\pi{2\Delta^{\rm max}}=6.25\,\mathrm{ps}.}
+\end{equation}
+For the \emph{digital} hardware in the assignment, control values change only at intervals of $1\,\mathrm{ns}$. Rather than attempting these sub-nanosecond pulses, choose amplitudes that make the required angle in exactly one time step:
+\begin{center}\small
+\begin{tabular}{@{}ccc@{}}\toprule
+Desired $1\,\mathrm{ns}$ pulse&$t_c/(2\pi)$&$\Delta/(2\pi)$\\\midrule
+$X_\pi$&$0.250\,\mathrm{GHz}$&$0$\\
+$X_{\pi/2}$&$0.125\,\mathrm{GHz}$&$0$\\
+$Z_{\pi/2}$&$0$&$0.125\,\mathrm{GHz}$\\
+$Z_{3\pi/2}$&$0$&$0.375\,\mathrm{GHz}$\\\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Step 2: synthesise the missing axis.} Rotation about $y$ is obtained by rotating the $X$ axis into the $Y$ axis:
+\begin{equation}
+R_y(\pi)=R_z(\pi/2)\,R_x(\pi)\,R_z(-\pi/2)
+\sim R_z(\pi/2)\,R_x(\pi)\,R_z(3\pi/2).
+\end{equation}
+The final equivalence is up to global phase; it permits all control frequencies to remain non-negative. Written as a matrix product, the \emph{rightmost pulse acts first}. The Hadamard can similarly be synthesised as
+\begin{equation}
+H\sim R_z(\pi/2)\,R_x(\pi/2)\,R_z(\pi/2).
+\end{equation}
+\begin{examtip}
+\textbf{Exam check:} distinguish an \emph{angular frequency} such as $t_c$ (radians/s) from its quoted value $t_c/(2\pi)$ in hertz. Account for the factor $2$ between $H=\hbar t_cX$ and $H=\hbar\Omega X/2$. In a timing diagram put only the allowed Hamiltonian parameters in each interval, and explicitly name which rotation that interval implements.
+\end{examtip}
+
+
+\section{An advanced extension: M\o lmer--S\o rensen sideband cancellation}\label{sec:mssol}
+\textbf{Model question (2023 exam, Q1).} Two trapped ions are driven by off-resonant red and blue sidebands. Why can the effective two-qubit interaction be independent of the initial phonon number $n$?
+
+An individual ion has red-sideband matrix elements proportional to $\eta\Omega\sqrt n$ and blue-sideband elements proportional to $\eta\Omega\sqrt{n+1}$. A virtual two-photon process through an intermediate state detuned by magnitude $\delta$ has an effective amplitude of the order
+\begin{equation}
+\Omega_{\rm 2ph}\simeq\frac{\Omega_a\Omega_b}{2\delta}.
+\end{equation}
+There are two virtual pathways: one involving the higher vibrational level and proportional to $(n+1)$, the other involving the lower level and proportional to $n$. Their opposite detuning signs make their amplitudes \emph{subtract}. Up to phases, Rabi-frequency conventions and numerical prefactors, the effective strength is
+\begin{equation}
+\Omega_{\rm eff}\ \propto\ \frac{\eta^2\Omega^2}{\delta}\big[(n+1)-n\big]
+=\boxed{\frac{\eta^2\Omega^2}{\delta}},\label{eq:mscancellation}
+\end{equation}
+which does not depend on $n$. This is the essential physics of the M\o lmer--S\o rensen (MS) mechanism: a state-dependent force temporarily displaces the collective motional state and, at suitable gate times, returns it to its original phase-space point while leaving behind a conditional spin phase.
+
+\textbf{What to say on an exam:} the virtual phonon paths contribute equal-and-opposite $n$-dependent pieces; the residual spin interaction is insensitive to initial phonon occupation \emph{in the relevant approximations}. It does \emph{not} mean the gate is independent of motional heating, detuning errors, or all noise sources.
+
+\section{One-page exam method index}\label{sec:index}
+\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}p{37mm}X p{27mm}@{}}\toprule
+Question cue&Write this first&Worked method\\\midrule
+$H\propto Y\otimes Y$, time evolution, entangling time&Use $A^2=I$ to exponentiate and act on given basis input&\S\ref{sec:yy}\\
+Bell pair, Schmidt, partial trace, fidelity&Expand $\rho_{AB}$; compute $\Tr_A$; apply conditional measurement before normalising&\S\ref{sec:rsp}\\
+Master equation, dephasing, steady state&Write $\rho=(I+xX+yY+zZ)/2$; obtain $\dot{\bm r}=A\bm r+\bm b$&\S\ref{sec:lindsol}\\
+Stabiliser commutation, syndrome, distance&Count local $X/Y/Z$ mismatches; enumerate error syndromes; test logicals&\S\ref{sec:qecsol}\\
+Rydberg, blockade, pulse areas&List $\ket{00},\ket{01},\ket{10},\ket{11}$ after \emph{every} pulse&\S\ref{sec:rydsol}\\
+Ion gate, red sideband, phonons&Use $\ket{AB;n}$; check dark states and phase factors for each pulse&\S\ref{sec:ionsol}\\
+Beam splitter, HOM, dual rail&Transform $a^\dagger,b^\dagger$; normalise $\ket{2,0}$ and $\ket{0,2}$&\S\ref{sec:optics}\\
+Josephson circuit, CPB, transmon&Compute $Q=\partial\mathcal L/\partial\dot\Phi$, then $H=Q\dot\Phi-\mathcal L$&\S\ref{sec:cpbsol}\\
+Hamiltonian pulse timing, $X_\pi/Y_\pi/Z_\pi$&Match $U(t)=e^{-iHt/\hbar}$ to $R_j(\vartheta)$ and account for control ticks&\S\ref{sec:pulses}\\
+M\o lmer--S\o rensen, sideband robustness&Identify $\sqrt n$, $\sqrt{n+1}$ paths and opposite detunings&\S\ref{sec:mssol}\\\bottomrule
+\end{tabularx}
+\normalsize
+\begin{bigidea}
+\textbf{Three checks that save marks.} (1) State the basis ordering before a matrix. (2) Preserve \emph{relative} phases, even when global phase may be dropped. (3) Verify an invariant at the end: unitary norm, density-matrix trace and positivity, commutation with all stabilisers, or return of a mediator such as a phonon to its original state.
+\end{bigidea}
+\begin{flushleft}
+{\footnotesize \textbf{Source note.} Examples are original explanatory adaptations of the supplied 2023--2025 PHYS7045 past examinations and the 2026 assignment question sheets. Pulse signs and beam-splitter phases are convention dependent and are explicitly stated. The original papers and the user's submitted assignment solutions remain the authoritative references for question wording and diagrams.}
+\end{flushleft}
