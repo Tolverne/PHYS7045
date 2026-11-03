@@ -1,0 +1,755 @@
+SPEAKER 0
+Like I'd forgotten the technique of exams, and so I started like I started the exam questions like I approach
+
+SPEAKER 1
+a research problem, so, you know, I had 2 hours and I, and I noodle around for an hour just sort of thinking interesting thoughts, and then I realised I'd
+
+SPEAKER 0
+actually write an answer to the question.
+
+SPEAKER 1
+Anyway, That's Alright, let's get started.
+
+SPEAKER 0
+Right, so You know, we talked a lot about quantum channels as these as maps that take states from one. Input state to what output state. And what we started talking about last lecture was how to construct dynamical equations that generate those maps.
+
+SPEAKER 1
+So this is this table here that.
+
+SPEAKER 0
+And we've got Uh, closed quantum mechanics, closed evolution, quantum mechanics is a thing that you've, all your quantum courses so far have been about, really. And you know about training equation, you know about unitary
+
+SPEAKER 2
+evolution and generalising those ideas to open systems we've already talked about maps. Operating on some of decompositions, and so what we're gonna
+
+SPEAKER 0
+do is understand the analogue to continuous time evolution of Schroeder equation but for open systems. And the core idea is that Um, we're going to use. We, we, well, we're gonna assume that a system is a is a small sub-system of a much larger one that includes the environment that it lives in. And uh we're gonna then assume that we can describe
+
+SPEAKER 2
+that larger environment as if it's closed, so the small
+
+SPEAKER 0
+system plus the environment as a collective object is gonna be, by assumption, closed, and therefore we can assert that the, Evolution of the joint system environment density matrix is governed by the von Neumann equation, so that's gonna be our core starting point. Um, now you could ask, well, what if that wasn't
+
+SPEAKER 2
+true? Well then, if it wasn't true, then we should have
+
+SPEAKER 0
+really have chosen a bigger environment, embedded that environment in
+
+SPEAKER 2
+it in its environment, and like sort of nested nested Russian dolls, we should do that until it stops being
+
+SPEAKER 0
+important. So you can imagine, uh, there's some sort of renormalization argument or, or, uh, there are, there are sort sort
+
+SPEAKER 2
+certain sorts of arguments you could make that make this
+
+SPEAKER 0
+a reasonable assumption. We're just gonna start from that point. But given that assumption, it's just a matter of mathematics
+
+SPEAKER 2
+that the state of the system at any given time is given by the trace of the environment of the
+
+SPEAKER 0
+joint system environment density matrix. And so we can just use the chain rule to
+
+SPEAKER 2
+write down the time evolution of the system operator as
+
+SPEAKER 0
+a function of uh the von Neumann equation, but the right-hand side is still a very difficult thing to evaluate, so, so we wanna come up with a series of
+
+SPEAKER 2
+approximations that makes this expression, this trace over this commutator
+
+SPEAKER 0
+into a thing that acts only on the system part itself, and we already, already said in our last lecture
+
+SPEAKER 1
+that at the very least we'd expect, In whatever this
+
+SPEAKER 2
+process is, if there's some Hamiltonian acting on the system, we should get a commutator of the Hamiltonian, the system Hamiltonian of the system state.
+
+SPEAKER 0
+So that that's just the point of equation for the
+
+SPEAKER 2
+system, if it were closed, that's all we would have, but we expect the environment to add some additional um
+
+SPEAKER 1
+dynamics to take account of the fact that that the environment does change the evolution of the system.
+
+SPEAKER 0
+Now to do that in full uh generality, that do that derivation to go from this kind of expression to something as um, That that acts on the system, you
+
+SPEAKER 2
+need quite sophisticated mathematical tools and we're not in particular
+
+SPEAKER 0
+stochastic calculus and and that's not something I'm going to assume, that you have and I'm not going to delve into, but what we are gonna do is think about a special case. Um, and that special case is gonna give us this thing called a Lindblad master equation. Um And because it's a special case, you might think that that's that Lindblad form is a spec is itself a special case of, of maybe a more general um evolution, uh, for open systems, but in fact it's just an example of a very general, um, A statement about how things evolve. So here's a special case that we'll talk about.
+
+SPEAKER 1
+What's the date, it's the twenty-eighth. I'm gonna go to a new page. So this is Lynbla Equations, OK, so the simple case
+
+SPEAKER 0
+is, well, always the simplest case as far as we're concerned is a qubit. So we're gonna think about an atom, a two-level atom, 2 states, ground, and excited.
+
+SPEAKER 1
+It's a two-level atom Uh, and it's got some Energy gap delta is the energy of the excited state minus the energy of the ground. State And this is gonna be our system.
+
+SPEAKER 0
+OK, so I've given from that picture, what would you
+
+SPEAKER 1
+say the Hamiltonian. For that atom is. Any guesses? Just the Hamiltonian, not, not the unit trilogy. Matrons would be these on Yeah, that's right.
+
+SPEAKER 0
+So if you write it in direct notation, it would
+
+SPEAKER 1
+be something like this. So it's the, some of the projector onto the eigenstates
+
+SPEAKER 0
+with the energy of those eigenstates. Now You, you do 2nd year, 2nd year quantum mechanics,
+
+SPEAKER 2
+you spend a good chunk of the time driving what those, all those terms mean for say the hydrogen atom,
+
+SPEAKER 0
+so.
+
+SPEAKER 2
+You know, I've just swept under the rug probably several weeks of calculations for an atom, but you know, that's a, that's what a an atom, in the end works
+
+SPEAKER 0
+out to uh the Hamiltonian for an atom. So in a, in a basis, Which is ground excited. We can write that that as a matrix.
+
+SPEAKER 1
+OK, and I can always subtract off uh a constant
+
+SPEAKER 0
+term. From a mate from a Hamiltonian without any uh without any loss of generality, the reason for that is that whenever I exponentiate, A Hamiltonian To get a unitary evolution
+
+SPEAKER 2
+operator, that thing's just gonna give me a a overall
+
+SPEAKER 0
+phase at the front.
+
+SPEAKER 2
+And that overall phase is, is common to all states
+
+SPEAKER 0
+and so we know that quantum states are invariant under global phase changes. And so that's just a statement that in in physics,
+
+SPEAKER 2
+the statement is that energy has no absolute, Value, there's
+
+SPEAKER 0
+always relative energies that matter, so I can, I can shift the energies up or down as I like. But if I do that, I get a nice simple
+
+SPEAKER 1
+form which is delta on 2 by -100 + 1. Where My delta is what I wrote over there, EE minus EG. OK. And I can write that as delta on 2 timesz with a minus sign where the Paliz operator is, is this thing here. OK, so.
+
+SPEAKER 0
+It's about about as simple as it gets, we've got a Hamiltonian that's already chosen to be diagonal, um, and so we know, and that that that's by construction, um. Right, so let's suppose that um Uh The, the energy
+
+SPEAKER 1
+splitting. Delta was time dependent. So that means delta is gonna go to some time-dependent function, and we might call that there's some reference value, delta plus, and I'll write it like this. So this is like the Time average V And this is some Uh, dimensionless function of time. So, so for example, We could have FFT could be a sine wave. That'd be a nice, uh, well.
+
+SPEAKER 0
+Defined function of time. And you might get that for example if you had a real atom and you put it in a magnetic field or something and you change the magnetic field strength
+
+SPEAKER 2
+sinusoidally over time, so that might be a kind of
+
+SPEAKER 0
+experiment that somebody would do. In fact it is. And so in that case, the energy levels would be changing, the splitting would be changing sinusoidally over time.
+
+SPEAKER 1
+Uh, or it could be. Much more random Could be some random function Which we don't necessarily know. And the jargon is a stochastic function. Of time. Where At any given time, FFT is a random variable. OK.
+
+SPEAKER 0
+So they're 22 situations that this that that could describe this this system.
+
+SPEAKER 1
+OK, so.
+
+SPEAKER 0
+What we're gonna do for the rest of this lecture is just think about what is the evolution of that
+
+SPEAKER 1
+that system look like. In fact, can I get you somebody to open that
+
+SPEAKER 0
+window, it's just a bit airless in this, does that
+
+SPEAKER 2
+window open there? I I think it's all Where is that winder on
+
+SPEAKER 0
+the right, does that do something?
+
+SPEAKER 1
+Hm OK, right, we have to.
+
+SPEAKER 0
+That's all right, never mind. We just have to deal with the airless room.
+
+SPEAKER 2
+I think that's.
+
+SPEAKER 0
+Whenever I'm going past and enjoy quantum mechanics for a moment. OK, so let's let's think about a reference case.
+
+SPEAKER 1
+So we want to solve this. Time dependent problem.
+
+SPEAKER 0
+And I've chosen this carefully because it's in fact very
+
+SPEAKER 2
+straightforward to solve it in its full generality, um, but
+
+SPEAKER 0
+it's also gonna help us to, to write down this thing called a Lindblad-Master equation.
+
+SPEAKER 1
+So the reference case.
+
+SPEAKER 0
+I Delta equals 0, that is we're just turning off this time dependent part, we just have the time independent part.
+
+SPEAKER 1
+Uh What is the That time Dependent State of the system So let's let's say that psi at T equals 0 is some pure state. And we're going to write that in this basis, alpha beta. What's supply at some time tea going to be? Just as an abstract statement in terms of Hamiltonians. Yep And what's the Evolution operator OK. And remember It's called Haught was just. At minus delta on 2 plus delta on 2. So 5T What's that, what's that exponential gonna be? Uh, ETI delta onto T E to the minus I delta onto T 0. And alpha beta. OK.
+
+SPEAKER 0
+Um In other words, The state and some, and I
+
+SPEAKER 1
+guess I should just be a little bit formal and put these in here, so there's some some future time,
+
+SPEAKER 0
+the state is just gonna be this.
+
+SPEAKER 1
+OK. So the probability to be in the ground state. I And that's just alpha.
+
+SPEAKER 0
+OK, so that doesn't change with time, and similarly the probability to be in the excited state is gonna be
+
+SPEAKER 1
+mod beta squared. It is independent of time. And that's independent of time, OK.
+
+SPEAKER 0
+Alright, so that's straightforward, I hope. Are there any questions about that? So what's the probability then to be, let's say in the plus state? Where a plus minus is What's that going to be?
+
+SPEAKER 1
+What's the expression for that?
+
+SPEAKER 2
+so Yep, that's right.
+
+SPEAKER 0
+OK, good. And so if you were to multiply that out, you'll find it's a 12 by 1 plus some prefactor times cos delta 0T uh plus some other prefactor times sin
+
+SPEAKER 1
+delta 0. T OK, so. In the special case where alpha equals beta equals 1
+
+SPEAKER 0
+on root 2.
+
+SPEAKER 1
+We have this whole thing because uh one on. Uh, 4, actually that's. which I can write as a half by uh route to Cause Do not T on 22. So I can put a factor of half there and a factor of 2 there. And so that equals cos 2 delta 0T on 2, which is equal to 12. Plus cos of delta 0 T, I think, if I've got things right, +12. OK, so for the special case of equal amplitudes we
+
+SPEAKER 2
+get that, which is obviously of that form.
+
+SPEAKER 1
+OK, so, so that's good, so we get oscillations in,
+
+SPEAKER 0
+in time if we were to measure the, Uh, X eigen states, P plus, in this case, it's going to
+
+SPEAKER 1
+oscillate. In time and this period in time will be 2
+
+SPEAKER 0
+pi on delta 0.
+
+SPEAKER 1
+So this is uh So that's enough for this reference
+
+SPEAKER 0
+case, so we have in this case closed.
+
+SPEAKER 1
+Deterministic Time. Hamiltonian. Let me get Pure Evolution And the coherences. Oscillate Yeah Let's say forever, so these oscillations will persist
+
+SPEAKER 0
+in this evolution indefinitely.
+
+SPEAKER 1
+Any, any questions about that?
+
+SPEAKER 0
+So obviously that's closed evolution, so uh. Nothing's interacting with the systems, nothing's changing.
+
+SPEAKER 1
+So now we want to think about. Some noise, so we're gonna take this.
+
+SPEAKER 0
+Second case here where we're imagining this function of time to be a stochastic process, it's, it's, um, varying with time, but it's not uh necessarily known.
+
+SPEAKER 1
+So Few things you might say back here, uh. FFT has 0. 0 mean, meaning that the expectation of FFT at each time is 0. Um, and it might be randomly fluctuating. OK. So now we've got this system Hamiltonian which is now time dependent. It's uh Delta 0 plus delta of this function of time. Uh, minus that on 2. Times Powley Z operator. Uh, where FFT. Let me just re-sketch that thing. Some random type thing. Expectation of FFT. Is 0 at any given time, so it's fluctuating around
+
+SPEAKER 2
+0. Um And we're going to make some, uh, other assumptions
+
+SPEAKER 1
+about it. Let's put that there. So one assumption is that it has zero mean. And at each time Actually I wanna use a slightly different notation here. Cause there's there's a statistical function, we're gonna use the
+
+SPEAKER 0
+symbol E to mean expectation. That is F is a random variable at each moment of time we're we're choosing it randomly from some distribution, but that distribution is one with zero mean. And The next assumption is that it's going to be called stationary noise. Now that doesn't mean the noise is zero, the the noise has no uh. Doesn't doesn't change with time, what it means is the statistical expectation of FT times FT at some other time,
+
+SPEAKER 1
+tau. It's just going to be some function, deterministic function.
+
+SPEAKER 0
+Of that time difference, so there's a correlation. Function So what does that mean? It means that if I, if I have the noise at some moment of time, and I ask what's the correlation of that with the noise at some later time.
+
+SPEAKER 2
+That correlation only depends on the time difference, it doesn't
+
+SPEAKER 0
+depend on what time it is now. OK, so what would be non-stationary noise, it'd be noise
+
+SPEAKER 2
+where if I correlate the noise of today with tomorrow,
+
+SPEAKER 0
+it might be low, but the noise of tomorrow with the next day might be high, uh, that would be non-stationary noise. OK, so, uh, we're gonna do that because it means that the dynamics still, even though this function varies with time, expectations don't overall vary vary with with time.
+
+SPEAKER 1
+fluctuations don't vary this time.
+
+SPEAKER 0
+And And then we're going to Make a special case of this which is that the noise, Is uh called
+
+SPEAKER 1
+White Noise.
+
+SPEAKER 0
+Uh, who's heard of white noise before? OK, the, the old joke used to be that that was what you hear when Andrew White is in the corridor, uh, but because he's quite noisy. Um, but, but what it really means, well, does anyone want to take a guess as to what we mean by that? Sorry. Uh, yeah, so that, that, well, what it means is the spectrum is flat, but for our purposes it means that this correlation function is very, very special. It's called delta correlated.
+
+SPEAKER 1
+This is a direct delta function. So generally G of of tau. will be Typically it'll be some, some function, it'll have some, some width. And If that width gets very narrow, it tends towards
+
+SPEAKER 0
+this distribution called a delta function. And there's lots of jargon associated to that, but that's just what we're gonna, uh, call it, white noise. Other jargon is we make the mark of approximation. In other words, the time, the the noises is not only, uh, Only, uh, stationary, it, it is uncorrelated with any other, uh, with the noise at any other time. So delta function is one which, uh, in, in its limit is zero except when tau equals 0, and then it's 1, Sorry, I thought it's infinity when tau equals
+
+SPEAKER 1
+0. So the important property of the delta function is that
+
+SPEAKER 0
+Actually, does anyone remember what the important property of a delta function is? What's the most important one? Uh, that's a special case. So here's here's a, here's a Rough rule of thumb, whenever you see a delta function you expect you're gonna integrate it, OK, so it's, it's a placeholder that tells you at some point in the future you're gonna integrate
+
+SPEAKER 1
+that thing. And it has the property Let me use a different symbol. If I multiply it by any function. That gives me Well, I can do that. OK.
+
+SPEAKER 0
+So if I integrate the product to any function with a delta function. From minus infinity to plus infinity I get H at T equals 0. Um There's a corollary, which is if I integrate minus infinity to some positive time.
+
+SPEAKER 1
+That's also H of 0. And integral minus infinity to the some time less than 0. That's 0. And then there's one we're gonna need as physicists and mathematicians don't like this.
+
+SPEAKER 0
+What's this gonna equal?
+
+SPEAKER 2
+What if I integrate the middle of the delta function?
+
+SPEAKER 1
+Yep, it's a good guess. Tough.
+
+SPEAKER 0
+OK, so if you're a mathematician or mathematically formally inclined,
+
+SPEAKER 1
+that that's something that you probably don't like, uh, but,
+
+SPEAKER 0
+You're doing physics, not maths, so, so that's, that's all
+
+SPEAKER 1
+good. OK OK. OK So So there's a bunch of of preliminaries for what we're gonna think about now. So we got the time evolution. Let's changed back to black. Uh, of The state of the system. Now Do you remember we talked about these quantum channels
+
+SPEAKER 0
+and we had different models for quantum channels, one was a gremlin, flipping a coin. There was no other quantum environment, it was just a classical coin flip. Uh, we also thought about an environment which was really a quantum mechanical environment which was in that case another qubit and a unitary evolution. What we're thinking about here is much more like the first case. It's like we've got a random process that's happening. It's not a quantum process that's generating this function, it's just some unknown random process. So it's really like this gremlin flipping coins but now it's a continuous family of coins at every time. And so we wanna know what's the evolution of the system going to be. So this is, this is closed.
+
+SPEAKER 1
+Quantum system But with random. Uh, stochastic. Stochastic noise. So you can think of this as sort of a
+
+SPEAKER 0
+classical environment. So we don't actually have to trace over the environment, but we do have to average over it, so that's sort of like a metaphorical trace. OK, so So because it's a closed uh evolution but we're gonna allow for the possibility of mixed states, the evolution is really for any given realisation of that uh. Random process, the evolution is just the von Neumann equation, we don't have to do an explicit trace over the environment, but we do have to average, Average over.
+
+SPEAKER 1
+The unobserved Classical fluctuations, classical noise. In F of T. So what does that mean? It means we want to evaluate the expectation of uh of rot. Which is going to be the expectation of minus I. HT or OT. Where we expectation is over this random process. And just to remind you that HFT is. H 00 plus um. F TH1, which is equal to.
+
+SPEAKER 0
+Minus delta 0 on 2 Z plus delta, well FT
+
+SPEAKER 1
+times delta onto. I said. I think there's a minus sign. So I've broken up this function in.
+
+SPEAKER 2
+The they have turn into the into the time independent bit and then there's fluctuating bit which is, Has these
+
+SPEAKER 1
+two parts, this is what I'm calling H0, and this is what I'm calling uh FFT H1.
+
+SPEAKER 0
+OK. So, you might Yeah, so let's let's try and evaluate this expectation here on the right-hand side.
+
+SPEAKER 1
+That's the expectations minus I, we can take that out the front, expectation of H0 plus FFT. H1 row of T. Which is minus 1. Expectation of a commentator of Haught with Roe. Uh Let's put hats on things that are operators. Oh And so F is a is a scalar function,
+
+SPEAKER 2
+so it's just a random variables, so I can take
+
+SPEAKER 0
+that outside of the commutator, that's minus i expectation of,
+
+SPEAKER 1
+HN row. Minus I expectation of Random variable FFT, now the commentator H1 row. OK, so what are those two terms, uh, Equal to,
+
+SPEAKER 0
+so We need to evaluate these expectations.
+
+SPEAKER 1
+So let's expand the commutator H0 row minus row H0. Now the expectation is, is the, is the average, so
+
+SPEAKER 0
+I can average each part, it's the average over over the random function F.
+
+SPEAKER 1
+So I'll put that in explicitly here, it's it's the
+
+SPEAKER 0
+expectation over F of H 0 row.
+
+SPEAKER 1
+Minus the expectation over F of row H0.
+
+SPEAKER 0
+But H0 is independent of F, H0's just a fixed function.
+
+SPEAKER 1
+So that's going to be equal to h or its
+
+SPEAKER 0
+fixed operator. Times expectation over the function F of row minus expectation
+
+SPEAKER 1
+of F row H0. So that's the commutator of H 0 with the expectation over this random function of road. Like that. OK. Alright, what about the sex, so that's that first term, that's. This term, and that's what it equals. What about the second term, so we need to evaluate. Expectation over this random function of the second term which is now we have that that explicitly sitting in there, FFT H1 row as a commutator. Which If I just expand the commutator again, I get FFT. HH row, H1 that is, minus FFT. Row H1 And that we can write as.
+
+SPEAKER 0
+So H1 is just an operator, it's a constant, so I can write that as H1 times the expectation over
+
+SPEAKER 1
+the random variable FT times row of T. Minus Expectation over the function F. Row of T Times H1.
+
+SPEAKER 0
+So now we have to evaluate in both cases this expectation over this random variable of a function times row of t. Now if you think about this, you know, we've got this function of, here's one possible realisation of it.
+
+SPEAKER 2
+So if I evolve that to some time T.
+
+SPEAKER 0
+The state of the system will depend on what that functional form happened to have been, right, so I could imagine sampling a particular choice of that function at random, and whatever I sampled the state at that time T will depend on all of the values of that function in the past.
+
+SPEAKER 1
+But So row of tea. Depends on the value Of F of T for T less than T, right, so up to that moment of
+
+SPEAKER 0
+time, whatever that function was doing up until that moment,
+
+SPEAKER 2
+the state of the system row of T can depend on that function value, right?
+
+SPEAKER 1
+Uh, but Row of T is statistically independent. Of F T for T greater or equal to T.
+
+SPEAKER 2
+So where the state is now, it can't depend on what the noise is doing right at that moment, and it can't depend on what the noise is doing off in the future, right, that's where the future bit is
+
+SPEAKER 0
+obvious, that's causality. The first statement that it doesn't depend on the current value is something we'll see is not necessarily true, but
+
+SPEAKER 2
+it's a reasonable proposition, you know, if I, the, the state of the thing obviously depends on the past, on
+
+SPEAKER 0
+the noise in the past, but it doesn't necessarily depend on the noise currently.
+
+SPEAKER 1
+So. Put that as a claim For for T greater than T, this is just, this is just causality.
+
+SPEAKER 0
+The evolution of the system can't depend on what happens in its future. But statistical independence of two random variables means that the expectation of FT row of T uh is independent.
+
+SPEAKER 1
+Means that it's just the expectation of FFT. Times the expectation of row of T.
+
+SPEAKER 0
+That's a statistical independence, the expectation of 2, a product of two independent random variables is just the product of
+
+SPEAKER 1
+the expectations. But remember by assumption.
+
+SPEAKER 0
+One of the assumptions was that the noise has, is
+
+SPEAKER 2
+assumed to have random, zero expectation.
+
+SPEAKER 1
+So this bit here, that is equal to 0. But um 0. Made an assumption.
+
+SPEAKER 0
+So it's a very special kind of noise, it's zero mean, it's stationary, it has these other properties, but nonetheless, when we evaluate that expectation of this product of the function and at some time, moment of time T and the state at that time T.
+
+SPEAKER 2
+By assumption of independence, this is 0.
+
+SPEAKER 1
+OK, so that means that these are all 0.
+
+SPEAKER 0
+And this is equal to 0.
+
+SPEAKER 1
+So if I Colour this bit here This bit here Um, so that thing is equal to 0. OK. So that thing that I coloured it in orange uh is is this term here.
+
+SPEAKER 2
+It depends on these two expectations which appear on the right of H1 or on the left of H1, but in this argument here I've said well that expectation is
+
+SPEAKER 0
+just zero. And therefore that commutator is 0, yep. So, uh, Think about what these, these objects are, so
+
+SPEAKER 2
+are you, are you happy with this bit here? So I've just examined the commutator. So what are these, this is just a function, right, this is an this is an operator it's a matrix, this is a density operator so it's a matrix. So this is just a a a product of a matrix and a matrix. So if I, if I expanded that as a basis, each element of those of those productive matrices would be a product of scalar quantities, yeah. And I'm taking an expectation of This thing with respect, with respect to this function there. So when I do that, that expectation will, uh, will associate through all of the matrix operations. And so it's the same as if I first took the expectation and then did the matrix operation. In other words, everything in here is linear, right, expectations is a linear operator is a linear operator, it's a linear product, so everything's linear and so if you just break it down into into, Elementary scale is over a basis, you'll you'll just see that it, commutes through.
+
+SPEAKER 0
+OK, so we have this conclusion here that that that expectation is 0, and that's gonna be a surprise, oops.
+
+SPEAKER 1
+Because, so apparently. Uh, the Expectation over F of row dot is just
+
+SPEAKER 0
+gonna be this first term.
+
+SPEAKER 1
+H0 minus IH0 expectation over F row.
+
+SPEAKER 0
+So the expected the evolution of the uh or in
+
+SPEAKER 1
+other words I can write, Row bar. equals minus IH 0, row bar, where rowbar is just the average, Over Possible evolutions of the density matrix.
+
+SPEAKER 0
+So, so then we're back in this, under this assumption we're back to exactly where we were, the time evolution of this uh of this, Density matrix looks like it's
+
+SPEAKER 2
+exactly the same as the uh evolutionary wrote down before
+
+SPEAKER 0
+without noise. So this looks the same.
+
+SPEAKER 1
+Uh, as evolution without noise. Right? Uh, in other words, it's just the, it's just the
+
+SPEAKER 0
+von Neumann.
+
+SPEAKER 1
+Von Neumann equation. For this quantity row bar. OK.
+
+SPEAKER 0
+So that's a bit of a puzzle.
+
+SPEAKER 1
+I Right, so apparently, yeah. The noise Had no, no effect. OK, so that's, that's a bit of a worry because
+
+SPEAKER 0
+you would expect the noise to have done something right, the noise was evolving in time and so that should change the evolution and so we would expect the, The average evolution to be different uh to the case where there was no noise. So that means we made an assumption that was wrong somewhere, and it's really.
+
+SPEAKER 2
+A generalisation of this that we need to worry about.
+
+SPEAKER 0
+So, actually I'm gonna go a little bit uh I take a different tack than I've got here, let's see how we go. And So there's a problem in this.
+
+SPEAKER 1
+Uh Which was we, Made this independence assumption and that
+
+SPEAKER 0
+was a correct assumption to make. Uh, but really the effect of the noise comes in at another order in some sense. So what do I mean by that?
+
+SPEAKER 1
+Uh, let's start Start again. We have row is minusi. Each knot. Uh, plus FFT. OK, so that that's, that's where we. This is some time. So there's a there's a simple but uh quite powerful
+
+SPEAKER 0
+thing we can uh we can.
+
+SPEAKER 1
+We can say, which is that.
+
+SPEAKER 0
+So this is a true, a true and, and tautologically,
+
+SPEAKER 1
+let's say tautologically true.
+
+SPEAKER 0
+Tautology Which is that row of tea. Is minusi integral dt from minus infinity to the current
+
+SPEAKER 1
+time. Well, it's not even tautology, it's just a integration.
+
+SPEAKER 0
+OK, so we've got a time derivative here.
+
+SPEAKER 2
+Uh, and we can just integrate the right, and, and I should be a little bit careful here.
+
+SPEAKER 1
+That's good. Integrate both sides.
+
+SPEAKER 0
+So if I integrate both sides over time, the integral
+
+SPEAKER 2
+of the time derivative is just the function itself, and I have to evaluate that it's a proper integral from T1 to T, so the left-hand side is just gonna give me this. Right-hand side, I've just written it out in this, in this form.
+
+SPEAKER 1
+This road, this is the initial state. And it's, let's say it's known, so it's independent of, um, Of whatever this function might do in the future.
+
+SPEAKER 0
+OK, so.
+
+SPEAKER 2
+That doesn't look like it's helped us very much. But we can do a thing which, which does look a bit uh funny cos normally when you're taught arithmetic, you're taught never to use the same equation twice.
+
+SPEAKER 0
+You know, if I solve A equals B, you know,
+
+SPEAKER 2
+I substitute A equals B into itself, I get A equals A, which is true, but not very informative.
+
+SPEAKER 0
+Um, so, but we're gonna do that here. So we can substitute.
+
+SPEAKER 1
+Let's, uh, pull it. Square. We'll call that star.
+
+SPEAKER 0
+What do I mean by that?
+
+SPEAKER 2
+So over here I've got, I've got the general solution for row of T up to time T in terms of the right-hand side, and here I've got the top the the solution at time T here. So I can, I can solve for row of T here and put that all into there.
+
+SPEAKER 1
+And when I do that, I'm gonna have a row of T0 minus I. Integral T0 to T. And then that lives inside a. I'm trying to draw the commutators properly here. So in other words, all of that is what is appearing here. OK.
+
+SPEAKER 0
+Um, OK, so what was the point of doing that? Well, we can expand this whole thing out now and we get minus I. Commutator H0 with row of T0. So that's a very boring thing to write down that bit because it's just the commutator of the Hamiltonian with
+
+SPEAKER 1
+the initial state. We're going to pretty much ignore that later on, er, what else do we have, we have, um, Minus IF of T. H1 at row of T0. We have minus I change the order of Some integrals in here. So That times that gave me this, that commentator. That and that gave me that commentator.
+
+SPEAKER 0
+This has come from the commentator of that with this
+
+SPEAKER 1
+bit and that bit.
+
+SPEAKER 0
+And the minus sign came because I have a factor
+
+SPEAKER 1
+of 2 dots of I. We have another one which is gonna be. Uh integral T0 to T. FFTH1. Uh With F of T. Which one. Are there any terms that I'm missing there? Oh yeah. It's gonna be a minus. Integral T not to T. H0 yes Commentator of FFT H1. Right in front.
+
+SPEAKER 0
+I think that's everything, so I've gotten the term which
+
+SPEAKER 2
+is that times that, that's the 1st term, I've got that times that, that's the 2nd term, and I've got, H and all and an H and all that, that's just who I've got. H1 times H1. And then I got. Time this, that's that one. Oh yes, it is. Should be an H&O at times I have to, I
+
+SPEAKER 0
+think I've got that in here.
+
+SPEAKER 2
+Do you see any terms I'm missing?
+
+SPEAKER 0
+I'm, you know what, I've got that.
+
+SPEAKER 1
+OK. Oh OK, let me see. I'm missing a term which is gonna be minus. Integral It's not, it's not. 1 H not FFTH1.
+
+SPEAKER 0
+If I just look at all the, all the slots, I've got a H0, H0, I've got an H1, H1,
+
+SPEAKER 1
+I've got an H0, H1 and I've got a H1, H0.
+
+SPEAKER 0
+So that seems like I've exhausted all the the terms in there.
+
+SPEAKER 1
+So it looks like a big mess, but what we
+
+SPEAKER 0
+want to do now is take expectations over the function F, the the random variable of all of this stuff.
+
+SPEAKER 1
+OK, so that's Uh, that's what we need to do. So yeah. Of the left-hand side and the right-hand side uh over, The random functions. FFT, and we're gonna use exactly the same kinds of
+
+SPEAKER 0
+um of rules to get each of those terms.
+
+SPEAKER 2
+So a bunch of them are gonna be pretty straightforward, so this time when we take an expectation over F well this doesn't depend on F at all, so it's just gonna be itself. This does depend on F and the and the density matrix at the initial time, but when I take expectation that's gonna give you zero, OK. When I take the expectations of this one, well this doesn't depend on uh on F except, That that implicitly appears in this density matrix as a dependency, so we're gonna take an expectation of this whole thing, I'm just gonna get the expectation of uh T primed. When I, let's look at some other ones, so if I look at this one I've got a product of F and row at T, if that's gonna give me something I'm uh interested in. This term here I've got a product of two Fs at different times, and that's where this delta function is gonna come in because I've got an expectation of a product of two of these functions. And then last thing about the term it's like this which is really. So we're gonna evaluate these expectations, some things will become 0, some things won't be 0, and it's the ones
+
+SPEAKER 0
+that are not 0 that are the key.
+
+SPEAKER 2
+And in fact this is going to be an important term here, it's this one here which has this product of functions at different times that have these correlation properties,
+
+SPEAKER 0
+and that's the one that's going to give us the um the new physics that came from the fact that this function F was fluctuating in a way that we didn't didn't know. Now, I think we're uh just about the hour so uh so in order not to, Uh, get stuck midway
+
+SPEAKER 2
+through this derivation, let's, let's leave it there.
+
+SPEAKER 0
+Um, now I understand that there's a Viva on now, is that right? But Jackie's running, is that right? Some people are queued up for that. Alright, so you probably wanna have a few minutes. Hi Jackie. To take a breather if you'd like and get psyched
+
+SPEAKER 2
+up for, for jacking.
+
+SPEAKER 0
+So thanks very much and um we will see you on Wednesday. We'll we'll finish this off then.
+
+SPEAKER 2
+Council.
+
+SPEAKER 0
+OK. Not too bad, I told them all to be absolutely petrified of your Vivos.

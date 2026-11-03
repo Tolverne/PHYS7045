@@ -1,0 +1,368 @@
+SPEAKER 0
+Alright, let's uh keep going. Um, so we started last, uh, lecture, we started to Think about how to construct a code that can correct and detect any single qubit, uh, quantum error on, on a collection of qubits.
+
+SPEAKER 1
+We started by recalling that the. Three bit repetition code which can detect and correct what bit flip.
+
+SPEAKER 0
+Error can be adapted to a 3-bit phase code that can detect and correct one phase error, uh, and in
+
+SPEAKER 1
+doing that, you end up with a, a dual code where you swap all the X's for the types of errors that are correctable for Z's, or stabilise them into products and z's into products and X's. The module operators change in a dual way as well
+
+SPEAKER 0
+and the code words also change in the, in the dual way, zeros turn into pluses and minuses turn into uh ones turn into minuses. But of course that new code, this phase detector and corrector, can't detect bit flip errors. And so, um, we went through this little counting argument to say that 3, a 3 cubic code in general doesn't have enough.
+
+SPEAKER 1
+Data in the syndrome bits to be able to to unambiguously, uh assign a different syndrome to each kind of single cubic error, and therefore it's unlikely that there's a 3-bit quantum code. Same's true for a 4-bit quantum code, but for a 5 bit quantum code, you end up concluding it. There are enough syndrome bits so that you can store 16 different syndromes or represent 16 different syndromes, which is more than the number of possible single qubit errors, and
+
+SPEAKER 0
+so for 5 qubits there's some hope that there is a, a quantum error correcting code that can detect and correct any single qubit error, and it turns out that's true. Uh, but we're we're talking about a constructive, um, Error correcting code, which is a concatenated code, and there's a name for this, which is the Shaw code. Named after Peter Shaw who was uh one of the founders of the field. Um, and it's a 9 qubit code, so we have
+
+SPEAKER 1
+9 physical qubits, they want to. 9, and I started writing out the, the logical operators for these physical cubits in different blocks, so there's a 1 block, a second block, a third block, and each block in a block is going to be made up of just the conventional 3-bit repetition code that we've already talked about, so there'll be a logical operator for the 1st block, there'll be a logical pair of logical operators for the first block X and Z and Y of course as well, some logical operators for the 2nd block and logical operators for the 3rd block. And there'll also be the inner stabilisers, one prepare for the 1st block, one pair for the 2nd, and one
+
+SPEAKER 0
+pair for the 3rd. Now. Um, 18th of There's, I wanted to just adapt the notation a little bit, I'm sorry, so, I, I was using this superscript to represent the block but actually I want to replace that superscript with uh, A number that represents the inner and outer block. So I'm gonna call this XL1, L1 and L1. Uh So what does this mean?
+
+SPEAKER 1
+So the, the superscript here is meant to mean Superscript
+
+SPEAKER 0
+one means in a block. In a code, sorry. That's that's that superscript one. Um And the superscript 0. Which I'm gonna suppress actually, but this Superscript 0 would be the physical. Physical qubits. OK, so we have, if I put for a superscript
+
+SPEAKER 1
+0 that means I'm, I'm, or, or leave it out, that means I'm talking about the actual physical qubits. Superscript 1 means I'm talking about the inner block, and I have a, a, a logical qubit for the first inner block I have 1, a logical cubit for the second inner block L 2, and a third logical cubit for the 3rd block. And then I have stabilisers for each, each block. I have for the inner block it's a, it's a bit flip detecting code, so the stabiliser made up of z's, they commute anticommute with X's. So I'm gonna have a, a type 1 and 2 stabiliser for the first block, remember ZZI and IZZ where the parity check operators for a 3-bit repetition code.
+
+SPEAKER 0
+I'm also gonna have uh S. S1 for the second block. And S2 for the second block, which is going to be uh Z4 Z5 identity on 6, and if I want to be careful I mean there's 0, these, these are acting on the uh physical qubits and then identity 4. Z. 5. And said 6. And then I have another pair of stabilisers that act on the 3rd block. And I'll be ZZI and IZZ and if I attach the qubit label that means 789 78. 9 So at this stage I've just got 3 independent
+
+SPEAKER 1
+triples, 3 independent blocks of 3 cubits, each of those blocks represents a bit that detecting code.
+
+SPEAKER 0
+So, so they're all just completely independent of each other, which means that actually if I write out the full form of the stabilisers, I need to be a little bit careful now, so I should move that over here. I really have identities, so this, this pair ofA one
+
+SPEAKER 1
+is defined on the first block but that just means identities on the other ones.
+
+SPEAKER 0
+So tensor, uh. I, I. I And likewise for the 2nd block, we just do nothing, the stabiliser is only defined on the 2nd block or only has support I should say on the 2nd block. And so we put identities. Everywhere else And the 3rd block only has support, the 3rd block of stabiliser only has support on the 3rd block, so we're gonna fill in all the identities. Elsewhere. OK, and just to highlight where things are. We've got this pair, this pair, and this pair are the same sorts. The the the green ones are the type 1 stabilisers and the orange ones are the type 2 stabilisers, OK, but I've just replicated them across.
+
+SPEAKER 1
+OK, so so far I've got 6 stabilisers that are associated to the inner block code.
+
+SPEAKER 0
+That's good, so now we need a um an outer block code, and I've presented this in this order, I've
+
+SPEAKER 1
+got the logical cubits, the the the inner block logical operators, remember this would be this really would be X X X but then density on the other three cubits, those other 6 cubits.
+
+SPEAKER 0
+So in the outer block code, I get to define. X-like stabilisers. And now I have a superscript 2 because it's the outer code. I'll put one here How to code stabilise that's Uh, index 2. And now this is going to be an XL. On block 1, tensor XL on block 2, tensor identity. So I have got this index is wrong. And that construction really is just, Borrowing from this 3
+
+SPEAKER 1
+bit phase strip detecting code which remember it stabilises the product of Xs.
+
+SPEAKER 0
+So at, at this outer code, I'm treating the inner code as just a bunch as 3 physical cubits, even though each of them themselves are made up of 3 cubits. I'm treating the outer code seeing the inner code as
+
+SPEAKER 1
+a bunch of, as just 3 cubits, encoded cubits. And so those stabilise XXI and IXX become X logical at at at uh the inner code. Times in each of the first two blocks identity and then identity in the second two blocks.
+
+SPEAKER 0
+OK, and so if I were to write those out. If I write them out in um. In terms of the physical cubits, that means X is on the 1st 3. X is on the next 3 and identity on the next 3. So that'd be 123456. And S2 at layer at the outer code would be 111, X X X. X X X. OK. So now we have 6 stabilisers here for the inner code. And we have Plus 2 stabilisers for the outer code. And so overall we've got. 8 stabilisers, stabiliser generators. 6 for the inner code. And I guess actually I should have put a. Another row in this table, which is we need the logical outer code logical operators. And there we do exactly the same thing as. We just did for the stabilisers, the outer code logical
+
+SPEAKER 1
+operators have this light, T Property that the logical z of the phase of the code is the property of X's and the logical X is the product of Z's,
+
+SPEAKER 0
+but we're gonna use exactly the same structure here. That is XL at the outer level is going to be a product of Z's. Uh, at the inner level. Which is a product of census. 23. And then ZL at the. And the level would be XL1. Which is a product of excellence. OK, so now we have a full specification for the
+
+SPEAKER 1
+for the overall code, we've got two logical operator how logical operators XL and ZL.
+
+SPEAKER 0
+Of course we can, we can, we could write down a Y logical L. At the outer layer which will be XL, and then I think it's an I, but check the sign. Which in itself is just gonna be a product of
+
+SPEAKER 1
+all of these things and these things, so it's just
+
+SPEAKER 0
+gonna be a product of Y's itself, OK? OK, so, so that sort of is a, the first fully uh quantum code that can can detect and correct any single qubit. Uh, era. Um, 8 stabiliser generators and we have N equals 9 cubits. And so that means that we can uh we have overall K equals 9 minus 8. Well, Number of physical cubits. Minus number of stabiliser generator. Generators which are constraints. 9 minus 8 equals 1 logical qubit. And we've already seen what the logical qubit operators are, they're these products of of X's and products of Z's. And so we would call this a. The shore code Is a 9, that's the number of physical cubits, 1, number of logical qubits, and some distance which we don't know yet. Uh, code. Where Is the distance. Um, So we'll see this in a moment, but just for for uh. To make a claim, the shore code, Can detect And correct. Any single qubit. Palley era And that means X1, Y1, Z1, X2, Y2, Z2, etc. up to Z 9. So that means there's 27 different. Uh Errors that it can, possible errors. It can detect and correct any, any one of those. OK, now it might, it might be able to detect some other errors that are heavier weight, uh, uh, but it, but there are, there are for sure 2 qubit errors for example that it it can't detect, um. Uh, and so it still has a possibility of failure, but it can, it can nonetheless, uh, guarantee to correct any one of those uh errors which we'll see in a moment. And remember, um, The number of correctable errors. Is the floor of D minus 1. On 2, and so from that we conclude that the distance has to be greater or equal to 3. So the code distance, remember is the the weight of the the the the lowest weight of any logical operator. Now we've got logical operators that have weight 9.
+
+SPEAKER 1
+They look like they've got support on all qubits, physical
+
+SPEAKER 0
+qubits. So they, they obviously have weight 9 at. Which is not inconsistent with the distance being bigger or at least uh at least 3, it turns out that the, we'll we'll we'll talk about that in a moment, so let's just, Check this claim Uh So The first thing to check is that any bit flip error, any
+
+SPEAKER 1
+single bit flip error will anti-commute with at least one of these, OK? This collection of 6 stabilisers has z's arranged in such a way that there's always at least, there's always, there's one stabiliser at least which has a z on some particular qubit. In some cases they are stabilised values as said on both keyboards, on two keyboards. Um So let's suppose there was a bit flip on the 3rd cubit. That'll be an X3, so X3 will commute with this first one, it obviously commutes with. that was Ag a bit flip.
+
+SPEAKER 0
+And keep it. 3, would commute Yes. Um, S11. S 21. S 22. Etc. but anti-commute. With S21. Which I remember was I Z Z, and then I I I I I I. And so a bit flip on cubit 3, we have
+
+SPEAKER 1
+a syndrome syndrome bits for these which would be plus, minus + + plus. And a, a, a big clear bottom example we have on this, this side here we have syndrome plus plus minus + + plus, and this side would be + + minus minus + plus, OK, so you see that
+
+SPEAKER 0
+you can enumerate, um, So, so there will be a, a, uh. The syndrome So you could you could go through all bit flip uh possibilities and enumerate the syndrome. And you'll see that they're unique, so every single qubit
+
+SPEAKER 1
+x error will give you a unique syndrome on these six bits syndrome bits, and so you can tell from that list of syndromes which qubit had a, a bit flip error and then you can fix that up. What about, uh, so that that's just working through that by enumeration, hopefully you can you can see, see that
+
+SPEAKER 0
+uh directly. It's a bit more subtle with the uh with with phase errors, so phase errors will commute with all of
+
+SPEAKER 1
+these. And so, if you have a phase error on any given physical qubit. These will all give a syndrome bit a value of
+
+SPEAKER 0
+plus one, OK, what about these ones?
+
+SPEAKER 1
+So a phase that I remember is a Z operator acting on a qubit, so a Z operator on any given single qubit will commute with either this one or this one or possibly both. But there's only 2 bits here, 2 syndrome bits available here, and, and yet there's 9 ways we can have
+
+SPEAKER 0
+a logic, a, a single qubit power Z error, so there's not enough syndrome bits here to, to uniquely determine which one of those, um, Errors occurred, so we'll cover that in just a moment. But let's do a quick aside. Check that the stabilisers commute. That will stabilise a Generators Commute. So just just for notation I'm going to label these ones S1, S2, S3, S4, S5 and S6 and this I'll call S7 and S8. So S1 to 6 are all Z type stabilisers, they're
+
+SPEAKER 1
+all powerly Z's and identities, and S7 and S8 are
+
+SPEAKER 0
+all X-type stabilisers that are just powerly X's or or identities. So I hope it's clear that. S1 up to S6. All mutually commute. Since they are all X and They're all products of of X's and I's, and so X's commute with each
+
+SPEAKER 1
+other, I's commute with each other, and so any product
+
+SPEAKER 0
+of those things are gonna commute. Also, it's clear for the same reason that S7 and S8. Or both mutually commute. Same reason for X's. For for Z and I. OK, and so then there's a subtlety which is. What about One of the Z type stabilisers and another
+
+SPEAKER 1
+of the X-type stabilisers.
+
+SPEAKER 0
+So, let's put some on the screen. So if I look at any, let's say this stabiliser
+
+SPEAKER 1
+here is made up of two, well in fact all
+
+SPEAKER 0
+of these are made up of pairs of Z's. And so, If I look at the stabilisers for the, for the X the X type stabilisers, they're made up
+
+SPEAKER 1
+of sextuplets of X, blocks of X X X X X X and identities, and if you, if you just sort of choose any one of these and ask how many times do Z's collide with X's, well here it's 0, that's an even number of times, here it's 2, that's an even number of times. How about that one, that's 02, same, and you can go through it block by block. So you can check that.
+
+SPEAKER 0
+Also, um And he said like. That collides. Yes Uh, and In fact, not just an even number, but 0 or 2. And so that means they commute for the reason that we went through uh the other day, which is that XI tensor XJ commutes with Zi tensor z.j. OK. So, so just by sort of inspection and and this argument about the number of collisions, you can see that
+
+SPEAKER 1
+all of those commute with each other, both of those commute with each other and any one of these commutes with either of these, OK?
+
+SPEAKER 0
+So we have a, a fully commuting set of stabilisers, so that's that's good. And the other thing you can check is that none
+
+SPEAKER 1
+of these, that they are generally generators in that, none of these can be formed by multiplying the others.
+
+SPEAKER 0
+Together So for example, if I, if I multiply any
+
+SPEAKER 1
+of this combination of 5, I can't get to this
+
+SPEAKER 0
+one here, so they're in a sense they're independent. Bit like linear independence, you know, linear independence is I can't add vectors to get a, a, a linearly independent
+
+SPEAKER 1
+one. This is the same idea but multiplication.
+
+SPEAKER 0
+I, I can't multiply these things together to get in
+
+SPEAKER 1
+the other one. I can't multiply the product of z's get a product of X's, so these are independent of those, and you can see, there's only one way I can multiply those two, and if I do that, I don't get the identity, so they're linearly independent as a whole.
+
+SPEAKER 0
+Um And the stabilisers. are all independent. OK, so, so they genuinely are, uh, stabilisers and a uh independent set. The other thing we have to check is that these
+
+SPEAKER 1
+stabilisers all commute with the logical operators.
+
+SPEAKER 0
+So again we can do it pair wise, we can
+
+SPEAKER 1
+compare the, X-light stabilisers which are here with with both of these powers, so, The Z logical Z is a product of X's on every q bit and this one is a product of 6 X's, so 6 X's collides with 9 X's at 6 sites, bit over this one so they can use. Um, but you can also check if this product in, sorry, I'm not that's, that's, that wasn't irrelevant so who is that X's can you X's they can you. But these 6 X's commute with those 99 Z's because they commute at 6 sites and do so for these two.
+
+SPEAKER 0
+Um, and likewise pairs of Z's here commute with, um, with all X's because they collide in any number of times. So we can also check Um, that SJ XL 2. Equals 0 OK For the same reason. Even number of collisions. of A's. And Z's, OK. So you know I'm just gonna, rather than belabour the algebra, I'm just gonna use this this rule of thumb which is that if I have an even number of collisions of X's and Zs they then then they commute and we've just seen it in sort of by inspection that that must be true. OK. So So there's a subtlety which I I want to get to and that might be where we we finish uh on error correction. It's a subtlety of the shore code, but it's, it's pretty common. It's uh the X-like stabilisers. I called degenerate Uh, because Um, there are Multiple Z errors, ZJ errors. With the same Syndrome OK. What do we mean by that? So if we look at the X-like stabilisers, that's these two, A P Z error on the first cubi, Z1,
+
+SPEAKER 1
+would only these three here. But so would it Z2 or so would the Z 3. I would commute with this work. And so the syndrome for Z1 will be the same as the syndrome for Z2 which will be the same as the syndrome for Z3. Likewise, a Z4 would add here with this one and this one, and it would have the same syndrome as a Z5 and as a Z6.
+
+SPEAKER 0
+AJ Eris. Uh Z1, Z2, or Z 3. Have syndrome bits. Plus, plus, plus for S1 up to S6. And they have minus and plus for S7 and S8. And uh Z4, Z5, Z6 will have syndrome bits. Still pluses on the first ones, but minus and minus on the second two. And Said 7 We have a syndrome which is likewise pluses and then plus. minus 4. S 7 S. 8. Is that clear, so. Z Z's are gonna commute with all of these uh syndrome is plus.
+
+SPEAKER 1
+If I look at Z7, Z8 or Z9s, they're they're all gonna commute with this road and they're gonna both
+
+SPEAKER 0
+all three able to commute with this road. So I hope I'll have exactly the same syndrome. So So if we get Let's call this S 123, S 456, or S 789. So if we get the syndrome S123. We don't know Which Uh keep it. 12 or 3. Suffered Uh Is it 05 0. OK So you might think that's a problem, that is, you know, if there was a, if there was a a Ply Z, so these would come from uh. Those three, if, if, if a penalty Z1 occurred, but
+
+SPEAKER 1
+you can't tell whether it was a Z1 Z or ZZ3.
+
+SPEAKER 0
+What are you going to do? Well let me say it a slightly different way, suppose
+
+SPEAKER 1
+that 3 happens, you get this syndrome, you have to try and guess what what occurred, but you don't have any way to distinguish that between any of these 3, so you may as well choose the same one, right,
+
+SPEAKER 0
+so you're gonna correct, Maybe I should have said this back here, so. So bit flip errors. I said it in in words but I didn't write it out, bit flip errors. Give Uh, unique syndrome. Uh, bits And so we can uniquely identify. Any of X1, X2, up to X, 9 errors. So I say that in words but just to reiterate, any any bit flip error we can detect uniquely, but phase errors in this code we can't detect uniquely. Now you might think that's a problem. So e.g., if, if, uh, If the error was Z3. And the syndrome would be. Plus plus and then minus +. Just rewriting it. And we, we have to guess. To guess a correction The correction only depends on the syndrome. And, and it should be at Z1 or Z2 or Z3. They've all got the same syndrome. And because the syndrome is the same for all of them, let's say, uh, let's. Say The correction that we do for this particular syndrome, 123. Is going to be Z1, so no matter what error happened, which we don't know, all we have is syndrome,
+
+SPEAKER 1
+suppose we get that syndrome we we do a Z1
+
+SPEAKER 0
+corrective. So now the question is, does that work, right, so we've, we're in a situation where an error happened on qubit 3, Z3, we're correcting with a Z1. So we had the state side went to initial state went to. Uh, psi, which was epsilon on Psi L. And then we're going to do, that's gonna go to, so this error. We're gonna get the syndrome 123, implies we're gonna correct. With the correction for S 123. On that same state. And that in this case is Z1 times uh Z3, which is the actual error times psi L.
+
+SPEAKER 1
+So it looks like the logical state has evolved from the original state to this new state.
+
+SPEAKER 0
+But actually, Z1, Z3 is just equal to.
+
+SPEAKER 1
+Z1 Z3 is just the product of these two stabilisers. Z1 Z2 times 3 times Z2 Z3 and the Z2's counted like Z1 Z3.
+
+SPEAKER 0
+So I can really write that. That's S1, S3 in the language that we had up there, OK, there's notation. So, I call that sorry, double primed. Is S1, S3 acting on psi L. OK. Now What's the property, remember PIL is a valid code
+
+SPEAKER 1
+state, it's a, there's no error on PIL, that's the original state. What happens when I have this S3 on, on, On
+
+SPEAKER 0
+that. Do you remember the definition of a code, a valid code state with respect to states? Yep. So it's S1 times +1. I And the reason is that So psi L is a plus 1 eigenstate of all the stabilisers, including S3
+
+SPEAKER 1
+in particular, and so I'll just get a plus 1
+
+SPEAKER 0
+eigenstate. And we can do the same thing for the next uh stabiliser, so that has to be plus 1 times S1 of psi L, and that's going to be +1 now squared, psi L. Which is equal to psi L. OK, so phi double primed is in fact the same
+
+SPEAKER 1
+as the original state.
+
+SPEAKER 0
+So that's, that's uh.
+
+SPEAKER 1
+That's the subtlety which is that even though this error happened, which we don't know, all we had was a syndrome, we corrected but a a consistent error. Now it's consistent with a syndrome, so it looks like we've done something non-trivial to the state, but actually in the code space, that this, this acts trivially on the code space, that is it takes site L to site
+
+SPEAKER 0
+L. So this is in the code space. And so it turns out that this is also in the code space. and equals. So. OK, so in fact that tells us that this correction worked. Even though the correction is different to what the to the underlying error, it doesn't matter because the product of the correction of the error was a stabiliser. So Correction, based on the syndrome and the error are in this stabiliser group. That is, that means there. Good, thank you. And so that means it protects the uh well the. Code space. Is unchanged. By OK. So, so we have this this nice and quite subtle property of uh this code which is, as I said, fairly. Generic in fact is that even though this code can't
+
+SPEAKER 1
+uniquely determine based on the stabilisers it can't uniquely determine that which cubit a phase error occurred on.
+
+SPEAKER 0
+It doesn't matter, as long as there's only one phase error, the correction I do based on that degeneracy has no effect on logical code words. So, degeneracy. Uh, for phase errors. Her syndromes, in this case, Is is OK, it doesn't, it doesn't uh degrade the, the property that the code can correct one logical. Uh, Z era, physical Zen era. Um And the last thing we need to do is to check a single qubit Y error. And remember YJ is a product up to some sign of X J Z J. So uh this will give a mixed syndrome. Um E.g., Y1 would give us a syndrome. Which would be How X1 commutes or anti-commutes with the stabilisers, X1 anti-commutes with this one but commutes with the
+
+SPEAKER 1
+rest, and Z1 anti-commutes with this one and commutes with that one.
+
+SPEAKER 0
+So we'd end up with a stabiliser, that's something like this. And then we'd have minus plus. And so we would correct with. Uh, with X1, Z1. The first set of syndrome bits would tell us to
+
+SPEAKER 1
+do an X one, the second pair would tell us
+
+SPEAKER 0
+to do a Z one, and the product is actually a Y one so that would up to phase that would correct things. So, so essentially by by exhaustive, uh, Checking We get correctable. Syndromes Uh, for all 27. Uh, single qubit. Polyaris OK, so that would be a lookup table decoder. Uh, which looks, which lists all possible. Single cubit errors. And list the syndrome associated to those errors. And then based on that syndrome we would get a correction which equals uh the that error. OK. So in the decoding we we measure some syndrome and
+
+SPEAKER 1
+this on this we have a, a correction which is just gonna be the corresponding single qubit error and that
+
+SPEAKER 0
+will, that will correct them. Except for particular cases like uh I guess we just went through Z1's gonna have a a, Particular Syndrome, and so the the correction there would still be the error, but Z2 will also have the same syndrome. And that we would correct with a Z1. That is to say. These syndromes are all going to be the same as each other and we're going to correct with the same thing, but because of degeneracy, that's fine. Is that clear? So these have non-degenerate syndromes. Sorry, degenerate syndromes, er. But still correctable. Whereas this one here would have, Unique, let's say unique syndrome. OK, so, so we, we can write down this long table, I'm not going to do it, but you can write down this long table and uh the syndromes are
+
+SPEAKER 1
+gonna be either degenerate or non-degenerate, and if they're non-degenerate
+
+SPEAKER 0
+that means they're unique and that tells us exactly which
+
+SPEAKER 1
+single qubit error occurred.
+
+SPEAKER 0
+If they are degenerate, you can work through this argument that says that their products are still um still fine. Um, there's There's other things we need to check, so we've already seen that um XLZL is proportional to YL which is just a product of all the Y's. Let's run out, so it's transversal. Um, and you can also check that the anticommutator of XL and ZL equals 0. So it has the same um. Yeah, Paley algebra, uh, as, sorry, the Paley has the correct Paley algebra. And then the last thing we need to talk about is um that. Last, last little uh. Loose end that we need to tie up, goes back to this point, where was it that. Who was it? Do you remember when we talked about the uh the the bit flip uh correcting code?
+
+SPEAKER 1
+There were these different ways we could define logical z's, so we could have defined a logical Z to be just a single cubic z on any one of the three cubits or it was pricey zs, and we chose the product because it was symmetric in some sense or dual to the logical X.
+
+SPEAKER 0
+But that degeneracy is, so, so there's a, there's a,
+
+SPEAKER 1
+in this case there's a redundancy or degeneracy in the way we define Z, in this particular case there wasn't for the for the X's.
+
+SPEAKER 0
+But that's a general feature. Equivalent presentations of the logical operators. So we, we've defined here what we mean by logical X and logical Z, but in fact they're not unique.
+
+SPEAKER 1
+So here we define logical X's to be products of z's, logical z's to be products of X's.
+
+SPEAKER 0
+But If I I have some, some state. And it has some, some. A logical operator has some action on it. So for example, XL XL has some action on a logical state psi L. And if I, if I thought of that as an active uh operation, I would have a new logical state psi L, which is what happens when I rotate by logical X. But I can write that remember as XL times any given stabiliser times i L. Since SJ psi L equals +1 psi L. So I could have I, I can insert uh stabilisers anywhere I like, uh, next to a logical operator because it doesn't change, sorry, a logical state because it doesn't change the logical state. So if I just change the order of brackets. I can write it like that. That is to say, So here I've got 2 operators now, Xcel, and I'll call it Xcelmed. That have the same action on logical states. And they're not the same operator. So for example, if SJ is what I called S7, which was a product of X's. Right now, I've gotta make sure I get things right. Uh I just annoying. change if it was X uh. Was S1 which was Z Z I I I I I I I, I remember XL in this twisted definition was itself. Products of Zs. Then XLS1 would be equal to, IIZ OK.
+
+SPEAKER 1
+So this had weight 9.
+
+SPEAKER 0
+But XL primed here has weight 7. But I could keep going uh and write XL which let's say is XL, S1, S2 S3 and S3 remember was, Uh Two Z's on the second block, ZZI. So that would be IIZ. I I Z Z Z Z. That has weight 5, and then I can keep going again. And write S1, S3, S5, which is going to have
+
+SPEAKER 1
+two Z's on the third block.
+
+SPEAKER 0
+And that would be 1IZ 1 I Z I I Z, which has weight 3. OK, so there, there are now 4 different ways to
+
+SPEAKER 1
+write a logical X operator that have equivalent action on the logical space, even though they're not identically the same
+
+SPEAKER 0
+operators, and they have different weights.
+
+SPEAKER 1
+Presentation rate of 9 was 75 and 3, and in fact this is the minimum possible we can get to.
+
+SPEAKER 0
+D equals 3 Um, up to stabiliser multiplication. OK, so we have this um this property that logical
+
+SPEAKER 1
+operators are are not uniquely defined.
+
+SPEAKER 0
+We can take any product of stabilisers multiplied by a logical operator and that's an equivalent logical operator. And there's always a minimum weight when we do that, minimalizing over all possible ways to multiply by stabiliser, it
+
+SPEAKER 1
+turns out 3 is the answer here.
+
+SPEAKER 0
+So this code. As distance D equals 3. So you can fill that notation in, so 913. OK. So So some comments on the shore code. See, um The first concatenated, Quantum error correcting code. That can Detect and correct Any single cube error. Palley era. OK, so, so we've we've we've succeeded in, Constructing a code that has the the property that any single qubit uh error can be detected and corrected, um, And so that at least proves that that quantum error correction codes that exist and that they can work and if the, Single qubit. Error rate Is P That means with probability P. Uh I shall say Pon 27. So, um Uh, per error, let's say. So any error Uh, with Uh, P. Then, um The Yeah Probability of um of uh an uncorrectable error. 2 kibi error. Is of order Um I guess we have 27, choose 2 sites times P on 27. To the 2 times 1 minus P on 27 to the 9 minus 2. So we have 20, we have lots of different ways
+
+SPEAKER 1
+that we can distribute two errors, that's this factor here. You'll probably be given one of those errors as P on 27 squad, and then they'll be able to put
+
+SPEAKER 0
+uh no errors, identities on the other ones. And that's proportional to P2 is some factor out the front. And That's right, it is B, beta, where. Um, beta is a combinatorial factor. So if beta P2, let's say. If B to P2 is less than P. The Pon 27, I should say. Um Oh no, I just pee. Mm So like we saw for the the uh 3
+
+SPEAKER 1
+bit repetition code, as long as the error rate P was sufficiently small, we had something that was proportional to P 2 was the 2 qubit and more error rate. Uh if P was sufficiently small then something that's P2 is gonna be less than P. and the fact that it multiplies that P 2 comes from these combinatorial arguments, and so you have to multiply things out, and you can see again that no matter what B is, it's just a number, and as long as P is sufficiently small compared to, Better than this statement will be less.
+
+SPEAKER 0
+And so that's, that's sort of this threshold, um. For error correction. to help OK. So I want to conclude just with some some more general remarks. So we've only or shown. That the shore code, Can correct Any one. Qbit Paley error. There's a theorem called the quantum error correction. Uh, condition QEC condition. Uh, let's say X I Y I. Is that all? Which implies that if a code can correct some family of errors, then any linear combination.

@@ -1,0 +1,1208 @@
+SPEAKER 0
+Right, so let's keep going. Urban quantum systems, um So where I wanted to get to, if you remember was this idea of a Lindblad-Master
+
+SPEAKER 1
+equation. Uh, and we made Start on Again, just to remind us where we're going, we wanted to We wanted to
+
+SPEAKER 0
+fill in this table, the table was we already understand. I understand unitary evolution is. Patient We talked about And then the thing we'd like to get to is an understanding. really system Tensor productive environment System right down the bottom
+
+SPEAKER 1
+that much larger.
+
+SPEAKER 0
+One close Some internal. Additional terms which take account The fact that this system
+
+SPEAKER 1
+is interacting with OK, and so then I went through
+
+SPEAKER 0
+this. So. Generally, so the general point really is that uh that
+
+SPEAKER 1
+derivation of what the environment does to the system evolution.
+
+SPEAKER 0
+In general terms, if the environment is itself a population
+
+SPEAKER 1
+Uh turned it We're going through a very simple simplified
+
+SPEAKER 0
+model which generalises this coin flip quantum channel. that Flips a coin, does something to the system and emits an output which is a transformation. Um, the generalisation we're making here is that we've got an asset for two-level. So I'm splitting delta You've already solved gene Uh a situation where this gap Made up of two terms, a constant term which comes from some internal physics of the atom that's unchanged. Some external, uh, externally driven fluctuations.
+
+SPEAKER 1
+Internal electric field or magnetic field.
+
+SPEAKER 0
+They fluctuating in a way that may Or m It's, if it's predictable, Functional form and your sine wave because you're you're driving the system.
+
+SPEAKER 1
+Or it might be And the, the variations.
+
+SPEAKER 0
+Energy due to that random Dimensional this time, some uh
+
+SPEAKER 1
+dimensional quantity of delta. I I Imagine that A function of time that's that's
+
+SPEAKER 2
+fluctuating in some ways.
+
+SPEAKER 0
+And then we solve the the reference case where this delta parameter, this this. This term 0, we just have ordinary unitary evolution, so
+
+SPEAKER 2
+we already saw that, and you can solve solve for that and you get oscillations.
+
+SPEAKER 1
+Plus state or the minus state. The probabilities in the computational basis. training is in their basis.
+
+SPEAKER 0
+Uh, and then we started to think about this case where, if we imagine this fluctuating turf is really a stochastic process, which satisfies. A bunch of Assumption One is that it has zero means. and at each moment in time the expected value of that That's pretty reasonable because if it wasn't 0 we could just add that. that expectation.
+
+SPEAKER 1
+Deterministic function of time and we can solve that. Fluctuations We're also assuming that this noise process.
+
+SPEAKER 0
+Espe correlation functions between The value On the difference And then we're going to make a more simplifying. Special case assumption that the noise is not just stationary. correlation function That there's some assumptions we're making and what that is. what you're saying is that the noise changes so quickly
+
+SPEAKER 1
+from moment to moment. 22 times that are separated by a finite. It's effectively uncor But if we ask what's happening to
+
+SPEAKER 0
+the noise at any moment of time, then the variance.
+
+SPEAKER 1
+certain And then just to remind you of.
+
+SPEAKER 0
+definition The functions of these properties and if I integrate. Well-defined function of time against the. Function If I am, if I That's our I said the Limits of integration to these. The I the upper limit is larger than 0. to be less than 0 Um, and then if I integrate from -5 to 0. definition So, so now we're interested in this, that, that I went through this uh argument that if we. Take those definitions of what we mean by this noise
+
+SPEAKER 2
+and these assumptions about We can write down the von
+
+SPEAKER 1
+Neumann equation for the evolution.
+
+SPEAKER 0
+Hamiltonian I'll try. And he sitting inside Um, and so we can do
+
+SPEAKER 1
+a, a simple, uh, In fact Yeah We expand that
+
+SPEAKER 0
+out. We take expectations over this. trading OK and That the the expected rate of change
+
+SPEAKER 1
+of When we go through all of thought is just
+
+SPEAKER 0
+equal to the commutator of naught. were the And importantly that the expectation of this term that comes from the fluctuations actually in this uh expectation
+
+SPEAKER 2
+vanishes, and so we end up with this statement here
+
+SPEAKER 0
+that the expected that you know row bar is the average. We get back the von Neumann equation with no effect
+
+SPEAKER 1
+from the fluctuation.
+
+SPEAKER 0
+So that seems like a Uh And it is a
+
+SPEAKER 1
+problem, it's, it's incorrect. This is wrong.
+
+SPEAKER 0
+And so there was some assumption that was made in here that that was, was false because if we, if
+
+SPEAKER 1
+we impose some fluctuation. fluctuations That So where we got to last week was
+
+SPEAKER 0
+this statement that, Could start in the same place by equation would be determined. Um, and Generally That form an equation twice. So here's, here's that equation. I'm gonna integrate it. That and then substitute. The derivative term gives you Substituting that back into itself.
+
+SPEAKER 1
+Tedious looking expression here, so that was the that was the. the matters. twice and, and in high school you'd end up getting
+
+SPEAKER 2
+like one.
+
+SPEAKER 0
+That's true, but Um, but we're And this is where we got to, so we take the expectation of this thing. OK, we expand out this, this commutator which has inside it a nest. I expanded out So here The initial density matrix. Uh, it's And so now we have to manipulate those
+
+SPEAKER 1
+things and and you know make some sense of it. So we're gonna do exactly the same as we did
+
+SPEAKER 0
+last. lecture, which is Take expectations over this fluctuating. Function of time FFT and see what happens.
+
+SPEAKER 2
+So When we do that is that whole thing on the right hand side. And we're gonna take expectations now over this fluctuating quantity, uh of, of the, let's say the left-hand side, well that's what I'm gonna call road. The So far That's the first term. And we have to do the same thing for all the other team. So that's gonna equal minus I uh H.
+
+SPEAKER 1
+Now we're gonna assume that the initial state is independent of this fluctuating function.
+
+SPEAKER 2
+Future time, so that's just going to give me road bar at T 0.
+
+SPEAKER 0
+When I take expectation of this term, I've got. The fluctuating function The coefficient of that Expectation this term
+
+SPEAKER 2
+Well, we're going to use, we have to remember some of these rules, the expectation of FFT is 0.
+
+SPEAKER 1
+expectation of this bit Sarcastic type of deterministic.
+
+SPEAKER 2
+Plus 0 The next term is.
+
+SPEAKER 0
+I'm here, but everything in here is Deterministic except for
+
+SPEAKER 2
+at T so it's important to keep track of the Funds Highlight some of the terms so that we keep track of later And That's right.
+
+SPEAKER 1
+So There's two other terms that are going to go
+
+SPEAKER 2
+to zero, So there's the next term which is His
+
+SPEAKER 1
+term here, so. So that's, that's evocative because the correlation function is gonna
+
+SPEAKER 2
+be this delta function. So we've got minus integral taught to t. So expectation FFT And bring the other FFT out T. the communist I So we'll come back to that term in a tick. this expectations. Brackets around Yeah, so we'll come back to that in a moment minus Same sort of thing for the next term. Same way And then there's going to be the last term. Similar and we've got the double commutator H1.
+
+SPEAKER 1
+So I'm just trying to 5 The expression, so we
+
+SPEAKER 2
+need to start. Evaluating those terms. So let's call this term 1, term 2, and term. So for term one, We've got an expectation of of
+
+SPEAKER 0
+this function itself at different times and also. There's a few things you need to notice about this, so the first time here, this time is the end
+
+SPEAKER 2
+of the.
+
+SPEAKER 1
+In That we're integrating up So T is bigger than
+
+SPEAKER 0
+Kind, so T is bigger than T. So this is later This is the same time as this dummy index C5. So this this moment and this moment And I remember we said that uh because it's a stochastic quantity, if it's a stochastic quantity you have to worry about.
+
+SPEAKER 1
+Causality. So the function row, which is the state row.
+
+SPEAKER 0
+It can depend on the past history of the function
+
+SPEAKER 2
+f.
+
+SPEAKER 1
+Function drives the system up to this moment.
+
+SPEAKER 0
+To Depend on earlier times than this, but it can't. That means statistically It means that this is uncorrelated with
+
+SPEAKER 1
+that. But it's also uncorrelated with this.
+
+SPEAKER 2
+So, if, uh, so you have the ordering. T is bigger than T and uh F of T. Um F T Statistically And R T is Statistically With F of T. To greater So what's the point of all that?
+
+SPEAKER 0
+Well, it's just saying that. That, but it's Uh, so what can we say about that? It means that we can factor out this term from. Certainly uncorrelated with each of these two.
+
+SPEAKER 2
+So then we can write one. people to Minus integral T0 to TTT. Expectation of. H1 So expectation of F F T. T R T is going to be. product So that's just what's This correlate variables this quantity. So that that's, I'm just using that fact here and, and remember. What is defined to be. That 2 primed. And so this thing here They're calling Gamma Delta So what did I say about Remember I defined the correlation
+
+SPEAKER 0
+function.
+
+SPEAKER 2
+So this is equal to g of T minus T and by assumption this is gamma of delta. With a minus integral Gamma Delta T minus T. H1 OK, well that's, that's really nice because now we've
+
+SPEAKER 1
+got an integral and and a. Do functions exist because they just want to get integrated.
+
+SPEAKER 2
+Uh, and so that's equal to minus gamma.
+
+SPEAKER 0
+And Time to as I say Really And then the
+
+SPEAKER 2
+rest I just get to evaluate at the current time.
+
+SPEAKER 1
+Happy with that?
+
+SPEAKER 0
+So that that's, that's the important term.
+
+SPEAKER 1
+been paid most attention to. We've got these other two annoying.
+
+SPEAKER 0
+0. 180 Fantastic function of time. He's Rogue.
+
+SPEAKER 1
+of these About Again, this is at a future time.
+
+SPEAKER 0
+So 0 as well, so let's just do.
+
+SPEAKER 2
+I guess I've been doing The difference is that there's
+
+SPEAKER 0
+Hamiltonians.
+
+SPEAKER 2
+The second term was primed.
+
+SPEAKER 0
+primed Is that pri 0 And then The last term,
+
+SPEAKER 1
+which is T variables and the same things.
+
+SPEAKER 2
+OK, so we'll just use this fact that Various quantities in this expression, uh, by virtue of the time ordering
+
+SPEAKER 1
+of. Variables Adaptations of products expectation Assumption expectation Is the expectation of Time trivially 0 Almost every Specific point So what's
+
+SPEAKER 2
+the conclusion of all this? This term went away to zero, this term vanished. We've already calculated the other two terms and then this
+
+SPEAKER 1
+last term was this double commutator which had H1A.
+
+SPEAKER 2
+And all the statistical bits vanished. On trading gets finished, so what do we have leftover, we've got. I thought minus 1 H. Right Right 1st term and then the 2nd term was Minus a double commutator. Front Grade 10. And then we've just calculated the, of the last three, we've got one term that's non-zero, that's that gamma term. Minusgama on OK, so it looks much better.
+
+SPEAKER 0
+Uh, now we've got. System evolution. A little bit annoying that it's still differential But this bit here was the thing that came about because of
+
+SPEAKER 2
+the So this is the new, this is the The new, uh of fluctuation It's given rise to this Annoying
+
+SPEAKER 1
+In a convenient form, but we're just going to fix
+
+SPEAKER 2
+that now.
+
+SPEAKER 1
+And I'm going to do a small amount of hand waving to do that because to do it properly. interaction tedious and not very edifying, so we won't.
+
+SPEAKER 2
+Sorry I'm going to write. The short version is that this, even though it looks
+
+SPEAKER 0
+annoying. Made up of a function at some time. of So that looks like An integrated form of a
+
+SPEAKER 1
+of a differential equation, and so what we're gonna do is replace it with the solution to that differential equation.
+
+SPEAKER 2
+So I can write that as a minus I H 0, rowbar T0, so I'm just collecting terms here. Minus 1 integral at T0 to T. pride And I want to focus on this bit that's in the middle here.
+
+SPEAKER 1
+The decimation the initial time.
+
+SPEAKER 0
+It looks like an integrated form.
+
+SPEAKER 2
+Of a commun So We'll make the claim that equals minusi. H The point is that this whole thing is The
+
+SPEAKER 0
+same as the to that Expression So Right.
+
+SPEAKER 2
+And well, if the claim's true, that means that row dot is equal to rowbart. row bar Minus gamma onto One And then we'd be happy. This would be called the Lindbla.
+
+SPEAKER 1
+OK, so here's here's a rough way you Right So
+
+SPEAKER 2
+for So if rowbar is equal to minusih. Rbar plus order is quantity gamma, we're gonna assume that
+
+SPEAKER 0
+the fluctuations are relatively small for this. We imagine that Which is just this form And Then
+
+SPEAKER 2
+row rowbar at T. Minus rowbar at T0 is equal to -5. Integral thing or what Function together. things that Robot Taught On Just going to solve solve that for rope RFT. to rot or On She And you'll see that I've just a gamma I've just written out.
+
+SPEAKER 1
+This right of tea. OK, so that's at least self what OK know.
+
+SPEAKER 0
+That's at least a sole consistent argument. I That's where I If you want to be more
+
+SPEAKER 1
+A way to do it Transform Interaction picture defined by
+
+SPEAKER 0
+vanished and just Solve that So at least this is
+
+SPEAKER 1
+a, a self-consistent.
+
+SPEAKER 0
+to Solution to a differential equation of this form.
+
+SPEAKER 1
+So the self-consistent But it's that box that I want
+
+SPEAKER 2
+to focus on now, because that's, that's now the, the
+
+SPEAKER 1
+thing that gives us.
+
+SPEAKER 2
+Um, so Evolution of the system. is governed the You can master equation Is that, and I'm going to write it like this, minus 1 H. that gamma times a thing. Squiggly Dee Squiggly Dee Of any operator For the super operator is a row A dagger. a half Sorry?
+
+SPEAKER 1
+So this is, this is a dissipated super operator.
+
+SPEAKER 2
+So why is it called a super operator, so This
+
+SPEAKER 0
+object row is. the density All that means is it's a matrix. So if I write down a commentator of this form here, I've got System Hamilton And then this thing gets
+
+SPEAKER 1
+called an operator. We don't usually think of this as an operator.
+
+SPEAKER 0
+er But Uh We can also think of this as So you use me Use MATLAB, you can turn matrices
+
+SPEAKER 1
+into vectors.
+
+SPEAKER 0
+You think of this as a Right that victim This commutator now looks like a large, a larger. Multiplying that commutator as a super old. This thing here is, is also a super operator and it acts on density maintenance. An But it has the same And So why is
+
+SPEAKER 1
+it called super?
+
+SPEAKER 0
+Well, because This, this thing, I think of DA as being a The axe He an act on.
+
+SPEAKER 1
+super Operators which are And by matrices Act on State
+
+SPEAKER 2
+that on interdimensional state that Super operators Invite N2 by N2 matrices. In square You can think of System operators So if
+
+SPEAKER 1
+I wanted to write this as a linear map.
+
+SPEAKER 0
+Vorized I have to It's commutator H5. Uh, And by nature So really the point is that
+
+SPEAKER 1
+this dissipator and this commutator structure are sort of the
+
+SPEAKER 2
+same kind of object. Same class of mathematical object.
+
+SPEAKER 1
+So I wanted to say a few words about The
+
+SPEAKER 2
+dimensionality of these things. So So when we started off with the Hamiltonian. So it was that the Appleton last sign off.
+
+SPEAKER 1
+And this is what I called H0 plus.
+
+SPEAKER 2
+H1 Yes So H naught. was Minus delta 0 on 2 Z. And H1 Minus Delta on As well. What, what does, what's the dimensions of? Let's remind ourselves, what's the Schroeder equation?
+
+SPEAKER 1
+So a Hamiltonian should have dimensions of.
+
+SPEAKER 2
+Well, what's the dimensions of There's a uh Test for you, what's the dimensions of H bar? And the dimensions of a Hamiltonian. and energy And often, you know, if, if we are
+
+SPEAKER 1
+being a bit.
+
+SPEAKER 0
+A bit lazy about That really means that age has
+
+SPEAKER 1
+So that's fine. Um So here, Delta naught.
+
+SPEAKER 2
+The dimensions of jolted North are what Because that is
+
+SPEAKER 1
+Now you might be tempted to then say that.
+
+SPEAKER 0
+Delta has dimensions of of joules as well.
+
+SPEAKER 2
+I just I realise I've probably made a annoying. definition A camera OK And, and so then when we,
+
+SPEAKER 1
+um, let's let's just go back to this uh master
+
+SPEAKER 2
+equation, row minus I. H It's not road. can You know, maybe the simplest way to fix this is if I just get rid of the delta from that term and leave. Because if you remember in the Derivation here, I just
+
+SPEAKER 1
+said.
+
+SPEAKER 0
+Expectation of is going to Um, and we're We had
+
+SPEAKER 2
+Expectation of FFT. FFT Gamma And More convenient because then otherwise Apologies OK,
+
+SPEAKER 1
+let's, let's just press on, so that, you know, this,
+
+SPEAKER 2
+this statement here tells me that the dimensions of H0 are joules or. I guess I probably should have worried about that.
+
+SPEAKER 1
+Let me put And The way I've presented here, the
+
+SPEAKER 0
+dimensions of H1.
+
+SPEAKER 1
+Dimension So that tells you that this, this function F
+
+SPEAKER 0
+itself must have have some dimension.
+
+SPEAKER 1
+So if I look at Right dimensions This has got
+
+SPEAKER 0
+dimensions of, of joules over joule seconds, so that's correct. Well is a dimensionless And so this overall has to have dimensions.
+
+SPEAKER 2
+So that tells me that the dimensions of gamma. Has to be Square And the right hand side has
+
+SPEAKER 1
+dimensions of Gamma over H bar squad, which we already
+
+SPEAKER 2
+said was inverse seconds. interventions So does anyone remember a delta function, what's the
+
+SPEAKER 1
+dimensions of it? Not quite. So, um, We have Well, let's do it in units of length. If I had an integral of.
+
+SPEAKER 2
+That form, what's that?
+
+SPEAKER 0
+So the right hand side of that Dimension Or dimensions of whatever So this has to have dimensions of one over that. Conventions which are the reciprocal of its argument.
+
+SPEAKER 2
+Joule seconds Times the seconds inverse. And so I guess with, with all of that, we,
+
+SPEAKER 0
+we're we're. And like So I guess we're happy That means that
+
+SPEAKER 2
+the dimensions of F. Left hand side That has to be the same as
+
+SPEAKER 1
+the dimension, the right hand side dual squared.
+
+SPEAKER 2
+interventions So I guess that's what I wanted This function
+
+SPEAKER 0
+does have the right You have to be a little bit cautious about Um, and And so, uh, gamma over
+
+SPEAKER 2
+H bar squared. Which I've already said has units of, of, of seconds, is a rate. correspond to some decay road in OK, so Enough of
+
+SPEAKER 1
+that. So for our purposes, for our two level atom.
+
+SPEAKER 2
+Driven But factor Very So Now that's something we can
+
+SPEAKER 1
+actually solve. Well, I want to say some more things about So now this is a a system and and also uh
+
+SPEAKER 2
+an. Right. Road system Is the noise average So what's the structure
+
+SPEAKER 0
+of this? Well, it's, it's really the same structure again as the vino equation, the first step is. The second is modification is 0 if there is no
+
+SPEAKER 1
+noise. That quantity is back 0 that turn.
+
+SPEAKER 0
+But it's in general non zero Not a trivial Uh,
+
+SPEAKER 2
+and it accounts for the effectiveness. This accounts Now we're gonna come back to uh to
+
+SPEAKER 1
+say a few more things about, about density about mass
+
+SPEAKER 0
+equations of that form. This is a special case because this argument. Frustrating to If I have Bar fluctuating The system interacting
+
+SPEAKER 1
+constantly via some Hamiltonian with us.
+
+SPEAKER 0
+This, this term, firstly there can be several of these terms. this doesn't have to be an issue. But that captures general open quantum systems evolution within the.
+
+SPEAKER 1
+So that's a very general form, even though I've derived
+
+SPEAKER 2
+it from. So So To many Systems That Really, the important bit is that they're weakly coupled. To an environment So what I want to do OK,
+
+SPEAKER 1
+so I'm gonna take a few minutes just to see, I've got to rearrange my. So Uh, so just take a break for a little. Let's say 5-minute break. So Sorry Yeah, so I guess that the.
+
+SPEAKER 0
+Thing to say bra So Why Vector spaces A general OK. What are all the linear transformations. All just be in That might seem We learned how we always right is a matrix. Same is true trivially for if you imagine a vector spaces.
+
+SPEAKER 1
+You can see already, there's a subtle difference, which is that vector spaces.
+
+SPEAKER 0
+or Just But now think about density matrices, so density matrices.
+
+SPEAKER 1
+So I'm allowed to multiply it by another matrix.
+
+SPEAKER 0
+So, linear trans so we can ask now what what
+
+SPEAKER 1
+are the general class of linear transformation?
+
+SPEAKER 0
+That Should I think of all the new transformations as
+
+SPEAKER 1
+all less multiplications of For a common factor The For
+
+SPEAKER 0
+density m A general Now that that question goes away
+
+SPEAKER 1
+if I vectorize that. I could have vectorized and made a flat road there.
+
+SPEAKER 0
+And then I'll be But they're just, so, so they're
+
+SPEAKER 1
+ways to think about what are the transformation. It turns out that at the level of, if I
+
+SPEAKER 0
+want to keep that density matrix.
+
+SPEAKER 1
+The nitrate Then all linear maps look like a combination
+
+SPEAKER 2
+of. The sum of the left you make Density matrix, it
+
+SPEAKER 0
+takes it takes a density matrix or a thing that's
+
+SPEAKER 1
+not the same. Liar This, this thing that introduces dissipator is. Um Let's just So, uh, linear transformation.
+
+SPEAKER 2
+representation I went back to space Fucking map and So
+
+SPEAKER 1
+if I'm just talking about transformation.
+
+SPEAKER 0
+I.
+
+SPEAKER 1
+I can also map A joint space This is a row vector. the Yeah, so, so now I have two ways I can think of a density matrix. I can think of it as, as. CN times CN matrix.
+
+SPEAKER 2
+And then I can do things like row prime goes to row. Well, a new object it's actually not. Which is H row.
+
+SPEAKER 1
+And now I'm multiplying.
+
+SPEAKER 0
+Left hand And Or I can do this other thing
+
+SPEAKER 2
+which I. This other object which I've introduced today, which is And
+
+SPEAKER 1
+now I'm doing things that are left.
+
+SPEAKER 0
+And it turns out Not necessarily obvious, but that that
+
+SPEAKER 1
+combination of multiplying on one side. Um, but I can also think of, uh, Roe as
+
+SPEAKER 2
+a vectorized thing which is now an n square dimensional
+
+SPEAKER 1
+vector. called it a super vector And then Roy, and I'll
+
+SPEAKER 2
+write it as uh. I can write a thing which I'm going to represent like this.
+
+SPEAKER 0
+And now Vectorized representation.
+
+SPEAKER 1
+And that's going to be a thing which is now an n2 by n2 matrix times an n 2.
+
+SPEAKER 0
+And now all transformations on this thing have left. Every Uh, And If you actually Yeah, yeah, you've just
+
+SPEAKER 1
+got these Rose It won't be, it won't necessarily be diving cardinal, but it certainly would be very sparse.
+
+SPEAKER 0
+No that's OK. I mean, it's just, this is a very sparse, this these representations generically will be very sparse. They don't have to be, they could be. If I just write this as For these simple cases it'll turn out that.
+
+SPEAKER 1
+just Well, so where it becomes important We'll see this in a tick is that So for for numerical solutions.
+
+SPEAKER 2
+population You know, if I want to solve the Schroeder equation, which is this thing here.
+
+SPEAKER 1
+How do I do that? Well, The solution, you know, is to minus.
+
+SPEAKER 2
+T What does that really mean as a matrix? This is, this is the uh matrix exponential.
+
+SPEAKER 1
+If I represented So do you know how That's right. Where, so if I think of a matrix A to
+
+SPEAKER 2
+the A. That's, that's If I have a matrix A that I can diagonalize as P D. A dagger He is the identity. Then that means that e to the A I speed to that Dagger and you've probably gone through the algebra for that, that's equal to P. In the day And so you know that you can
+
+SPEAKER 0
+solve that like.
+
+SPEAKER 1
+If, if, if I, if Yeah.
+
+SPEAKER 0
+Sort of don't, I don't get the jump structure.
+
+SPEAKER 2
+that Do you understand, you mean how, how to derive that term?
+
+SPEAKER 0
+I, I see it, it's just there's. this in here, yeah, so there's. Yeah. OK, so, so, OK, maybe I'll just too quick here, so. This is, this is just a definition.
+
+SPEAKER 1
+This point is a definition.
+
+SPEAKER 0
+And, and that, this definition coincides with that thing, so
+
+SPEAKER 2
+let's just go back to that for a moment, um. So Will that answer your question if I just go to So, so, um, So check So D H1 row. So this definition is that it's H1 row H1 dagger. -5. H1 dagger, H1. So actually, if you've got a pen and paper, just, just work through this. Yourself for the idea I should Yeah, so let's just, let's just expand them.
+
+SPEAKER 1
+OK, so minus.
+
+SPEAKER 0
+So if you stand out this double commutation, you should get 4 terms. The first name is going to be H1H1 Road. First You can see if I, if I Negative part of this an H the Do the other This one And so you can see when I do that. There's, there's two terms that have productive. To A row sandwich between H1s.
+
+SPEAKER 2
+And if I get Minus signs correct, then that looks like H1 row H1 minus a half.
+
+SPEAKER 0
+Double commutator Made up of 3 terms And this object
+
+SPEAKER 1
+is dissipated that I introduced, also has three terms, uh, but. If this argument is a The mission operator This, this thing is uh more general than this. It is H1 If the argument is Then this is
+
+SPEAKER 0
+just the same as Just as a matter of So
+
+SPEAKER 1
+it's, it's like Uh, yeah, we're gonna use it, we're
+
+SPEAKER 2
+gonna use it that.
+
+SPEAKER 0
+But, but really, I mean the way if you see this thing, you just have it in the back of your head, but it really did come.
+
+SPEAKER 1
+Why is that? It it came about because.
+
+SPEAKER 2
+I did this, this, uh.
+
+SPEAKER 0
+Trick which was to solve it solve the master it solve by von Neumann. Substitute it back into itself, so I had the original commutator. The solution, so it really was a massive.
+
+SPEAKER 1
+And that happens in all these derivations.
+
+SPEAKER 2
+It's happening in this special case, but it's common to what happens.
+
+SPEAKER 1
+consistent environment Fromtain structure and that nested prot structure. And uh Gener So you say that If you want to sort of have some intuition for where it came from, the answer is it came from integrating it.
+
+SPEAKER 2
+Yeah, so I was making some comments on here.
+
+SPEAKER 1
+So yeah, so This is back to Your question, you know, so, so if I had, if I want to
+
+SPEAKER 2
+solve equations, solve, you know, this is just a, this
+
+SPEAKER 0
+is. This discussion here is just a statement about. Linar trans space Density matrices But I can rewrite that And made it sound like you're happy with this statement. If I think of this as a vector, then then it's just obvious that all linear transformations. decided to represent this for No So then So what,
+
+SPEAKER 1
+what's, why, why do we care about that? Because in the end we want to solve the equations.
+
+SPEAKER 0
+If I have an equation of this Commission op Um,
+
+SPEAKER 1
+what if, what if I've got an equation. That's just in general. Expo is some other, some.
+
+SPEAKER 2
+a vector and Where I There's an arbitrary Matrix That
+
+SPEAKER 1
+was What if aid is not Well, I mean, let's
+
+SPEAKER 0
+start, go back, what, what is the solution to that?
+
+SPEAKER 2
+X of T is still equal toe. To the A of T x 0, that's all true.
+
+SPEAKER 0
+But now this is not the mission. And so in general, we can't We can't, sorry, if
+
+SPEAKER 1
+it's not emission then we can't diagonal. It doesn't even necessarily have Um But, but that exponential
+
+SPEAKER 0
+is still perfect.
+
+SPEAKER 1
+So then we have to go back to um The
+
+SPEAKER 2
+To the definition, EAT is So that's, that's just the yeah. Impunity and of course So, so that's what I'm doing
+
+SPEAKER 0
+Evaluate the right hand side Sums of products So for
+
+SPEAKER 2
+this super operator story, you know, we're going to have. And this is what we'll see in a moment.
+
+SPEAKER 1
+So Another example, if we want to solve row.
+
+SPEAKER 2
+equals minus IH row. Plus the Some operator A. easily write down Well, I actually In that case, I already know that row is equal to E to the minus IHT.
+
+SPEAKER 1
+So, because I already know the bottom equation is a generalisation of the stroke. But if I have the Lindblad equation, which is now.
+
+SPEAKER 2
+Not of that What's the solution to that?
+
+SPEAKER 0
+This is, this is not just a formal solution, but it's a thing I can imagine. That's that's a recipe for how to evaluate that. So this is where vectorization comes in.
+
+SPEAKER 1
+So if I vectorize or flatten. So now it's going to be a factor N 1 N 2 by 1 dimensional, and then I have row dot is now a big matrix, it's an N2 by
+
+SPEAKER 2
+N2 matrix. Time, right? one And that means that road at time t is to the.
+
+SPEAKER 1
+But that's also something The only problem is it's a
+
+SPEAKER 0
+big It is if, if the Hilbert space is 2. This is now 4 That's fine. That's right. So, so quickly If we were solving a 10 dimensional system. Unitary evolution, the unitary evolution operators sort of 10 by 10. But this operator The the idea that So, so that I really is just so.
+
+SPEAKER 1
+It captures everything that's maybe maybe I missed, I should have written it as a.
+
+SPEAKER 2
+Let me say that that row dot is going to
+
+SPEAKER 1
+be As a super operator, I'm going to write it
+
+SPEAKER 2
+as B R.
+
+SPEAKER 1
+it ends up That's right.
+
+SPEAKER 0
+So this, this be, so here I've just written it still as a as a super operator.
+
+SPEAKER 2
+Bay which remains. So we're B of dot means. Minus I H.
+
+SPEAKER 0
+This, this thing just means do that. But if I vectorize The density matrix, then this this For years Just becomes death multiplication. About this that's Well, what's your, can you rearticulate your,
+
+SPEAKER 2
+your original question?
+
+SPEAKER 1
+I guess I'm just When you've OK, so let's, let's.
+
+SPEAKER 0
+OK, so, so that, that's, so. So this is, this is what, this is almost literally
+
+SPEAKER 1
+what I wanted to actually do is to now go through.
+
+SPEAKER 0
+No, Um I'm gonna sit down so I can drive my computer so.
+
+SPEAKER 1
+OK, so So we had to find capital though.
+
+SPEAKER 2
+So imagining I've got a density matrix that's in a
+
+SPEAKER 1
+two-dimensional space, so, so there, that's a, that's an explicit form for some density matrix. Um, let's just define a commutator. Um, and so now, uh, uh, well, also Mathematica has a bunch of built-in things like, like Paley matrix. That's a power. Uh, and so I could do a thing like this,
+
+SPEAKER 0
+um. So that's, that's a So that's the commentation So What's
+
+SPEAKER 1
+the von Neumann equation? So that's the left hand side, that's the.
+
+SPEAKER 2
+It's going to Let me do it this way. So if that whole thing was equal to 0. That, that would be the that?
+
+SPEAKER 1
+Um, so I can ask, so I can ask for the solution to that. So it's gonna, it's gonna become sort of extremely self-evident here, uh why I need to flatten, why I need
+
+SPEAKER 2
+to vectorize. So what does this That just writes it as a
+
+SPEAKER 1
+That object is, is that thing as a matrix, so
+
+SPEAKER 2
+flatten just takes jams into.
+
+SPEAKER 1
+So now this is a vector, but explicitly so, and I'm just doing that because when I use Mathematica I
+
+SPEAKER 2
+need to Structural things in Mathematica, so, so at this
+
+SPEAKER 1
+point I'm just doing it to make maths. I take that The left hand side is the derivatives,
+
+SPEAKER 0
+the right hand side is the.
+
+SPEAKER 2
+Operator and you can see that that's just the same
+
+SPEAKER 1
+as It's the same as these, these elements. That list of things is the same as the terms that To do one more thing, which is That turns a vector equals a vector in. So that's the bottom So I can put that in there And I've been solved for I want to solve
+
+SPEAKER 2
+that So that's the solution.
+
+SPEAKER 1
+So that's, that's the Solution to these 4 equations for these 4 variables. at each time.
+
+SPEAKER 2
+And so Ask what does that look like?
+
+SPEAKER 1
+OK, so that's the general solution. I haven't yet put in initial conditions. So we need to also have Some initial conditions.
+
+SPEAKER 2
+Going to be the same form. 0 and on the right hand side. So let's just make these um So that's just saying
+
+SPEAKER 1
+that the initial values have to be those things. So that's the solution.
+
+SPEAKER 2
+say that 2 to 0.
+
+SPEAKER 1
+gives me back the initial initial. So at the, at least at this level, the, the purpose of flattening is actually just mathematical what's a list of equation.
+
+SPEAKER 0
+But I could take those equations.
+
+SPEAKER 1
+The right hand side is this. Coefficient So this is. This is just a list of the right hand side of the equation. And this is the matrix that I would multiply by the. Components of the density matrix to get that list of equations. In other words, If I say I'm gonna call this the matrix B. one, So What if I ask for the coefficients of
+
+SPEAKER 2
+Some equations with uh some variables. Right side of the equation here's the It gives me
+
+SPEAKER 1
+back some sparse arrays. The first one is a vector, the second one is
+
+SPEAKER 2
+a matrix, and it can give you higher order terms, so it's, it's imagining that these are.
+
+SPEAKER 1
+polynomials in those variables.
+
+SPEAKER 2
+And I can have a look at what those sparse arrays actually are. So the first one is just 0.
+
+SPEAKER 1
+And the second one is So if I take the matrix part, which is the second part, then that's what it is, and I can just check that if I do. B.
+
+SPEAKER 2
+It's the same as the right hand side So So
+
+SPEAKER 1
+now I've got this matrix B. Which is the right hand side of the evolution equations.
+
+SPEAKER 2
+And so I should be able to evaluate. The matrix exponential of BET. That's what it says it is.
+
+SPEAKER 1
+And that I can multiply by this.
+
+SPEAKER 2
+0 And that should be the solution Compare that with this solution here.
+
+SPEAKER 1
+That's right, just remember this was the initial value of
+
+SPEAKER 2
+road GG. Etc. And say that they The fact is the Thai dependent.
+
+SPEAKER 1
+What, what's Mathematica doing in this desol or because it's a simple linear time independent set of equations.
+
+SPEAKER 2
+That this is explicitly the solution.
+
+SPEAKER 1
+So let's do the Lindblad.
+
+SPEAKER 2
+require So I'm also define This thing here which I'm
+
+SPEAKER 1
+going to define. So that's what I want that that thing to make.
+
+SPEAKER 0
+And so I can also evaluate. So that's what that would look So let's try and
+
+SPEAKER 1
+solve the case now. that master version I should add in here gamma. So that on to So that would be, that would
+
+SPEAKER 2
+be the matrix form for the, that's just.
+
+SPEAKER 0
+Neumann equation So that was the von Neumann, the right-hand side of the body.
+
+SPEAKER 1
+An equation This is the Lindblad equation, and what's the difference? Well, you can see that this part here is the
+
+SPEAKER 2
+same. This one here This part here is Different Additional The master equation That's the, that's the Limdo master equation.
+
+SPEAKER 1
+These things equal to 0 and then Thread is just a thing that thread. That through the OK, so that's the solution for the Niglamaster equation. I just go back You can see it's similar, like there's still these, the initial values obviously were chosen to
+
+SPEAKER 2
+be the same. So if I said 0. You can see that's all the same initial values.
+
+SPEAKER 1
+The same, same initial state. What's the difference? Well, the difference is he's off diagonal. And that's Solution to the new blood master.
+
+SPEAKER 2
+Well, that's the solution to limblo marsh.
+
+SPEAKER 0
+Yeah, so let's, let's just ask for a row.
+
+SPEAKER 1
+For the two case So there, there's the one of
+
+SPEAKER 0
+the off-diagonal elements of the density matrix for the two
+
+SPEAKER 1
+solutions. They've both got the same initial value, obviously see if. What if I wanted the the probability to be in
+
+SPEAKER 2
+the In the plus state, it's going to be the
+
+SPEAKER 1
+sum of those coherent. So that that might be something that I'm interested in is this quantity here, so that will be the coherences.
+
+SPEAKER 2
+Is Then So there's the solutions, uh, let's suppose that
+
+SPEAKER 1
+we started off with the same initial values.
+
+SPEAKER 0
+Let's suppose we said B was.
+
+SPEAKER 2
+And see But you can see that the difference is
+
+SPEAKER 1
+that this is just pure oscillatory terms. This has now got a we've got a real decay. And so we could plot And that's just make Choice of 2 So in fact this is So if you tell us some things about The point being that that solution is manifestly real, so I can just. And so here's the So this is the, the, the
+
+SPEAKER 0
+time evolution for the open, the the closed system which
+
+SPEAKER 1
+was the von Neumann.
+
+SPEAKER 2
+It's getting Persistent oscillations for all time.
+
+SPEAKER 1
+That's the blue line, and Lindbla-Master equation in the diagonal
+
+SPEAKER 2
+part in the coherent part which is Some, it's giving
+
+SPEAKER 1
+exponential decay shows up, this parameter gamma shows up as
+
+SPEAKER 2
+the So I guess that that's.
+
+SPEAKER 1
+You know, a, a practical example of, of why you
+
+SPEAKER 2
+want to flatten things is because you want to then evaluate and say.
+
+SPEAKER 0
+So this is the uh right-hand side of the uh
+
+SPEAKER 2
+Lindblad Master equation. Is that thing? So. So that's, that's this B matrix for the Lindblade-Master equation.
+
+SPEAKER 1
+And so I can exponentiate that.
+
+SPEAKER 0
+And so that's the matrix that's the. A way to solve the same set of equations.
+
+SPEAKER 1
+So that's the solution. The Lindblad-master equation, you can see it's the same as
+
+SPEAKER 2
+Desol, I've just got these, these terms. But so these, these exponentials are just the same as
+
+SPEAKER 1
+these ones? So that that's a practical reason as to why you might want to think about vectorizing. that That which is the time evolution operator, which is no longer her mission. You can see this matrix is not her mission.
+
+SPEAKER 2
+The difference in the uh objects is they're not emissions. That's, that's not I can't just calculate the eigenval.
+
+SPEAKER 1
+He I can't just calculate eigenvalues necessarily at that. But I can still actually So that's actually what I wanted to, like, roughly, I'll, I'll tidy this notebook up and I'll put all these notes onto the.
+
+SPEAKER 2
+But that, that's roughly what I wanted to get to
+
+SPEAKER 1
+anyway, so thanks for your questions. You know, practically we need to solve an equation of this.
+
+SPEAKER 2
+So for open quantum systems, our, our task is to solve an equation of that form.
+
+SPEAKER 0
+We've just done that. Right instance, and you can say that that's the sort
+
+SPEAKER 1
+of So yeah, that's what I wanted to finish that discussion. Maybe just the last thing we need to say.
+
+SPEAKER 2
+Is that now we have an answer to this. What what belongs down here.
+
+SPEAKER 1
+What belongs down here is robot is minus I.
+
+SPEAKER 2
+A system row Plus a Lindblad operator. of some form, some rate. And in fact, in general, we can have sums of those.
+
+SPEAKER 1
+There were some structural things I wanted to say about uh Lindla-Master equations.
+
+SPEAKER 2
+I'll say them briefly on, on Friday. The general Generation And you can see it includes the.
+
+SPEAKER 0
+All right, so we'll get on to quantum error correction,
+
+SPEAKER 1
+uh. On Friday, there's a few last things to say about
+
+SPEAKER 0
+this this fall.
+
+SPEAKER 1
+Waste of time doing Finish this this topic off today.
+
+SPEAKER 0
+Thanks very much. I'm gonna put the assignment on on this afternoon. Never seen emotionally Never seen yours. I think that's uh there was a Followed up would have been the. So what was the question? Yeah, do it like, is there any guidance? For the VA, no, I know you weren't here, but so the VA is not something you should prepare for, like they're not questions that are set up. For you to revise What we really want is for you to come in and just sit them blind. not really have thought of, you have your notes and your textbooks, you're not, not allowed to use the internet
+
+SPEAKER 1
+for things, but you know you can have any notes,
+
+SPEAKER 0
+and, and they're not meant to be. They're just Yeah, what, what we consider to be relatively simple questions. Virtually in 20 minutes, it's been exactly.
+
+SPEAKER 1
+prior to chat GPT does all this stuff with his
+
+SPEAKER 0
+check and. Yeah They were human intelligence, but it was somebody else. He So, so it's been an issue that universities have had to deal with in schools. Not, not just because Yeah And it's not We're not
+
+SPEAKER 2
+sort of good people.
+
+SPEAKER 0
+about By surprise I really hope not. Like that's not what the intent is. The intent is to give you a question that's extremely well posed. Work through and then show it to. And it's actually not even getting the question right that's important, it's, it's showing you can think through how to tackle it, you know, if you get a minus sign wrong. that And then, now I remember. I do. It would have to be a so you can't. So it'll have to be I suggest we um The Bible be Yeah, I like You

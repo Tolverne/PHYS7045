@@ -1,0 +1,356 @@
+SPEAKER 0
+right Like Yeah.
+
+SPEAKER 1
+something Great, that works.
+
+SPEAKER 0
+How's everyone doing? We've got the fiver today, so who, well, who's doing a fiver today? Hopefully they turn up. All right. Uh. OK There's 70% leftover, isn't there, after that, you can just sort of bring it. In the 70 Right, so, um. We have already started talking about quantum error correction, but mostly we have been talking about classical error correction, and just to remind you what we did with classical error correction was to think about this thing called the repetition code.
+
+SPEAKER 1
+is there's a self-explanatory in trying to send some information
+
+SPEAKER 0
+in a way that is uh gonna protect against the effect of noise and we call the effective noise errors. And It's reasonably intuitive I hope that if you replicate the information a few times over the redundancy means that
+
+SPEAKER 1
+when there's a, if there's an error that occurs, you
+
+SPEAKER 0
+can take a good guess as to what the error was, and if, as long as the error's not too heavy, not, not too many errors occurred, then you can recover. OK, so the 3 bit repetition code is our example, and it really is just like backing up data. And, and we saw this notion that uh, But the repetition code in particular, but this is a general point about codes is that, They have a notion of a threshold that is as long as the error rate is sufficiently small, encoding, uh, in, in some code will do better than not encoding. Uh, but that doesn't persist, uh, indefinitely, at some point, some sufficiently high error rate, the encoding actually can do worse, um.
+
+SPEAKER 1
+And also the encoding doesn't make things perfect, it just
+
+SPEAKER 0
+makes things better. But better is is enough in general. And Certainly what it does is it allows you to increase the number of uh qubits or number of time steps that you could take in a particular task. Uh, you know, if you don't encode you can you can roughly go for 1 over P, the error rate, number of steps or number of cubits, and that's a, that's a bound that's set by the inherent error of the system. Um, and if that error, inherent error is, is a physical property, that is, you can't engineer it to be better than, than what you get out of the tin, then you have to do something to, uh, to produce a scalable, um, resource which doesn't depend any longer on, on that inherent, uh, rate. So then we, we talked about how you might generalise that classical repetition code to the quantum case, um, and one guess which you correctly identified wasn't gonna work is you can't just copy a quantum state multiple times, an unknown quantum state multiple times, that violates the no cloning theorem, uh, but what you can do is to encode not in a, um, Uh, not in a in a
+
+SPEAKER 1
+single physical entity but to, uh, encode across multiple entities
+
+SPEAKER 0
+and so we now have this idea of of quantum
+
+SPEAKER 1
+code words, which are like classical code words which are.
+
+SPEAKER 0
+Repeats across some physical, uh, some number of physical entities the same, uh, code words and then we can, uh,
+
+SPEAKER 1
+it is allowed by the laws of quantum mechanics to, uh, distribute that information from one, physical entity across multiple ones, and so that's called an encoding, and we can
+
+SPEAKER 0
+see this particular encoding circuit does it for the repetition code. So now we have this uh problem or a question that's still, uh, Um is going to affect quantum error correction, which is We, we, we can say at least in principle we can encode information in this thing called a repetition code.
+
+SPEAKER 1
+Uh, and if we do that, encode a save across multiple replicas of that physical system. we're using Is an encoded state, if, if that encoded state is subject to some error like a bit flip error, then it ends up in a new state, which
+
+SPEAKER 0
+is orthogonal to the uh the encoded state. And how do we extract from this error?
+
+SPEAKER 1
+Affected state with which we can do to correct it.
+
+SPEAKER 0
+So that's what we wanna be able to do is to, After encoding a system that then is subject to
+
+SPEAKER 1
+errors, we need to, we need to extract some information from this error afflicted state to derive some operation that we're gonna do to fix up the the errors.
+
+SPEAKER 0
+OK. So there's a few, a few things to reiterate, so, uh, in general, We don't know And If or where an error occurred. If we did, we could just, if we knew a next error happened at some point, we would just reverse that by applying another bit flip which would two bit flips get you back to where you started from, um. So we need To extract Uh Some information Uh, from, from the error afflicted state psi, which is the psi logical. Uh, that Well, um Enable. Good guess. As to the error. And so if we go back to the the classical repetition code, Which ones back here.
+
+SPEAKER 1
+Well of course, you know, the sender sends one of these, either this message or this message to the receiver, the receiver's gonna get one of these out. Of the channel Either, you know, they're all zeros or all 1s which are out of code words, or some uh list of of received states which would correspond to
+
+SPEAKER 0
+there being one or two errors.
+
+SPEAKER 1
+Um, and in and in the classical case, it, it's perfectly fine to assume that the receiver knows what these values are. So the receiver, if they get 001, they can just look at it and say well I've got 001, and they can do this majority vote and decode that in this case to, Sort of zero logical code word, um, and we saw that if they do that, the, the error, uh, the probability of making an error is, is,
+
+SPEAKER 0
+uh, smaller than just receiving a single bit, OK, so,
+
+SPEAKER 1
+that generally that helps, we saw that in that plot. But the point I'm trying to make is that receiving is a big big string.
+
+SPEAKER 0
+And in the, in the language of quantum mechanics we'd
+
+SPEAKER 1
+say that the receiver measures each value of the bits they receive, they measure bit 1, bit 2, and bit
+
+SPEAKER 0
+3. So I'm trying to emphasise that because it's sort of self-evident and almost hard to articulate in the classical case, you receive some information, some bitstream, you have a bit stream. But in quantum mechanics, that's, that's a problem. So the So the question, Uh, how Which is the receiver. Uh, do To make, to infer. The error. So here's, here's a guess as to what they could do. So The receiver could just take this, this, uh, 3 logical, 3 physical cubits they've received and just measure each one. Measuring each one in the computational basis means they measure, Z1 Z 2 and Z 3. On each physical cu So what's the effect of that? So we had this encoded state which is this. And let's suppose that there was a particular error. Which we'll say again was a bit flip on the first cubit. So the state now is psy prime, which is This is going to be the state with the first bit flipped relative to the other two. And then if they measure Uh Z1, Z 2 3, what do they get? So if the receiver has this state and they measure
+
+SPEAKER 1
+each of the physical bits, what are they gonna discover?
+
+SPEAKER 0
+Certainly they'll get an answer which is 01 for each, each bit, yep, and what are the possibilities given that they received this state in this case site primed.
+
+SPEAKER 1
+You like And so the receiver received this statement. So is it possible that when they measure this state, they get 13 numbers. What's the probability of getting 3 months? Yeah What are the possible measures? Remember, these are the eigenvalues of the operator. Z1 is. one So what are the possibilities that the receiver, can end up with, given that they've received that statement.
+
+SPEAKER 0
+Anyone? Any guesses?
+
+SPEAKER 1
+you Yeah, that's right.
+
+SPEAKER 0
+So if they measure Z1 to be the state 1. They're going to get 0 for the other 2. Or they're going to get the opposite. These two outcomes Right, so they've received this state.
+
+SPEAKER 1
+The receivers receive this state, there's two possibilities, they'll either get 100 when they measure each bit or they'll get 011. They won't get the, they won't get the outcome 000
+
+SPEAKER 0
+because that's not in this list of states. They won't receive, they won't measure the state uh 110, right, neither. So they're the two outcomes.
+
+SPEAKER 1
+What's the probability that they measure this state?
+
+SPEAKER 0
+From alpha squared. And what about the other one? So they, they don't get a deterministic as they do
+
+SPEAKER 1
+this one or that one with different probabilities.
+
+SPEAKER 0
+And at the end of that, the receiver knows that
+
+SPEAKER 1
+they have projected the state.
+
+SPEAKER 0
+Onto the state 100 or the state 011. They know which one they project onto because they know
+
+SPEAKER 1
+it's this year, so they could do a majority vote
+
+SPEAKER 0
+on that list, so we would correct. Uh This, this tells us if they receive that straight
+
+SPEAKER 1
+A or the first one had an error, if they receive that student they they reach the same conclusion, the
+
+SPEAKER 0
+first one had an error, so they correct with a correction which is equal to X1, and so that would turn into the state 000, and that would turn into state 111. So what's the problem with that? That's right, so, at the end of this process, where we've corrected after measuring, after an error. We have One of two possible outcomes.
+
+SPEAKER 1
+So neither of those outcomes of the initial state.
+
+SPEAKER 0
+That doesn't equal psy L. OK, so that's a problem, we, we've. Um In, in, in doing this process of trying to
+
+SPEAKER 1
+measure and correct or disturb the state, even though we figure out I mean this this. Maybe because the receiver did guess correctly what it had, it was a good bit on cue one, but in
+
+SPEAKER 0
+doing this measurement they've disrupted the state. So how do we Uh, how do we avoid The Inherently disrupts the state. The logical qubit state. OK. So part of the problem here is that This logical
+
+SPEAKER 1
+site has one. quantum bits worth of information. And in doing this measurement we've extracted 3 classical bits' worth of information.
+
+SPEAKER 0
+So we've sort of taken a bit too much information out of the system, uh, than we were entitled to, because that's been projected onto, One of these two different
+
+SPEAKER 1
+classical code words.
+
+SPEAKER 0
+Um So the answer is uh. To Um, use parity checks. So there's a there's a sort of good, uh, ancient Greek legend of uh, That that sort of illustrates this, do you know the paradox of the, of the guards? So imagine, imagine you're walking along a street and there's a fork in the, in the road. And there's a, there's a town here and there's a town here. And there's a guard at each fork, and uh what you know is that one of those towns, you don't know which one, everyone in that town tells the truth always. The other town, everyone always tells a lie, and that's to say in this contrived circumstance, the guard in each
+
+SPEAKER 1
+street has come from their respective town, OK.
+
+SPEAKER 0
+You get to ask, and it's again very contrived, you get to ask exactly one question, you can't ask multiple questions, you can't threaten them, all that. You get to ask one question, you want to end up in the town that tells the truth. So what question do you ask? You get asked by the guard? But you only get to ask one question, what's the question you ask to to figure out? Which road should I take to get to the town that tells the truth?
+
+SPEAKER 1
+you Well, if you did that, And you ask the
+
+SPEAKER 0
+truth teller. They would they would truthfully answer that the other person. Does not tell the truth, and so they would say, your question was, does the other person tell the truth, they would, they would say, no, they don't, but you still don't know. OK, but then what if they ask the, the line guard, does the other person tell the truth, well they have to lie, and they know the other person does tell the truth, so they would say no, they don't tell the truth. So in either case, you get the same answer, no, the other person doesn't tell the truth. Right, one's a lie, one's true, but how do you know which one? So what, what do you ask? Well, you could ask, yeah, you could, I suppose, what
+
+SPEAKER 1
+would you ask? You have to know that they know the answer, right,
+
+SPEAKER 0
+because just them being ignorant doesn't. And Doesn't tell you what, whether they're lying, right? Lying means you know that the answer is false. I've seen OK, all right So the the the answer
+
+SPEAKER 1
+is, you ask either one, you say, if I were to ask your friend.
+
+SPEAKER 0
+Which way is the truth-telling village? And uh what, what would they say? You know, that's the question you're asking. So you ask the lawyer and they say, They will tell you a lie, which is that the truth teller will point you to the The wrong village, the lion village, you ask the truth teller, they'll truthfully answer that the lion will point you to the wrong village, which is the, the lion village, and so you go the opposite way. So you ask them which one your friend say I should go to and you go, you choose the opposite one. So the point is that you've you've asked a question about the other uh of one party about the other party, so that's a sort of a parity check. Um, and in this, in this code example, we, the classical case. We're really asking, we have these three bits, B1, B2, B3. And In the error states 100, this is subject to a Subject to Big flip. And keep on bit one. We define the parity check between bits 1 and 2 is gonna be -1 for this and -1 for this, and the parity check between 2 and 3 will be +1 and +1. And Colloquially, P12 is just Is B1 equal to B2? Let's say hi. Got that one.
+
+SPEAKER 1
+So if they're, if they're the same, if two hits are the same, then we have, we say the marriage should be plus one if they're different. is -1.
+
+SPEAKER 0
+So the parity check question for this, this soldier example is uh that one of them's in error and the other one's uh not, and so the parity check is to say collectively they're they're in error. And you can write that if you like as um. -1 to the power of B1 + B + Be So colloquially, So After this particular sort of error, but
+
+SPEAKER 1
+they've gone one, the first few bits disagree. And secret agree, but notice that these checks don't depend on which stream we're talking. The same courage. OK, so if all I tell you is, is this, or the the either of these two parity check, uh, bits, I haven't told you that you're in this. Bits have this value or this value, I've just told you that this is one of those two, but I
+
+SPEAKER 0
+haven't given you enough information to resolve um which one. OK, so let's work through a little example, well. So let's enumerate. Um 43 So let's say the um We're gonna label the the The encoding as AAA, so AL. Is that where A equals 0 or 1, that's the sender. Send aside. And the receiver, or after the channel. We can have all sorts of combinations. There could be no errors. And the receiver in that case gets. The correct message. We could have one error, so I'll write that like this. Where? A bar is 1 or 0. We could have Two errors, so we could end up in a bar A. Show it in the reverse orders, right? Or we could have 3 errors. And end up with all the bits in the wrong state. And So what are the parity check values? So what am I gonna get for uh P1, 2 for each of these cases? What do I get for P1, 2 and the top case? Yeah, so remember the parity's gonna be either +1 or -1, so I'm gonna get the plus here, what about P23? Plus as well. What about in the.
+
+SPEAKER 1
+In this case, what's the parody on to?
+
+SPEAKER 0
+8, what was that? minus, OK. And what about 23? OK. Next one.
+
+SPEAKER 1
+What about the last one.
+
+SPEAKER 0
+And what about the next one? And the next one. Minus plus and then. Happy with that? So let's, let's colour in the ones that are the same, so these two are the same. These two are the same. He's the same. And these are the same. And so what's the correction? that we should do uh I draw a line here. So given we, let's say we received this parity check,
+
+SPEAKER 1
+what direction should we?
+
+SPEAKER 0
+Nothing But that means we're gonna do nothing down here as well, right?
+
+SPEAKER 1
+What about the blue one?
+
+SPEAKER 0
+Well, and that's what what we're going to do down here as well. Second one we'll do a bit flip. 12 We should do the same here because that's all the information we've got. 3. OK. So all of these work and all of these. Fire. Because all of these Take us to a bar, a bar, a bar.
+
+SPEAKER 1
+Right, we'll do a quick lip on through on this statement, we end up flipping that one.
+
+SPEAKER 0
+And these all take us to AA. So just with the parity check uh information, which is two bits worth of information, we can, we can draw the same conclusion as we did with this majority vote. So this is, this is the decoder. It's called the decoder. Actually this whole table is really called the decoding table. Um What corrective Action to take Based on the parity chapters. And in particular this is called a lookup table. Uh, where we enumerate. Um, all parity check configurations. And the corrections. OK, so we've listed here all possible parity checks, well
+
+SPEAKER 1
+there's 2 parity tech bits, so there's 4 possible configurations, and we've listed what we do under each of those
+
+SPEAKER 0
+different configurations. Um, there's, there's a some jargon here which is that the syndrome. Which is called S is the pattern. Of the victor Of parity check bits. OK. And the point is that the syndrome, um we. Is the syndrome, To compute The correction. C is a function of the syndrome. So together these form. The syndrome. And so for this example. Or for the repetition code. And the the outcome. Of this this decoder. It's the same For the majority vote. OK, so the outcome is the same, but you can see that they're not actually equivalent.
+
+SPEAKER 1
+They they're not fundamentally the same algorithm because the majority
+
+SPEAKER 0
+vote decode requires 3 bits. To make a majority vote, whereas this requires two bits to make a decision, so they, they have different inputs but their outputs are the same. And you can see from this in this case that the parity check. Data Which is just a syndrome. Um, is enough To, uh, to correct. Or, or to decode, I should say. Now remember that we're not asking for perfection, there's certainly
+
+SPEAKER 1
+cases where 2 errors or 3 errors will result in an incorrect, uh, correction process, so the correction can fail. But nonetheless, we can run this with 2 bits of
+
+SPEAKER 0
+information rather than 3. So there's a few, a few sort of a sides to make here. So what we talked about the parity check of bit 1 and bit 2 and the parity check of bit 2 and bit 3, what about? P 13. Why, why didn't we use the parity check of bit one or bit 3? Any ideas? So, yeah, was the Well, does it? I don't know.
+
+SPEAKER 1
+He wants to Yep, it's the product of those two, right, which is why we, why we use pluses and so in this case, P13 would be plus, and that's the same as the product of those. In this case, P13 will be minus, which is a product of those two, in this case it will still be plus, so that's the product of those.
+
+SPEAKER 0
+So you can see that P 13. Is equal to Well, let's just, let's just do it, -1 to the B1 + B3. And I can write that as -1 to the B1 + B2 + B2 + B3. Because B2 is either 0 or 1, so B2 B2 is 2, so that's. Is it is even, that's always even. And that equals -1 to B1 + B21-1 B2 + B3, which is P12, P13. So, so P13 is dependent. Uh On P1, 2 and P 13, so determined by. OK. So we don't need that extra one, it's, it's redundant. Um And there's there's a relationship here which is that the number of logical bits. is equal to the number of physical bits. Minus the number of parity checks. Number of independent parity checks. I should say here, there's, we say that um P13 is generated. By P1, 2 and P2 3. That language comes from from group theory. P12 would be well I'll see. Um, so what does, what does that mean in this case, the number of logical bits was 1. So for the repetition for the 3 bit repetition code. Let's just check that formula. A number of logical bits. There's one. Which is number of physical bits is 3 and number of independent parity checks is 2, so that's, that's correct. So why is that? So you should really think of it as constraints, as as degrees of freedom and constraints. So This is the This is the total degrees of freedom. Number of degrees of freedom. Of n bits. This is the number of constraints. For uh valid code state for valid code words. And this is the number of degrees of freedom leftover, the number of unconstrained. In other words, you can think of it as a set of equations, we've got valid code words that defined to be the plus one, I say that Valid code words. Uh Plus one, Uh So each parity check imposes a constraint which is that the code word should be a
+
+SPEAKER 1
+plus one parity of that uh that that parity check. So we have some number of independent parity checks, that means you've got a number of constraints on the physical bits. We had a total number of degrees of freedom represented across the bits that we we're talking about and so
+
+SPEAKER 0
+the the difference of those two is the number of unconstrained bits and, This is what we call M Uh And this is what we call K. So we can just rearrange that, number of uh independent parity check bits. Is N minusk. And this is the same language as, as before, um. This is for an NK. Question mark distance code. So that's just the the main picture we write the
+
+SPEAKER 1
+inra NK NK code means, number of physical bits, number of parity checks, oh sorry, a number of logicals and
+
+SPEAKER 0
+then you can calculate the number of parity checks which should be N minus k. OK, so that was all classical, so. We need to go back to the quantum repetition code. So what we need is, uh, we need a quantum version. Of parity checks. So you can think of the parity checks as as a sort of measurement on the classical system. You you've measured each bit and then you've multiplied them together or you've you've got a machine that can just tell you whether two bits are the same or different without knowing the actual values of those two things. In quantum mechanics we need to turn that into a a a measurement. Of an observable. That reveals Priority data. So does anyone remember what's an observable in quantum mechanics? What's an observable in quantum mechanics? What's the definition of an observable? mission. Yeah, permission of private. OK, so we need to write down mission operators that uh reveal parity check information. So why are they called uh observables? Well, in principle, a emission operator has real eigenvalues, that means in principle you could design an experiment which will give you a real number that tells you the possible outcomes corresponding to each of those eigenvalues, right? So we need the Uh The quantum For 2 cubits. Let's, let's make it a, we'll we'll just talk about 2 cubits to start with. So it's quantum, so that just means you put a hat on things, right. So two key events, 00 can be these following states. So what should P12? Um, so we want this.
+
+SPEAKER 1
+So to have eigenvalues plus or minus 1.
+
+SPEAKER 0
+Uh For computational basis states. So if I measure P12 for the same 00, what should I get? By construction. Sorry? I should get I should get a measurement one, which, but what does that mean when I act with the
+
+SPEAKER 1
+operator P12 on the state zero.
+
+SPEAKER 0
+Sorry? You should give me back 00. Which has eigenvalue plus 1, right, what should it give me for the next two, next +01 state? What about the next one? Right. Good 0 and then the last one. Any guesses? OK, so this is what that operator should do.
+
+SPEAKER 1
+And that's a complete basis set, so what does that
+
+SPEAKER 0
+operator P12 look like in that basis as a as a matrix? How big will it be as a matrix? 4 by 4 because it acts on a Hilbert space which is, 2 cubits, so what, what are the elements of this as a matrix?
+
+SPEAKER 1
+On Yeah.
+
+SPEAKER 0
+was And then zeros everywhere else, right?
+
+SPEAKER 1
+If I wanted to calculate one of the offline elements I should say which, let's say I wanted to calculate an offload limit which is 00P1211. 211 is plus 1 times 11. If I take the the the bra 0 on the other side, then that's gonna have 0.
+
+SPEAKER 0
+001211, by construction it has to be 00 times plus 1. 11 Which is equal to 0011, and that's 0. All right, so We're basically defined what P12 should be. What, what's a simpler form for that thing in terms of Ply operators? Remember you can always write, write any, uh, operator, you can decompose it into PL operators, so what's that as a, as, Product and or products some of the operators. Uh Z on 1. Tensor what?
+
+SPEAKER 1
+Yeah, that's right, yeah.
+
+SPEAKER 0
+So that that matrix is what you get if you do Z1 tenor Z2. And you can check that with Mathematica or by hand.
+
+SPEAKER 1
+It's not too hard to do, but that's what that priority tech operator is.
+
+SPEAKER 0
+OK, good, so, so now we have a way to construct what we want parity tech operators to be, and
+
+SPEAKER 1
+we've had another explicit expression in terms of power operators
+
+SPEAKER 0
+now. Can you take a guess? What, what does, what's P23 going to be? Yeah, OK, good. And then we can check. P 13, which is going to be Z1 tensor Z3. And that equals Z1 tensor, Z2 times Z2 tensor Z3. Since Z2 2 equals identity, OK. So that's equal to pay 12. Tensor P 23. So it has the, has all the sort of properties that you might might guess. OK. And so this is where we have to start being a little bit more careful about cancer product notation, so let's be a little bit more formal here, um. P 12 And P2 3. Cause there's actually 3 qubits, this means z1, tensor z2, tensor what. Identity 3. And that equals identity 1, tensor Z 2, tensor Z3. And so when we multiply P 12 slightly more formally. If you're not used to sort of uh. Doing tensor products, then you can always go back to this, OK, so, When we say Z1 Z11 Z 3
+
+SPEAKER 1
+will do. A coordinate 2 wasn't mentioned here. That implicitly just means I should put an identity somewhere.
+
+SPEAKER 0
+And so if you wanna be just careful about things, you can just write an operator in the tensor product
+
+SPEAKER 1
+form which hits every single element and and if it didn't explicitly appear, that means it's fine.
+
+SPEAKER 0
+So when we multiply this out, this equals Z1. Times 11, which is just an ordinary matrix multiplication. Tensor Z2, Z2. Tend to I. 3 Z. 3. This is an ordinary Matrix Multiplication Of, in this case, 2x2 matrices, 2x2 matrices. So that means Z1 tensor. Z2 squared is the identity, tensor. Z 3 So it's, it's helpful to start with just
+
+SPEAKER 1
+to be, be cautious by writing down explicit tensor products,
+
+SPEAKER 0
+um. Sometimes this gets written as uh Z1, Z 2 I 3. Where the T product gets dropped, so I'll do that at various points, uh, and so this way you just
+
+SPEAKER 1
+have to be a bit careful, this doesn't mean multiply this, make it by that matrix in this way. to grow.
+
+SPEAKER 0
+So notation gets gets used uh in. Overloaded ways, um but that's fine. OK, so, so now we've got this, uh, So let's say that's by analogy. But also you can check. That P 23 Behaves correctly. On, on systems. 2 and 3, I'm not gonna go through that in detail, but you just have to verify the same kinds of things for kids 2 and 3, that's just a relabeling of of them, OK. Um So now Uh So we have now 2. Uh, and we should, oh, and we should check also that um, And P1 2 dagger. Is Z1 tensor, Z2 dagger, which is Z1 dagger tensor, Z2 dagger and. Pali majors are Hemission, so that equals P12. It's a machine. OK, so broadly these parity check operators are emissions, so they're observables. So that means in principle for any system of two qubits we could design an experiment that in principle would extract this uh this, The measurement on those, on those two qubits, and by construction that measurement doesn't tell us
+
+SPEAKER 1
+which. If we've got a plus one, it doesn't tell us which whether the same as this one or this one, but it just tells us there must be one of
+
+SPEAKER 0
+those two. So it's a partial measurement, it doesn't reveal the states of each individual qubit, but it does reveal uh aggregate properties of the two qubits. Um, we have now 2 Haian. Uh observables. P 12. And That Age. They'll Pity check. My partnership OK. Now Let's go back to our example, uh. Where we encoded some state psiological in, 3 bits, cubits. And it undergoes an error which is bit flip 1. Alpha So what happens So what happens now if we measure But State with the the observable P12. How do we work, work that out? Yeah, so. There's, there's a, a, a, the, the mathematical question is, um, Uh, is psy primed. In Oregon State Of P12. OK. Now if it's an eigenstate of P12, then if I
+
+SPEAKER 1
+measure this observable.
+
+SPEAKER 0
+And I get eigenvalue associated with that. A measurement outcome. If it's not an eigenvalue, then it means I'm gonna get one of several possible eigenvalues, um, and so we can check, in this case that P12, acting on psi primed is, Uh I So Z is 12, 28,910 is
+
+SPEAKER 1
+minus 10, 8101 is -01, so that equals minus.
+
+SPEAKER 0
+Alpha 100 minus beta 011, which is just equal to minus 1, the primed. Sorry. -1. About uh P 23. If we measure psi 1 with uh P23, that's Z2. In this case, it's just positive one. On both, which is primed. front. So we get Um, eigenvalues. -1 + 1. And we measured these two operators. OK, so, so this is the key to understanding quantum error correction is to construct parity check operators, and those parity check operators should reveal information about where, when and when where errors occurred without revealing, Information about these amplitudes. There's one more thing we need to talk about which we'll do next week, um, but just colloquially, we need to make sure, so next week, We need to think about compatible observables. Cause we want to be able to measure both of these operators, in this case, these two parity check operators, and uh. When you do that in in quantum mechanics, you have that means you have to check whether or not those operators commute. If they commute, then you can measure them mutually, if not, then uh,

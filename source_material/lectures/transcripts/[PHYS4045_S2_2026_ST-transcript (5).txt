@@ -1,0 +1,899 @@
+SPEAKER 0
+Shall we go OK. OK, sorry about that. Um, so let's get started on, well, I'm trying to
+
+SPEAKER 1
+finish off column channels, uh, today. Um, so this is where I finished. This is where I finished last lecture, um. The The cases we had, we had thought about uh for, for quantum channels was, was this sort of thing where we imagine. System goes into an environment, the environment really was just a a gremlin that was flipping coins and doing something to the system, and then the system therefore evolves randomly to a new state, but because we don't know what the gremlin did, the state should be averaged over all
+
+SPEAKER 0
+possible effects of the the gremlin, and we end up with a, a, a stochastic channel which in different cases
+
+SPEAKER 1
+we saw has this form. And Variations on this phase I alternative and density matrix. Inherit this factor which is less than one, telling us that the coherence of the system drops. So in this particular, these particular cases we saw one where there was a phase flip and one where there was a phase rotation, the coherence of the channel is reduced, the the coherence of the state after the channel is reduced relative to the coherence before. And, and so that that's a sort of classical environment in the sense that the Um The the the environment there was this little gremlin who's who's manipulating the system, um. What we want to be able to do in physics is not, not sort of invent fic fictitious gremlins, we
+
+SPEAKER 0
+want to think about what are the real processes that
+
+SPEAKER 1
+happen in in physics that cause systems to change their state, um. We've already seen a number of times where unitary evolution causes the system to change its state, so that, that's a simple example of a quantum channel, but this is the more, uh, general case that we, we want to think about and that's what I finish. show. Still we have a system going into this. Box which is, which is really capturing the interaction of the system with some other. Other environment And the way we're going to think about this, and this, this is in some sense the most general way to think about quantum channels, is that the environment itself is described by some quantum state. We may know that quantum state is a pure state, we may not, we may have to treat it as some sort of mixed state. Thermal state of the environment we've used that. Boltzmann distribution that we derived earlier. Last week, You want to put that here But in either case, the joint system of state, the joint overall system is in tensor product of the system. Input state and the environment. The only assumption here is that the system and the environment really are separable before. The system interacts with the. So that's, that's the, the one key assumption here is that we can think of the system as being Separable independent of the environment, say before this interaction. Then this interaction happens in this box and It's going to be an interaction that that is big enough to. Encompass both the system and the environment, so that's described by a unitary evolution operator on the larger orbit space of the system and environment. So just remember if this was a small dimensional system like a qubit, so this would be a 2x2 matrix, if the environment is a much larger dimensional system, maybe, you know, almost. Practically infinite as far as we're concerned, this, this is a matrix is a very, very large matrix, OK, so that that view is in principle very complicated to represent and and uh and compute. Nonetheless, if we have that as uh in some form, We could calculate the unitary evolution over the system and environment of this separable input state to what this red mark here would be. Con conjugating the input tense product state by the unitaries, that's the joint state of the system in the environment
+
+SPEAKER 0
+after.
+
+SPEAKER 1
+This interaction Components And what we're interested in is, The state of the system after the evolution.
+
+SPEAKER 0
+This is the state of the system afterwards.
+
+SPEAKER 1
+And by assumption, the environment is so complicated that we really don't have access to its internal components, so what that means is that we should trace trace it out so that that those bars there are meant to indicate that we're just tracing out or averaging over all possible configurations of the environment. So that's where we got to. And that is the description of the channel is this function that takes the input state row S, evolves it accordingly, takes the trace, and then gives the output system reduced density matrix. OK, so we already have talked a little bit about how to evaluate partial traces, but let me just, uh, remind you what what that means at a, at a
+
+SPEAKER 0
+sort of technical level. So Row S, which is the channel acting on row S, is the partial trace of the environment of I'm just rewriting what was on that slide. And let's say that the Hilbert space for the system is the span of some Well chosen basis. And the Gilbert space of the environment is, is the span of, And so this might be dimension, let's say dimension M and dimension M. So we're assuming that. Generically, M N is going to be much less than M. We'll see some examples where that's not true, actually, where
+
+SPEAKER 1
+we choose the environment to be also a qubit, in
+
+SPEAKER 0
+which case M and M are literally the same size. But in, in terms of that notation, what does that partial trace mean? Mhm And then row, yes, and this is on the environment. OK, and so clearly that's left, what's what's left is in the system Hilbert space. And, and just to be clear, row S, uh, is going to be some in this notation N by N by N matrix. Uh Row E will be an M by M matrix. You row S fencer, row E. You dig it, dug it. What's that going to be? As a dimensional NM times NM. OK And then row S, which is this sum over things. That's going to be a matrix. That's what In buy in, yeah. OK, so it's just useful, I I find it useful
+
+SPEAKER 1
+just to write those things down just because it it helps you easily work out what Hilbert space things live
+
+SPEAKER 0
+in. Mathematicians probably uh would not like that, but it's, it's convenient. OK, so just by counting dimensions, we can, we can work out for ourselves what, what Hilbert space. Different objects belong to. Any questions about that?
+
+SPEAKER 1
+So, so you know this is, this is in principle an extremely complicated thing to do. Remember M could be extremely large and so that sum might be a very difficult thing to evaluate and of course those Us themselves are as big as this matrix, so they're, they're huge. So a question? All right, um But that's what we, what we're going to do, and that's Really a general format for understanding
+
+SPEAKER 0
+quantum channels, so that's our, what we're gonna do today is, is um, Think about a special case of exactly that, and this is it. So Remember before the, the environment we proposed was this. In the language of a gremlin, flipping some little.
+
+SPEAKER 1
+Creature flipping coins and doing ghastly things to the system, this is now, this is completely impersonal, we've got a, System input state.
+
+SPEAKER 0
+And the environment Is, so let's put in put E E symbols for the environment, uh, Hilbert space.
+
+SPEAKER 1
+The environment is this this state and we're gonna make our life uh relatively as easy as possible by taking this to be a pure state, so that's that's that's a very special case, uh, it's not a thermal state, it's a pure state. And the interaction between the system and environment is this
+
+SPEAKER 0
+controlled knot gate. Where the The target is the environment and the control is the system. OK.
+
+SPEAKER 1
+So this is, this is a unitary, what's the dimensionality of this as a unitary?
+
+SPEAKER 0
+Let's say this is a this is a cubit. Yeah, that's right. And so, um, Yeah, so So this is the setup.
+
+SPEAKER 1
+The system comes in, uh, interacts with the environment and this unitary which we're we're making up is just gonna be this very simple. Control not and then we trace out the, the environment. So in this picture, the black dot means the control. And this is target Depending on the state of the system, we're doing it not gate.
+
+SPEAKER 0
+On the environment. And so then the question is, what is the channel that that corresponds to? So we can, we can already write it down. Remember this is the environment. And this is the system trace of the environment. Of New system environment row system tensor row environment system environment dagger. That's the channel, right, that's, and this is going to be. OK, so the goal, at least for this morning, one goal is to work through this example. And for this specific case. And see what does the channel look like. Spoiler alert, we're going to Already have the answer here. But we're going to work through it in a moment.
+
+SPEAKER 1
+The answer is that we should get to is that the Evolution of the of the system state. Proceeds by multiplying the off-diagonal elements by a factor that's between 0 and 1. OK, now that's what we saw before for these gremlin models where we were flipping coins and doing things. So this, this channel, this, this channel really is going to replicate as far as the system's concerned exactly the same process, uh, that the, the gremlin's story that we
+
+SPEAKER 0
+told um last week. OK, so that's where we're gonna get to, this, this
+
+SPEAKER 1
+is what.
+
+SPEAKER 0
+And so, so that's what we're going to do. So let's let's just go back to circuits. the system and the environment. This is a controlled knot. Let's remind ourselves what does a controlled not do. As a as a truth table on This is the control and this is the target. Let's put 0 there. What's the control, what does it do on the state 00? What's that? Does nothing. Well, it's the identity on that state, which just returns it. What about 01? OK, what about 10? Does that, so it flips the target, depending on the state of the control. And flips that one also, so as a matrix. In this basis It's a 4x4 matrix, and that's, that's the 4x4 matrix. OK, so Back here, We're going to have to evaluate, trace the see not The initial state of the system, let's call this SignNaught system. And we'll call this 5 E See not dagger. That's the thing we have to evaluate. And I'm going to, to rewrite that in a slightly nicer way. Tenor product there. And I'll put some brackets around just to help us. So I remember that input For the system and the environment is that tensor product Phiaughts tensor. Fi environment. Which is System system And if I was being careful, I'd put a tensor product in there, so often, often
+
+SPEAKER 1
+we just drop tensor product symbols where it's sort of
+
+SPEAKER 0
+clear. Uh, but So for example, Yeah. So as a little exercise, what's, so that that's this um.
+
+SPEAKER 1
+That's this state here, is it, is what I call. So So then we can evaluate the C not acting on the plane. Emission conjugating from the right. We could, if we were being uh a bit masochistic, we could Evaluating this as a density matrix, which would be a 4 by 4 matrix, and then we can multiply it on the left by a 4x4 matrix and then on the right. That'd be a bit annoying to do by hand, it's certainly straightforward on a computer. The reason I've factored this in these brackets is now we have a slightly easier. on paper is to evaluate see not.
+
+SPEAKER 0
+So let's let's do it that way.
+
+SPEAKER 1
+That's just a lesson in, you know. To illustrate the fact that when you evaluate expressions, there's lots of ways you can do them, sometimes there are
+
+SPEAKER 0
+ways that are easier for you to do, uh, than others, even though they're all correct, OK, so, In these kinds of calculations, just think a little bit carefully before
+
+SPEAKER 1
+you immediately dive in and start multiplying things, um.
+
+SPEAKER 0
+Uh Think, think carefully a little bit about what um. What's the easiest way? To to do things and, and not make mistakes.
+
+SPEAKER 1
+Make your life easier is what I'm trying to say. So let's, let's let's try and evaluate what this object here is, so I'll give you a few minutes to calculate what's the control lock gate acting on this input state. OK, who got as far as this, the, the control knot of the input state is this? For sure.
+
+SPEAKER 0
+Any, any objections to that? Questions? No, OK. Right, so we've we've evaluated therefore the, the bit in
+
+SPEAKER 1
+these blue, this blue bracket here, the bit in the other blue bracket is. complex commission conjugate, so I should Complex conjugates in the right spots and I should reverse.
+
+SPEAKER 0
+Gets into bras, so, um, soy primed. Is going to be Newstar, and I'm gonna make my life easier by assuming that ITER is, in fact, Real OK, oops. So, so there we go.
+
+SPEAKER 1
+We've, we've calculated what's, uh, The two blue brackets now and we have to then Take the outer product of
+
+SPEAKER 0
+that thing and take the trace over the environment, so that means row primed is a trace over the environment of I primed. So I primed OK, now we will see this in in uh We sort of need to make a choice about a basis, right? So let's, let's make our The system Hilbert space is going to be spanned by 01 On the system and the environment at Hilbert Space will be. Spa Both are qubits, so this is a perfectly sound basis that I can define.
+
+SPEAKER 1
+But you'll say, you know, this, this is, this is not a unique basis, I could rotate it. For instance, like the plus minus basis, that'd be a perfectly good.
+
+SPEAKER 0
+Alternative basis and we'll see that that freedom to change
+
+SPEAKER 1
+the environment basis, has an effect on how we write down the channel.
+
+SPEAKER 0
+You know, symbolically, but the, if the, because we're tracing
+
+SPEAKER 1
+over the environment it has no physical effect. So depending on this basis, we'll see that there's different presentations that correspond to the same channel.
+
+SPEAKER 0
+But for our purposes, let's, let's take that basis, so this is going to be um this. Sorry 0 E. I primed SE. So that's the thing we have to evaluate, remember these, these up here are all in the system environment basis.
+
+SPEAKER 1
+OK, so this is, this is a slightly strange object, you can see in a product of. The basis state the environment, but with the system environment. Uh, state matrix. So if you, this is not just a scale, this is not Complex number it's actually a vector in the
+
+SPEAKER 0
+system. OK, so let's work out that first bit. It's getting very slow. I'm just gonna see if this helps. Let me try Let's see if that's going to. OK. So let's evaluate that that object.
+
+SPEAKER 1
+Any guesses? What's this, what's this thing going to? And read off from, from the lines above what that
+
+SPEAKER 0
+should be. Excuse me.
+
+SPEAKER 1
+But Mhm The That's right. So So we have, we have to look in, so here's the definition of side primed, wherever the environment has a state zero, we pick out that term, so that, that, that term will contribute and we're, we're taking the inappro of 0 with 0, so that. This bit here will give us 0 overlap because they inappropriate 0 on the environment and 1 on the environment. Did ideas OK, so we'll pick out those two terms
+
+SPEAKER 0
+in particular. Remember this is in the Hilbert space of the system. So that's good. And then we really need to form the outer product of that thing with itself, so we need that. Phi 0 E, which is this. Second turn here, and that's going to be a matrix, and that matrix will have uh, U 2 eater. And mod new squared eater on the diagonals. And Uh, new, new star, the product of the uh On the off diagons, OK, so as a matrix.
+
+SPEAKER 1
+This outer product here What did I do? I just Appropriate this term with itself is that guy.
+
+SPEAKER 0
+Should be 1 minus heater.
+
+SPEAKER 1
+The other product of this term with itself is going to give you a new squared and then root goes away and then the outer product of that. That is this So that's the density matrix for that
+
+SPEAKER 0
+term. We also need So this guy here. So see if you can work that out as yourself. Give me a few moments. Or anyone want to call out what what the answer is for this, this quantity? Yep, so that's also in the system Hilbert space.
+
+SPEAKER 1
+So that just came from these, these two. So that, that gave us that expression, and likewise we
+
+SPEAKER 0
+need to take the outer product of that with its with itself, uh. And so that's going to give us another density matrix which It's going to be 1 minus eater. Peter You have a new, new star. And that should be the same. We have new stuff. OK. OK, any Any objections to that?
+
+SPEAKER 1
+OK, any questions? how we got, got this answer? Just taking this as a vector and doing that.
+
+SPEAKER 0
+So now we get to uh calculate row primed. Well, it's, it's the sum of those, those two quantities we just wrote down. It's Yeah a different colour. So some of those two matrices. And we evaluate that, we get mu squad on there, new squared there. We get twice new new star root eater, route 1 minus Eater. And twice missed a new. OK. OK, so The diagonal elements didn't change in the density
+
+SPEAKER 1
+matrix, the before and after they were. Now we've got the offloading also. I view Newstar, Newstar and new by this factor twice through Eer by uh.
+
+SPEAKER 0
+Route 1 minus Eer So if we look at that off-diagonal element. To root eater. And they call that uh. Alpha So this is just equal to alpha, new, new, and this is equal to alpha m new star. And what does this function look like? As I allow it to go from 0 to 1.
+
+SPEAKER 1
+OK, so this value, when EE is 0, it's 0, when EE is 1, it's, it's also 0, so this
+
+SPEAKER 0
+quantity is 0 at both ends.
+
+SPEAKER 1
+If you take a reasonable guess that it's going to be maximised at the middle, but let's just evaluate it there. Put a half in, we get through a half. 15 times 2 is 1.
+
+SPEAKER 0
+So the value here is one. And if you, in fact, if you plot it, you get a hemisphere. So it's a circle, half a circle. It's half a circle centred at a half um.
+
+SPEAKER 1
+And again, this, this quantity goes from 0 to 1, right? So it's a factor that's less than 1, bigger than
+
+SPEAKER 0
+0.
+
+SPEAKER 1
+So really it just means that we're reducing the off-diagonal.
+
+SPEAKER 0
+Some amount by some factor. And, and so just to put things sort of more neatly, this is exactly the, the channel representation here. And I could compare that with the, the previous uh
+
+SPEAKER 1
+Facebook channel, which was this factor was something like, um,
+
+SPEAKER 0
+I think 1 minus 2%. If I remember, when P was between 0.5. Is that right? If I go back up here.
+
+SPEAKER 1
+Remember we worked out for this, this phase flip channel
+
+SPEAKER 0
+where we were allowing the phase to rotate. 2%. That's serving the same function as this. train. And so This coherent evolution on the system and the
+
+SPEAKER 1
+environment that is unitary and subsequently traced over, is exactly the same channel, the parameter names are different, you know,
+
+SPEAKER 0
+E versus P, and the functional form is different, but
+
+SPEAKER 1
+nonetheless, This prefactor is just a number between 0 and 1, that is the coherences have, have decayed.
+
+SPEAKER 0
+OK, and so, rolls. Right So Where are we now?
+
+SPEAKER 1
+So this is again just this general purpose story for a system environment interacting by unitary trace. And there's an important expression which we have effectively derived, but we Which is that when we evaluate this, remember we're really. This trace is a sum. The basis When we do that, we can write a
+
+SPEAKER 0
+The channel in this, in this form. Or at a Page So remember epsilon Row is this trace of the environment of U row, tensor row S U. Dagger, which is going to be the tra some over some, some basis, EJ. Or EK actually in this notation. EK You And And certainly in a case where if Starts off in some reference state syn, tensor, so pure state on the environment. Uh, we can write this Some over k EK which I can write in a In this form here. And this thing here I call OK. Where each of these elements now are part of the system Hilbert space. Or act on this system helbert space. this If I put the labels for the for the
+
+SPEAKER 1
+subsystems in. OK, so, so this is just to, to prove this statement here that I can write the, the channel in this form of uh some of uh operators that act on the system. Conjugating the state of the system.
+
+SPEAKER 0
+It's called the operator sum representation or the Krauss representation.
+
+SPEAKER 1
+Um, there's a special case.
+
+SPEAKER 0
+So here K is over the dimension of the Environment, Oh, and, uh Well, actually, so I haven't proved this here. There's a, um, there's a a A property that those EKs satisfy. And EK Dagger Equals 1, so the sum over K. So these, these E's that are defined in this way,
+
+SPEAKER 1
+they satisfy this, this property. And they have to do that Let's be clear, that
+
+SPEAKER 0
+means the identity over the uh over the system, orlbert space. And they have to do that because of normalisation. Trace of row, uh system primed, so after the channel, the trace, Of a density matrix should be what? Trace, yeah, so a density matrix has to have uh. You normalised, just a trace one.
+
+SPEAKER 1
+And so that trace is equal to the trace of
+
+SPEAKER 0
+that operator sum representation. Trace is linear, so I can take it inside the sun. And he presumably, who knows about the cyclic property of
+
+SPEAKER 1
+the trace. What does that, what does that mean?
+
+SPEAKER 0
+You can cyclically permute them.
+
+SPEAKER 1
+Yeah, so I can take. I can cyclically change the order of these things, so I can, I can move that this operator to the. I can't, I can't change them, uh, arbitrarily, I can't permute them arbitrarily, I can do a, a cyclic permutation
+
+SPEAKER 0
+and that preserves the trace. And And that's Take the sun back inside. And if I just put some brackets in here just to help us.
+
+SPEAKER 1
+So The state, the after the channel has to have trace one. I can rewrite that Tracy. expression The only, so and that has to be true for all input states.
+
+SPEAKER 0
+That's for all input states row S, and that implies that the sum over K of EK dagger EK. is equal to the identity.
+
+SPEAKER 1
+OK, so it's certainly true if this is the identity, then you can see that this is gonna be the trace of rows. The trace of rows has to be one. It's also. The inverse is true that if this is equal, if this is equal. R S next week.
+
+SPEAKER 0
+Uh, and so EK satisfies this, um, particular relationship. OK, so there's a special case. Um, of, of this operator some. Representation If the size of the environment was in fact
+
+SPEAKER 1
+one, so what if we take the very special case where the environment has dimension one.
+
+SPEAKER 0
+It's not much of an environment, it's just some state, right, but if M equals 1. Then the sum is just trivial, that means that uh E1 dagger, E1. And There's a sum over K equals 1 to 1, right? That equals the identity. And what does that tell you? Let me, let me, uh. I sort of wanted to like that thing because Let me, let me put it in sum over k equals 1 to 1 EK EK. It just means E1 dagger, E1. That has to equal the identity, and what does that mean that one. This is Yeah. A1 is a unitary. OK, so When we've seen unitary evolution, R primed is you row you dagger. That's just the special case. Um Yeah So you should think of this, you know,
+
+SPEAKER 1
+the special case where I have just a single uh entity in this sum, that means that these E's are
+
+SPEAKER 0
+unitary. That's, that's just, therefore a more complicated way of writing down. For generalising, let's say unitary evolution. Literally is unitary evolution in the case where that sum is, is a trivial sum, uh, over one. Coordinate. OK, so any questions about that? So that, that's, that's, that's an important, uh, point I
+
+SPEAKER 1
+sort of want to emphasise is that we can always think of channels on, on a system in this, this, uh, So as long as we write down a a specification for these E's. And they satisfy that this property that they sum to
+
+SPEAKER 0
+the identity. Or the dagger, the sums, the identity. Then that that corresponds to a. And why is that useful?
+
+SPEAKER 1
+Well, we, we went through this, this sort of long winded argument here to, to derive, you know, how does this, this state evolve to a new state, and, and that's a perfectly valid way to do things.
+
+SPEAKER 0
+Um, but just like we saw with this gremlin story,
+
+SPEAKER 1
+the, you know, with the gremlin, we could, the gremlins could have done various things, we, we ended up with the same quantum channel, same quantum channel. That's generically true no matter these states in this operation, right, there's lots of operations I could put here and lots of different states I could put here, which will give me the same quantum channel and so this prescription for, for, A system state, a unitary to derive a channel is redundant. It carries more information than the actual channel encodes.
+
+SPEAKER 0
+But this other presentation, well, still has some redundancy, but
+
+SPEAKER 1
+it's enough to calculate things. So if only I can write this down, this is just the value. Objects that are in the system Hilbert space that are
+
+SPEAKER 0
+relatively small and relatively easy to evaluate.
+
+SPEAKER 1
+OK, one thing I, you know, 11 thing also to emphasise is that the particular form of these Es is basis dependent, right, so we have to make a choice of the, of the system, the environmental OK If I chose a different basis for the environment, I'd get different expressions for these E's in particular, so each E depends on the basis.
+
+SPEAKER 0
+The effect of the ease overall doesn't depend on the basis, but depending on the basis I'll get different expressions. So let's, let's go through that in this particular case, it's the same, same scenario, same.
+
+SPEAKER 1
+Input state, same uh unitary evolution. When we did the calculation before we chose the computational basis for the environment, we chose.
+
+SPEAKER 0
+We chose 0 and 1. Now we're going to choose a different basis, plus and minus. I don't, I think I want to leave this largely
+
+SPEAKER 1
+as an exercise, but, but let's sketch out what E
+
+SPEAKER 0
+is going to be in this other basis. Nothing else changed From before, uh, except that. Plus EU rows tensor. Row EU dagger plus. I'm just trying to decide whether I want to go through that, uh, through that in detail. Let's, let's go through the 2nd, 2nd bit because that's the, that's the interesting bit. We'll evaluate this and we'll leave the rest to an exercise. Remember to do that, we had this um Maybe I can find it. And let me paste. Maybe not. I'll just put a little note down here Recall this So when we evaluate minus psi SE on the environment. We now have to use the fact that minus on the environment, 0 on the environment is going, and remember, states plus and minus are equal to 1 on Route 2. 0 plus or minus 1.
+
+SPEAKER 1
+So when I evaluate minus the minus state on this. System environments For each of the terms.
+
+SPEAKER 0
+Well, actually, let's be, let's be careful. So what's, what's minus, what's the overlap?
+
+SPEAKER 1
+the definitions plus minus. across This has to be 00 here, that's gonna have an overlap.
+
+SPEAKER 0
+too. And then Well, I think that's gonna be the same, isn't it? I know that's gonna be -1 and route 2. So every time we see a 0 in this coordinate,
+
+SPEAKER 1
+we'll get a, a plus 1 on route to every time we see it.
+
+SPEAKER 0
+So that's gonna give us a new route repeater 0. Put on Route 2 at the front. Uh Oops, it's also a minus. And if we factor everything correctly, I think we end up with a root eater. minus eater over a root. 2 by uh. U 0 The system Minus new one on the system. And I can write that evocatively like this. By Z acting on the initial state psi of the system. Remember psi of the system is 0, mu 0 plus new 1.
+
+SPEAKER 1
+So when I evaluate this term here, it's as if I'm just multiplied by Z and a prefactor which is
+
+SPEAKER 0
+uh some number.
+
+SPEAKER 1
+So that would be uh one part of this, I don't take the product of its of itself, uh, with itself, so that means the yellow bit.
+
+SPEAKER 0
+Yeah That's going to be.
+
+SPEAKER 1
+So, so that's just to say that if I evaluate this bit, I end up with a thing that's conjugating row Y Z. With a prefactor.
+
+SPEAKER 0
+That prefactor, it turns out is Is it obvious to see this, but I can rewrite that thing as 12 by 1. -2 root eater by root 1 minus eater. Is that, is that reasonably clear how one would go
+
+SPEAKER 1
+from that, that term down to here? We haven't calculated this one, so I'm just gonna tell you the answer for that because it's, it's similar and
+
+SPEAKER 0
+even less illuminating to go through the, uh, the arithmetic. So that term When you work it out is. Similar root eater but now plus route 1 minus eater over route 2 squared, but now it's the identity rows identity. Which I can write as a 1/2 by 1 + twice root eater, route 1 minus eater, identity rows identity. OK, and what was the purpose of all that? Well If I choose to be this expression here.
+
+SPEAKER 1
+Uh, I ended up with this identity conjugating the density matrix times some expression. They they did find some expression. Well, that's, that's exactly that there.
+
+SPEAKER 0
+I guess if I choose. If I had to find this This equals P. This is 1 minus P, and so we have. Epsilon R equals P. So let's get the same form. I row, I plus P Z row Z dagger. OK, and so now you can see that this is exactly in the form where E0 is um root 1 minus P times the identity and E1 is. Square root of P times Z, so epsilon row is now the sum over K E K row.
+
+SPEAKER 1
+So In this very particular case, we can, we can
+
+SPEAKER 0
+uh clearly write out derive what these E's are, and those E's, as you can see, depended on the particular choice of basis that we um we used. Now, uh, This is, this will just take as given,
+
+SPEAKER 1
+you're very welcome to work through this. Again, it's exactly the same problem, but we, we're choosing the same opera operator uh basis for the environment as we did in the in the first calculation today. If we went through and and worked out what the environment operators EK are, now we'd find that these two expressions. Which are no longer the identity in Z but some
+
+SPEAKER 0
+um some mixture of those two things. OK, so this is written out where we, We calculated
+
+SPEAKER 1
+the Operators representation of this different basis, the computational basis, which sets this expression, it's a bit messy, uh, A bit messier than this expression. But they're the same, they have the same effect on
+
+SPEAKER 0
+the channel. So this has the same As um Route 1 minus p identity and route P times Z, which is. What we had So again, the, the point there is
+
+SPEAKER 1
+that the, Apart from unitaries, as long as there's more than one, involved. There are different presentations that have the same effect, um.
+
+SPEAKER 0
+That describe the same channel, But they, they look different, OK. Now, one thing to say is that in, in, whoops. Uh All of these channels we've talked about are in
+
+SPEAKER 1
+effect the same channel, right? These gremlin channels where we're flipping coins, there's unitary evolution where we do an operator sum representation in one basis or another basis. Their their effects are in fact all the same. Uh, there's a certain limit where, uh, if we made the channel strong enough, um, for example, if instead of taking, so this is the case I think where ITER was one. If I change the environment state from this general state to the particular case where I have a 0 only,
+
+SPEAKER 0
+what do we expect to happen there?
+
+SPEAKER 1
+What, what do we expect to happen in this case where we cut out that part, we just have equals equals one so. Well, that's the worst possible configuration, right, because the, the effect of the control is to flip at this state and the state 0 and the state 1. Orthogonal to each other. So if I choose this particular state to be 0, then the effect of this uh interaction is to change the state of the environment from 0 to 1 when it happens. And that's the worst possible configuration. The alternative would be if I equals 1, then this state is the plus state. If I do the control model in the plus state, I end up with the plus state. And so in that case, the environment doesn't change. So we expect that when, when I, well, that's what's written up here when IE is 1, it's the worst case, when it equals a half, it's the the. Effectively nothing happens. The environment is the same whether or not the system.
+
+SPEAKER 0
+No decoherence occurs, um, and that in fact you can
+
+SPEAKER 1
+see here, If if it is, is a half, this whole thing becomes zero. And when 1, this is 0. Mixing interpret He Yeah Exactly, so if if P is 0, we only have this first term which is the identity. If if P is 0 then nothing happens, right? And if P is 1, then there's a z for sure uh but if P is a half we have a mixture of doing nothing and flipping. the environment Uh, the, the environment changes if, in this case, if ITE is. Asia is one, the environment definitely changes the most. contingent on this state here And if, and if I is, is a half then the environment doesn't change at all.
+
+SPEAKER 0
+So, you know, that's what these, that's what these uh
+
+SPEAKER 1
+operators are really capturing. And this is this strong interaction case where, you know, if we put E equal to one, when, when the system is in this particular one state, it's going to cause the environment to, to change most dramatically. Um, and we have the operator sum representation in this form here, which is completely mixing, right, so operator sum is this form, the state after the evolution is now completely mixed.
+
+SPEAKER 0
+That is, the coherences go to 0. Of diagonal terms. All right, so that's, that's as much as I really want to say about the sort of calculational structure of, of quantum channels for the moment. There are ways to visualise what quantum channels do, so,
+
+SPEAKER 1
+uh, I assume you've seen, The block sphere, is that
+
+SPEAKER 0
+a reasonable assumption? So you know you can represent.
+
+SPEAKER 1
+The state of a of a qubit is a pure as a pure state is a state that sits on
+
+SPEAKER 0
+the unit sphere. Remember what the coordinate coordinates are for? Uh, in the block picture. So we want to map row to uh. To a vector, a 3 vector. And what are the components of Do you remember what the components are? Well, in terms of Roe, in terms of the initial state.
+
+SPEAKER 1
+In well in terms of this state road, what are the coordinates in the blocks here?
+
+SPEAKER 0
+So. Uh, for any state, so trace. P X Trace row why. So if, if row is equal to some pure state. Then the block sphere, this is the block vector. OK, so they're, they're the the components of the block
+
+SPEAKER 1
+vector for a pure state side, uh. For a general density matrix. again Components of And in this case for a pure,
+
+SPEAKER 0
+this is pure states. It's pretty easy to show that, um, Uh Mod R 2 is equal to 1. So this is the surface of the block sphere.
+
+SPEAKER 1
+The state row equals the identity.
+
+SPEAKER 0
+Uh, let's say row on 2, which is completely mixed. Has Roe Identity 12.
+
+SPEAKER 1
+What's the trace of Identity time Jarrett, yeah.
+
+SPEAKER 0
+Identity times PX is just P X. Pli X has got off-diagonal elements that are non-zero, but, uh, that's 0. What about Y? What about Z?
+
+SPEAKER 1
+So it's only slightly less trivial one because that's plus and minus 1's on the diagonals, but the trace is
+
+SPEAKER 0
+zero.
+
+SPEAKER 1
+So completely mixed state is the state in the block
+
+SPEAKER 0
+uh vector. I is the origin. So in this blocked sphere picture, the surface is all
+
+SPEAKER 1
+the pure states, the centre is the mixed state, and, and you can imagine, or you can sort of visualise
+
+SPEAKER 0
+what the effect of a quantum channel is by asking for cubits at least, by asking what is the, um, how does the block sphere evolve. In other words, the blosphere captures all possible states, pure
+
+SPEAKER 1
+and ah mixed. What happens to each of those states, uh. And different channels do different things.
+
+SPEAKER 0
+So just to remind you, in this picture, what's the
+
+SPEAKER 1
+north pole of the Bloch sphere going to be?
+
+SPEAKER 0
+Well, I guess it depends on the basis. In in this basis, this would be the the one state. This would be the zero state is the South Pole. Where would be the plus X eigenstate, the plus state. Yeah, so we'd have a plus X. Plus plus here, and then the minus state would be here. And then in the Y direction we'd have We have the plus I. Plus I state and the minus I, I might have got the minuses and the pluses in the wrong spot, but that's OK. We'd we'd have some states on the, on those, those coordinates. Important thing is there's this north pole axis and this
+
+SPEAKER 1
+particular phase flip channel preserves the states 0 and 1, so the state 0 under this, Take the road to be state 0. Well, then acting on the state 0. I do the acting on the state 0 back They're acting on the state one flips the phase, but then I do the. On the other side to that also. one on this term here identity.
+
+SPEAKER 0
+So the states 0 goes to, sorry, I should say. This, this face lip channel E00. Is the same. E11. is also the same. So certainly the two points at the top and bottom of the bloch sphere evolve.
+
+SPEAKER 1
+To the same point in, in, uh, in the map. Spots But any other state or any other pure state, for instance this plus state is gonna shrink. This, this is a state that has maximum coherence between 0 and 1. We, we saw that the effect is to shrink the coherence. Facebook Shrink the coherence so this loch sphere goes from being a sphere to being sort of cigar shaped, this
+
+SPEAKER 0
+elongated.
+
+SPEAKER 1
+Blob It gets squeezed in in the XY plane, uh, but not in the Z plane, so the, the north
+
+SPEAKER 0
+pole, the north-south pole stays the same but laterally it gets squashed. So that would be a way to visualise the effect of this, this channel.
+
+SPEAKER 1
+Um, so we, we talked about Facebook channels, we remember we had control of. We can work through exactly the same kind of thing with a bit flip channel. It's, it's a, uh, now that the control and, and, and phase are flipped. What do you expect there? So the bit flip channel we the phase flip channel squashed everything in the uh XY plane but can conserved the Z coordinate.
+
+SPEAKER 0
+So yeah, that's if you imagine the Bflip channel now it's like swapping X's and Z's.
+
+SPEAKER 1
+So now the Z, the X axis is gonna be preserved. box here interested YZ plane, OK, so that would be
+
+SPEAKER 0
+the effect of the bit flip channel.
+
+SPEAKER 1
+It's operate some representation then turned into an X.
+
+SPEAKER 0
+There's other channels, there's a depolarizing channel which is sort
+
+SPEAKER 1
+of symmetric, instead of having a, you know, so the phase channel is characterised by having a Z as the non-trivial operator down there.
+
+SPEAKER 0
+The bit flip channel has an X operator, X flips 0s and 1s, and this is sort of symmetric in
+
+SPEAKER 1
+that it affects uh the X, Y, and Z coordinates equally, and the effect on the block sphere is to just shrink the block sphere. So pure states map into the interior of the block sphere, that is, they all become mixed. And if I take the limit that P goes to, Particular value, uh, I guess a quarter, then it's as if everything shrinks to the identity.
+
+SPEAKER 0
+OK, so, so there's some examples of channels, and they're
+
+SPEAKER 1
+going to be incredibly important. In fact, we're going to see this kind of thing show up when we think about error correction, which will
+
+SPEAKER 0
+be the next subject after we finish with open systems.
+
+SPEAKER 1
+This exactly is the kind of thing that classically corresponds to a bit flip, that is if we had a classical bit in the state 0. The bit flip channel is one that probabilistically flips it
+
+SPEAKER 0
+to a one or vice versa.
+
+SPEAKER 1
+So that's just a standard type of error that can happen to digital information. The phase flip error is the one that we're gonna have to worry about, the Z error, because that's not something that has a natural classical analogue. What does it mean for a phase error in a classical, uh, binary digit representation?
+
+SPEAKER 0
+Well, it means nothing because it preserves the state zero.
+
+SPEAKER 1
+So they, they're invariant, but other quantum states do change under this channel. So they're going to be really important to think about when we think about error correction.
+
+SPEAKER 0
+There are lots of other sorts of channels. I'm just going to sort of go through the, the partial zoology of them for cubits, and remember, if you
+
+SPEAKER 1
+have more, more than one qubit, or if you have a cube treat or a higher dimensional object, it's going to have channels that you can't even represent like this.
+
+SPEAKER 0
+Block spheres are particular to to cubits.
+
+SPEAKER 1
+There's a thing called an ampl tube damping channel, the um operator some representation looks like. If In this particular case, if you take gamma to be, I guess one, then it means that Everything turned into state zero, so this will be a state where no matter what I put in, it ends up at the. Blosphere which Rotation back The top of the blocks here was 0, then all states just converge to that.
+
+SPEAKER 0
+Um, and so this is really just, uh, and there's
+
+SPEAKER 1
+another, another kind of thing you can have where, uh, if we imagine we have a, a two-level system and it can lose energy, that is an excited state and the state one, uh, can relax to a ground state,
+
+SPEAKER 0
+which I put my pen, this would correspond to the situation where you have state 0 and 1, and we have some probability over some time for the system to
+
+SPEAKER 1
+evolve from the state 1 to 0, but not the other way around. So this would be relaxation.
+
+SPEAKER 0
+And that would be this generalised amplitude damping channel. Uh, what else do I wanna say. Yeah, look, I, I don't know that I want to say very much about that, but where I want to
+
+SPEAKER 1
+finish really is just to summarise what we've seen, which
+
+SPEAKER 0
+is that, Quantum channels are a way to think about
+
+SPEAKER 1
+uh the discrete evolution of a system from some initial state to some final state. Again, you've seen unitary evolution is an example of that. A gremlin with a coin that's doing something devious to a thing is another example, and a, and an, you know, and systems interacting unitarily with an environment where we
+
+SPEAKER 0
+discard the state of the environment is yet another example,
+
+SPEAKER 1
+so, That's, that's uh, that's how we think about quantum channels is the system is interacting with something else. That something else is the environment, we, we neglect the
+
+SPEAKER 0
+environment, we don't have access to it. And so as far as the system's concerned, we get
+
+SPEAKER 1
+a sort of black box description, which is in terms of this operator sum representation.
+
+SPEAKER 0
+Are there any questions about that? So, that's, that's as much I want to say about quantum channels, uh. Uh, which are a discrete sort of, uh, evolution story. What we're going to do next is to figure out how do we So let's say this is a discrete evolution. From input States To output states. And as far as we're going to be concerned with
+
+SPEAKER 1
+error correction, that's, that's perfectly fine. Uh, I do want to cover what are called master equations, which are the.
+
+SPEAKER 0
+So next, We have continuous Evolution With noise. So we're going to go through what's what's called a
+
+SPEAKER 1
+Lindblad master equation.
+
+SPEAKER 0
+Lindblad, named after Mr. Lindblad, Professor Lindblad, um, uh, and it's the generalisation of the Schroeder equation and the von Neumann equation. Uh, so let's take a few minutes break now and
+
+SPEAKER 1
+uh we'll come, we'll, we'll start again at 11:30 and
+
+SPEAKER 0
+just go for the next 20 minutes and get as far as we can on open systems evolution. All right Yep, I, I, I put one until.
+
+SPEAKER 1
+I, I, I, I uploaded them this morning, so everything that we've done before today are on there.
+
+SPEAKER 0
+On the blackboard. So That's weird. I uploaded them, but they seem like they haven't. Stop. I can do that now.
+
+SPEAKER 1
+Can you have a look now? Fair, OK, I mustn't have press save. OK, good.
+
+SPEAKER 0
+All right, so Uh, what's the date, is it 26th? OK, so What we're going to talk about is the Lindblad-Master equation. It's the thing that generalises Schrodinger equation, evolution, or von Neumann equation.
+
+SPEAKER 1
+Let me explain what these terms are, Lindblad, as I just said, is the name of a person, so Lindblad was the person who derived this stuff.
+
+SPEAKER 0
+Equation, well, that hopefully is obvious.
+
+SPEAKER 1
+Uh, but master, what does that mean? Well, it comes really from the classical probabilistic literature. So when people write down, um, Well, you know about probability distributions, you can have a system that uh evolves in time, and at each moment in time it's characterised by some probability distribution. So you should think about that in that case, the probability distribution's like a cloud or a blob that's moving around in proba in phase space. And the equations that describe that get called master equations.
+
+SPEAKER 0
+Um, and so it's been adapted from that, that literature.
+
+SPEAKER 1
+So, so that's why it's called a master equation, it
+
+SPEAKER 0
+really means, Evolution Of a distribution In phase space. Um As far as we're concerned, it's just a name,
+
+SPEAKER 1
+so don't get hung up on master equation, it's just
+
+SPEAKER 0
+a name. Um. The point about these things. The Schrodinger equation And von Neumann equation.
+
+SPEAKER 1
+are special cases of the, of the Lindblad-Master equation.
+
+SPEAKER 0
+These correspond to unitary evolution. The Lindblad Master equation gives non-unitary. Um So let's, let's sort of put a baby. Try to explain the um Landscape that we're in really so. We've talked about closed. And open quantum systems. And we've spent some time now talking about discrete evolution in time. Or or maps. From one time to the to a later time. The time And this is continuous. I think of this as a sort of a a grid. So closed evolution is really a subset of open evolution. That is, I can think of closed evolution as a
+
+SPEAKER 1
+very special case of open evolution, we already saw that with the operator sum representation where if I take a
+
+SPEAKER 0
+particular case, I get unitary evolution.
+
+SPEAKER 1
+But open is open evolution contains that and more.
+
+SPEAKER 0
+And The Schrodinger equation, uh, well, so this would be. Uh, unitary Pi goes to psi primed is you. So With U dagger, U equals the identity, it's unitary, uh, or equivalently row goes to row primed is U rowu dagger. And In the continuous case, the thing that generates unitary evolution is the Schrodinger equation. Which is psi dot is minus ih. So Or the von Neumann equation. Where we take the commutator of the system Hamiltonian with the density matrix. So is everyone happy with that column?
+
+SPEAKER 1
+Schrodinger equation, you've, sorry, uh, unitary evolution you've seen a lot, Schrodinger equation you've seen a lot. We've talked about the von Neumann equation which is just applying. The product rule to the expression for for um Row
+
+SPEAKER 0
+is at. So I apply the product rule to this object here.
+
+SPEAKER 1
+Use the Schroger equation OK, we've already filled in the
+
+SPEAKER 0
+top right. Uh, of this Row S goes to row S, which is a sum over K. EK dagger row S EK, that's the operators sum. And again, that's a generalisation of the unitary evolution of the density matrix. And I put this thing in the wrong spot. So this just to say that this condition here.
+
+SPEAKER 1
+Just generalises this statement. And so the thing that's blank in this table is the bottom right corner. How do we, how do we, a way to say that is that this is the discrete evolution which is
+
+SPEAKER 0
+generated by this. So if we evolve the Schrodinger equation for, uh, Finite
+
+SPEAKER 1
+interval of time, we get unitary evolution, so we say
+
+SPEAKER 0
+that this generates.
+
+SPEAKER 1
+This continuous evolution generates this unitary maps.
+
+SPEAKER 0
+And so we need the corresponding thing. Here All right, so And I just want to be, be clear, this is still a system evolution here. So we already know a partial answer to this, this story here, which is that um, It's a partial answer. Which is that we know that a system and environment, as long as the joint system environment. Is closed, or in other words, if the environment is
+
+SPEAKER 1
+big enough that it captures basically everything that can happen,
+
+SPEAKER 0
+um, Then we could say, well, what we should do
+
+SPEAKER 1
+for generating these operator sum evolutions is we should think about, A system coupled to an environment with some Hamiltonian, we take the commutator, that's the von Neumann equation for the entire joint system. We evolved that for some time and then we take a trace over the environment after some time, and that's gonna generate the map. OK, well that's true, that that is a perfectly uh
+
+SPEAKER 0
+formally correct statement. But Uh Which is the same as really saying that row SE at some time T is some unitary evolution for time T, acting on the initial state, whatever that might be. And And to do that requires that we can calculate
+
+SPEAKER 1
+this unitary. It's the same as saying we have to solve this. So that's generally a hard thing to do.
+
+SPEAKER 0
+What we want. Is something simpler, we want rows is equal to is equal to something. Uh At each time.
+
+SPEAKER 1
+So what we'd like is a much simpler problem where we can just solve some differential equation in time for the system without explicit reference to the entire Hilbert space of the environment, but satisfying the property that the the state of the system is just the reduced density matrix of of this system and the environment. Um, so that's in general. Hard problem, so there's no single Universal solution that gets
+
+SPEAKER 0
+us there. But we know some partial answers to that. Well, it's going to be in the case where the system was in fact closed. We should have a term that looks like that.
+
+SPEAKER 1
+This would be the von Neumann part of the evolution for the system if there's just a closed evolution of the system. So if, in other words, if the system has its own internal Hamiltonian, then we should have a turn that looks like this, it's just that important.
+
+SPEAKER 0
+Here.
+
+SPEAKER 1
+But we should also expect that there's some effect to the environment. But we don't know what that is and what we're going to do.
+
+SPEAKER 0
+Sorry. And Um, the effect On the system evolution. can sometimes Uh Computed on average. Um And that's really called the Lindblad-master equation.
+
+SPEAKER 1
+So To do that, to derive what what these question marks are, so there's some additional terms that we, we would be able to. Uh, people have done, that's what Lynn Blatt did, um.
+
+SPEAKER 0
+Uh Let's So that, that thing, the question marks is
+
+SPEAKER 1
+the stars are what I'm talking about.
+
+SPEAKER 0
+Um The term And there could be several of them, question mark, question mark star. Up there We have to do We in principle, we have to do quite a lot of, of work. Uh Let's say So we'd need the following mathematical techniques. We'd need to understand stochastic calculus. We need to understand, uh, As a consequence of that, Brownian motion. Interpreted generally, and there's some relations of this to financial derivatives. At rivers. OK, and this is called a Black Shoals equation. So there are a bunch of mathematicians who care about
+
+SPEAKER 1
+this thing called stochastic calculus, uh, people in finance also care about it because that's how they model markets, um. So I'm led to believe at least, uh. Stochastic calculus is, I mean, it's very nice, interesting.
+
+SPEAKER 0
+Subject, what happens in in uh stochastic calculus is we
+
+SPEAKER 1
+think about the, uh, the cal literally the calculus of quantities whose derivatives ah aren't necessarily well defined. What happens, what happens in stochastic calculus? You imagine you've got some function that's changing in time, it's changing in a very random way. And that there are some effects that that uh that that randomness um imposes on the evolution of the system and uh one way to sort of summarise that is that you get different versions of the chain rule. So chain rule, product rule, all those kinds of things change a little bit under stochastic evolution from what you're used to seeing in um in ordinary calculus.
+
+SPEAKER 0
+We're not going to do any of that because it's beyond the scope of this course, um. There's lots of textbooks on stochastic calculus. We're not going to assume this. I'm not gonna use this actually. But we will use a, a, a poor man's version. That's not being gender specific, by the way, that's just, we're gonna do a, a, a very cheap, um, a
+
+SPEAKER 1
+cheap and quick version of, of, uh, stochastic averaging that
+
+SPEAKER 0
+will get us the result we want for a simple case. So what, what we're gonna get to is, um, Uh, we will use the simplified versions, uh, For a, for a simple case, a special simple case. Um, of our evolution. So what, what we'll get to by the end of this, this discussion, not today, but in maybe next, next lecture is, Is the derivation, in at least in this very simple case.
+
+SPEAKER 1
+Of a term that we can add here that has this effect, it takes account of the. Environment, a very simple environment that we're going to introduce,
+
+SPEAKER 0
+uh, but it illustrates the the form of this Lindblad-Master equation and gives some structure. OK, so let, let's set up what, what we're going
+
+SPEAKER 1
+to, to end up doing.
+
+SPEAKER 0
+Uh, and then we'll do the, the hard calculation next, next lecture. So, uh, for open systems. Evolution We start with Uh, separability. And global unitarity. Assumptions, OK, so separability means that um row SE, Lives in well. Well, in the, in the Hilbert space of the system
+
+SPEAKER 1
+and the environment, and that row at SE at T
+
+SPEAKER 0
+equals 0 is going to be separable. And just to add some notes here, the environment we're going to assume is, is very large dimensional. And the system is going to be small dimensional. And you know, this, the Conceptually, it's exactly the same
+
+SPEAKER 1
+as we talked about with channels, we want to think about the system as being some small degree of freedom that we care about, that small dimensional degree of freedom that we care about, and we want to evolve that thing and understand how it, evolves in time whilst it's interacting with a very large dimensional system whose details we don't care about in fact we don't even have access
+
+SPEAKER 0
+to.
+
+SPEAKER 1
+Um So it's, it's really the same set of starting
+
+SPEAKER 0
+points that we, uh, assume we've talked about for the quantum channels. Um So that's separability. that and global unitarity. Is Is von Neumann equation on the On the system and the environment, system tensor environment. Which is just to say that row SE evolves according to A big system environment, Hamiltonian. Or in other words, we're thinking of the system. Plus environment I is approximately Closed.
+
+SPEAKER 1
+So the system's not closed, it's interacting with a much bigger system, the environment, but that entire collection of things
+
+SPEAKER 0
+is roughly speaking, closed. So we have an environment which I'm drawing as a big circle and the system which is a little circle. They're coupled, uh, and they evolved globally as a, as a A closed system, and then the reduced density matrix. It's just what we've seen before, the system density matrix is just the trace over the environment of row SE, and that's true at all times. OK, so We can make a little, a little bit of progress just to set things up for next, uh, lecture. That last statement tells us in principle, the time evolution of the system. Uh, system operator. What can I say about the time derivative of the
+
+SPEAKER 1
+trace of something?
+
+SPEAKER 0
+OK. Yeah, that's right. Trace of the environment of um D R S E D T. And what do we know about D R S ADT? That's the von Neumann equation, is it, so it's trace over the environment of minus IH system environment, row system environment. And again this is at any time tea. So here, the left hand side. Uh, only Refers to system degrees of freedom. Um, but the right-hand side. Ah still depends. Um, on environment.
+
+SPEAKER 1
+We average over the environment because of the trace, but it still depends on the evolution um of the environment.
+
+SPEAKER 0
+And the goal is to make Enough Simplifying approximations. Um, so that the RHS right-hand side. Is independent. of the environment. Except in some coarse coarse properties. And if we can do all that, we get something like a Lindblatt equation. And and some others Other variants OK, so Lindblad equation
+
+SPEAKER 1
+is, is something that satisfies this, this objective, this goal that the right-hand side, after we make enough approximations obviously. The right-hand side won't explicitly depend on the state of the environment anymore, it will depend on some um some average properties of the environment. Um There are other equations that that have those properties, but Lindvat is is nice for uh various mathematical reasons and it's the thing that we are going to um, To derive in a, in a very special case, OK, so we're not going to derive that in, in its
+
+SPEAKER 0
+full, um, So we will derive. A limited special case. And, and the main reason, well, the two reasons are,
+
+SPEAKER 1
+firstly, you don't know the stochastic calculus or don't assume
+
+SPEAKER 0
+that you know stochastic calculus. Secondly, it's actually quite boring to do the derivation. It takes a long time and it's not very illuminating, so I don't want to do.
+
+SPEAKER 1
+But you'll get, you'll get enough of the picture from what we do do and you'll see some of the, The puzzling Consequences of stochastic evolution that you need to take account of, which is what really stochastic calculus is,
+
+SPEAKER 0
+is formalised to do. Alright, so let's let's finish there and we'll, we'll keep.
+
+SPEAKER 1
+On Friday Um, so yeah, the notes as of this morning should be on there. Hopefully I'll, I'll, I'll put the the current set of
+
+SPEAKER 0
+notes up and you should have an assignment to start
+
+SPEAKER 1
+on from me later this week.
+
+SPEAKER 0
+OK. I think you've just had one due, is that right, with Prasada? Sorry?
+
+SPEAKER 1
+So you already handed one in last week. I should've, I should've uploaded it on Friday, but I figured you're probably not gonna start anyway cos we haven't covered enough, and so you won't, you won't, you'll forgive me if I'm a, a week late in uploading it,
+
+SPEAKER 0
+won't you? All right, thanks everybody.
+
+SPEAKER 1
+How much time did you spend on Prasanna's assignment? Somewhere between 30 OK. All right I'm not a big fan. Prasana is is an extremely good physicist, so, uh, uh,
+
+SPEAKER 0
+if you work with him, you'll, you're a very intense
+
+SPEAKER 1
+chat. Yeah Yeah, OK.
+
+SPEAKER 0
+All right. With any luck you'll, you'll have fewer hours when you
+
+SPEAKER 1
+come to mind. All right. Mr.

@@ -1,0 +1,794 @@
+SPEAKER 0
+All right, so, um it's working. So back to Connemara correction. Uh, so we talked about these, um, this quantum generalisation of the repetition code. And the point, uh, really is that we In the classical digital repetition code, we have these parity check, uh,
+
+SPEAKER 1
+Is parity check data which we form.
+
+SPEAKER 0
+Individual bits that are received by a receiver at the end of our channel, um, and we generalise those into, The parity check, the classical parity checks we generalise into parity check, uh, operators and those operators, uh, are, are now mission observable. For instance, P12, which has this truth table. Computational states to Matrix representation of freedom showed we could write. There's only two physical bits, so. There's this natural connection between Digital parity checks, which are properties of the measured bits, and the submission operators that act on multiple cubits. So that was really important because. All right. um, so that that was important property because it means now we can measure these parity check.
+
+SPEAKER 1
+Operators and we can do it without having to measure
+
+SPEAKER 0
+the individual cubis themselves, so We could have measured Z1 separately and Z2 separately and Z3 separately.
+
+SPEAKER 1
+We had this problem though that that would collapse any
+
+SPEAKER 0
+superposition of a. Coherent supposition of the code. But if instead of doing that we measure. Z2, 3, then that doesn't, um, Change the code words, but it does reveal parity check data. So the example was, for instance, if we had a state. Encoded in these two code words, an error happens. And when we measure P1 and P1, 2 and P2
+
+SPEAKER 1
+3.
+
+SPEAKER 0
+We find out that P12, the, the new state after the arrow is a minus 1 island state. At 12 operator But the new state is a plus one item state. The parity check 23 operator and so we end up with this. pair of classical measurement outcomes minus 1 and +1, which are the syndrome data. The syndrome data for um For that particular measurement error,
+
+SPEAKER 1
+that particular uh error. So what would we So I made a comment last week that that uh the parity checks should be compatible observable. So We need to measure. Uh, both parity check operators. And I'm going to call that introduce some jargon which is stabilisers. Um Simultaneously Without disrupting the state. Quantum state. That means they must be both simultaneously diagonallizable.
+
+SPEAKER 0
+So they're both emission operators, so they're diagonallizable, and the fact that they need to be simultaneously measured means they need to be simultaneously diagonalisable.
+
+SPEAKER 1
+Which is another way of saying they have to commute. So, and we should check. That P 12. P 23 Uh Which is the commutator Z1 Z2 identity 3, and there's tensor products here. I 1, tensor, Z 2, tensor Z 3. That equals Z1 I won And I'll belabour the point to write this out. Z 2 Z 2. 3 Z 3 minus. The reverse, which is 11, Z1. And 3 2 Z. 2. T I 3. And you can see each term there is, is, uh, Uh, equal to each other.
+
+SPEAKER 0
+At times I always the Z squared Right I So that that's obviously 0 then.
+
+SPEAKER 1
+And that's good. So they both commute, that means they're both simultaneously diagonallizable,
+
+SPEAKER 0
+that means we can measure them both, uh, in principle
+
+SPEAKER 1
+at the same time. So in this, in this sort of uh example protocol. So, um, with Syndrome data -1 + 1. And In this example, we have syndrome, that syndrome data and. Which is compatible. or consistent With either The error being x1, which is in fact in this example what happened, or Error X2 X3.
+
+SPEAKER 0
+So it could have been that the first. This is a syndrome that will be measured for a state suffering. But it would also be the syndrome Last The first
+
+SPEAKER 1
+one had stayed the same Uh, and so, so from our sort of earlier, uh, Bayesian inference. Uh, I guess. Epsilon equals X1. As more likely And then so our correction would be, and we can formalise that, but then our correction would be x1 as well. So just to reiterate, we start with psy. Uh, we had the error, which was X1, and that went to the state alpha 1. which is alpha 100 plus Beta 011. We got our syndrome. And from that we inferred a correction which was X1. And so if we apply that correction to psi primed, which is C acting on the error, acting on the original state psi. Uh, we can see that that will be, um, X1 2 si, which is psi. And in that case, we would have got it right. Um But just to note that, um, If the error was in fact X2 X3, which was the other, uh, also, also consistent. The syndrome Then C would have still been X1 still. Uh, but The final statement, which is C. So I Let's say primed. Would be x1 x2 x 3. Pi logical, which would be alpha 111 plus beta 000, which would not be equal to Psi.
+
+SPEAKER 0
+So, that's just to say that with that syndrome data, we're most likely to fix things up. If we Syndrome implies X1, but there is a chance that the error was not X1, it was X2 X3. And so, had that been the case, we would have the error correction would have failed. OK, that's a feature of error correction. There's always um High weight errors that have the same syndrome as low weight errors. And so if you're unlucky, you, you will guess wrong. Uh, but the probability of that guessing wrong tends to decrease as you go to more sophisticated code. OK. So I've introduced a bunch of jargon here.
+
+SPEAKER 1
+So So there's some terminology here that we've introduced, and I just want to sort of summarise that at this stage. So we have parity checks. And they've become stabilisers. Which are just her mission operators. We've got code words Which are A plus one eigenstates. Of stabilisers Example is P12 and P2 3. Example, 000 and 111. And linear combination of those is a valid code word. And we have a little bit more jargon, which is that we say this stabilisers. In fact, I want to Yeah. So P1, 2, P2, 3, and P 13 would all be stabilisers.
+
+SPEAKER 0
+So P13, you remember, was. The product of P1, 2 and P 23.
+
+SPEAKER 1
+Uh, but stabiliser generated. by a subset Called the stabiliser generators. In this case, it will be P1, 2, P2. So that's like a basis for for the stabilisers, so
+
+SPEAKER 0
+if we have this this smaller subset of stabiliser generators, we can actually do all of our calculations. With that stabiliser generator. Because of all the other st P13 Uh, Determined by the measurement outcomes of those, that smaller subset.
+
+SPEAKER 1
+And it's the stabiliser generators that give us the syndrome data. Right, so In this case, e.g. Syndrome -1 + So
+
+SPEAKER 0
+when we specify the system. to specify the outcome stabilise the measurements. You only need to satisfy the. Um, and then all stabilisers, including the generators.
+
+SPEAKER 1
+Must commute With each other And the reason is that that means they're compatible. Uh say. And big commission OK, so they have to be compatible
+
+SPEAKER 0
+observable observables so, so that they can be uh measured. Consistently with one another without changing the state.
+
+SPEAKER 1
+Um, so for example, we showed that P12. And P 23. 0 Now, in that case, This example was fairly simple. Uh, since P 12, and P 23. Uh, products of that operators. Products of identity and Z.
+
+SPEAKER 0
+Operators And so you know, if I had a list of stabiliser generators, I might have to check all possible commutators. And there'll be 5 in generators and there'd be water and squared commutators I'd need to check, but there's some, some, some rules of thumb which we will, uh, we will see.
+
+SPEAKER 1
+But I'll mention, mention it now. So, so some rules of thumb for, for commutators. So products. Of identity and z. Always commute we identity and for the same reason as before, right, so if I have If I have a
+
+SPEAKER 0
+list of things which are broken. and I ask another When I multiply it out, I'm going to get z's and i's multiplied and sometimes. It's great But there's no signs of Now there's nothing
+
+SPEAKER 1
+special about identities and Zs.
+
+SPEAKER 0
+But if I replaced this with an X, that But
+
+SPEAKER 1
+Also I's and X's. Uh, commute I's and X's for the same reason or
+
+SPEAKER 0
+Y's. A list of eyes and a power operator of some type can meet with another list of eyes and a power operator of the same type.
+
+SPEAKER 1
+Um, so product Of I and Z Don't always Commute with X. I can check that because, um, XZ. Equals -2 i. I've got the sign right.
+
+SPEAKER 0
+effect. Um, but what, what does hold.
+
+SPEAKER 1
+If that's, if that's true, then the anticommutator of x and z, which is x z plus z x that equals 0. And the thing to take from that is that products of Of Palley's Which are I, X, Y, and Z. Either Commute Or anti-com So I have a list of,
+
+SPEAKER 0
+of power leads from which are products of, of operators from the set I X, Y, or Z. Then they will definitely either commute or anti-commute with another set of string of power leads. OK, so that's not generally true of all operators. I can have plenty of operators which neither commute nor anti-commute. In this case, power is either was commute or anti-commute.
+
+SPEAKER 1
+And how can you tell the diff which which case is gonna be uh. Uh, if it's going to commute or anti-commute. Um And this is where I want to introduce some, some, some rough, uh, commentary, so, uh. When I say it in a limited sense, products of Z's. If they collide. An even number of times, so we're going to use that fact. So what do I mean by that? I mean, X1 tensor X2, and Z1 tensor Z2. That does OK, why is that? X1 Z1 cancer. X2 z2 minus z1x1 tensor. And X XZ I think is minus 1Y. 11 And then zx should be the opposite. Signed And so when we multiply that out, we get a -1 for the first pair. minus Proactive So minus 12. Plus squared. 2 And minus I2 is the same as plus I2, they're -1, and so that equals.
+
+SPEAKER 0
+So, so this is the rule of thumb I want you to remember is that, uh, products of, of X's and Z's, if they collide an odd number of times, they anti-commute, and if they collide an even number of
+
+SPEAKER 1
+times, um. So that's something you can check, uh, yourself. Doing exactly the same thing, but it's just generalising the point that a single x and a z anticommute. Any questions about So, so that's going to be important.
+
+SPEAKER 0
+As we All right. Now, there's one more thing we need to talk about before we generalise this repetition code. This is all really about the structure of stabilisers.
+
+SPEAKER 1
+So the last thing we need is uh. When Logical operators So logical power the operators. For a logical qubits.
+
+SPEAKER 0
+And what I mean by that is we want to abstract the idea of the encoding of many of a logical qubit into many physical qubits, to talk about logical qubits which have the same sort of properties that you're used to thinking about just for convention for physical qubits.
+
+SPEAKER 1
+Meaning we need things like x logical X as an operator, logical y as an operator, and logical z as an operator. Such that, say, XL. Acting on a logical state 0. Should equal 0 logical should be 1 logical. And vice versa.
+
+SPEAKER 0
+So the effect of a logical X operator should be, should act on the logical qubits in the way you expect.
+
+SPEAKER 1
+What would you expect Logical Z to do to the state o Logical? 0 Is there, OK, yes.
+
+SPEAKER 0
+Yeah, so logical Z should act on a logical zero cube in the way that power operators should act.
+
+SPEAKER 1
+And, and so what should I do to 1 then? Yeah OK, etc.
+
+SPEAKER 0
+So we need to find a family of operators that act on logical states remembering that these things are actually compound. Compounds that behave just like pies do.
+
+SPEAKER 1
+That is X L Y L. And ZL Should satisfy A pali algebra I mean, they behave The same way on logical code states as, as Pleys do on.
+
+SPEAKER 0
+Uh, on regular things. So, so we need to find these.
+
+SPEAKER 1
+So If we think about our repetition code being One we've been talking about already. What's a, what's a logical Z operator?
+
+SPEAKER 0
+That's going to have this problem. So we want, we want a logical Z which is going to be a product of how the operators. And when I act with it on these states. How this Yep. Yeah, that's a good guess, yeah. Uh, or So they're, they're a bunch of 4 guesses, OK. So it seems like it's not very, this is not enough to specify which tests we should take. But they're good guesses.
+
+SPEAKER 1
+Uh, and we'll come back to them in a moment. What about a logical X? What's the thing that's going to have?
+
+SPEAKER 0
+This effect states. This So OK, so if I, just to check, you know, if I act with any one of these guesses on logical zero. I get ones, no matter which combination I'm going to have. On this side on an odd number of Zs. -1 On this one, so that's That's correct. Logical X is specified. In effect, by this choice by this requirement. We need to be all three. This stage OK, so that's in this case, this is unique. Let's say both, both care about the overall Hilbert space is exactly correct. Um, and we'll see why, we'll see why there's this redundancy. There's a redundancy And that's actually more, this, so this is a special case which we'll see for that only happens really for the repetition code. This is more like the general. So in general For a code, a general code, it's not the repetition. There's always redundancy in how you define logical operators. So this is a special case Um, and in fact it is this redundancy in these definitions that give us the redundancy that's required to do error correction in the first place, OK, they're not unrelated. OK. So So we can, we, we can sort of check.
+
+SPEAKER 1
+that any of these gases Uh, behave Act correctly On the logical code words. And just to break this sort of, uh, Asymmetry, we're going to take ZL The canonical definition for ZL, I'm going to take it to be the product of the three Z's, so that it's sort of symmetric with the logical X. That is, they both have support on all three. Now you might think that's, that's a. It's arbitrary and it is.
+
+SPEAKER 0
+Um But Hopefully, that means that we can, we can
+
+SPEAKER 1
+calculate. Why logical. So remember why logical is, I think. And you have to check the sign here. It's just generally true that, um, Does anyone remember what
+
+SPEAKER 0
+sign it should be? You, you don't remember?
+
+SPEAKER 1
+OK. Um, if it's, if it's not that side, it's the
+
+SPEAKER 0
+other one. But, but in any case, um, If I write that
+
+SPEAKER 1
+out, I get x1 tensor x2 tensor x3. Times Z1, 1217. 3, and as long as I've got that sign correct, well, Which will be um -1 times, I'll get minus 1 cubes. Times Y1 tensor Y2 tensor Y3, which is equal to Y1 tensor Y2 tensor Y.
+
+SPEAKER 0
+Minus the 4 is 1. why is the thing I can calculate from these definitions. In this case it's just the product of Y's, so that's, that's handy. Y behaves, X, Y, and Z in this case behave just like I apply X's, Y's or Z's to each
+
+SPEAKER 1
+q. OK. We can also um So we, we constructed those operators
+
+SPEAKER 0
+to be uh based on what they should do to their logical code words in the Zase.
+
+SPEAKER 1
+We should check that they behave correctly on, uh, Bagan state E.g., we should have a logical plus. Where if I act with XL on that, or a logical minus should be equal to um uh plus minus.
+
+SPEAKER 0
+There should be a, a, a state. Richard, Any guesses as to what say the plus state should be?
+
+SPEAKER 1
+Remember Plus state for for a qubit plus minus state.
+
+SPEAKER 0
+That's the, that's the usual definition for a plus and minus state because that has the Sorry?
+
+SPEAKER 1
+You don't actually have to guess it right because we've defined what X is.
+
+SPEAKER 0
+It's this product of 33 X's, so we could calculate it, but let's just make our life easier and see
+
+SPEAKER 1
+if we can guess what it should be. Yep. Let's try. That just means 0 logical plus or minus 1 logical.
+
+SPEAKER 0
+Right Is that we, we can, we can just put Ls. Behave in the same way. Right?
+
+SPEAKER 1
+But let's check that. So we already know that, that. We just distribute it across. We already know that X acting on 0 gives as
+
+SPEAKER 0
+1. I want to get a 0.
+
+SPEAKER 1
+And with And I can write that as plus or minus 1 on route 2. 0 L. plus or minus 1 L.
+
+SPEAKER 0
+Ms taken out the front.
+
+SPEAKER 1
+Uh, and that, that's equal to what we just defined as our. Plus and minus OK, good. So that's correct.
+
+SPEAKER 0
+So you can see that this logical operator acts on logical code words in the same way that a a Ply operator acts on. Occupational Basis and the superpositions thereof. And So So, OK, what do I So these are
+
+SPEAKER 1
+examples These logical operators of what are called transversal. operators Which is It's just a product operators. That is, if I draw a gate, a logical gate, which is some logical state psi l and then the logical gate logical XL. Which goes to That's equivalent to the encoded state. Encoded over 33 physical qubits, each one acted upon by It's That's a little bit colloquial. What I mean by that is that that's equal to encoding. 5 and 00. Through an encoder Encoder inverse. You would get So At this point in the circuit, we've encoded the state 500 onto the logical state.
+
+SPEAKER 0
+And if I want to do a logical X operation on this logical qubit. Do this thing Apply a lot of physical acts to physical. And then if I really want to measure what the effect of that was, I should invert. So, so that's what we mean by transversal operators, so that's another, another bit of jargon, but there's a special property that the logical, uh, Operators should satisfy, so the logical operators.
+
+SPEAKER 1
+Um Should satisfy Their own Pauli algebra. That is, for instance, XL YL should equal minus 1. It's plus ZL check sign. And And XLZL, for instance, should equal 0.
+
+SPEAKER 0
+So they should all satisfy, they, they should just behave like pale operators. So you know, pale operators, uh, have a particular commutation relation. They show a particular anti-commutation, which is that the anti-commute power the operators, anti-commute with each other.
+
+SPEAKER 1
+So that's, that's one And 2 They should Commute commute with the stabilisers. We can just think about the generators. So this is just a, a, a relatively straightforward statement
+
+SPEAKER 0
+about how the power of the logical operators should behave
+
+SPEAKER 1
+relative to. That's something we should check.
+
+SPEAKER 0
+But this is a slightly more subtle point which is that they should commute with the stabilisers, and why is
+
+SPEAKER 1
+that in physics terms?
+
+SPEAKER 0
+What does it mean when two operators? So it means that you could measure all of the stabilisers. And then if you wanted to measure any one of the logical operators, you could do that without having disrupted the logical.
+
+SPEAKER 1
+So in physical terms this means physically. Uh, we, we need to measure stabilisers. Or stabiliser generators. Without Disrupting OK That's exactly the point that I made
+
+SPEAKER 0
+the lecture, if we just measured the single physical cubits independently. For instance, if we measure in the computational basis. We're measured Z1 in the computational basis, that would not commute with this X er this product of X. And so by doing that, that any information that's encoded. It wouldn't have hurt with the logical sense, that would have been fine because. We preserve Computational data and the computational basis, but it would disrupt any. Any coherences in the X basis. So there are two properties we need to check.
+
+SPEAKER 1
+Um, So let's do some examples. XLZL we, we already have. I checked that XLZL that year was X L Z
+
+SPEAKER 0
+L To I.
+
+SPEAKER 1
+And so the commutator is going to give me 2 iy. Again, check the sign. Um We need to check that XL anticommutes with ZL. So that's X X X times. So X1, X2, X3, Z1, Z2, Z 3 minus. and So that's gonna be XZ tensor. that That's a plus.
+
+SPEAKER 0
+And whatever the sign is, this is, this is a Y and that's a minus Y.
+
+SPEAKER 1
+OK, so So that It's going to be 0.
+
+SPEAKER 0
+Um That's one, they, they satisfy the Paulley algebra and you can go through and check through and the other ones as well. And this, I mean, this is an example in fact where, where we've got an odd number of.
+
+SPEAKER 1
+Uh, and 2, we need to check that they commute with, uh, the parity checks, so. So let's do the first one X X X Z1 Z2 identity. Well, that's equal to Fixed 10. Tends to I. M So that's gonna give us uh I 2 Y tensor. And that equals 0.
+
+SPEAKER 0
+Again, check this side. area in both Council OK, so you can say that logical acts. Is Powley and ditto for.
+
+SPEAKER 1
+P 23, you can check that as well. Um This operator collides here an even number of times.
+
+SPEAKER 0
+OK Observer urgent care commuting operators. mutation minuses And so we should check the other ones as well. And so you can see that in this case, these logical operators satisfy their own Paley algebra and they commute with the, with the parity checks.
+
+SPEAKER 1
+OK. So that's important algebraic structure that they need to. To satisfy And so we've also, and we've checked already that the powers, sorry, the logical operators act on the
+
+SPEAKER 0
+logical states in the way that you expect them to. So, so that this example of the quantum repetition code
+
+SPEAKER 1
+gives us all the jargon we need and I'm just going to uh summarise that. So QEC quantum error correcting codes. Consist of stabilisers stabiliser operators. Uh, which we can, we can condense into the stabiliser generators. That is all the stabilisers are just products of the
+
+SPEAKER 0
+stabiliser generators.
+
+SPEAKER 1
+Code words and code spaces. Which are the plus one eigenstates. Of stabilisers That is If we're in a code state,
+
+SPEAKER 0
+it will be a plus one eigen state of the stabilisers, and by implication, if there's a power error somewhere, it will. That Carly Era should anti-commute with some of the stabilisers. And we'll be in a, in a non-code space. But that'll be characterised by having -1 eigenstates of some
+
+SPEAKER 1
+stabilisers, and we'll see that. In a moment There's logical operators.
+
+SPEAKER 0
+Uh Which satisfy Paley algebra. Uh, and we get from the, the stabilisers.
+
+SPEAKER 1
+stabiliser measurements As they stabiliser generator measurements. Your syndrome data. And syndrome data. And it tells us a correction, which is a function of the syndrome data.
+
+SPEAKER 0
+So, you know, we've talked about the the stabilisers in the repetition code. P 1223, P 13, the stabiliser generators for two of those, any two of those code words are 00. And the combinations of those. Logical operators in this case are products of X's or products of zs. That was The stabiliser generated measurements in this example where we had a a bit flip on on qubit1 gave us two bits of data, minus 1 + 1 for that example, and from that syndrome data. We take a guess as to what the correction should be, um. And this is called decoding or error decoding.
+
+SPEAKER 1
+And error decoding is a is a computation. The Bayesian Inference Calculation And in many cases, you can, you can, for small codes that can turn into a lookup table. Which is just a specification of a list of syndromes and corrections. B12, B Parity check, uh, bits, P 12, P2, 3, etc. and it goes to a correction, which depends on, P12. to That used to So lookup table decoding is basically
+
+SPEAKER 0
+what we're gonna talk about in this, in this course. It just lists all the possible syndromes you could have, and in the case of the repetition code, there's 2 bits, so that means there's how many. Correction Now that's fine if there's a small number of of syndrome bits. But in general, if they, if I've got Kay syndrome. tell you how they generate stabilise the generators, how many syndrome bits? OK. 2 K.
+
+SPEAKER 1
+So this is 2 K. May is the Number of stabiliser generators.
+
+SPEAKER 0
+So In our case, that was 224. but it pays even not a very large number like 2. I So even if I had a code which had as few as 20 stabilisers generators. Table with a million elements Uh, and so that's, that's a generally computationally inefficient way to to do things.
+
+SPEAKER 1
+Uh But lookup table Decoding is computationally Inefficient OK So,
+
+SPEAKER 0
+in general terms, this the decoding problem is a hard problem. Facial sense it's It's a combinatorially difficult problem, uh, and so usually you have to come up with some heuristic for how to. We're not going to talk about that, but it's, it's sort of a a. A standard problem in decoding that is if you're doing error correction, you get, you get all this syndrome data and you have to somehow decide what you're going to do to correct that syndrome data. Using a digital computer, so a digital computer is running in parallel with your quantum computer trying to fix it. So that digital computer has to run as fast faster than the quantum computer just to tell the quantum computer what to do to fix itself, right, so that's a trick a tricky problem, and, and it's not actually generically solved. OK. So We've we've now seen essentially the, the entire. Apparatus for quantum error correction, that that list this list of Properties, that's what they consist of. So if I can specify all of that, then I've really specified an error correcting code. Um We haven't, but there's, there's a more sophisticated way to describe how, uh, to think about errors in the same language. So we've seen everything we need in principle to understand quantum error correction, but there's a lot of useful, um, Things we can say in addition to this, um. So So the examples, uh And actually there's a name
+
+SPEAKER 1
+for all of this which is called a stabiliser formalism.
+
+SPEAKER 0
+So if you've done any group theory, stabilises uh some jargon from group theory, um. We're not going to use group theory, except that what we're doing is group theory. Um. So So the examples of errors.
+
+SPEAKER 1
+Look at relied on, uh Let's say we're, we're in In the Schrodinger picture. Looking at, looking at code words.
+
+SPEAKER 0
+Let's say analysing code code word. Right, so we thought, in the example I said, you know, what if there's a bit flip on qubit 1, well, it's gonna change a logical superposition of alpha 000 and beta 111 to a new state. What happens if we measure a a a stabiliser generator on that new state, we get this syndrome data. But you know, if you write out the states for, for 3, how many, how many computational, how many states are there of 3 cubits that we would have to write out? We're worried about arbitrary errors, we'd have to write out the 3 physical cubits we'd have to write out 2 positions of 8 states. If there's 4 physical cubits that we're using in the encoding and 16, that also grows exponentially, so it becomes extremely uh irritating at the least and computationally expensive to, to do that analysis. But, but that's actually not fundamental because there's a, a way to handle it, um.
+
+SPEAKER 1
+So the stabilise the formalism. So the problem here was, um, Physical state space. Right And it's 2 to the number of physical qubits,
+
+SPEAKER 0
+so that's pretty. Annoying The stabiliser formalism just tracks.
+
+SPEAKER 1
+Um, errors and stabiliser generators. And the number of stabiliser generators. is M minusk.
+
+SPEAKER 0
+A number of physical And so that's, that's, uh, something we can relatively easily track.
+
+SPEAKER 1
+So So we can do uh Syndrome analysis. Uh, more efficiently And in fact, also more intuitively, um, in the Heisenberg. Picture, which is where we're not writing down um code
+
+SPEAKER 0
+words and code states and effective errors on those things.
+
+SPEAKER 1
+We're going to look at just the commutation relations, uh Using algebra. Of power the So, what do I mean by that?
+
+SPEAKER 0
+So I'm not going to keep writing down superpositions of, of, of code words or code words subject to errors.
+
+SPEAKER 1
+Um Let's suppose we start off with some logical state. And it's subject to an error. And it ends up in a new state, psi prime, which is. The logical state subject to an error. And then I'm going to, and, and, uh, where the error is in the Paley group. So X on cubit J. A bit flip on some cubit or it could have
+
+SPEAKER 0
+been a face error on some qubit, but it's, we're going to limit ourselves to power the errors.
+
+SPEAKER 1
+This is for Which are beat and flat flat bit flip. X Plays So then we measure stabilisers. stabiliser generators And I'm going to write that as, as, as a S sub, uh, let's say I.
+
+SPEAKER 0
+stabiliser generators are the generalisation of the parity checks.
+
+SPEAKER 1
+So we're going to, uh, measure that on this error-affected state.
+
+SPEAKER 0
+So and we have to decide whether or not psy primed, well, so what is it what's the significance of this primed is I can say Of a stabiliser generation Then it will give you a high value.
+
+SPEAKER 1
+And I'll call it Little SI.
+
+SPEAKER 0
+OK, so under what conditions is that, is that, does that hold? So Epsilon And SI A product, maybe you want to
+
+SPEAKER 1
+call that. the Operator So if In this, in this limited scenario
+
+SPEAKER 0
+where the, the stabiliser in, in our. thing about palli errors where the error is a bit
+
+SPEAKER 1
+flip or a phase flip or combinations of those things
+
+SPEAKER 0
+on each cubit. know this property that the error acting on the logical state. New state up here if I measure the stabiliser. generated si A lot of the comedians are strings of power he's always. And so I'll definitely get a plus or minus outcome. Depending on Maybe So if they If they commute, then I can just change the order with a bus. If they had to commute, I change the order, but I have to bring in a minors. And they definitely commute or anti-commute, so this, this error, how we affect the state is definitely an item. stabiliser generator.
+
+SPEAKER 1
+So the syndrome bit SI To the operator SI. Is plus or minus 1. So measure all We stabilise the generators. Get the syndrome Data So Now we can just ask
+
+SPEAKER 0
+about whether given errors. stabilise In this, you know, the, the stakes. This sign here And this is independent The logical step
+
+SPEAKER 1
+So the syndrome Data for an error. Epsilon Depends So now, now we can talk about the
+
+SPEAKER 0
+effect of errors and the syndrome without writing out and
+
+SPEAKER 1
+expanding out the state after, uh, before and after errors occurred. We just need to uh think about what, what effect
+
+SPEAKER 0
+do areas History of state So by the generators So let's see how that works for the repetition code.
+
+SPEAKER 1
+I'm going to write S1 was what I called P12. Which was Z1, Z2, and there's 2 I'm gonna call. P23, which was Z2, Z3. And we can write down the list of errors. Which includes nothing happening x1 x2 x 3. X1, X2, X1, X 3. X2, X3, or X1. 3 We're not going to worry about that errors at
+
+SPEAKER 0
+the moment. repetition code can't detect those, but we'll see that in
+
+SPEAKER 1
+a moment. So For each of these errors.
+
+SPEAKER 0
+The syndrome data List of 2 numbers Me So the syndrome data is gonna be a list of plus and minus. The error commutes or anti-commutes with each of those, those operators. So in the first case, it's going to be plus
+
+SPEAKER 1
+plus, right? Identity commutes with everything.
+
+SPEAKER 0
+What about the second case?
+
+SPEAKER 1
+That is X1 anticommutes with Z1Z2.
+
+SPEAKER 0
+with Z2 Z3. What about the next one X2, so X2 will continue with that for sure.
+
+SPEAKER 1
+So it's minus minus And then X3 And then what about X1 X2? Plus minus. What about the next one? What about the next one? Put out the last one OK. And so then we can do that exercise that I did before.
+
+SPEAKER 0
+We can colour in all the ones that are the
+
+SPEAKER 1
+same. And the correction Which depends only on the syndrome, will be, we do nothing. We do X1, X2, X3. And then we should do the same down here. And these are all correct. These all work and these all.
+
+SPEAKER 0
+So that's the same table as we wrote before, but now we've got no reference at all to the state. We're just looking at the commutation property. All possible bit flip errors. With the two, in this case to stabilise the generator. The same syndrome And you get the same lookup table decoder. There's a And is it clear why we have to do the same thing here? Uh, in this case, The correction to So whatever's here and here will have to give me the same.
+
+SPEAKER 1
+OK. So you can see from this that um Uh stabilises syndrome data Can detect Any error that anti-commutes. With at least One stabiliser So in that list, anything
+
+SPEAKER 0
+that, that, um, anti-commutes with at least one stabiliser, that means there's at least one. can detect that er In order to do a correction after That there might have been an error.
+
+SPEAKER 1
+Uh, they can't, uh, detect. All correct. Areas That commute Stabil stabilise the generation So in particular
+
+SPEAKER 0
+this repetition code can't even detect this particular error.
+
+SPEAKER 1
+So the example Can't You can't detect that error.
+
+SPEAKER 0
+Now, is that a problem? Well, that, that's a practical answer. There's a, there's a more fundamental answer to that. So we already saw that this is in fact the same as the logical X. operator, right, that we constructed. So this logical X is a thing that that transforms quantum states in a, in a logical information in a way that we actually want to be able to implement. So, you know, if, if the universe conspired to apply errors that happen to equal a logical operator, that's a
+
+SPEAKER 1
+valid operation on the, on the states that transform forms code words to code words.
+
+SPEAKER 0
+So whether we call that an error because we didn't know about it or, or call it an operation because we did know about it. That the, the error, uh the stabilisers don't know the difference. Well, it means that anything that any list, any set of errors that generate a logical. By definition, not correctable. If they're valid operation. So Errors That coincide With logical Operators undetectable. OK, and that's, so that gets us to, do you remember I was talking about this way of thinking about constructing error quantum error correction in terms of a list of problems. Do you remember the first problem that we solved was? First problem was no cloning. If you try to just replicate a state, an unknown state multiple times, that's forbidden. We solve that by not cloning unknown states, but cloning the code words into extended objects. What was the second problem If you measure the bit, bit-wise, each physical qubit, you collapse the state and so even the error correction process would, would disrupt that, and we fix that by identifying parity check operators. So the 3rd problem, so we've solved those problems, that's good, so the 3rd problem is.
+
+SPEAKER 1
+Um, the 3 bit repetition code. That can Detect And correct Any single bit flip. And do you remember and reduce the logical error rate. Remember I drew that plot where if the bit flip
+
+SPEAKER 0
+rate was, was P, then when you encode the bit flip error rate in the logical spaces order P2. That improved things So that's good, um.
+
+SPEAKER 1
+So it's a good thing, so it's not a problem. But That can't Detect And the bit flips are X-rays. Incorrect. 50s. So I'm going to break my rule now and uh And, uh Go back to the, the Heisenberg, the, the, the Schrodinger picture. What if we had a phase error at Z1? On some logical state psi. Well, that's going to be But that's still in the code space.
+
+SPEAKER 0
+So that's still a superposition of the code words, uh, and so it's a valid code state. Um, and in a way, we already saw that because, uh, recall, uh, ZL equals z1.
+
+SPEAKER 1
+Was it, was that suitable? Um, gas For a logical We're gonna see in just
+
+SPEAKER 0
+a moment why, how to formalise that that notion.
+
+SPEAKER 1
+Another way to say all that is that remember to
+
+SPEAKER 0
+stabilise the product at Z's, so if an error which is itself made up of a Z or a product of z's, it's gonna commute with all those stabilisers in this case.
+
+SPEAKER 1
+Um So So We want to, we want to sort
+
+SPEAKER 0
+of narrow the scope of what we expect from quantum error correction. So at the very least, we want a code that can. If any single Subject to one of the We should be able to detect that and then correct it. Of course, An error could happen on more than one qubit, and that would be another set of errors that we would like to be able to correct. But, you know, our first task is, but that would also include correcting. So if you can correct one or two, you can definitely correct one. So let's make our life as easy as possible and ask, can we come up with a code that can
+
+SPEAKER 1
+at least correct any single qubit power error?
+
+SPEAKER 0
+And if so, you know, then then we've made a start and we can hope to understand how um how error correction goes.
+
+SPEAKER 1
+Um So that's 3A, solution 3A. Codes To detect Phase errors. So we can certainly come up with a code that
+
+SPEAKER 0
+will detect and correct a Z error.
+
+SPEAKER 1
+So let's, let's do that, um, quickly.
+
+SPEAKER 0
+It won't be a complete answer, but it's, And that's
+
+SPEAKER 1
+going to be something by analogy. With the Through repetition So I'm gonna draw a table
+
+SPEAKER 0
+here, so uh.
+
+SPEAKER 1
+3 bit. bit flip Code, which is the one we've been looking at already. And I'm going to do by analogy, the 3. I So the correctable errors. We what? It was X1 or 2 or X3, they were the errors that we could correct. And the stabiliser generators. Do you remember what they were?
+
+SPEAKER 0
+Of the stabiliser generators. I'm using this angle brackets here to indicate generators, so the set of all stabilisers would be everything you can get by. Angle brackets means A set of generators.
+
+SPEAKER 1
+And the logical operators.
+
+SPEAKER 0
+What were the logical operators for the Bitflip code?
+
+SPEAKER 1
+OK, good. So a phase, uh uh the exact analogue for phase flip, uh, detecting and correcting codes should correct. Any single z error.
+
+SPEAKER 0
+Now remember In this Weisenberg picture This makes sense because these errors anticommute. And these errors are also. These detectable in this Now, in the face, faced with.
+
+SPEAKER 1
+And stabilisers that would fix That will detect and potentially correct for errors. I'm gonna call this And they'll put primes there just
+
+SPEAKER 0
+to indicate that they're, they're different operators that have chosen to anti-commute with.
+
+SPEAKER 1
+The single cubic phase errors.
+
+SPEAKER 0
+So what, what do you guess are going to be the logical operators?
+
+SPEAKER 1
+Yeah Maybe I'll even add another.
+
+SPEAKER 0
+What would be the, let's, let's guess the code words. What are the code words going to be? said It's a great guess. OK. So, all we're doing is changing, exchanging X's and Z's. there. That. He would have changed Zeigenstates for X eigenstates. So what would be the X operation? What, what should a logical head do? that on So it should be a plus. This thing should be a plus one if I can, this should be a plus one I can say to you. Uh, and what should this be? so What physical operators And what should, what should a logical X do to this? To to that What, what's your Physical OK, so In this case, the logical Z is a product of X's and the logical X is a product of Z's, and that's, that's not an accident. There's nothing special about this symbol that should be the same as the. This they satisfy the same. And all you can see all I've done here is what we've figured out is that we can make a bit flip We can turn a bit flip detecting and correcting code into a phase slip detecting it and correcting
+
+SPEAKER 1
+code just by exchanging X's and Z's.
+
+SPEAKER 0
+OK, so that sort of solves our problem for for phase flip errors.
+
+SPEAKER 1
+So the Which is this, this thing here, you know, now we've got to, again, we've got an elusive stabiliser
+
+SPEAKER 0
+generation. Two of them Got a list of logical operators. They, you can check that they satisfy all the computational relations. These ones are anti Those areas each answer stable So you can check all of that, it's got all of the structure that we need for an error correcting code.
+
+SPEAKER 1
+Uh Uh, will, and I'll say, well, and you can check this. Um Detect Correct. So these these are correct. um, these Thank OK, so that's great. So we've got a code here just very straightforwardly constructed
+
+SPEAKER 0
+from the rep B flip uh detecting uh code.
+
+SPEAKER 1
+detects. But it fails for one. Just to explain that, so if instead of, so if
+
+SPEAKER 0
+I implemented this code. But now I How would Those are and That as well. So this code can't even detect any of these errors. Just in the same way that this page.
+
+SPEAKER 1
+So we're just Uh That's bad. So we've solved, we've solved one problem by making it.
+
+SPEAKER 0
+by failing on What were you gonna say? Uh So could I, could I encode this way? That'd be First. Epoch, you only have this sort of. But you have to assume you don't have that Second you have You're exactly on the right track, so you want to somehow build a code that uses These properties and those properties at once.
+
+SPEAKER 1
+You have to do them at the same time.
+
+SPEAKER 0
+OK So you at least understand the, the problem now, right? We, we, it's perfectly straightforward to make a code that can detect one sort of error or the other. We could also make a column for, for why if
+
+SPEAKER 1
+we wanted to. I won't go through that, but you know.
+
+SPEAKER 0
+If I, if I can just change X's and Z's and make everything go through, I can change X's and Y's and make everything. was just Factor. So, uh, so you could, you could fix any one of those. Our goal is to make a thing that will fix all of them. Now there's If you're, if you're mathematically minded, you might even ask whether, uh, That such a code exists, you
+
+SPEAKER 1
+know, that would be an important Sort of question like
+
+SPEAKER 0
+Is it possible to come up with a code that does that? Right. So, there's a, there's a very nice argument that says,
+
+SPEAKER 1
+yes, there should be. Uh, and it gives you a, a a bound on
+
+SPEAKER 0
+the number. Of qubits you need to make such a thing, so
+
+SPEAKER 1
+Before we get to the actual solution, So is there The quantum code That can, can correct. Any single Quantum error. Single So this is a counting argument that answers it
+
+SPEAKER 0
+in the affirmative, or at least says that there could
+
+SPEAKER 1
+be. Accounting And it goes like this So assume we want to uh K equals 1 logical qubits. With uh in physical cubits. I'm gonna make a table And I'm going to put
+
+SPEAKER 0
+the first thing which we've already looked at N equals 3. So for 3 cubits. 3 physical qubits. Remember there's um So, there's there's a list of all the single cu. x y or z on any of The physical qubits,
+
+SPEAKER 1
+so that means that there's how many possible single qubit errors. Sorry.
+
+SPEAKER 0
+Well, just in general, if I've got any physical kids.
+
+SPEAKER 1
+3 So it'll be 3 N. OK, so That's 3 x 3, that's 9, good.
+
+SPEAKER 0
+How many, and remember we've got a number of the, the syndrome information, which is what we use to correct. Uh Is is all we have to correct.
+
+SPEAKER 1
+So how many different syndromes. Syndrome, bit string So remember in the case for N
+
+SPEAKER 0
+equals 3 physical cubits and 1 logical qubit, we had two syndromes.
+
+SPEAKER 1
+How many distinct syndrome bit strings were?
+
+SPEAKER 0
+2 bits, how many different strings, how many different? For and what's the formula?
+
+SPEAKER 1
+Go on, sorry. So it's 2 to the n minus k, right, so we had N minus K stabiliser generators So we've got
+
+SPEAKER 0
+OK, so what's in this case, 2 minusk is what? For So there's 9 possible errors and 4 bits, bits of, uh, 4 different configurations of the syndrome that we could, uh, use to try to make an inference about
+
+SPEAKER 1
+those errors. And importantly, this is less than that.
+
+SPEAKER 0
+There's, there's more errors than there are available syndrome bit streams. We also know that We so far haven't constructed a 3 bit code that fixes things, and the reason is because This number is OK, let's do the same argument for 4. So how many possible single qubit errors are there if there's 45? 2 And what's the number of distinct syndromes we're going to end up? OK, so there's not enough. Distinct syndromes to identify each single qubit error. What about the 5? OK, so now 16 is, is bigger than 15, so there's at least the right number of Distinct syndrome bit strings. There's a sufficient number of distinct syndrome bit strings that if I had some clever encoding. Maybe I can make each one of those distinct syndromes correspond to one of the possible errors you need. In that case Ways of putting information into the syndrome. So you figure out what you Errors occurred. And that's the first integer where that.
+
+SPEAKER 1
+And it turns out There is a 5 key bit. Code that that can And uh not very creatively, it
+
+SPEAKER 0
+might have been an Australian who named this, although it wasn't. The, the name of that 5 cubic code is called
+
+SPEAKER 1
+the 5 cubic code. OK.
+
+SPEAKER 0
+You know, when people came to Australia, I suppose when Europeans came to Australia, they saw, for instance, a steak that was red on its belly and black on its. red-bellied black snake. When they saw a big gulf, they call it. bike, they call it the Great Australian Bike. A big desert that was sandy, they Great sandy desert, so you know they weren't terribly creative. There is a code called the 5 qubit code, um, and. It does exist. This is not a, this, this, this argument is, this is just an argument, it's not a proof, um, but it did mean that when people went through this argument, they went and started looking, are there specific codes that is. stabilises over 45 qubits.
+
+SPEAKER 1
+So we would need, so, so that means that uh
+
+SPEAKER 0
+you have N equals 5 physical cubits. K equals 1 logical qubit.
+
+SPEAKER 1
+How many stabiliser generators? Now there's a number of distinct syndromes, but how many stabiliser generators? Yeah, so n minus k equals 4 stabiliser generators. And so we would have S1, S2. S 3 S 4. And the stabiliser generators and we would have a logical
+
+SPEAKER 0
+cu, a logical operator XL and Z. So, once you, once you have this argument, you, you might be persuaded that, that it's worth hunting around. Obviously, it's not worth looking for. 4 cubic code Hunt around for some 5 qubit code which is specified on 5 cubits. 4 stabiliser generators. So if only we could find out what those operators were, and they're not going to be very. On key bits. And logical Then we'll have a code that works. OK, so remember, now each one of these is Made up of a product of power the operators, identity X, Y, or Z on each qubit, so that's 4 possi's for each physical qubit, S1 will have either an identity or X, Y, or Z on each cubit. So that's 4 to 5 different possibilities here. So 4 to 5, actually minus. 45 Different configurations there, 4 to the fire of 5 here, there. There's some combinatories you can do. What's support of the power of. It's 2 to 10. Which is about 1000, yeah, so, so there's about 1000 things you should search for here. And 1000 here as long as they're not. So it's 1,024 minus 2. So 1,023, 1,022, 1000. So you could, you could do an exhaustive search is what I'm saying. Go through and just find those things. And that's more or less what people did. It's smarter than that, but You can see at least you can check whether there's exhaustively whether there's any set of those things that That is A suitable Implementation OK, so it's, it's a, it's an annoyingly big problem, but it's not actually computationally intractably large, so you could find it, and it turns out it exists. But it's not very uh sort of educational to to to stop there. So what I'm going to I guess we're just about out of time, and But actually we need to get through this before the end of the week, so, so I'll I'll persist just for a few more minutes and then, then we'll stop. So So now we have 23.
+
+SPEAKER 1
+Repetition codes. For bit flip And phase And if only we can
+
+SPEAKER 0
+combine them in some way, and you're sort of hinting at this, if only you can sort of combine them in some way, and To detect any X or Z
+
+SPEAKER 1
+error. And with any luck, if you can detect an x
+
+SPEAKER 0
+error and a z error, so that means you can also detect a y error because it's a product of x and z errors. Fruitfully And that, that hopefully I'll put in inverted commas because in fact, it'll come out of the structure of what we've constructed, it does also detect those as well.
+
+SPEAKER 1
+Um And the So, what did I call it before
+
+SPEAKER 0
+solution.
+
+SPEAKER 1
+3A. So solution 3B. To this problem And that's the last thing we're gonna really uh talk about in this constructive sense. Solution 3B is we're going to do a thing called concatenate. To Repetition code So that doesn't mean do one after
+
+SPEAKER 0
+the other. What it means is to embed one in the other. So we're going to have starts looking a bit like sort of Russian dolls, you're, you're nesting in a, you have an outer code that can detect one sort of error, but you, you pack inside that another code which can detect the other sort of error.
+
+SPEAKER 1
+So we have um an inner Uh, in a code. To detect Correct. One bit flip error Which is the errors are XJ's. And an outer code And By construction also.
+
+SPEAKER 0
+So, you know, if the, if the inner code detects uh an X error on QB. And the R code detects a z error of exactly the same cubit.
+
+SPEAKER 1
+Well, that means you have an x times. So the notation gets a little bit annoying, um, and I'm gonna, I'm going to start off, getting you to
+
+SPEAKER 0
+think about it so that uh You're primed for next
+
+SPEAKER 1
+Next lecture on Friday And the notation, so this is
+
+SPEAKER 0
+going to be, so each of those 3 bit repetition codes acts on 3 cubits, we're gonna have this inner code uh where we have, 3-bit repetition codes that multiplied, and the outer code is also a 3-bit repetition code. So it's going to have 3 copies of the inner code. So it's going to be 9 cubits all up.
+
+SPEAKER 1
+So we have a list of physical qubits. I put a dot for each. One of those, and they come, they come in 3. Blocks OK, so we've got these, these two blocks, uh,
+
+SPEAKER 0
+the sort of 3 blocks that, that, uh, Consists in a total of 99 cubits. And So we could define a set of inner.
+
+SPEAKER 1
+Block Logical operators And in a block So if the
+
+SPEAKER 0
+inner block is the one that detects uh bit flip errors. That means that the inner block logical operators.
+
+SPEAKER 1
+And I'll use the notation. Logical on block one is going to be X1, X2, X3, and Z. And we're going to repeat that for each of the,
+
+SPEAKER 0
+the blocks. And we're also gonna have a bunch of stabilisers that are associated to the inner blocks.
+
+SPEAKER 1
+So we'll have S1, 2, well, S. This one for the inner block, which was Z 1 Z 2. identity And we'll fill in the rest of the table.
+
+SPEAKER 0
+But you can see we're gonna, we're gonna construct all the stabilisers on each of those independent inner blocks. These objects here to define. X operators on this block.
+
+SPEAKER 1
+to encode. Exactly this phase flip detector.
+
+SPEAKER 0
+Those X operators that we defined on Unit block. Ex-operators So when we define the outer block tab. product of Xs. To find Physical qubits. And we're gonna retain all these inner block stabilise. So you can start to see how we're going to construct this, uh, concatenated code that has 2 block 2. Layers, 11 layer is for one sort of error, the other layers for another sort. So Let's finish there because we've really used up our time. Are there any questions about that? Yeah, so There's a very specific example of that, which is erasure. So it could be that if you're, you know, if your encoding is in photons, the next, and let's say you're encoding in polarizations, so plus and 0 and 1 of the polarizations and plus and minus the diagonal and anti-diagonal, but if you, and so therefore, if you're trying to measure a physical cube, that means you should detect a photon in some polarisation. But what if you don't detect a photon at all? So that's another sort of error It's outside of the computational space. You didn't, you didn't even get a polarisation outcome, you got the no photon. That's called an erasure era And that, that's also a problem. I Yeah, certainly. So So in general, you, you care about what happens in the computational space a lot, so you have to make a distinction about all of those different things, but if, if there's any sort of error that leaves a computational space. Then, um You don't really care what it was because it just took you out of the computational space. So everything that leaves Computational spaces are erasure error. Sorry.

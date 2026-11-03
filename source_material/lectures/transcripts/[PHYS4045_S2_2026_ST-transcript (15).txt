@@ -1,0 +1,356 @@
+SPEAKER 0
+OK, let's let's get started, um, so.
+
+SPEAKER 1
+the last on Wednesday, the AV died, so, um, I
+
+SPEAKER 0
+went through things on the board, so there's no recording of it, I, I doubt anyway, um. So I've the the notes that I was writing on the board from uh in this notebook which I'll continue on uh today with but then I'll upload that to Blackboard so you'll you'll get those notes. Uh, what we got to was this recipe for circuit quantization um and the, Uh, the recipe is as follows, you, you by some means derives the equations of motion
+
+SPEAKER 1
+for a system, and the example I was using was
+
+SPEAKER 0
+a mechanical system where the coordinate X is the mechanical coordinate, but X is any, any coordinate that we care about for any system we care about. From the equation of motion, you need to construct a
+
+SPEAKER 1
+Lagrangian that generates that equation of motion and the way it generates that is that. which is this expression here, so Lagrange is a function of position and the velocity. You take derivative of velocity and then derivative with respect to time and that should include the derivative of Lagrangian its respective position, that's the Lagrangian equation and this Lagrangian is correct if this is the same as the equation of motion. From that, the reason we construct that is because this, this element here is actually a conjugate momentum. We define contra and and and then the Hamiltonian is
+
+SPEAKER 0
+the uh the gender transformation of of that um. Uh H equals PX minus L. Uh, so once you've got, uh, once you've got a,
+
+SPEAKER 1
+how you. Hamiltonian hats and everything uh and invoke some commutation structure
+
+SPEAKER 0
+and that is the, uh, recipe for quantizing a system. So let me just give a very quick uh example of that, so, uh, a mechanical example. Which is exactly what you're saying before, um. X is the position of a particle. In a in a potential. The And so the Lagrangian is gonna be the kinetic energy expressed in terms of the velocity minus V X. Uh, where This is a half m x 2 and the potential is whatever the potential is and the Euler Lagrange equation, Which is D by DT of DLD X dot which is going to be the position only appears
+
+SPEAKER 1
+in the kinetic part, so it's going to be D
+
+SPEAKER 0
+by DT of T of X dot. Equals DLDX which is minus V X. And The derivative of the kinetic energy is just MX dot and then we take a derivative of that. And so overall we get MX equals minus V X, which is just the same as the Newton's equations. OK, the, the negative gradient of the potential is the
+
+SPEAKER 1
+force, and so we have F equals MA, so that's,
+
+SPEAKER 0
+that's good, um. So that was step one in this recipe and then we're going to remember use that Lagrangian uh. So P is D L D X dot, which is M. X, which is MV, so that's what you know from high school. And then the Hamiltonian is um. And T of X dot is just MX half MX half MV squared, so this is equal to half m x 2 plus V of X, but I have to replace, uh, um, but I need to note that X dot is P over M. So H as a function of X and P is then um P 2 on 2 M plus V of X. And that's the total energy and then you can check, I'm gonna leave that as an exercise just because we don't wanna run out of time, check uh the Hamilton-Jacobi equation. Equation of motion. Uh Implies F equals MA also. OK, so the Hamilton-Jacobi equation is what we write down from the uh Hamiltonian, and you can check that that, that gives the, Um Well, the PDT. It's minus DHDX and DXDT. Is equal to um DHDP. So that's the thing you need to check. And then step 4 would be to quantize this. And we have So that's, that's the usual recipe for quantizing things you put hats on on objects and then you invoke a a a a commutator. But actually, so, so in some ways we've just done in half a page all of quantum mechanics that you've learned previously. Um, there's there's an important point that we need to actually worry about what the Hilbert space, um, so the state space. XP turns into a Hilbert space. Of Psy in. Some Hilbert space H. And so we need to identify as part of this quantization procedure, uh, what, what the state space really is, and so for a particle in a well. The Hilbert space is going to be the span of all the positions. Um, the set of all position eigenstates, or also equal to the span of all the momentum eigenstates. And uh and then X hat is an integral over X. And key hat is integral DP. And they have the the usual uh, So there's the
+
+SPEAKER 1
+IN states the operator, the INA as a position operator,
+
+SPEAKER 0
+and so that's the procedure for quantization. OK, so So back to, so that was a mechanical ana analogy, so we're now back to um uh oh and I guess. I to say. That's fine. OK So we want to go back to to circuit theory. Uh, but there's one detour we need to take. Remember we wrote down, um. Equations of motion On Wednesday Uh, we At the circuit Equations Which was the Kirchoff's voltage law, Kirchoff's current law, and the constitutive equations. In terms of Of voltage and current. But actually voltage and current are themselves derived quantities, they're in fact integrals, uh, sorry, they're derivatives of, of some other quantity, um, so we need to, um, Let's say which are which are. Derived Uh, quantities Um, so we're gonna reformulate the same equations. In terms of the Underlying Flux, coordinate and charge. OK. And the reason is that the voltage is equal to ah this is the uh Faraday's law is the time derivative of the flux, and the charge is the time derivative of, sorry, the current. Current So V and I. Uh, I is the time derivative of a charge coordinate.
+
+SPEAKER 1
+So the thing that we, we, so if we work out the phase and and the charge. The values that face in the charging a circuit, whether classically or quantum mechanically we can get. but it doesn't go the other way because the derivative
+
+SPEAKER 0
+throws away constant terms. So actually the phase and the charge are sort of the elementary underlying coordinates that we care about, um, and they'll become the conjugate coordinates to each other. So let's revisit quickly Kirchhoff's voltage law for this same circuit, which was this LC oscillator. We had a node here, and we had some charge on this capacitor. And we have a flux associated to this inductor. Remember the Kirchhoff's voltage law is that there's somewhere around a loop of uh voltage rise. Uh, over the edge. Equals 0 And that's gonna tell me that um the flux dot for the capacitor minus the flux dot for the inductor is 0. Because Uh, well, just because V is always the, the voltage for an element is the time derivative of the flux associated to it. And so that's, if I integrate that once I get phi capacitor minus phi uh inductor equals some constant flux. And, and we can take it to be 0 if we want. Yeah OK, so just to say that that's a very quick restatement of Kirchhoff's voltage law in terms of this flux coordinate. We do exactly the same thing for the Kirtchhoff's current law, which is the sum over edges. At the node In this case there's only one edge, one node sorry, that's that's important, which is node A, but that sums to zero, and that's gonna be the sum over the charge flowing through each edge. Dot Uh, and so in this case we have QC plus QL equals 0, and we integrate that, um, To get QC plus QL equals Q constant. Some constant value, and again we could take that to be zero in many cases. And then the last thing we need is the constitutive law. Which we wrote down previously for a capacitor, the charge on a capacitor is C times the voltage on the capacitor, which is, Just this time of the flux. And the flux for an inductor is minus LI through the inductor, which is minus L. Time to time route of the of the charge through the inductor. Uh, and what do I wanna say, yep, so the charge on the capacitor in this picture is gonna be the, the charge, uh, at the, at the node. So this is equal to QA. Uh, and so it has to be C times the uh circuit flux. And we have the circuit flux is equal to minus L times QA because that is the balancing current through the inductor. So we now have two coordinates to the circuit that
+
+SPEAKER 1
+charge, I guess I should putify A.
+
+SPEAKER 0
+For the nodal flux.
+
+SPEAKER 1
+So we have these two coordinates, the charge at node A, the flux at node A, and we have two equations for those, so we can write down now, um,
+
+SPEAKER 0
+Uh So phi A is minus LQA. Should be equals So I take the derivative here, apply
+
+SPEAKER 1
+the derivative, so I get a 2nd derivative, so now
+
+SPEAKER 0
+I have uh a 2nd order equation for phi A. Uh, is Where uh omegas one on LC route LC, so that's exactly the same kind of solution that we saw for the voltage before, and similarly we could write down an equation for, um, for QA is what is uh, C 5 A. Dot, and so that's gonna be equal to minus LC. Uh QA dot, and so we'd have the same kind
+
+SPEAKER 1
+of 2nd order equation for, for the charge at the
+
+SPEAKER 0
+node. All right, so And if we wanted to, uh, we, we could, uh, compute the voltage. VA is phi A dot. If we wanted and the current, uh, into the node A through through the capacitor is gonna be Q A dot. OK, so we can get to the same solution we had before just by, uh, By solving for these more elementary quantities, the charge associated to the capacitor and the flux associated to the inductor, uh, and we have the same, um, class of solutions, but now in terms of these elementary objects, um, and the reason we do that is that we're now going to take, um, Uh You take the, the flux as The system coordinate. On the circuit's coordinate. So we're gonna end up with a a Lagrangian in terms of the flux and the flux time derivative. Which In exactly the same way as before is going to be a kinetic part minus a potential part. Where the kinetic part. Is for the LC circuit is C phit, squared and we have phi squared, so, I'll just, I'll just invoke
+
+SPEAKER 1
+this, so this is the kinetic part for the circuit that's associated to the rate of change of the flux at the node and it's giving me a contribution that depends on the velocity of the flux and then there's a, a potential part which is coming from the capacitor.
+
+SPEAKER 0
+Now, Why did I write that down, well, if I calculate um, Check the equation of the Euler Lagrange equation of motion. Which is um uh D by D T of DLD Phit. So that's going to be And Dbody T of C. 5 dot Uh That equals C5. And that should equal DL D Phi, which is um. Minus. Fire on L. So we have Uh Exactly, this is quite Fire and
+
+SPEAKER 1
+minus LC 5 A.
+
+SPEAKER 0
+You can see here that um C phi equals minus phi on L, or in other words, LC 5. Equals -5, so that's the same as the equation of motion. Uh, back here. OK. Especially Mhm Like Yeah, so, so we've got a coordinate, we know that that coordinate has to give me this equation of, This equation of motion, it's harmonic, right, and
+
+SPEAKER 1
+so, so this is this is really the primary thing that we, we know, right, this has come, this has come from Kirchoff's laws plus the constitution laws, so this is a true statement.
+
+SPEAKER 0
+The Lagrangian is a thing that we invent and it has to have the property that when you evaluate the
+
+SPEAKER 1
+way the Lagrangian or it gives you this, right?
+
+SPEAKER 0
+But you know from mechanics that um a kinetic term is gonna look exactly like this. It's loss independent quadratic, and the potential term is gonna
+
+SPEAKER 1
+look like for a higher plus A is gonna be quadratic and coordinate, so. can look like this, but really the we can check is that when we evaluate your the Lagrange equations from this, you'd get the correct answer.
+
+SPEAKER 0
+OK. So it's a, it's a little bit backwards. In that we invent the Lagrangian in order to get back the equation of motion that we knew, right? But that's part of the prescription of uh of how you do quantum mechanics in some sense. Um, then The conjugate I'll call it momentum. To the flux. Uh, and I'm gonna use the symbol Q. Uh Well, Uh, is Um D L uh Dhit. And that equals from this Lagrangian equals C phi. Dot And C5 is just this charge. OK. And that equals QA. OK. So the charge. The thing that we call the charge, which is this
+
+SPEAKER 1
+charge associated with capacity really is the thing that is conjugate to the flux in the same way that the
+
+SPEAKER 0
+momentum is the thing that's conjugate to to position. OK, but we didn't. We, we do, so it is a derived statement, it's
+
+SPEAKER 1
+not a, it's not uh put in by hand, it's derived from the structure of the Lagrangian, and there can
+
+SPEAKER 0
+be cases and the, the Simon has a case where that's not true anymore, that the, uh, conjugate charge or conjugate momentum is a bit different to, to that expression. OK, and so then we write down the Hamiltonian. H is um Is now phi.q minus the Lagrangian, which ordinarily is expressed in these coordinates. And so that's going to be So I can rewrite phi dot as Q over A, so that's Q, Q over C, sorry, Q2 over C. Minus, um. Thi minus V Phi. So you can see here that the capacitance is behaving
+
+SPEAKER 1
+like a mass, right, so we've got a momentum, a momentum in various commas is something times the velocity is that something is a is a mass and it's electrical
+
+SPEAKER 0
+units. And so When I follow that through, I get QA 2 on 2C uh plus V of phi, whatever the potential is, and that's the same as the kinetic energy
+
+SPEAKER 1
+P2 on 2M that you expect from a mechanical system, plus where the potential is as a function of position.
+
+SPEAKER 0
+And for a harmonic oscillator, And remember I already wrote what the what the potential term was, it's this, this
+
+SPEAKER 1
+part here, Phi 2 on 2 L, uh we have
+
+SPEAKER 0
+um H is Q2 on 2C plus phi 2 on 2 L. So that's the Hamiltonian, the classical Hamiltonian. And this is the kinetic. Pop Depending on momentum But remember, momentum now means this charge, and this is the, the potential. 10. OK, good, so We've now got this circuit Hamiltonian, just by, which is, which is in a sense the same structure as the Hamil Hamiltonian for a mechanical system. Um, I'm gonna do two little things now, uh, I'm going to non-dimensionalize. It's gonna be convenient. Uh, flux and And charge. So I'm gonna define Nhat is cute as well, uh. And I guess, yes, OK, so I could, I could quantize this by saying I'm going to put hats on things. Where now fire hat and Q hat have to be IH bar. OK. This is Quantize. OK, so, so at this point, effectively we've quantize the circuit and we can solve the Hamiltonian, which I'll do in a moment, but before I do that I just want to, uh, non-dimensionalize things. So what's the dimension of a charge?
+
+SPEAKER 1
+So here this has got dimensions of the actual physical charge on the capacitor, what and what are those dimensions for?
+
+SPEAKER 0
+of charge. Cool, OK. So we, we're we're thinking about superconductors, so actually we're gonna normalise by the electron charge, but actually not the
+
+SPEAKER 1
+electron charge, it's the cooper pair charge, so it's twice
+
+SPEAKER 0
+the electron charge. Um, and then we're gonna define a lowercase, uh, phase, and we're going to Relate it to the flux form, and in this particular way, that'll that'll, Don't, don't worry about those details just for the moment, the, uh, but this quantity phi naught is called the flux quantum and it's H over 2E. And it has dimensions of weavers. The reason I chose chose those things is that um, if I now evaluate, uh, the commutator of this lowercase, Charge number with the phase, so this is gonna be called the, Charge number And it's dimensionless, and this is going to be the superconducting phase. So the two pi is meant to be evocative and
+
+SPEAKER 1
+it looks like a bit of an angle, OK, but.
+
+SPEAKER 0
+It's really for convenience because if I evaluate the commutator n and P phi, and I use those definitions. And I'm gonna evaluate this commutator. Um, and that's going to be. 212 E 50 times Q hat phi hat. Equals 2 pi over 2e finite. I bar Um, which is 2 pi over 2 E by H over 2 E. Uh, I, I, H bar and.
+
+SPEAKER 1
+Into 2 E's cancelled, I can bring that 2 pi underneath there, so that it's H bar, and so that
+
+SPEAKER 0
+equals I. So it's convenient to do because now the commutator is uh is so is. Is dimensionless and sort of simple is just equal to I. And then the Hamiltonian. Uh, is What I wrote before, Q hat squared on 22 C. Uh, plus phi hat squad over 2L, and that's going to work out to be, 2 E 2 over 2CN hat square plus, 50 squared over. 8 pi 2 L. Wi Fi hat squared. And I'm just going to call these symbols EC, meaning the capacitive energy and EL, the inductive energy term. So this thing just becomes ECN hat squad, plus EL fire hat squared. And these things have dimensions of Of jewels So I
+
+SPEAKER 1
+put all the dimensional quantities into into these and the coordinates are now dimensionless, so it's just a convenient way
+
+SPEAKER 0
+to get to some dimensionless um, System, uh, but that's now harmonic just in the same way that, something that goes like X2 + P2 is harmonic. And the last thing we need to do is to decide our Hilbert space. And that's exactly analogous to what we uh do in it. In um The mechanical analogy that we just described. This phase coordinate goes from minus infinity plus infinity, and this charge coordinate goes from minus infinity. So plus infinity. OK, there's there's quite a few subtleties uh about that, but we're going to just take that for the moment. Um, and then you can ask things like what is The projection of the charge operator for some wave function in the position coordinate. And that's going to be minus i si defi. By analogy with, The same sort of thing if I write the. Mechanical coordinate is minus I, I think on H bard psi DX. OK. So I've dimensionalized things so there's no longer any dimensional
+
+SPEAKER 1
+dimensional point of view, but this is exactly analogous to what you're used to writing.
+
+SPEAKER 0
+A mechanical. System Um, and so we can, uh, We can solve Um, the Hamiltonian. In, for example, the phase coordinate. Phased basis. By evaluating things um. Like phi, Hamiltonian, sigh. Um Well, let me write it like this. So this is the Schrodern equation that you're used to
+
+SPEAKER 1
+the time-dependent Schroder equation.
+
+SPEAKER 0
+Uh And so if we project onto the position basis, we have uh phi, H psi equals E. So, so. Um, and when we evaluate everything, remember, uh, The Hamiltonian
+
+SPEAKER 1
+has a term that looks like 5 squared.
+
+SPEAKER 0
+So this, this bit here is going to be um EL phi squared. Sci-fi. And we're gonna have minus EC D2 psi. D52 equals E. Fifi, where. Where the wave function is just that object there, right, so, Here was the Hamiltonian In in terms of quadratic
+
+SPEAKER 1
+forms of charge number. The superconducting phase. This is like a momentum, so it turns into a derivative and it's squared, so it's like a 2nd derivative. This is just proportional coordinates, so it's gonna give me
+
+SPEAKER 0
+a phi squad when I act on a, on a position or a phase basis. That's that Maybe I'll just rewrite the Hamiltonian. Where H is. E ELN hat squared plus ECI hat squared. Uh, no, I've got that back to front. OK So, so that's a, that's the time independent Schroeder equation, uh, which you've, which you you've seen for mechanical systems and just to show you how you can solve that in practise, so here's here's some notes that I prepared earlier. So this is the harmonic oscillator, let me make that a bit bigger. And I'll put this on, so this is a harmonic
+
+SPEAKER 1
+oscillator, uh.
+
+SPEAKER 0
+Operator, which you can compare with what I wrote over on the left-hand side, so we've got a minus EC
+
+SPEAKER 1
+and a 2nd derivative with respect to phi, plus EL times phi 2 and they act on, on a, on
+
+SPEAKER 0
+an object, so if I evaluate that, that's that's what it is. So it acts on, on a wave function psi of P phi, and so that's that's what I get. Um, so I can define some constants. To do that, and then I can solve for the eigen systems of uh of that differential operator, so that's
+
+SPEAKER 1
+what this object is doing. I need to apply some boundary conditions, so here I've
+
+SPEAKER 0
+just said, I've, I've effectively made uh infinity equal to
+
+SPEAKER 1
+10, so this is saying that apply minus infinity, apply plus infinity is the same.
+
+SPEAKER 0
+It's applying a truncation essentially in the boundary, but if I evaluate and then I'm asking for the 1st 10 eigen solutions and then this tells me how to discretize the PDE. So if I run that, I get, The eigenvalues of
+
+SPEAKER 1
+that differential operator, so, These are done numerically, but you can see they look very close to the odd integers.
+
+SPEAKER 0
+Um, starting at 1, and then I get these objects
+
+SPEAKER 1
+which are called interpolating functions which are supposed to be
+
+SPEAKER 0
+the eigenfunctions, and it gives a little cartoon of what
+
+SPEAKER 1
+they look like. So the first one is like a Gaussian, the second one is like a Gaussian times a linear function and
+
+SPEAKER 0
+so on, which is exactly what you expect for, for the harmonic oscillator case. And if I plot the um If I plot the 1st 3 of those, uh, of those, uh, functions, this is what I get. The first one is this Gaussian, the second one is this orange curve, the third one is this green curve, so they're the cartoons, and you can do a nicer
+
+SPEAKER 1
+plot by displacing them each by their energy, so displacing
+
+SPEAKER 0
+them really by those integer solutions, so the ground say
+
+SPEAKER 1
+the Gaussian. Displace energy of 1 in these units, first decided to say, got displace energy of 3 and so on, so this will look a lot like, Harmonic spacing, where the ground state is half of that harmonic spacing above the ground state, above zero. Potentially OK, so you've hopefully seen exactly that kind of
+
+SPEAKER 0
+picture before. It's not gonna work. Froze from it. So And OK, so I'll put that mathematica notebook on there, but, but that's the, that's the form that you get for um, For the eigenmodes of this thing, right, so now this is the, this, this dimensionless phase coordinate,
+
+SPEAKER 1
+and you can see that there's now solutions right and the harmonic oscillator on the sea circuit and these particular,
+
+SPEAKER 0
+um, Uh Wave function forms and also remember that in these units I set uh EC and EL equal to be one. Uh, and if you solve the harmonic oscillator, uh, So the, the, the let's say the, well let's use J. Uh And we know, um Oops. Um Uh, from Let's say, uh, mechanical harmonic oscillators. That the uh J. Each part, I'm gonna get, oh no, sorry, I wanna say EJ. Is in this accounting 2 N + 1 times omega 0. Uh, maybe I'll write it, it's 2 + 2 x N plus a half. Omega 0, where omega 0 is, in this case, it's the harmonic oscillator frequency. So the fact that in this, in this example here um we're, EJ are set to be equal to EC equals 1. And this is equal to. Route EJ. And you see, so that that gives us these easy just safe things just because you've already seen the solutions the harmonic os they have this form and plus a half mer. Um, and also the width of the ground state. There's some uncertainty Delta Phi. And you can solve, you know, you've solved the harmonic oscillator before, that, that width, the ground state uh uncertainty is EC over uh EL and that gets called the zero point. Um, electrical fluctuations. And 5. So remember when you solve the um harmonic oscillator case you have a uh uh you have zero point motion in the position coordinate, but also uh in fact you'll also have uncertainty in the momentum coordinate as well, and so these get called zero point fluctuations. So this is 13. 5, etc. OK. So that's, that was a very, Uh, quick, in many ways, overview review of harmonic oscillators, which should be familiar, but in this language of circuit theory, we're now, we've
+
+SPEAKER 1
+actually solved the ACLC circuit, and this is the kind
+
+SPEAKER 0
+of thing we mean by solving it is to have a picture of the, the Eigen space. So An LC electrical circuit. Uh Uh, has discreet. Energy aeon states So that's good. But just like any harmonic oscillator, the energy spacing. Um, is harmonic, meaning. Equally spaced. So that Uh, that's Bad for a cubit. So this is where we relate electrical circuit theory to the idea of of qubits. So why is it bad for a qubit? The reason is because the way you typically address different
+
+SPEAKER 1
+energy levels in any system is to uh apply some external frequency, a signal with some external frequency, and where that frequency matches this energy difference, then you get strong transitions.
+
+SPEAKER 0
+OK, so for an LCD circuit, you can drive it
+
+SPEAKER 1
+into a into an excited state by applying a microwave or whatever frequency tone. and we'll start to drive a transition. But once it starts driving this transition, this is also a resonant transition here and here and so on, and
+
+SPEAKER 0
+so what you find is that the, uh, if you build a harmon a harmonic oscillator, and you start driving it at its resonant frequency, then it will simply uh become more and more energetic as you drive it for longer and longer. And so it's bad for a qubit because it is, uh, A. It's difficult. To isolate Just to Um, Eigen states. For the 01 Um, cubit basis. OK, and so what that means is that we need. And unharmonic. Oscillator Uh, for a good electrical qubit. So ideally, um, We want an energy structure. That has an isolated low energy. Qubit subspace. And the other States are are very energetic. And so if you tried to sketch that out, it would look something like this, we'd have some low energy qubit subspace, this is energy. And then we'd have potentially higher lying states up here. So this might be the zero state and that might be the 1 state. So that's what we'd really like, and there are systems that have a structure that's a bit like that, remember
+
+SPEAKER 1
+the square well has energy levels facings that go like the square of the quantum number.
+
+SPEAKER 0
+Uh, but Um Of course. But we can make do. Um, with, with a structure that looks more like this, where we have, Some energy, uh, some, some two low lying energy states which we're going to call the qubit subspace. And the excited states above that. But where it's sort of the inverse, where these are
+
+SPEAKER 1
+not very far. Oh, but the important thing is that it's harmonic.
+
+SPEAKER 0
+So in both cases we can drive transitions between the qubit states without driving appreciable population above the qubit state. So as Long as the spectrum, the energy spectrum. Is enharmonic. We can isolate. Two states, approximately. Two states. To be The cubit states. And that's exactly what happens in uh Joseph's Injunction, so. We've really got only a couple of minutes left. So, A Joseph injunction. Is, is a nonlinear inductor. And so For a linear inductor, We had V of Phi. Was EL Phi squared. So it's linear because when I take the derivatives quadra
+
+SPEAKER 1
+becomes a linear force.
+
+SPEAKER 0
+For a non-linear inductor. I have V Join Junction of Phi is minus EJ cos Phi. So if I plot those. A quadratic thing looks like this, EL 5 squared. Whereas Cosine Something like that. OK, so I already plotted in this. Picture here the, the quadratic shape of the harmonic oscillator potential. That's sort of crudely sketched there in black, but if I replace that with this cosine potential, and that's the form that a uh adjacent junction has, And So Josephson um Proved So this is the form um in, in uh in the early 70s and he won a Nobel Prize for that, um, and uh, and so that's exactly what uh why we use um, So we make a circuit. Um And with. Jose injunction instead of an inductor. That is, we make the following circuit. This is the Joinjunction, and this is just the regular capacitor, and the Hamiltonian for that is going to be very similar to before, there's the capacitive, Kinetic energy, so we had EC times the charge. At the node And now we've got, we have a. Minus E And cause fire. OK. In other words, we now solve the Schroeder equation, not for the quadratic. Uh, potential we had before, but now for this. Cosine potential. Which looks like this And this range is twice EJ. OK, so This is going to be useful just to help you with Your assignment, so So just as I did for the harmonic oscillator case, I can define a Hamiltonian for Joson junction, which instead of using a hydratic
+
+SPEAKER 1
+term for the potential, it's now got a cosine potential.
+
+SPEAKER 0
+And the time-dependent Schroeder equation is going to look like that equals to the eigenenergies. If And I've changed the name of the label for
+
+SPEAKER 1
+the energy scale from EL to EJ just to remind
+
+SPEAKER 0
+us that it's it's a Jain term. I can now, let's just put that there. I can now solve that Josephson Junction Hamiltonian, uh, and now it's periodic on, on i, so I'm gonna restrict my domain to that, that interval, and I get now
+
+SPEAKER 1
+a set of energies, these energies, and which are different than before because now the cosine looks like it's shifted down that's got a negative. and then it has these characteristic shapes, so we can
+
+SPEAKER 0
+do the same sort of plot as we did before, so let me. Paste this in here. So this is plotting those ground states, sorry, the, the uh energy eigenstates superimposed on the.
+
+SPEAKER 1
+Cosine potential for the state here it looks very much like the states. The first things I'd say it was similar to the first things I'd say to parliament I say, it's like a go sometimes media thing. Once you get above the top of this, Cosine potential actually start looking more like the plane wave solutions that
+
+SPEAKER 0
+is for sine waves. Um, so that's, that's a lot like what happens in a particle in a box, for example, you know, you have, uh, the eigenstates looks like signs, signs and cosines, and so that's what's going on up there. But it's, it's very harmonic, so you can see this
+
+SPEAKER 1
+separation here is different to that, which is also different to that, which is different to that, so the, the
+
+SPEAKER 0
+energy eigenvalues are, are harmonic, and we can see, We can see that by, uh, so if I ask, what's the, what are the eigenvalues? They're the eigenvalues. If I ask for the successive difference of eigenvalues, so what's the difference between this one and that one? Well, it's about 1.7. OK, what's the difference between that one and that one? Well, it's about 1.something. So you can see that the difference between successive energy
+
+SPEAKER 1
+is there's a big difference down here, there's a small difference there, and there's a big jump up.
+
+SPEAKER 0
+Um, and I can solve the same problem in a So here I chose the Energy scales for the potential and the kinetic parts to be similar if I cho cho choose them instead to be very different, so now the potential is extremely deep. I can solve that problem uh in the same way. So here I'm just substituting in. That set of constants. Uh, so now you can see the energies have changed a lot, because I've changed the energy scale of the potential, and if I make a similar plot to before, So I'm plotting the, the potential energy, uh, and I'm plotting the wave functions, uh, suitably displaced.
+
+SPEAKER 1
+So now this is what the first life instincts look like, and now you can see their backs being quite harmonic. So now the potential's very thin. This amount as opposed to 2, and so now the lowest energy states really just see this quadratic approximation. um And I could do the same thing.
+
+SPEAKER 0
+Uh, but for the opposite limit, let's try that. So now we make a very shallow potential. And let's see what happens. Then, and now you can see, uh, and I want to change the range. Last one. So now, now we've got a very genuine varying potential
+
+SPEAKER 1
+and you can see that the ground state and the excited states are are quite a complicated structure. In fact, there's almost two degenerate states, the orange and the green states have almost the same energy sitting above this ground state, which is only slightly. Sliding OK, so I really need to uh finish off
+
+SPEAKER 0
+our, our discussion, so I'll I'll put that notebook into the, um, Into Blackboard, but just to sort of summarise, we get this this family of states which depending on the relative size of um, Of different terms in that Hamiltonian can look like. This kind of characteristic behaviour. Um This is E0, E1, E2, um, where, E2 minus E1 is not the same as E1 minus E0. OK, so this means it's harmonic. All right. So what I wanna, so that that's really the, so the the assignment is one of the assignment questions is about solving that that sort of problem for yourselves, um, and so I really just want to finish with, uh with some some comments. Um, so, uh, this is the basis, let's say. Uh, for analysing superconducting circuits. Now it's a very simple circuit, you know, it says it's got one node, it's got two divis two elements of capacitor and a chosen junction. You can make much, much more complicated things, so you
+
+SPEAKER 1
+could for example have another copy of that and then you can couple couple those with other circuit elements and
+
+SPEAKER 0
+then you have multiple qubits that are coupled to each other and you can, you can cause them to change their states with external drives and so on. Um, so you can do multiple qubits. And by copying. Uh, that circuit So in a, in a real circuit you might copy many, make many copies of it and you can couple them with different elements as well, so that would give you um coupled cubits. Uh And so it really becomes a bit like Lego that you're putting together these elements to build more and more complicated circuits. And so what I'll finish with is there's this zoology that I started this discussion with um. Of cubit of cubits. Let's say superconducting qubits. And really one way to to start that zoology is to think about the ratio of EJ over EC. So these two parameters in this very simple case. If EJ over EC is very large, then we call it a transmon. If it's very small, we call it a Cooper pair box. That was the first one that was uh demonstrated. Trans one I think was, was proposed in about 2007 or so, um, so this is very harmonic. But it's noisy. This is quite, quite harmonic. Uh, not very noisy. And so on. So they have different ah responses to fluctuations in in
+
+SPEAKER 1
+external fields, and they have different properties, different uh characteristics,
+
+SPEAKER 0
+and so people make choices about what sort of circuit
+
+SPEAKER 1
+to build based on how um how tolerant their their
+
+SPEAKER 0
+device is to external noise and therefore to errors and, so, so what people are trying to build now is uh arrays of these things. Of superconducting ah cubits. Uh, being developed. Um, for quantum algorithms. And that's in fact what. Um, e.g., on IBM and Google, they, they are both doing this kind of thing. IBM make their computers available. In fact, Prasa's running a lab now which does this
+
+SPEAKER 1
+as well.
+
+SPEAKER 0
+He runs a bunch of superconducting cubits connected to each other, and you can in fact use that if you talk, ask nicely, I suppose, um. And so that's where we're gonna end with uh superconducting devices as one set of the family of uh, Gadgets that people use for building quantum computers, so I was a bit rushed, I'm sorry the uh, Text Nafu last. Yesterday on oh sorry, on Wednesday we were a bit.
