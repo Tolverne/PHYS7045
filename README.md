@@ -85,3 +85,11 @@ PHYS7045/
 ```
 
 Empty directories are kept visible in Git using `.gitkeep` files; you can leave or remove these when you add content.
+
+## 2026 open-book exam reference project
+
+- [Exam reference editorial plan and 2023–2025 past-exam audit](exam_prep/EXAM_REFERENCE_PLAN.md)
+- [Lecture-to-topic index](source_material/lectures/lecture_index.csv)
+- [Searchable exam and assignment text](exam_prep/source_extractions/) — verify maths/diagrams against the source PDFs
+
+These study materials are organised to support a ~10-page course overview and ~10-page worked-example booklet.
