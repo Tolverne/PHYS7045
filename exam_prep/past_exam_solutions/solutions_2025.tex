@@ -1,0 +1,223 @@
+% All questions from Semester Two 2025, including Part B.
+\clearpage
+\section{2025 examination}
+\subsection{Question 1 --- The nine-qubit Shor-type stabiliser code}
+The given eight stabilisers are
+\begin{align*}
+S_1&=Z_1Z_2,&S_2&=Z_2Z_3,&S_3&=Z_4Z_5,&S_4&=Z_5Z_6,\\
+S_5&=Z_7Z_8,&S_6&=Z_8Z_9,&S_7&=X_1X_2X_3X_4X_5X_6,&S_8&=X_4X_5X_6X_7X_8X_9.
+\end{align*}
+They define three blocks $\{1,2,3\}$, $\{4,5,6\}$, and $\{7,8,9\}$. There are $n=9$ qubits and $r=8$ independent stabilisers, so $k=1$ logical qubit.
+
+\subsubsection*{Part A1. Should $S_1$ commute with the others?}
+Yes, as every pair of stabiliser generators must commute. For $S_1=Z_1Z_2$, the other $Z$ checks $S_2,\ldots,S_6$ obviously commute (they contain only $Z$ or $I$). Against $S_7=X_1X_2X_3X_4X_5X_6$ there are \emph{two} local $Z/X$ anticommutes (qubits 1 and 2), giving $(-1)^2=+1$. Against $S_8$, the supports are disjoint. Thus
+\begin{equation}\boxed{[S_1,S_j]=0\quad\text{for }j=2,\ldots,8.}\end{equation}
+The same even-overlap rule proves commutation among the complete generating set. For instance, $S_7$ overlaps with $S_3$ on qubits 4 and 5 (two $X/Z$ anticommutes), and $S_7,S_8$ are both products of $X$s and commute.
+
+\subsubsection*{Part A2. Find a logical $X_L$}
+Choose one physical $Z$ from each three-qubit block:
+\begin{equation}\boxed{X_L=Z_1Z_4Z_7=ZIIZIIZII.}\end{equation}
+It commutes with the six $Z$-type generators. Against $S_7$, it anticommutes locally on qubits 1 and 4 (two positions), while against $S_8$ it anticommutes locally on qubits 4 and 7 (two positions). It therefore commutes with all stabilisers. It is \emph{not} itself a stabiliser: it changes the encoded logical state. Why call a product of physical $Z$s a logical $X$? Because the codewords are products of GHZ blocks:
+\begin{equation}\ket{0_L}=\frac{(\ket{000}+\ket{111})^{\otimes3}}{2\sqrt2},\quad
+\ket{1_L}=\frac{(\ket{000}-\ket{111})^{\otimes3}}{2\sqrt2}.\end{equation}
+Applying $Z$ to one physical qubit of each block exchanges $\ket{0_L}\leftrightarrow\ket{1_L}$, which is exactly logical $X$.
+
+\subsubsection*{Part A3. Detect and correct a single bit flip $X_j$}
+An $X_j$ anticommutes with the $Z$ checks that contain qubit $j$. Thus the first six syndrome bits locate the specific bit flip within its block. The last two checks, being $X$-type, commute with $X_j$ and yield $+1$.
+\begin{center}\small
+\begin{tabular}{@{}cccl@{}}\toprule
+Error&$S_1\cdots S_6$ ($1=-$)&$S_7S_8$&Interpretation\\\midrule
+$X_1$&100000&00&first qubit, block 1\\
+$X_2$&110000&00&middle qubit, block 1\\
+$X_3$&010000&00&third qubit, block 1\\
+$X_4$&001000&00&first qubit, block 2\\
+$X_5$&001100&00&middle qubit, block 2\\
+$X_6$&000100&00&third qubit, block 2\\
+$X_7$&000010&00&first qubit, block 3\\
+$X_8$&000011&00&middle qubit, block 3\\
+$X_9$&000001&00&third qubit, block 3\\\bottomrule
+\end{tabular}\end{center}
+All nine syndromes are nonzero and different, so a single $X$ error is \emph{detected and corrected}: measure the eight generators, infer $j$, and apply $X_j$ as the recovery.
+
+\subsubsection*{Part A4. Detect and correct a single phase error $Z_j$}
+A $Z_j$ commutes with $S_1,\ldots,S_6$. It anticommutes with $S_7$ and/or $S_8$ according to which three-qubit block contains $j$:
+\begin{center}\small
+\begin{tabular}{@{}ccc@{}}\toprule
+Location of $Z_j$&$S_7S_8$ syndrome&Decoder example\\\midrule
+Block 1: $j=1,2,3$&10&apply $Z_1$\\
+Block 2: $j=4,5,6$&11&apply $Z_4$\\
+Block 3: $j=7,8,9$&01&apply $Z_7$\\\bottomrule
+\end{tabular}\end{center}
+The syndrome identifies the \emph{block}, not the exact qubit. Nevertheless the error is correctable because $Z_1Z_2=S_1$ and $Z_2Z_3=S_2$, so $Z_1$, $Z_2$ and $Z_3$ differ only by stabilisers on the code space; similarly in the other blocks. This is another example of \emph{degeneracy}: distinct physical errors are equivalent logical errors.
+
+\subsubsection*{Part A5. Arbitrary single $X$, $Y$ or $Z$}
+A $Y_j$ is proportional to $X_jZ_j$, so it combines the \emph{position-specific} first-six-bit $X$ syndrome with the \emph{block-specific} two-bit $Z$ syndrome. Example: $Y_5$ returns $001100\,11$ and can be corrected by $Y_5$. All weight-1 Pauli errors therefore have sufficient syndrome information to choose a valid recovery, taking degeneracy into account:
+\begin{equation}\boxed{\text{The code corrects any one-qubit }X,Y\text{ or }Z\text{ error.}}\end{equation}
+Hence its distance must satisfy $d\ge3$.
+
+\subsubsection*{Part B(a). Logical $Z_L$ and Pauli algebra}
+A suitable choice is
+\begin{equation}\boxed{Z_L=X_1X_2X_3=XXXIIIIII.}\end{equation}
+The $X$s on qubits 1,2,3 commute with all $Z$-type checks: each such check overlaps on either zero or two positions. They also commute with $S_7,S_8$ because those are products of $X$ and $I$. The representative is not a stabiliser, because it acts as $+1$ on $\ket{0_L}$ and $-1$ on $\ket{1_L}$.
+
+With $X_L=Z_1Z_4Z_7$, the two logical operators have exactly one differing nonidentity Pauli at a common qubit (qubit 1), therefore
+\begin{equation}\boxed{[Z_L,S_j]=0\ (j=1,\ldots,8),\qquad Z_LX_L=-X_LZ_L.}\end{equation}
+These are precisely the logical Pauli relationships expected for an encoded qubit.
+
+\subsubsection*{Part B(b). Find the code distance}
+The two nontrivial logical operators just constructed each have weight 3. Thus $d\le3$. On the other hand, Part A5 demonstrated correction of every arbitrary single-qubit error, so $d\ge3$. Therefore
+\begin{equation}\boxed{[[9,1,3]],\qquad d=3.}\end{equation}
+The nine-qubit code is the familiar Shor-type scheme: three blocks protect bit flips internally while the $X$-type checks compare their collective phases.
+
+\subsection{Question 2 --- Trapped-ion three-pulse entangling gate}
+Let $\ket{g}=\ket0$ and $\ket e=\ket1$. The qubits are ions $A,B$, with shared phonon number $n$, initially $n=0$. A red-sideband pulse couples the subspace $\ket{e,n}\leftrightarrow\ket{g,n+1}$. With a suitable fixed laser phase, a resonant $\pi$ pulse sends each participating basis state to $-i$ times its partner, and a resonant $2\pi$ pulse returns it with phase $-1$.
+
+\subsubsection*{Part A1. Pulse 1: red-sideband $\pi$ on ion $A$}
+Only an excited $A$ with $n=0$ couples, by $\ket{e_A,0}\to-i\ket{g_A,1}$. A ground-state $A$ with $n=0$ cannot be further lowered; it is dark. Therefore
+\begin{align*}
+\ket{gg,0}&\to\ket{gg,0},&\ket{ge,0}&\to\ket{ge,0},\\
+\ket{eg,0}&\to-i\ket{gg,1},&\ket{ee,0}&\to-i\ket{ge,1}.
+\end{align*}
+This step conditionally maps $A$'s electronic excitation into one shared motional quantum.
+
+\subsubsection*{Part A2. Pulse 2: red-sideband $2\pi$ on $B$ for $g\leftrightarrow a$}
+This laser addresses $\ket{g_B,1}\leftrightarrow\ket{a_B,0}$, but not $\ket{e_B,1}$. A $2\pi$ cycle contributes $-1$ \emph{only} to the component with $B=g$ and a phonon available. Consequently
+\begin{align*}
+\ket{gg,0}&\to\ket{gg,0},&\ket{ge,0}&\to\ket{ge,0},\\
+-i\ket{gg,1}&\to+i\ket{gg,1},&-i\ket{ge,1}&\to-i\ket{ge,1}.
+\end{align*}
+Notice how a phase is acquired conditionally without permanently populating the auxiliary level $\ket a$.
+
+\subsubsection*{Part A3. Pulse 3: red-sideband $\pi$ on $A$ to restore the motion}
+The second $A$ pulse sends $\ket{g_A,1}\to-i\ket{e_A,0}$; the two participating branches become
+\begin{align*}
++i\ket{gg,1}&\to (+i)(-i)\ket{eg,0}=+\ket{eg,0},\\
+-i\ket{ge,1}&\to (-i)(-i)\ket{ee,0}=-\ket{ee,0}.
+\end{align*}
+The other two input branches remain unchanged. Every output ends with phonon number $n=0$, which is essential for an operation acting \emph{only} on the computational two-qubit space.
+
+\begin{center}\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}lllll@{}}\toprule
+Input&After $\pi_A$&After $2\pi_B$&After $\pi_A$&Phase\\\midrule
+$\ket{gg,0}$&$\ket{gg,0}$&$\ket{gg,0}$&$\ket{gg,0}$&$+1$\\
+$\ket{ge,0}$&$\ket{ge,0}$&$\ket{ge,0}$&$\ket{ge,0}$&$+1$\\
+$\ket{eg,0}$&$-i\ket{gg,1}$&$+i\ket{gg,1}$&$\ket{eg,0}$&$+1$\\
+$\ket{ee,0}$&$-i\ket{ge,1}$&$-i\ket{ge,1}$&$-\ket{ee,0}$&$-1$\\\bottomrule
+\end{tabular}\end{center}
+
+\subsubsection*{Part A4. Matrix and gate identification}
+In the specified basis $\{\ket{gg},\ket{ge},\ket{eg},\ket{ee}\}$, the complete sequence implements
+\begin{equation}\boxed{U=\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&-1\end{pmatrix}=\mathrm{CZ}.}\end{equation}
+It is entangling because a $-1$ phase appears only when both qubits are excited. For example,
+\begin{equation}U\ket{+,+}=\frac{\ket{gg}+\ket{ge}+\ket{eg}-\ket{ee}}2,\end{equation}
+which has entangled Schmidt structure. The result is unitary and the motion disentangles at the end.
+
+\subsubsection*{Part A5. Construct a CNOT}
+Hadamard-conjugate the \emph{target} ion $B$:
+\begin{equation}\boxed{\mathrm{CNOT}_{A\to B}=(I_A\otimes H_B)\,\mathrm{CZ}_{AB}\,(I_A\otimes H_B).}\end{equation}
+The first target Hadamard turns a conditional phase into a conditional bit flip, and the second restores the computational-basis description. This is an exact gate identity, not merely a similarity in truth tables.
+
+\subsubsection*{Part B(a). Controlled-controlled operation on $A,B,C$}
+The controlled-controlled phase gate (CCZ) leaves every computational basis state unchanged except for the three-excitation state:
+\begin{equation}\boxed{\mathrm{CCZ}\ket{abc}=(-1)^{abc}\ket{abc},\quad a,b,c\in\{0,1\}.}\end{equation}
+Equivalently $\ket{eee}\mapsto-\ket{eee}$ and the other seven states acquire phase $+1$. A Toffoli (CCNOT) follows by Hadamards on the last qubit:
+\begin{equation}\mathrm{CCNOT}_{AB\to C}=(I_A\otimes I_B\otimes H_C)\,\mathrm{CCZ}\,(I_A\otimes I_B\otimes H_C).\end{equation}
+Its basis mapping is $\ket{a,b,c}\mapsto\ket{a,b,c\oplus (ab)}$.
+
+\subsubsection*{Part B(b). Add two pulses: a five-pulse CCZ sequence}
+Use the \emph{same shared motional mode}. Insert a pair of red-sideband $\pi$ pulses on ion $B$ ($g_B\leftrightarrow a_B$) before and after the central $2\pi$ pulse on $C$:
+\begin{equation}\boxed{\pi_A\;\longrightarrow\;\pi_B\;\longrightarrow\;2\pi_C\;\longrightarrow\;\pi_B\;\longrightarrow\;\pi_A.}\end{equation}
+The first $A$ pulse creates a phonon if $A=e$. The first $B$ pulse \emph{hides} that phonon in its auxiliary level if $B=g$, so $C$ cannot interact. If $B=e$, the phonon remains and $C$ undergoes a $2\pi$ phase cycle only if $C=g$. Reversing $B$ and $A$ restores all population and motion. Counting the factors $-i$ from paired $\pi$ pulses and $-1$ from $2\pi$ pulses gives:
+\begin{center}\small
+\begin{tabular}{@{}lll@{}}\toprule Case & Relevant phase factors & Total\\\midrule
+$A=g$ & no phonon ever available & $+1$\\
+$A=e,\ B=g$ & $(-i)^2_A(-i)^2_B=(-1)(-1)$ & $+1$\\
+$A=e,\ B=e,\ C=g$ & $(-i)^2_A(-1)_C$ & $+1$\\
+$A=e,\ B=e,\ C=e$ & $(-i)^2_A$; $C$ dark & $-1$\\\bottomrule
+\end{tabular}\end{center}
+Thus the five-pulse construction is precisely CCZ, subject to the ideal resonant sideband phases and proper closure of the phonon bus. The two added $B$ pulses are the requested modification.
+\begin{examtip}\textbf{Gate-table method.} Treat $\ket{abc,n}$, not just $\ket{abc}$, as the state throughout every step. Check not only the final computational labels but also the return to the \emph{same motional state}; otherwise the ions remain entangled with their phonon bus and no clean three-qubit unitary has been implemented.\end{examtip}
+
+\subsection{Question 3 --- Remote state preparation with a singlet}
+The figure states that Alice and Bob share the singlet $\ket{\psi^-}_{AB}=(\ket{01}-\ket{10})/\sqrt2$. Alice knows the desired equatorial state
+\begin{equation}\ket\beta=\frac{\ket0+\ee^{i\phi}\ket1}{\sqrt2},\end{equation}
+and rotates her half about $\hat{\bm n}=(-\sin\phi,\cos\phi,0)$ through angle $\pi/2$, then measures $A$ in the computational basis. Bob applies $Z$ for one of her outcomes.
+
+\subsubsection*{Part A1. Derive Bob's two possible post-measurement states}
+Using the Pauli rotation formula,
+\begin{equation}R_{\hat n}\!\left(\frac\pi2\right)=\cos\frac\pi4 I-i\sin\frac\pi4(-\sin\phi X+\cos\phi Y)
+=\frac1{\sqrt2}\begin{pmatrix}1&-\ee^{-i\phi}\\\ee^{i\phi}&1\end{pmatrix}.\end{equation}
+Its action on Alice's basis states is
+\begin{equation}R\ket0=\frac{\ket0+\ee^{i\phi}\ket1}{\sqrt2},\qquad
+R\ket1=\frac{-\ee^{-i\phi}\ket0+\ket1}{\sqrt2}.\end{equation}
+Apply it to the first qubit of $\ket{\psi^-}$ and expand explicitly:
+\begin{align}
+(R\otimes I)\ket{\psi^-}
+&=\frac12\left[\big(\ket0+\ee^{i\phi}\ket1\big)\ket1-\big(-\ee^{-i\phi}\ket0+\ket1\big)\ket0\right]\\
+&=\frac12\left[\ket0\big(\ee^{-i\phi}\ket0+\ket1\big)+\ket1\big(-\ket0+\ee^{i\phi}\ket1\big)\right].
+\end{align}
+Therefore if Alice measures $0$, Bob receives the unnormalised vector $\tfrac12(\ee^{-i\phi}\ket0+\ket1)$, with squared norm $1/2$. After normalising, the state is
+\begin{equation}\ket{B\mid A=0}=\frac{\ee^{-i\phi}\ket0+\ket1}{\sqrt2}=\ee^{-i\phi}\ket\beta.\end{equation}
+If Alice measures $1$, Bob receives $\tfrac12(-\ket0+\ee^{i\phi}\ket1)$, also with probability $1/2$, so
+\begin{equation}\ket{B\mid A=1}=-\frac{\ket0-\ee^{i\phi}\ket1}{\sqrt2}=-Z\ket\beta.\end{equation}
+Thus the two possibilities, up to global phase, are exactly $\ket\beta$ and $Z\ket\beta$. Alice sends one bit and Bob applies $Z$ when needed:
+\begin{equation}\boxed{A=0:\ B\to\ket\beta,\quad A=1:\ B\to Z\ket\beta,\quad \text{correction }Z^{A}.}\end{equation}
+The two outcomes occur equally often. Before the classical bit arrives Bob's averaged state remains $I/2$, so no faster-than-light signal is produced.
+
+\subsubsection*{Part A2. Polarisation-entangled photon experiment}
+Identify $\ket0\equiv\ket H$ and $\ket1\equiv\ket V$. A practical optical scheme contains the following steps:
+\begin{enumerate}
+\item Use an entangled-photon source (e.g. a properly compensated SPDC source) producing the polarisation singlet $(\ket{H_AV_B}-\ket{V_AH_B})/\sqrt2$, sending one photon to Alice and one to Bob.
+\item At Alice, adjust a quarter-wave plate and half-wave plate (or an equivalent wave-plate sequence) to implement $R_{\hat n}(\pi/2)$ for the chosen $\phi$.
+\item Alice measures $H/V$ with a polarising beam splitter and two single-photon detectors; the detector identity records her bit $m=0,1$.
+\item She sends the bit to Bob by a classical channel. Bob applies a relative $\pi$ phase between $H,V$ (a $Z$ gate) only for outcome $m=1$; afterwards the output photon has the desired polarisation $\ket\beta$.
+\end{enumerate}
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[>=Latex,scale=0.94]
+ \node[draw,rounded corners,fill=soft,minimum width=1.5cm,minimum height=.8cm] (src) at (0,0) {Singlet source};
+ \node[draw,rounded corners,fill=soft,minimum width=1.55cm,minimum height=.8cm] (wp) at (3.0,1.25) {HWP/QWP};
+ \node[draw,rounded corners,fill=soft,minimum width=1.2cm,minimum height=.8cm] (pbs) at (5.6,1.25) {PBS};
+ \node[draw,rounded corners,fill=warm,minimum width=1.5cm,minimum height=.8cm] (corr) at (9.0,-1.15) {Bob: $Z^m$};
+ \draw[very thick,accent,->] (src.east) |- (wp.west);
+ \draw[very thick,accent,->] (wp.east)--(pbs.west);
+ \draw[very thick,accent,->] (src.east) .. controls (3,-1.15) and (5,-1.15) .. (corr.west);
+ \node[draw,fill=soft,inner sep=3pt] (d0) at (7.5,1.85) {$D_H$};
+ \node[draw,fill=soft,inner sep=3pt] (d1) at (7.5,.65) {$D_V$};
+ \draw[->,thick] (pbs.east) -- (d0.west);
+ \draw[->,thick] (pbs.east) -- (d1.west);
+ \draw[dashed,->,thick] (d0.east) -- (9.7,.6) -- (corr.north) node[midway,right] {$m$};
+ \node[below] at (9,-1.6) {$\ket\beta$ output};
+\end{tikzpicture}
+\caption{One possible photonic remote state preparation apparatus. A classical detector message determines Bob's phase correction.}
+\end{figure}
+
+\subsubsection*{Part A3. General target on the Bloch sphere}
+A general pure state is
+\begin{equation}\ket{\beta'}=\cos\frac\theta2\ket H+\ee^{i\phi}\sin\frac\theta2\ket V.\end{equation}
+Alice must now choose an \emph{arbitrary} polarisation measurement basis, not merely the equatorial rotation $R_{\hat n}(\pi/2)$. In optics, additional wave-plate control provides the independent polar angle $\theta$ as well as the azimuth $\phi$. With a singlet, projecting Alice onto the appropriate state remotely prepares $\ket{\beta'}$ at Bob for \emph{one} of her outcomes. The other outcome gives the orthogonal state $\ket{\beta'_{\perp}}$.
+
+\textbf{Limitation worth explaining:} for arbitrary $\theta,\phi$, there is no single fixed correction such as $Z$ that maps $\ket{\beta'_{\perp}}$ into $\ket{\beta'}$ for \emph{every} target. The equatorial one-bit deterministic scheme relies on a special symmetry of that restricted ensemble. An experimental extension can therefore either (i) \emph{herald success} and accept one of the two outcomes, giving $1/2$ success with one bit, or (ii) use extra state-dependent feed-forward/classical communication or a general teleportation-style protocol to obtain deterministic arbitrary-state preparation. Changing wave plates alone is not sufficient to preserve the original deterministic one-bit guarantee for all Bloch-sphere states.
+
+\subsubsection*{Part A4. Compare remote state preparation and teleportation}
+Both protocols use pre-shared entanglement and classical communication; neither transmits an unknown qubit faster than light, and neither clones the original. The major distinctions are
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{27mm}XX@{}}\toprule Feature&Equatorial remote state preparation&Standard qubit teleportation\\\midrule
+Alice's knowledge&Alice knows $\phi$ and chooses her measurement&Alice need not know the input state\\
+Quantum input&No unknown input qubit to transport&An actual unknown input qubit is consumed\\
+Shared resource&One Bell pair&One Bell pair\\
+Classical message&One bit for restricted equatorial ensemble&Two bits to specify four Bell-measurement outcomes\\
+Bob's recovery&$I$ or $Z$ for this equatorial protocol&One of four Pauli corrections\\\bottomrule
+\end{tabularx}\end{center}
+Known-state preparation permits tailored measurement, which is why the restricted protocol can be cheaper in classical communication.
+
+\subsubsection*{Part B. Continuous-variable (CV) teleportation: strengths and limitations}
+CV teleportation encodes information in field quadratures $\hat x=(a+a^\dagger)/\sqrt2$ and $\hat p=(a-a^\dagger)/(i\sqrt2)$ rather than in a two-dimensional single-photon subspace. Alice and Bob share a \emph{two-mode squeezed entangled state}; Alice interferes the unknown optical mode with her half on a balanced beam splitter and makes two complementary homodyne measurements. She transmits continuous-valued classical measurement results, and Bob performs phase-space displacements to recover the state.
+
+\textbf{Advantages.} Homodyne detectors can have high efficiency and are experimentally mature; the optical measurement and feed-forward can be nearly deterministic rather than relying on rare photon-counting events. The method works naturally with coherent/squeezed light and Gaussian optical states, and does not require resolving individual photons in each run.
+
+\textbf{Limitations.} An ideal Einstein--Podolsky--Rosen resource would need infinite squeezing, which is unphysical. Finite squeezing adds noise to the teleported quadratures, decreasing fidelity. Optical loss, mode mismatch, detector inefficiency, imperfect squeezing and finite-bandwidth feed-forward also degrade the reconstructed state. CV Bell measurements still require classical communication (two real measurement outcomes), and deterministic \emph{Gaussian} processing alone does not provide universal fault-tolerant quantum computing.
+
+For a standard unity-gain protocol teleporting unknown coherent states through a pure two-mode squeezed resource of squeezing $r$, a common idealised fidelity formula is
+\begin{equation}\boxed{F_{\rm coh}=\frac{1}{1+\ee^{-2r}}.}\end{equation}
+It gives the classical benchmark $F=1/2$ at $r=0$ and tends to 1 as squeezing grows, assuming the stated gain/noise conventions. This quantitative example illustrates the central trade-off: near-unit fidelity demands increasingly strong entanglement and increasingly low experimental noise.

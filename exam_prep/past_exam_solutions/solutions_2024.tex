@@ -1,0 +1,183 @@
+% All questions from Semester Two 2024, including Part B.
+\clearpage
+\section{2024 examination}
+\subsection{Question 1 --- The five-qubit stabiliser code}
+The given generators and candidate logical $X_L$ are
+\begin{align*}
+S_1&=ZZZII, &S_2&=IIZZZ,\\
+S_3&=XIXXI, &S_4&=IXXIX, & X_L&=XXIII.
+\end{align*}
+There are five data qubits and four independent commuting checks, so $k=5-4=1$ encoded qubit.
+
+\subsubsection*{Part A1. Does $S_1$ commute with the other generators?}
+Any two stabiliser generators must commute. Here $S_1=ZZZII$ and $S_2=IIZZZ$ overlap at qubit 3 with $Z/Z$, so commute. Against $S_3=XIXXI$, the only anticommutes occur on qubits 1 and 3 ($Z/X$ twice); against $S_4=IXXIX$, they occur on qubits 2 and 3. Every count is even, hence
+\begin{equation}[S_1,S_2]=[S_1,S_3]=[S_1,S_4]=0.\end{equation}
+For completeness, $S_2$ also has two mismatches with each $X$-type check, and $S_3$ commutes with $S_4$, so all four can be measured as a stabiliser family.
+
+\subsubsection*{Part A2. Verify $X_L=XXIII$}
+The candidate $X_L$ has two $Z/X$ mismatches with $S_1$ (qubits 1,2); none with $S_2$, and no mismatches with $S_3,S_4$ because those factors are either $X$ or $I$. Thus
+\begin{equation}\boxed{[X_L,S_j]=0\quad(j=1,2,3,4).}\end{equation}
+It is not a stabiliser product (its eigenvalues distinguish logical states), so it is a valid nontrivial encoded Pauli.
+
+\subsubsection*{Part A3--A4. Syndromes for all individual $X$, $Z$ and $Y$ errors}
+Use $b_j=1$ for an error anticommute with $S_j$ ($-1$ measurement result), with bits ordered $S_1S_2S_3S_4$. Position-by-position anticommutation gives
+\begin{center}\small
+\begin{tabular}{@{}cccc@{}}\toprule Qubit&$\synd(X_j)$&$\synd(Y_j)$&$\synd(Z_j)$\\\midrule
+1&1000&1010&0010\\
+2&1000&1001&0001\\
+3&1100&1111&0011\\
+4&0100&0110&0010\\
+5&0100&0101&0001\\\bottomrule
+\end{tabular}\end{center}
+\textbf{Detection.} Every one of the 15 single-qubit Pauli errors produces a nonzero syndrome. Thus every such error is detectable.
+
+\textbf{Correction of bit flips.} $X_1$ and $X_2$ have the same syndrome $1000$, while $X_4$ and $X_5$ both give $0100$. These cannot be corrected unambiguously: for example, $X_1X_2=X_L$ is a \emph{nontrivial logical operator}, not a stabiliser. Choosing the wrong correction introduces a logical error. Hence single $X$ errors are \emph{detectable but not all correctable}.
+
+\textbf{Correction of phase flips.} $Z_1$ and $Z_4$ both give $0010$, and $Z_2$ and $Z_5$ give $0001$. These collisions are likewise harmful: $Z_1Z_4$ is a nontrivial logical $Z$ (shown below). Single $Z$ errors are also \emph{detectable but not all correctable}.
+
+\subsubsection*{Part A5. Can the code correct an arbitrary single-qubit Pauli error?}
+No. It detects all such errors, but the syndrome collisions among inequivalent single-qubit $X$ and $Z$ errors violate the correctability requirement. A full set of single $Y$ errors happens to have distinct syndromes, but that does not rescue correction of the entire $\{X_j,Y_j,Z_j\}$ family.
+\begin{equation}\boxed{\text{All single Pauli errors detectable; arbitrary single Pauli errors not all correctable.}}\end{equation}
+Since every weight-1 Pauli has a nonzero syndrome, there is no undetectable weight-1 logical operator and $d\ge2$.
+
+\subsubsection*{Part B(a). Construct logical $Z_L$}
+Try $Z_L=ZIIZI=Z_1Z_4$. It commutes with $S_1,S_2$, which consist solely of $Z$s. Against $S_3=XIXXI$ it anticommutes locally twice (qubits 1 and 4), so commutes overall. Against $S_4=IXXIX$ there are no mismatches. Therefore $[Z_L,S_j]=0$ for all $j$.
+With $X_L=XXIII$, there is exactly one $X/Z$ mismatch, on qubit 1. Thus
+\begin{equation}\boxed{Z_L=ZIIZI,\qquad X_LZ_L=-Z_LX_L.}\end{equation}
+Equally valid is $Z_L=IZIIZ$, which differs by stabiliser multiplication. The mutually anticommuting representatives reproduce the expected logical Pauli algebra.
+
+\subsubsection*{Part B(b). Calculate the code distance}
+Both $X_L=XXIII$ and $Z_L=ZIIZI$ have weight 2, so $d\le2$. Part A5 ruled out undetectable weight-1 Paulis, so $d\ge2$. Hence
+\begin{equation}\boxed{[[5,1,2]],\qquad d=2,\qquad t=\left\lfloor\frac{d-1}{2}\right\rfloor=0.}\end{equation}
+A distance-2 code detects \emph{any} single-qubit Pauli error but guarantees correction of none for an unrestricted noise model. That is precisely consistent with the ambiguous syndromes found above.
+\begin{examtip}\textbf{Key contrast with 2023.} In the 2023 code, the collision $Z_1\sim Z_3$ is harmless because $Z_1Z_3$ is a stabiliser. In this 2024 code, $X_1\sim X_2$ is harmful because $X_1X_2$ is logical $X_L$. The syndrome pattern alone is insufficient until you check the \emph{difference operator}.\end{examtip}
+
+\subsection{Question 2 --- Dual-rail beam splitter and probabilistic teleportation}
+\subsubsection*{Part A1. Implement a dual-rail Hadamard}
+The logical basis is $\ket{0_L}=\ket{1,0}=a^\dagger\ket{\mathrm{vac}}$, $\ket{1_L}=\ket{0,1}=b^\dagger\ket{\mathrm{vac}}$. The paper gives
+\begin{equation}
+\begin{split}
+a^\dagger&\mapsto a^\dagger\cos\theta+b^\dagger\ee^{i\phi}\sin\theta,\\
+b^\dagger&\mapsto b^\dagger\cos\theta-a^\dagger\ee^{-i\phi}\sin\theta.
+\end{split}
+\end{equation}
+Apply these transformations to each logical basis state. In the \emph{output logical basis}, the induced two-dimensional unitary has columns given by the transformed basis vectors:
+\begin{equation}\label{eq:24bs}
+B(\theta,\phi)=\begin{pmatrix}
+\cos\theta&-\ee^{-i\phi}\sin\theta\\
+\ee^{i\phi}\sin\theta&\cos\theta
+\end{pmatrix}.
+\end{equation}
+Taking $\theta=\pi/4$ and $\phi=0$ gives
+\begin{equation}B(\pi/4,0)=\frac1{\sqrt2}\begin{pmatrix}1&-1\\1&1\end{pmatrix}=HZ,\qquad H=\frac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}.\end{equation}
+Therefore add a $\pi$ phase shift on the second input rail ($Z=\mathrm{diag}(1,-1)$), so
+\begin{equation}\boxed{H=B(\pi/4,0)Z.}\end{equation}
+\emph{Subtlety:} No choice of $\theta,\phi$ in the given bare $B$ alone equals the displayed $H$ exactly, because both diagonal entries of $B$ are equal whereas $H$ has opposite diagonal entries. A rail phase shifter (or equivalent port-phase convention) supplies the required sign. Thus the physical Hadamard is a balanced beam splitter \emph{plus a relative rail phase}.
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[>=Latex]
+\draw[thick] (0,1)--(2.4,1) (0,0)--(2.4,0);
+\draw[fill=accent!10,thick] (1.05,-.2) rectangle (1.55,1.2);
+\draw[thick,accent] (1.1,-.15)--(1.5,1.15);
+\node[above] at (1.3,1.2) {50:50};
+\node[draw,rounded corners,fill=warm,minimum width=.8cm,minimum height=.4cm] (z) at (-.2,0) {$\pi$};
+\draw[->,thick] (-1.2,1)--(0,1) (-1.2,0)--(z.west);
+\draw[->,thick] (2.4,1)--(3.7,1) (2.4,0)--(3.7,0);
+\node at (4.3,.5) {$H=BZ$};
+\end{tikzpicture}
+\caption{A balanced beam splitter plus a phase shift on one rail implements an exact logical Hadamard with the stated convention.}
+\end{figure}
+
+\subsubsection*{Part B(a). Show the single-rail teleportation succeeds with probability $1/2$}
+\textbf{Be careful about the encoding.} The circuit in the paper uses the Fock basis $\{\ket0,\ket1\}$ of an \emph{individual optical mode} for the state to be teleported; that is a \emph{single-rail} input, although Part A concerns dual-rail qubits. Label the input mode $0$, Alice's resource mode $1$, and Bob's output mode $2$.
+
+The input and entangled resource are
+\begin{equation}
+\ket{\psi}_0=\alpha\ket0_0+\beta\ket1_0,\quad
+\ket{t_1}_{12}=\frac{\ket{0,1}_{12}+\ket{1,0}_{12}}{\sqrt2},\quad
+|\alpha|^2+|\beta|^2=1.
+\end{equation}
+Expand \emph{before} the final 50:50 beam splitter:
+\begin{align}
+\ket\Psi_{012}=\frac1{\sqrt2}(&\alpha\ket{0,0}_{01}\ket1_2+\alpha\ket{0,1}_{01}\ket0_2\\
+&+\beta\ket{1,0}_{01}\ket1_2+\beta\ket{1,1}_{01}\ket0_2).
+\end{align}
+Only the middle two terms have exactly one photon in Alice's measured modes $0$ and $1$. The projector onto $n_0+n_1=1$ gives the unnormalised state
+\begin{equation}
+\ket{\Psi_{\rm one}}=\frac1{\sqrt2}(\alpha\ket{0,1}_{01}\ket0_2+\beta\ket{1,0}_{01}\ket1_2).
+\end{equation}
+Its squared norm is $(|\alpha|^2+|\beta|^2)/2=1/2$, already proving the total success probability. To find Bob's conditional state, use the balanced beam-splitter convention
+\begin{equation}
+\ket{1,0}\mapsto\frac{\ket{1,0}+\ket{0,1}}{\sqrt2},\qquad
+\ket{0,1}\mapsto\frac{-\ket{1,0}+\ket{0,1}}{\sqrt2}.
+\end{equation}
+After Alice's beam splitter, the one-photon sector becomes
+\begin{equation}
+\frac12\left[\ket{1,0}_{01}(-\alpha\ket0_2+\beta\ket1_2)
++\ket{0,1}_{01}(\alpha\ket0_2+\beta\ket1_2)\right].
+\end{equation}
+The outcomes in the paper correspond to $n_0=1,n_1=0$ or $n_0=0,n_1=1$. Each occurs with probability $1/4$, independent of $\alpha,\beta$. If $n_0=0,n_1=1$, Bob already has $\ket\psi$. If $n_0=1,n_1=0$, Bob's state is $-\alpha\ket0+\beta\ket1=-Z\ket\psi$, and he applies $Z$ (the extra minus is global).
+\begin{center}\small
+\begin{tabular}{@{}cccc@{}}\toprule Detector $(n_0,n_1)$&Probability&Bob's state (up to phase)&Correction\\\midrule
+$(0,1)$&$1/4$&$\alpha\ket0+\beta\ket1$&$I$\\
+$(1,0)$&$1/4$&$\alpha\ket0-\beta\ket1$&$Z$\\
+$(0,0)$ or total 2&$1/2$ total&not the desired qubit&failure\\\bottomrule
+\end{tabular}\end{center}
+\begin{equation}\boxed{P_{\rm success}=P(1,0)+P(0,1)=\frac14+\frac14=\frac12.}\end{equation}
+This \emph{heralded} scheme succeeds only when the total photon count at Alice's two detectors is exactly one, as specified. The lower output optical mode carries the teleported state. Passive linear optics here cannot distinguish a complete Bell basis deterministically, which is why failures are unavoidable with this resource/detection setup.
+
+\subsection{Question 3 --- Simultaneous-pulse Rydberg gates}
+The original figure shows an $\Omega_1$ drive coupling $\ket0\leftrightarrow\ket r$ on both atoms and an additional $\Omega_2$ drive coupling $\ket1\leftrightarrow\ket r$ \emph{on the target only}. With both colours present, the target can undergo an effective $\ket0\leftrightarrow\ket1$ transition via the Rydberg level, while the control's occupation of $\ket r$ blocks that target transition.
+
+\subsubsection*{Part A1. Pulse areas required}
+The desired logic is a \emph{closed control excursion} and a \emph{target bit flip only in the unblocked branch}. Thus:
+\begin{itemize}
+\item In the branch where control $\ket0$ couples to $\ket r$, the driven control should make a $2\pi$ excursion and return to $\ket0$ (acquiring a phase of $-1$ in the ideal two-level convention).
+\item In the branch where the control remains $\ket1$, the target must undergo an effective $\pi$ rotation between its computational states $\ket0,\ket1$, so its population swaps (up to an optical phase).
+\item When the control is excited to $\ket r$, blockade shifts the target's intermediate Rydberg state by $\Delta_{rr}$, suppressing its effective flip if $|\Delta_{rr}|\gg\Omega_1,\Omega_2$ (in angular-frequency units).
+\end{itemize}
+For a simple \emph{effective} two-level description, the conditions are $\int\Omega_{1,c}\,\dd t=2\pi$ for the control excursion and $\int\Omega_{\rm eff,t}\,\dd t=\pi$ for the unblocked target. \textbf{The given figure does not specify pulse envelopes, detunings or coupling ratios, so it does not uniquely determine the numerical $\Omega_1,\Omega_2$ pulse durations.} In a resonant three-level target, an exact swap instead corresponds to a $2\pi$ bright-state cycle; this is explained below.
+
+\subsubsection*{Part A2. Show the four computational-basis cases}
+In the ideal blockaded effective model, the gate acts as follows (controls written first):
+\begin{center}\small
+\begin{tabular}{@{}llll@{}}\toprule
+Input&Control response&Target response&Logical output\\\midrule
+$\ket{1_c0_t}$&control dark&unblocked flip&$\ket{1_c1_t}$\\
+$\ket{1_c1_t}$&control dark&unblocked flip&$\ket{1_c0_t}$\\
+$\ket{0_c1_t}$&control excursion to $r$&blocked / unchanged&$\ket{0_c1_t}$\\
+$\ket{0_c0_t}$&control excursion to $r$&blocked / unchanged&$\ket{0_c0_t}$\\\bottomrule
+\end{tabular}\end{center}
+The logical map is therefore a CNOT with \emph{control on $\ket1$} (up to conditional phases). To see how phases arise, a resonant $2\pi$ control cycle contributes $-1$ on the control-$0$ sector. In that simple convention, the ideal operation is
+\begin{equation}
+U_{\rm ideal}= -\ket0\bra0_c\otimes I_t+\ket1\bra1_c\otimes X_t
+=-(Z_c\otimes I_t)\,\mathrm{CNOT}_{c\rightarrow t},
+\end{equation}
+so a single-qubit $Z$ on the control corrects the unwanted relative sign (global $-1$ is irrelevant).
+
+\textbf{Three-level detail.} With $\Omega_1$ and $\Omega_2$ exactly resonant and simultaneous on the target, its Hamiltonian is
+\begin{equation}H_t=\frac\hbar2\left(\Omega_1\ket r\bra0+\Omega_2\ket r\bra1+\mathrm{h.c.}\right).
+\end{equation}
+It couples only the \emph{bright} state $\ket B\propto\Omega_1\ket0+\Omega_2\ket1$ to $\ket r$; the orthogonal dark state is stationary. For equal real couplings, $\ket B=(\ket0+\ket1)/\sqrt2$, $\ket D=(\ket0-\ket1)/\sqrt2$; a $2\pi$ bright-state cycle sends $\ket B\mapsto-\ket B$ and $\ket D\mapsto\ket D$, which is $-X$ on the target basis. That is the physical origin of the effective target swap. A fully simultaneous implementation must coordinate these bright-state and control cycles (often using pulse shaping, detuning or composite sequences); a single equal-amplitude rectangular pulse is not sufficient to satisfy both exact cycles automatically. The question's truth-table argument assumes these pulse conditions have been engineered.
+
+\subsubsection*{Part A3. Technical advantage}
+Simultaneous pulses reduce the need to switch and readdress separate consecutive control/target pulses. Fewer independent timing steps can shorten the gate, reduce exposure to decoherence and decrease errors from pulse calibration or beam steering. They trade this for the need to synchronise phases, detunings and the multi-level dynamics.
+
+\subsubsection*{Part B(a). Extend to a three-qubit Toffoli gate}
+Place the \emph{target in the middle}, with controls on either side, such that each control blockades the target but the controls are far enough apart not to blockade each other:
+\begin{center}
+\begin{tikzpicture}[>=Latex]
+ \foreach \x/\lab in {0/$c_1$,3/$t$,6/$c_2$}{\draw[fill=soft,draw=accent,thick] (\x,0) circle(.35);\node[text=ink] at (\x,0) {\lab};}
+ \draw[very thick,<->,accent] (.45,0)--(2.55,0) node[midway,above] {blockade};
+ \draw[very thick,<->,accent] (3.45,0)--(5.55,0) node[midway,above] {blockade};
+ \node[below] at (3,-.55) {$\Omega_2$ addresses only the target};
+\end{tikzpicture}
+\end{center}
+A control in $\ket0$ can be driven to $\ket r$, blocking the target. Only when \emph{both} controls are in $\ket1$ does neither become excited, allowing the target's effective flip. After returning the control excitations, the computational action is
+\begin{equation}\boxed{\ket{c_1,c_2,t}\longmapsto\ket{c_1,c_2,t\oplus(c_1c_2)}.}\end{equation}
+This is Toffoli (CCNOT), up to phases that must be compensated as in Part A. Explicitly, the eight computational inputs map as follows:
+\begin{center}\small
+\begin{tabular}{@{}c*{8}{c}@{}}\toprule
+Input&$000$&$001$&$010$&$011$&$100$&$101$&$110$&$111$\\\midrule
+Output&$000$&$001$&$010$&$011$&$100$&$101$&$111$&$110$\\\bottomrule
+\end{tabular}\end{center}
+The geometry is essential: if the two controls also blockaded each other, the simple argument that they can be independently excited would fail. Exact experimental pulse calibration remains a separate requirement.

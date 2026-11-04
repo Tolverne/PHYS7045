@@ -1,0 +1,157 @@
+% All questions from Semester Two 2023, including Part B.
+\clearpage
+\section{2023 examination}
+\subsection{Question 1 --- M\o lmer--S\o rensen trapped-ion gate}
+\begin{idea}
+\textbf{Physics.} Two ions couple to the same quantised vibrational mode. A bichromatic laser drives red and blue sidebands with opposite detunings $\pm\delta$, creating an effective two-photon transition $\ket{gg,n}\leftrightarrow\ket{ee,n}$ without permanently populating the intermediate phonon states. The cancellation of factors $n$ and $n+1$ is the key to the gate's relative insensitivity to thermal motion.
+\end{idea}
+\subsubsection*{Part A1. Single-ion red and blue sidebands}
+With electronic states $\ket g,\ket e$, harmonic-motion state $\ket n$, Lamb--Dicke factor $\eta$, and bare carrier Rabi frequency $\Omega$, the first-order sideband Hamiltonians are, up to laser phases,
+\begin{align}
+H_{\rm red}&=\frac{\hbar\eta\Omega_r}{2}(\sigma_+a+\sigma_-a^\dagger),&
+H_{\rm blue}&=\frac{\hbar\eta\Omega_b}{2}(\sigma_+a^\dagger+\sigma_-a).
+\end{align}
+The ladder operators satisfy $a\ket n=\sqrt n\ket{n-1}$ and $a^\dagger\ket n=\sqrt{n+1}\ket{n+1}$. Therefore
+\begin{align}
+\text{red: }&\ket{g,n}\longleftrightarrow\ket{e,n-1},& \Omega_{r,n}&=\eta\Omega_r\sqrt n,\label{eq:23red}\\
+\text{blue: }&\ket{g,n}\longleftrightarrow\ket{e,n+1},&\Omega_{b,n}&=\eta\Omega_b\sqrt{n+1}.\label{eq:23blue}
+\end{align}
+A red-sideband pulse cannot excite $\ket{g,0}$ (there is no phonon to remove). For equal laser strengths $\Omega_r=\Omega_b=\Omega_0$, these become $\eta\Omega_0\sqrt n$ and $\eta\Omega_0\sqrt{n+1}$ respectively.
+
+\subsubsection*{Part A2. Two alternative two-photon pathways}
+The figure in the paper contains two families of virtual intermediate states. One creates a phonon first (the $n+1$ path), and the other removes one first (the $n-1$ path):
+\begin{figure}[htbp]
+\centering\begin{tikzpicture}[>=Latex,scale=0.94]
+ \node[draw,rounded corners,fill=soft,inner sep=5pt] (a) at (0,0) {$\ket{gg,n}$};
+ \node[draw,rounded corners,fill=soft,inner sep=5pt] (b) at (4.2,1.45) {$\ket{eg,n+1}$};
+ \node[draw,rounded corners,fill=soft,inner sep=5pt] (c) at (4.2,-1.45) {$\ket{eg,n-1}$};
+ \node[draw,rounded corners,fill=warm,inner sep=5pt] (d) at (8.4,0) {$\ket{ee,n}$};
+ \draw[very thick,accent,->] (a)--(b) node[midway,above left] {$\eta\Omega_b\sqrt{n+1}$};
+ \draw[very thick,accent,->] (b)--(d) node[midway,above right] {$\eta\Omega_r\sqrt{n+1}$};
+ \draw[very thick,muted,->] (a)--(c) node[midway,below left] {$\eta\Omega_r\sqrt n$};
+ \draw[very thick,muted,->] (c)--(d) node[midway,below right] {$\eta\Omega_b\sqrt n$};
+ \node[align=center] at (4.2,0.55) {virtual paths have\\ opposite detunings};
+\end{tikzpicture}
+\caption{The two interfering second-order paths between $\ket{gg,n}$ and $\ket{ee,n}$. Either ion could be excited first; the same $n$-dependence appears for both orderings.}
+\end{figure}
+The question supplies the second-order two-photon Rabi rule $\Omega_{2\gamma}=\Omega_1\Omega_2/(2\delta_{\rm path})$. If the upper ($n+1$) intermediate state has detuning $+\delta$ and the lower ($n-1$) state $-\delta$, their \emph{signed} contributions are
+\begin{equation}\label{eq:23MSpaths}
+\Omega_{\rm upper}=2\times\frac{\eta^2\Omega_r\Omega_b(n+1)}{2\delta}=\frac{\eta^2\Omega_r\Omega_b(n+1)}{\delta},\qquad
+\Omega_{\rm lower}=-2\times\frac{\eta^2\Omega_r\Omega_b n}{2\delta}=-\frac{\eta^2\Omega_r\Omega_b n}{\delta}.
+\end{equation}
+Choosing the opposite detuning sign convention reverses both signs and has no effect on the magnitude. The diagram also includes the corresponding pathway with ions $A$ and $B$ exchanged; both orderings contribute equally and must be summed.
+
+\subsubsection*{Part A3. Why the result is independent of phonon occupation}
+The upper and lower path families (each summed over both ion orderings) add \emph{coherently}, including their detuning signs:
+\begin{equation}\boxed{\displaystyle
+\Omega_{\rm eff}=\left|\Omega_{\rm upper}+\Omega_{\rm lower}\right|
+=\frac{\eta^2|\Omega_r\Omega_b|}{|\delta|}\big|(n+1)-n\big|
+=\frac{\eta^2|\Omega_r\Omega_b|}{|\delta|}.}\label{eq:23MS}
+\end{equation}
+There is no residual $n$ dependence. \emph{Why?} The factor for creating then annihilating a phonon is $(n+1)$, while annihilating then creating has factor $n$. Their oppositely detuned amplitudes cancel the $n$-dependent terms. This requires the regime where the detuned intermediate levels remain virtual ($|\delta|$ larger than the associated sideband couplings) and other approximations remain valid.
+
+\subsubsection*{Part B(a). Pulse for a maximally entangled Bell state}
+Within the effective subspace $\{\ket{gg,n},\ket{ee,n}\}$ take
+\begin{equation}H_{\rm eff}=\frac{\hbar\Omega_{\rm eff}}2\left(\ee^{i\chi}\ket{ee}\bra{gg}+\ee^{-i\chi}\ket{gg}\bra{ee}\right).\end{equation}
+Starting in $\ket{gg,n}$, the evolution is
+\begin{equation}
+\ket{\psi(t)}=\cos\frac{\Omega_{\rm eff}t}{2}\ket{gg,n}
+-i\ee^{i\chi}\sin\frac{\Omega_{\rm eff}t}{2}\ket{ee,n}.
+\end{equation}
+Equal-magnitude coefficients require $\Omega_{\rm eff}t=\pi/2$ for the first such pulse:
+\begin{equation}\boxed{t_{\rm Bell}=\frac{\pi}{2\Omega_{\rm eff}},\qquad
+\ket{\psi(t_{\rm Bell})}=\frac{\ket{gg}-i\ee^{i\chi}\ket{ee}}{\sqrt2}\otimes\ket n.}\end{equation}
+This is maximally entangled because tracing either ion gives $\I/2$. The relative phase is set by the optical phase and can be corrected locally. \textbf{Note:} the gate is insensitive to the \emph{initial} $n$ at this effective order; this does not mean it is unaffected by heating or laser noise.
+
+\subsection{Question 2 --- A six-qubit stabiliser code}
+The source table, transcribed from page 3 of the 2023 paper, is
+\begin{center}\small
+\begin{tabular}{@{}c*{6}{c}@{}}\toprule
+&1&2&3&4&5&6\\\midrule
+$S_1$&Z&I&Z&I&I&I\\
+$S_2$&X&Z&Y&Y&X&I\\
+$S_3$&X&X&X&X&Z&I\\
+$S_4$&I&Z&Z&X&I&X\\
+$S_5$&X&Y&X&Y&I&Z\\\bottomrule
+\end{tabular}\end{center}
+There are five independent commuting stabilisers on six qubits, so $k=6-5=1$ logical qubit is encoded.
+
+\subsubsection*{Part A1. Should $S_1$ commute with the others?}
+Yes: generators of a valid stabiliser group must commute so that the code has simultaneous $+1$ eigenspaces. The rule is to count positions where two Pauli factors are \emph{different and neither is $I$}. For $S_1=ZIZIII$:
+\begin{center}\small
+\begin{tabular}{@{}lll@{}}\toprule Pair & Anticommuting qubit positions & Result\\\midrule
+$S_1,S_2$ & 1 ($Z/X$), 3 ($Z/Y$) & 2, commute\\
+$S_1,S_3$ & 1 ($Z/X$), 3 ($Z/X$) & 2, commute\\
+$S_1,S_4$ & none & 0, commute\\
+$S_1,S_5$ & 1 ($Z/X$), 3 ($Z/X$) & 2, commute\\\bottomrule
+\end{tabular}\end{center}
+In each case $S_1S_j=(-1)^{\text{even}}S_jS_1=S_jS_1$. The remaining stabilisers also commute pairwise, so the code is consistent.
+
+\subsubsection*{Part A2. Check the given logical $Z_L=XYYXII$}
+Test $Z_L$ against each generator: the local anticommuting positions are
+\begin{center}\small
+\begin{tabular}{@{}ccccc@{}}\toprule
+$S_1$&$S_2$&$S_3$&$S_4$&$S_5$\\\midrule
+$1,3$&$2,4$&$2,3$&$2,3$&$3,4$\\\bottomrule
+\end{tabular}\end{center}
+All have two mismatches, hence $[Z_L,S_j]=0$ for every $j$. It is not a product of the stabilisers, so it acts nontrivially on the encoded qubit. The notation \emph{logical $Z$} is a choice of computational logical basis, not a requirement that the physical string contain only $Z$ operators.
+
+\subsubsection*{Part A3--A4. Single $X$ and single $Y$ errors: full syndromes}
+Write a syndrome as five bits $b_1b_2b_3b_4b_5$, where $b_j=1$ means $E$ \emph{anticommutes} with $S_j$ and therefore flips its eigenvalue to $-1$.
+\begin{center}\small
+\begin{tabular}{@{}cccc@{}}\toprule
+Qubit $j$&$\synd(X_j)$&$\synd(Y_j)$&$\synd(Z_j)$\\\midrule
+1&10000&11101&01101\\
+2&01011&01110&00101\\
+3&11010&10111&01101\\
+4&01001&00110&01111\\
+5&00100&01100&01000\\
+6&00001&00011&00010\\\bottomrule
+\end{tabular}\end{center}
+All six $X_j$ errors have nonzero and mutually different syndromes; likewise the six $Y_j$ errors. Therefore each set is \emph{detectable and individually correctable}. The table is obtained by checking each generator position rather than multiplying $64\times64$ matrices.
+
+\subsubsection*{Part A5. Does it correct arbitrary single-qubit $X,Y,Z$?}
+The $Z$ syndromes are also nonzero, but $Z_1$ and $Z_3$ have the same syndrome $01101$. This is \emph{not a failure}: $Z_1Z_3=S_1$ is a stabiliser, so the two errors have the same action on every codeword. They are a \emph{degenerate} correctable pair. There are no other collisions between inequivalent errors in the combined table. Therefore
+\begin{equation}\boxed{\text{Every single-qubit Pauli error is correctable, so }d\geq3.}\end{equation}
+The formal criterion $PE_a^\dagger E_bP=c_{ab}P$ permits indistinguishable error pairs precisely when their product acts as a scalar on the code space (here, a stabiliser).
+
+\subsubsection*{Part B(a). Find logical $X_L=ABABII$}
+Choose $A=X$, $B=Z$, giving
+\begin{equation}\boxed{X_L=XZXZII.}\end{equation}
+For $S_1,\ldots,S_5$, this string has respectively $2,2,2,2,2$ anticommuting positions, so it commutes with the entire stabiliser set. Against the specified $Z_L=XYYXII$, there are three local anticommutations (qubits 2, 3, 4), so
+\begin{equation}\boxed{X_LZ_L=-Z_LX_L.}\end{equation}
+The alternative $YZYZII$ also satisfies the requested properties. Logical Pauli representatives are not unique, since multiplying by stabilisers preserves their encoded action.
+
+\subsubsection*{Part B(b). Find a lower-weight logical operator and the distance}
+Multiply the given logical $Z_L=XYYXII$ by $S_5=XYXYIZ$; the factors on qubits 1--2 cancel, those on 3--4 become $Z$ (the Pauli phases cancel), leaving
+\begin{equation}\boxed{Z_L S_5=(XYYXII)(XYXYIZ)=IIZZIZ,\qquad \wt(Z_LS_5)=3.}\end{equation}
+This is a weight-3 logical operator because multiplying by a stabiliser does not change the logical action. Hence $d\leq3$. Combined with $d\geq3$ from Part A5:
+\begin{equation}\boxed{[[6,1,3]],\qquad d=3.}\end{equation}
+\begin{examtip}\textbf{Exam principle.} Equal syndromes imply either a correctable degeneracy or an uncorrectable ambiguity. Multiply the two errors: if their product is a stabiliser, the syndrome collision is harmless; if it is a nontrivial logical operator, it is not.\end{examtip}
+
+\subsection{Question 3 --- Entanglement from a $Y\otimes Y$ Hamiltonian}
+The Hamiltonian is $H=\frac{\hbar g}{2}(Y_1+Y_2)^2$, where $Y_1=Y\otimes I$ and $Y_2=I\otimes Y$.
+\subsubsection*{Part A1. Derive the unitary}
+Since $Y_1^2=Y_2^2=I\otimes I$ and $[Y_1,Y_2]=0$,
+\begin{equation}(Y_1+Y_2)^2=2I\otimes I+2Y\otimes Y,\qquad H=\hbar g(I\otimes I+Y\otimes Y).\end{equation}
+The two Hamiltonian terms commute, so
+\begin{align}
+U(t)&=\exp[-igt(I\otimes I+Y\otimes Y)]\\
+&=\ee^{-igt}\left[\cos(gt)I\otimes I-i\sin(gt)Y\otimes Y\right],
+\end{align}
+because $(Y\otimes Y)^2=I\otimes I$. The exam's expression omits the prefactor $\ee^{-igt}$: it is a \emph{global phase}, so the two expressions are physically equivalent, although the displayed expression is not the exact exponential of the full stated Hamiltonian. Thus
+\begin{equation}\boxed{U(t)\sim\cos(gt)I\otimes I-i\sin(gt)Y\otimes Y.}\end{equation}
+
+\subsubsection*{Part A2. Time for a maximally entangled state}
+Use $Y\ket0=i\ket1$. Then $(Y\otimes Y)\ket{00}=-\ket{11}$, so
+\begin{equation}U(t)\ket{00}\sim\cos(gt)\ket{00}+i\sin(gt)\ket{11}.\end{equation}
+The Schmidt coefficients have equal magnitude when $gt=\pi/4$ modulo $\pi/2$. The shortest positive time is
+\begin{equation}\boxed{t=\frac{\pi}{4g},\qquad \ket{\psi(t)}\sim\frac{\ket{00}+i\ket{11}}{\sqrt2}.}\end{equation}
+The phase $i$ is relative, but maximal entanglement is unchanged: either reduced density matrix is $I/2$.
+
+\subsubsection*{Part B(a). Construct a CNOT from this entangling gate}
+Let $U_{YY}=\exp(-i\pi Y\otimes Y/4)$ and $V=R_x(\pi/2)\otimes R_x(\pi/2)$. Conjugation rotates $Y$ into $Z$:
+\begin{equation}V(Y\otimes Y)V^\dagger=Z\otimes Z,\qquad VU_{YY}V^\dagger=\ee^{-i\pi Z\otimes Z/4}.\end{equation}
+Because $\ee^{-i\pi Z\otimes Z/4}=\ee^{-i\pi/4}\operatorname{diag}(1,i,i,1)$, local phase gates $S^\dagger=\operatorname{diag}(1,-i)$ yield
+\begin{equation}\boxed{(S^\dagger\otimes S^\dagger)\,VU_{YY}V^\dagger=\ee^{-i\pi/4}\mathrm{CZ}.}\end{equation}
+Finally $\mathrm{CNOT}_{1\rightarrow2}=(I\otimes H)\mathrm{CZ}(I\otimes H)$, with $H=(X+Z)/\sqrt2$. The factor $\ee^{-i\pi/4}$ is global and irrelevant. The construction is \emph{local rotations $\to$ entangling $YY$ pulse $\to$ local phase gates $\to$ CNOT basis change}.

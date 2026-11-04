@@ -1,0 +1,73 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,top=18mm,bottom=19mm,left=19mm,right=19mm,headsep=6mm,footskip=8mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{libertinus}
+\usepackage[final]{microtype}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs,tabularx,array,longtable,enumitem,multicol,graphicx}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathreplacing,fit,shapes.geometric}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr,hyperref,titlesec}
+\hypersetup{colorlinks=true,linkcolor=blue!40!black,urlcolor=blue!40!black,pdfauthor={PHYS7045 Exam Study Reference},pdftitle={PHYS7045 Past Examination Fully Worked Solutions 2023--2025}}
+\definecolor{ink}{HTML}{243449}
+\definecolor{muted}{HTML}{536274}
+\definecolor{accent}{HTML}{165A75}
+\definecolor{soft}{HTML}{F0F5F7}
+\definecolor{warm}{HTML}{F7F4ED}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt plus 1pt minus 1pt}
+\setlength{\emergencystretch}{4em}
+\setlist[itemize]{leftmargin=*,topsep=3pt,itemsep=1.5pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=*,topsep=3pt,itemsep=2pt,parsep=0pt}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+\AtBeginDocument{\color{ink}}
+\titleformat{\section}{\Large\bfseries\color{accent}}{\thesection}{.65em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{accent}}{\thesubsection}{.65em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{ink}}{\thesubsubsection}{.65em}{}
+\titlespacing*{\section}{0pt}{13pt plus 3pt minus 2pt}{5pt}
+\titlespacing*{\subsection}{0pt}{10pt plus 3pt minus 1pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{7pt plus 2pt minus 1pt}{3pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{muted}PHYS7045 \textbar\ Past Exams 2023--2025}
+\fancyhead[R]{\small\color{muted}Fully Worked Solutions}
+\fancyfoot[C]{\small\color{muted}\thepage}
+\renewcommand{\headrulewidth}{0.25pt}
+\newtcolorbox{idea}{colback=soft,colframe=accent!35!white,boxrule=.4pt,arc=1.5mm,left=2mm,right=2mm,top=1mm,bottom=1mm,before skip=5pt,after skip=5pt,breakable}
+\newtcolorbox{examtip}{colback=warm,colframe=black!16,boxrule=.4pt,arc=1.5mm,left=2mm,right=2mm,top=1mm,bottom=1mm,before skip=5pt,after skip=5pt,breakable}
+\newcommand{\ket}[1]{\left\lvert #1\right\rangle}
+\newcommand{\bra}[1]{\left\langle #1\right\rvert}
+\newcommand{\braket}[2]{\left\langle #1\middle\vert #2\right\rangle}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\synd}{\operatorname{synd}}
+\newcommand{\X}{\sigma_x}
+\newcommand{\Y}{\sigma_y}
+\newcommand{\Z}{\sigma_z}
+\newcommand{\red}[1]{\textcolor{accent}{#1}}
+\begin{document}
+\begin{center}
+{\huge\bfseries PHYS7045: Quantum Technologies}\par\vspace{2mm}
+{\Large\color{accent}Past Examination Papers --- Full Worked Solutions}\par\vspace{2mm}
+{\small 2023 \quad\textbullet\quad 2024 \quad\textbullet\quad 2025}\par\vspace{2mm}
+{\small Core Part A and advanced Part B, with assumptions, physical explanation and checks}
+\end{center}
+\begin{idea}
+\textbf{How to use these solutions.} Start each question with the original paper, attempt the problem, then compare your method to the explanation here. We retain each year's question numbering and explicitly distinguish \emph{error detection from correction}, \emph{global from relative phases}, and \emph{idealised gate models from physical pulse details}. Our state and operator conventions are stated locally rather than silently changed.
+\end{idea}
+\tableofcontents
+\begin{examtip}
+\textbf{Important source note.} The worked problems are referenced to the original exam PDFs in \texttt{source\_material/past\_exams/2023--2025/}. The 2024 Rydberg problem does not give laser detunings or pulse envelopes; the idealised effective-pulse answer is presented with that limitation made explicit. These are independently derived study solutions, not an official examiner marking key.
+\end{examtip}
+\input{solutions_2023}
+\input{solutions_2024}
+\input{solutions_2025}
+\end{document}

@@ -1,0 +1,34 @@
+name: Build PHYS7045 fully worked past exams
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'exam_prep/past_exam_solutions/*.tex'
+      - '.github/workflows/build-past-exams.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  latex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile the three-year worked-solutions booklet
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: exam_prep/past_exam_solutions
+          args: -pdf -file-line-error -interaction=nonstopmode -halt-on-error
+      - name: Commit the print-ready PDF
+        run: |
+          cp exam_prep/past_exam_solutions/main.pdf exam_prep/past_exam_solutions/PHYS7045_Past_Exams_2023-2025_Fully_Worked.pdf
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add exam_prep/past_exam_solutions/PHYS7045_Past_Exams_2023-2025_Fully_Worked.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish the full 2023-2025 worked exam solutions PDF"
+            git push
+          fi
