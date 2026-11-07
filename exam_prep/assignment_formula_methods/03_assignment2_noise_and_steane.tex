@@ -1,0 +1,64 @@
+\pagetitle{3. Assignment 2: open systems and QEC}{A2 Q1--Q2}
+\begin{multicols}{2}\small
+\topic{A. Lindblad equation $\to$ Bloch differential equations}
+\paper{Q1 Part A: arbitrary initial state, steady state, plots, purity.}
+\[\dot\rho=-\frac{i\Omega}{2}[X,\rho]+\gamma\D[Z]\rho,\quad
+\D[L]\rho=L\rho L^\dagger-\frac12\{L^\dagger L,\rho\}.\]
+Insert $\rho=(\I+xX+yY+zZ)/2$. Compare the $X,Y,Z$ coefficients (or use $\dot r_j=\Tr(\sigma_j\dot\rho)$):
+\[\boxed{\dot x=-2\gamma x,\quad\dot y=-2\gamma y-\Omega z,\quad\dot z=\Omega y}.\]
+For $\Omega>\gamma>0$, let $\omega=\sqrt{\Omega^2-\gamma^2}$. With $(x_0,y_0,z_0)$ arbitrary,
+\[\begin{aligned}
+ x(t)&=x_0\ee^{-2\gamma t},\\[-1mm]
+ y(t)&=\ee^{-\gamma t}\!\left[y_0\cos\omega t-\frac{\gamma y_0+\Omega z_0}{\omega}\sin\omega t\right],\\[-1mm]
+ z(t)&=\ee^{-\gamma t}\!\left[z_0\cos\omega t+\frac{\gamma z_0+\Omega y_0}{\omega}\sin\omega t\right].
+\end{aligned}\]
+\textbf{Workflow:} derive ODEs $\to$ solve $\dot{\bm r}=A\bm r$ $\to$ set $\dot{\bm r}=0$ $\to$ recover $\rho(t)$ $\to$ plot $\bm r(t)$ and purity:
+\[\rho_{\rm ss}=\I/2\quad(\Omega,\gamma>0),\qquad\boxed{\Tr\rho^2=\frac{1+x^2+y^2+z^2}{2}}.\]
+For $\ket0$ initially, $(x_0,y_0,z_0)=(0,0,1)$. If $\Omega\le\gamma$, use real exponential/hyperbolic solutions instead of oscillatory sines. Pure dephasing with $\Omega=0$ leaves $z$ conserved.
+
+\topic{B. Damped atom $\to$ Kraus representation}
+\paper{Q1 Part B: generalized amplitude damping.}
+For $\ket g=(1,0)^T,\ket e=(0,1)^T$ define
+\[\Gamma_\downarrow=\tfrac\gamma2(n+1),\quad \Gamma_\uparrow=\tfrac\gamma2 n,\quad \Gamma_1=\tfrac\gamma2(2n+1).\]
+Then $x,y\propto \ee^{-\Gamma_1t/2}$ and
+\[\boxed{z(t)=z_\infty+(z_0-z_\infty)\ee^{-\Gamma_1t},\quad z_\infty=\frac1{2n+1}}.\]
+Set $q=(n+1)/(2n+1)$ (ground equilibrium probability), $\lambda=1-\ee^{-\Gamma_1t}$:
+\[\begin{array}{@{}ll@{}}
+K_0=\sqrt q\begin{pmatrix}1&0\\0&\sqrt{1-\lambda}\end{pmatrix},&
+K_1=\sqrt q\begin{pmatrix}0&\sqrt\lambda\\0&0\end{pmatrix},\\[2mm]
+K_2=\sqrt{1-q}\begin{pmatrix}\sqrt{1-\lambda}&0\\0&1\end{pmatrix},&
+K_3=\sqrt{1-q}\begin{pmatrix}0&0\\\sqrt\lambda&0\end{pmatrix}.
+\end{array}\]
+Check $\sum_jK_j^\dagger K_j=\I$, $t=0$ gives identity and $t\to\infty$ gives thermal equilibrium.
+
+\columnbreak
+\topic{C. The Steane code: start with the parity checks}
+\paper{Q2 Part A: Tanner graph, logicals, distance, syndromes.}
+\[\boxed{[[n,k,d]]=[[7,1,3]],\qquad k=n-r=7-6=1.}\]
+The three $X$-check supports are $\{4,5,6,7\}$, $\{2,3,6,7\}$, $\{1,3,5,7\}$; the $Z$ checks have the same supports. The classical parity-check matrix is
+\[H=\begin{pmatrix}0&0&0&1&1&1&1\\0&1&1&0&0&1&1\\1&0&1&0&1&0&1\end{pmatrix}.\]
+\textbf{Tanner graph:} draw one vertex for each physical qubit, another for each parity check, and an edge wherever $H_{ij}=1$.
+
+All same-Pauli checks commute. Opposite-type checks overlap in $4$ (same support) or $2$ (different supports) locations, hence an \emph{even} number of $XZ$ anticommutations, so they commute.
+
+\topic{D. General syndrome-lookup algorithm}
+The syndrome of $X_j$ is the $j$th column of $H$, measured by the \emph{$Z$ checks}; swap roles for $Z_j$:
+\[\begin{array}{@{}c|cccccccc@{}}\text{syndrome}&000&001&010&011&100&101&110&111\\\hline
+\text{qubit}&--&1&2&3&4&5&6&7\end{array}\]
+\textbf{Steps:} measure three $Z$ checks $\to$ correct $X_j$; measure three $X$ checks $\to$ correct $Z_k$. A $Y_j=iX_jZ_j$ generates \emph{both} signatures. The syndrome measures an error without observing logical amplitudes.
+
+Logical representatives $X_L=X^{\otimes7}$, $Z_L=Z^{\otimes7}$ commute with all checks and anticommute with each other. Multiply by stabilisers:
+\[X_L(\I\I\I X X X X)=X_1X_2X_3,\]
+\[Z_L(\I\I\I Z Z Z Z)=Z_1Z_2Z_3.\]
+Thus $d\le3$, while distinct nonzero single-error syndromes rule out nontrivial weight-$1$ or weight-$2$ logicals; hence $d=3$.
+
+\topic{E. Failure probability and transversal CNOT}
+\paper{Q2 Part A(4)--(5), Part B(a)--(b).}
+For a bit-only independent-error rate $p$, an \emph{upper bound} follows from requiring at most one error:
+\[\boxed{P_{\rm fail}\le1-(1-p)^7-7p(1-p)^6}.\]
+The exact lookup decoder failure probability is
+\[\boxed{\begin{aligned}P_{\rm fail}={}&21p^2(1-p)^5+7p^3(1-p)^4\\&+28p^4(1-p)^3+7p^6(1-p)+p^7.\end{aligned}}\]
+For independent $X,Z$ sectors, sum sector-wise upper bounds (or use independence to bound by $1-P_{\le1}(p_X)P_{\le1}(p_Z)$). For a transversal logical CNOT, apply seven physical $\mathrm{CNOT}_{c_j\to t_j}$ gates and check Heisenberg transformations:
+\[\boxed{X_L^c\mapsto X_L^cX_L^t,\qquad Z_L^t\mapsto Z_L^cZ_L^t},\]
+with $Z_L^c,X_L^t$ unchanged.
+\end{multicols}

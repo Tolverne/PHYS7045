@@ -88,6 +88,9 @@ Empty directories are kept visible in Git using `.gitkeep` files; you can leave 
 
 ## 2026 open-book exam reference project
 
+- **[2026 Assignments — Five-page Formula and Methods Sheet (PDF)](exam_prep/assignment_formula_methods/PHYS7045_Assignments_Formula_and_Methods_5pp.pdf)** — question-by-question approaches for Assignments 1, 2 and 3.
+- [Editable LaTeX source for the assignment sheet](exam_prep/assignment_formula_methods/)
+
 - **[Five-page Formula and Method Sheet (PDF)](exam_prep/formula_sheets/PHYS7045_Formula_and_Methods_5pp.pdf)** — formulas, exam question workflows and a nine-question navigation index.
 - [Five-page sheet: editable LaTeX source](exam_prep/formula_sheets/)
 

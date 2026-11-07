@@ -1,0 +1,61 @@
+\pagetitle{5. Assignment 3: circuits, photons and lookup}{A3 Q3--Q4 + complete index}
+\begin{multicols}{2}\small
+\topic{A. Cooper-pair box: start with $\mathcal L=T-V$}
+\paper{Q3.1--Q3.4: derive instead of guessing the Hamiltonian.}
+Node flux $\Phi$ is the generalised coordinate, with voltage $\dot\Phi$. The Josephson potential is $-E_J\cos\varphi$, where $\varphi=2\pi\Phi/\Phi_0$ and $\Phi_0=h/(2e)$. With $C_\Sigma=C_0+C_c$,
+\[\boxed{\mathcal L=\tfrac12C_0\dot\Phi^2+\tfrac12C_c(\dot\Phi-V_g)^2+E_J\cos\varphi}.\]
+\textbf{Standard four-step method:}
+\begin{enumerate}
+\item Compute conjugate charge: $Q=\partial\mathcal L/\partial\dot\Phi=C_\Sigma\dot\Phi-C_cV_g$.
+\item Solve $\dot\Phi=(Q+C_cV_g)/C_\Sigma$.
+\item Legendre transform $H=Q\dot\Phi-\mathcal L$, dropping only terms constant in $Q,\Phi$:
+\[\boxed{H=\frac{(Q+C_cV_g)^2}{2C_\Sigma}-E_J\cos\varphi}.\]
+\item Quantise $[\Phi,Q]=i\hbar$, then write $H\psi=E\psi$ (in flux representation, $Q=-i\hbar\partial_\Phi$).
+\end{enumerate}
+For $V_g=0$ near a Josephson minimum, $\cos\varphi\simeq1-\varphi^2/2$ and
+\[\boxed{\hbar\omega_p=\sqrt{8E_JE_C},\qquad E_C=\frac{e^2}{2C_\Sigma}},\]\[\boxed{E_m\simeq-E_J+\hbar\omega_p\left(m+\tfrac12\right)}.\]
+Therefore $E_1-E_0\simeq\sqrt{8E_JE_C}$. The nonquadratic cosine produces weak anharmonicity (the resource for selectively addressing the $\ket0\to\ket1$ transition).
+
+\topic{B. Numerical spectrum: charge-basis matrix}
+\paper{Q3.5--Q3.6: truncate and diagonalise.}
+Define $n=Q/(2e)$ and $n_g=-C_cV_g/(2e)$. Then
+\[\boxed{H=4E_C(n-n_g)^2-E_J\cos\varphi}.\]
+In the integer Cooper-pair basis, $\ee^{\pm i\varphi}\ket n=\ket{n\pm1}$, giving the tridiagonal matrix
+\[\boxed{H_{nm}=4E_C(n-n_g)^2\delta_{nm}-\frac{E_J}{2}(\delta_{n,m+1}+\delta_{n,m-1})}.\]
+\textbf{Approach:} choose symmetric cutoff $n=-N,\dots,N$; compute lowest four eigenvalues vs $n_g$; increase $N$ until results converge; minimise $E_1(n_g)-E_0(n_g)$ over one period ($n_g\in[0,1]$). The smallest gap is near half-integer offset charge (the charge-degeneracy point). For an exact numerical value use the specified capacitance and $E_J$ ratios, not the harmonic approximation.
+
+\columnbreak
+\topic{C. Beam splitters, Bell states, HOM and MZI}
+\paper{Q4 Part A/B: transform \emph{creation operators} rather than guessing photon paths.}
+Choose one balanced-beam-splitter convention and use it consistently for both polarisations:
+\[a_s^\dagger\mapsto\frac{c_s^\dagger+d_s^\dagger}{\sqrt2},\quad b_s^\dagger\mapsto\frac{c_s^\dagger-d_s^\dagger}{\sqrt2},\qquad s=H,V.\]
+\textbf{Calculation algorithm:} (1) rewrite a Bell ket using $a_H^\dagger a_V^\dagger\ket{\mathrm{vac}}$ etc.; (2) replace the operators with their outputs; (3) commute bosonic operators; (4) convert $(c^\dagger)^2\ket{\rm vac}=\sqrt2\ket2$; (5) group and normalise output states.
+
+For the \emph{antisymmetric} singlet input,
+\[\boxed{\ket{\Psi^-}_{ab}=\frac{a_H^\dagger b_V^\dagger-a_V^\dagger b_H^\dagger}{\sqrt2}\ket{\rm vac}},\]
+all bunched terms cancel, giving a coincidence of one photon per output port (up to an overall phase):
+\[\ket{\Psi^-}_{ab}\to-\ket{\Psi^-}_{cd}.\]
+For symmetric inputs $\ket{\Psi^+},\ket{\Phi^\pm}$, coincidence terms cancel and photons bunch; the $H/V$ content of the bunch differs between Bell states. For instance, with our convention,
+\[\boxed{\ket{\Psi^+}\to\frac{\ket{HV,0}-\ket{0,HV}}{\sqrt2}}.\]
+The relative sign depends on the beam-splitter convention and which input/output ports are labelled $a,b,c,d$.
+
+In a balanced Mach--Zehnder interferometer, both arms undergo another common-mode optical unitary. The singlet's antisymmetric structure is invariant up to phase, so it still gives one count at each output detector. This is \emph{HOM-type two-photon interference} (antibunching of the antisymmetric state), not ordinary HOM bunching. A coincidence alone does not prove indistinguishability: vary arrival-time delay experimentally.
+
+\topic{D. Five-page map of \emph{every assignment}}
+\begin{center}\footnotesize
+\begin{tabularx}{\linewidth}{@{}p{22mm}Xc@{}}\toprule
+Question&Method to locate&Page\\\midrule
+A1 Q1.1&Bloch, Pauli, rotations; no cloning&1\\
+A1 Q1.2&Pulse amplitude, timing, controlled phase&1\\
+A1 Q1.3&Schmidt, trace, entropy, USD bound&2\\
+A1 Q1.4&Bell projection, fidelity, Werner state&2\\
+A2 Q1&Bloch ODEs, steady state, thermal Kraus&3\\
+A2 Q2&Steane Tanner graph, lookup, failure, CNOT&3\\
+A3 Q1&Blockade, controlled $U_x$, pulse phase&4\\
+A3 Q2&Red-sideband pulses, CZ and CCZ&4\\
+A3 Q3&CPB Lagrangian, spectrum, gap&5\\
+A3 Q4&Bell-state optics, MZI, HOM&5\\\bottomrule
+\end{tabularx}
+\end{center}
+\caution{\textbf{Last check:} specify basis and ordering; distinguish angular $\Omega$ from $\Omega/(2\pi)$; keep conditional phases; include phonon numbers; normalise Fock states; test $\Tr\rho=1$, $\sum K_j^\dagger K_j=\I$ and $U^\dagger U=\I$. For full derivations use the three submitted assignment solution PDFs.}
+\end{multicols}

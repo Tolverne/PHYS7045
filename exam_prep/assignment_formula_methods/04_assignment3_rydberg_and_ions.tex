@@ -1,0 +1,78 @@
+\pagetitle{4. Assignment 3: blockade and ion pulses}{A3 Q1--Q2}
+\begin{multicols}{2}\small
+\topic{A. Rydberg blockade $\to$ controlled $X$ rotation}
+\paper{Q1.1--Q1.5: control on $\ket0$, not $\ket1$.}
+Here $\ket0\equiv\ket g$, $\ket1\equiv\ket r$, and the target is driven resonantly with angular Rabi frequency $\Omega$. If control is $\ket0$, the target rotates; if control is already $\ket r$, double excitation is off resonance:
+\[U_x(\theta)=\ee^{-i\theta X/2}
+=\begin{pmatrix}c&-is\\-is&c\end{pmatrix},\quad c=\cos\frac\theta2,\ s=\sin\frac\theta2.\]
+\[\boxed{CU_x(\theta)=\begin{pmatrix}
+ c&-is&0&0\\-is&c&0&0\\0&0&1&0\\0&0&0&1
+\end{pmatrix}},\]
+with ordered basis $\ket{00},\ket{01},\ket{10},\ket{11}$ (control first). Here $\theta=\Omega\tau$.
+
+\textbf{Physical sequence:} initialise neighbouring atoms; shine the resonant laser at the target for $\tau$; in the $\ket{0}_c$ sector it performs Rabi oscillations, whereas in the $\ket{1}_c$ sector the interaction shifts $\ket{rr}$ and suppresses the target excitation.
+
+\begin{center}
+\begin{tikzpicture}[x=0.78cm,y=0.52cm,>=Latex]
+\draw[thick] (0,0)--(2.7,0) node[right] {$\ket{g}_t$};
+\draw[thick] (0,1.7)--(2.7,1.7) node[right] {$\ket{r}_t$};
+\draw[->,thick,accent] (1.2,.1)--(1.2,1.55) node[midway,right] {$\Omega$};
+\node[below] at (1.25,-.2) {$c=\ket0$: resonant};
+\begin{scope}[shift={(5.8,0)}]
+\draw[thick] (0,0)--(2.7,0) node[right] {$\ket{g}_t$};
+\draw[thick,dashed,muted] (0,1.7)--(2.7,1.7);
+\draw[thick] (0,2.7)--(2.7,2.7) node[right] {$\ket{r}_t$};
+\draw[<->,muted] (2.2,1.8)--(2.2,2.6) node[midway,left] {$\Delta_{rr}$};
+\draw[->,thick,accent] (1.2,.1)--(1.2,1.55);
+\node[below] at (1.25,-.2) {$c=\ket1$: blocked};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+The high-fidelity requirement is $|\Delta_{rr}|\gg\Omega$ if both are angular frequencies (or $|U_{rr}|\gg\hbar\Omega$ in energy units). Scalability is limited by finite-range blockade, crosstalk and Rydberg decay.
+
+\topic{B. Turn $CU_x$ into an exact controlled NOT}
+\paper{Q1.6--Q1.7: conditional phase matters.}
+Choosing $\theta=3\pi$ yields $U_x(3\pi)=iX$, hence the control-$0$ sector picks up a relative phase $i$. Prepend $R_z(\pi/2)$ on the \emph{control}:
+\[\boxed{CU_x(3\pi)\,[R_z(\pi/2)\otimes\I]
+=\ee^{i\pi/4}\,C_0X},\]
+where $C_0X$ flips the target only if control is $\ket0$. Conjugate with an $X$ on the control to obtain standard control-on-$1$ CNOT.
+\[\boxed{\tau=\frac{3\pi}{\Omega};\qquad \frac\Omega{2\pi}=2\,\mathrm{kHz}\Rightarrow\tau=0.75\,\mathrm{ms}.}\]
+\caution{A $\pi$ target pulse gives $-iX$, \emph{not} $X$. Its phase is conditional and requires local correction. Always distinguish pulse \emph{area} $\theta$ from duration $\tau$.}
+
+\columnbreak
+\topic{C. Trapped-ion sidebands: track motion explicitly}
+\paper{Q2 Part A: $\pi_A,2\pi_B,\pi_A$ gate.}
+Use $\ket{A\,B,n}$ with internal $g/e$ and shared phonon number $n$. A red sideband couples
+\[\boxed{\ket{e,n}\leftrightarrow\ket{g,n+1}},\]
+with a $\pi$ pulse contributing $-i$ each way, while $\ket{g,0}$ is dark. On ion B the auxiliary transition is $\ket{g,1}\leftrightarrow\ket{a,0}$: a $2\pi$ pulse returns it with sign $-1$.
+
+\begin{center}\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}llll@{}}\toprule
+Input&after $\pi_A$&after $2\pi_B$&after $\pi_A$\\\midrule
+$\ket{gg,0}$&$\ket{gg,0}$&$\ket{gg,0}$&$\ket{gg,0}$\\
+$\ket{ge,0}$&$\ket{ge,0}$&$\ket{ge,0}$&$\ket{ge,0}$\\
+$\ket{eg,0}$&$-i\ket{gg,1}$&$+i\ket{gg,1}$&$+\ket{eg,0}$\\
+$\ket{ee,0}$&$-i\ket{ge,1}$&$-i\ket{ge,1}$&$-\ket{ee,0}$\\\bottomrule
+\end{tabular}
+\end{center}
+\[\boxed{U_{AB}=\operatorname{diag}(1,1,1,-1)=CZ}.\]
+\textbf{Method:} write the effect of \emph{each} pulse on each basis input, include the phonon and phase, and only then build the $4\times4$ matrix. The shared mode must end in $\ket{0}$.
+
+\topic{D. From CZ to CNOT; from CZ to CCZ}
+\[\boxed{\mathrm{CNOT}_{A\to B}=(\I\otimes H)CZ(\I\otimes H)}.\]
+For three ions $A,B,C$, add a red-sideband $\pi$ pulse to map the excitation of a second control (e.g. ion C) into the motional bus, then the auxiliary $2\pi$ conditional phase, then undo the mappings in reverse. The five-pulse pattern is schematically
+\[\pi_A\;\pi_C\;2\pi_B\;\pi_C\;\pi_A.\]
+With appropriate sideband addressing and phase conventions, only $\ket{eee}$ acquires a negative sign:
+\[\boxed{CCZ=\operatorname{diag}(1,1,1,1,1,1,1,-1)}.\]
+Conjugate by $H$ on target $B$ to obtain the Toffoli (CCNOT). The exact pulse design must ensure the bus distinguishes the intended control sector and returns to $n=0$.
+
+\topic{E. Generic hardware-gate answer template}
+\begin{enumerate}
+\item Declare computational basis and any auxiliary states/modes.
+\item Specify the resonant/detuned transition and why it is driven or dark.
+\item Translate pulse area $\Theta=\Omega_{\rm eff}\tau$ into $-i$ for $\pi$ and $-1$ for $2\pi$ within the coupled two-state subspace.
+\item Track relative phases; confirm all population returns to the computational manifold.
+\item Build the gate and state necessary single-qubit corrections.
+\end{enumerate}
+\end{multicols}

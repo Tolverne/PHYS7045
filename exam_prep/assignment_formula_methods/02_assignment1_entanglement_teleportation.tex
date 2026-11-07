@@ -1,0 +1,65 @@
+\pagetitle{2. Assignment 1: entanglement and fidelity}{A1 Q1.3--Q1.4}
+\begin{multicols}{2}\small
+\topic{A. Schmidt decomposition: how to find it}
+\paper{Q1.3(a)--(d): pair orthonormal states across a bipartition.}
+Given
+\[\ket\Psi=\tfrac1{\sqrt2}(\ket{\alpha_1}_A\ket0_B+\ket{\alpha_2}_A\ket1_B),\]
+\[\ket{\alpha_1}=\cos\theta\ket0+\sin\theta\ket1,\quad
+\ket{\alpha_2}=\cos\theta\ket0-\sin\theta\ket1,\]
+collect terms by Alice's computational basis and introduce $\ket\pm=(\ket0\pm\ket1)/\sqrt2$:
+\[\boxed{\ket\Psi=\cos\theta\ket0_A\ket+_B+\sin\theta\ket1_A\ket-_B}.\]
+Absorb any negative coefficient into its associated ket; the \emph{Schmidt coefficients} are $|\cos\theta|,|\sin\theta|$.
+
+\textbf{General algorithm:} (1) write the amplitudes as a matrix $M_{ij}$; (2) find the singular-value decomposition $M=U\Sigma V^\dagger$; (3) squared singular values $\lambda_j$ are eigenvalues of $\rho_A$ and $\rho_B$. Schmidt bases are unique up to phases except within degenerate coefficients; zero-coefficient subspaces are unconstrained.
+
+\topic{B. Partial trace and von Neumann entropy}
+\[\rho_B=\Tr_A\ket\Psi\bra\Psi
+=\cos^2\theta\ket+\bra++\sin^2\theta\ket-\bra-,\]
+\[\boxed{\rho_B=\frac12\begin{pmatrix}1&\cos2\theta\\\cos2\theta&1\end{pmatrix}}.\]
+\[\boxed{S(\rho_B)=-\sum_j\lambda_j\log_2\lambda_j},\qquad
+\lambda_\pm=\cos^2\theta,\sin^2\theta.\]
+\textbf{Check:} $S=0$ for product states; $S=1$ bit for $|\cos\theta|=|\sin\theta|$.
+
+\topic{C. Unambiguous state discrimination (USD)}
+\paper{Q1.3 advanced: use positivity and no signalling.}
+The two possible Alice states overlap by
+\[s=\braket{\alpha_1}{\alpha_2}=\cos 2\theta.\]
+Let $p_1,p_2$ be success probabilities conditioned on the equiprobable states. Because Alice's local action cannot alter Bob's unconditional state, the unnormalised Bob ``failure'' operator must be positive:
+\[\rho_B^{\rm fail}=\tfrac12\begin{pmatrix}1-p_1&s\\s&1-p_2\end{pmatrix}\succeq0.\]
+Thus $(1-p_1)(1-p_2)\ge |s|^2$. By AM--GM,
+\[\boxed{P_{\rm success}=\tfrac{p_1+p_2}2\le1-|s|=1-|\cos2\theta|}.\]
+This is tight for equal priors. USD may have an inconclusive result but \emph{never} falsely identifies a state.
+
+\columnbreak
+\topic{D. Teleportation through a nonmaximal Bell pair}
+\paper{Q1.4 Part A: calculate the output \emph{with outcome weights}.}
+Input $\ket a=\alpha\ket0+\zeta\ket1$ with $\alpha=\cos(\theta/2)$, $\zeta=\ee^{i\phi}\sin(\theta/2)$. Resource:
+\[\ket{AB}=\cos\beta\ket{01}-\sin\beta\ket{10}.\]
+\textbf{Do this in order:}
+\begin{enumerate}
+\item Expand $\ket a\otimes\ket{AB}$ in the $(a,A,B)$ ordering.
+\item Project Alice's two systems onto $\Phi^\pm=(\ket{00}\pm\ket{11})/\sqrt2$ and $\Psi^\pm=(\ket{01}\pm\ket{10})/\sqrt2$.
+\item Apply Bob's outcome-specific Pauli correction. The \emph{unnormalised} corrected state for either $\Phi$ outcome is $\tfrac1{\sqrt2}(\alpha\cos\beta\ket0+\zeta\sin\beta\ket1)$; for either $\Psi$ outcome it is $\tfrac1{\sqrt2}(\alpha\sin\beta\ket0+\zeta\cos\beta\ket1)$, up to a global phase.
+\item Sum corrected density operators, retaining outcome probabilities automatically.
+\end{enumerate}
+\[\boxed{\rho_{\rm out}=\begin{pmatrix}|\alpha|^2&\alpha\zeta^*\sin2\beta\\ \alpha^*\zeta\sin2\beta&|\zeta|^2\end{pmatrix}}.\]
+This is a dephasing channel on the input Bloch sphere: $z$ population is preserved; transverse coherence is reduced by $\sin2\beta$.
+
+\topic{E. Fidelity, then average over unknown inputs}
+For a pure target and mixed output,
+\[F=\bra a\rho_{\rm out}\ket a.
+\]
+Substitute $\alpha,\zeta$:
+\[\boxed{F(\theta,\phi)=1-\tfrac12(1-\sin2\beta)\sin^2\theta}.\]
+There is no $\phi$ dependence. Uniform Bloch-sphere averaging uses the \emph{area element} $\sin\theta\,d\theta\,d\phi$:
+\[\bar F=\frac1{4\pi}\int_0^{2\pi}\!\int_0^\pi F\sin\theta\,d\theta\,d\phi,\]
+\[\boxed{\bar F=\frac{2+\sin2\beta}{3}}.\]
+\textbf{Checks:} $\beta=\pi/4\Rightarrow F=1$; $\beta=0\Rightarrow \bar F=2/3$, the classical limit for an unknown qubit.
+
+\topic{F. Werner-state teleportation}
+\paper{Q1.4 Part B: exploit linearity instead of redoing Bell projections.}
+\[\rho_W=(1-p)\ket{\Psi^-}\bra{\Psi^-}+\tfrac p4\I_4.\]
+The Bell resource teleports perfectly; the fully mixed part produces $\I_2/2$. Therefore
+\[\boxed{\rho_{\rm out}=(1-p)\ket a\bra a+\frac p2\I_2,\quad F=1-\frac p2}.\]
+\smallbox{\textbf{Exam habit:} distinguish a \emph{conditional normalised} output (one measurement result) from the \emph{average} teleported state (sum over all four results). The latter is used for the usual fidelity.}
+\end{multicols}

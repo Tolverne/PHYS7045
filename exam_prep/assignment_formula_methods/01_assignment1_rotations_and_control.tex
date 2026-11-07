@@ -1,0 +1,66 @@
+\pagetitle{1. Assignment 1: states, rotations and control}{A1 Q1.1--Q1.2}
+\begin{multicols}{2}\small
+\topic{A. From a qubit ket to its Bloch vector}
+\paper{Q1.1(a): prove the density-operator/Bloch relation.}
+Write the state, form its outer product, then compare coefficients of the Pauli matrices:
+\[\ket\psi=\cos\frac\theta2\ket0+\ee^{i\phi}\sin\frac\theta2\ket1,\]
+\[\boxed{\rho=\ket\psi\bra\psi=\frac12(\I+\bm r\cdot\bm\sigma)},\qquad
+\bm r=\begin{pmatrix}\sin\theta\cos\phi\\\sin\theta\sin\phi\\\cos\theta\end{pmatrix}.\]
+\[\rho=\frac12\begin{pmatrix}1+r_z&r_x-ir_y\\r_x+ir_y&1-r_z\end{pmatrix},\quad
+r_i=\Tr(\rho\sigma_i).\]
+\textbf{How to prove:} use $\cos^2(\theta/2)=(1+\cos\theta)/2$ and $2\cos(\theta/2)\sin(\theta/2)=\sin\theta$. Pure states have $|\bm r|=1$; mixed qubits have $|\bm r|\le1$.
+
+\topic{B. Pauli algebra and exponentiation}
+\paper{Q1.1(b)--(c): the two standard proof shortcuts.}
+\[\boxed{\sigma_i\sigma_j=\delta_{ij}\I+i\sum_k\epsilon_{ijk}\sigma_k},\quad
+\{\sigma_i,\sigma_j\}=2\delta_{ij}\I.\]
+For a \emph{unit} vector $\bm n$, $A=\bm n\cdot\bm\sigma$ satisfies $A^2=\I$. Separate even and odd terms of $\ee^{i\vartheta A}$:
+\[\boxed{\ee^{\pm i\vartheta A}=\I\cos\vartheta\pm iA\sin\vartheta}.\]
+\textbf{Approach:} check the square first; this works for a two-qubit Pauli product as well (e.g. $Y\otimes Y$).
+
+\topic{C. Show a unitary really rotates the Bloch sphere}
+\paper{Q1.1(d) and advanced general-axis rotation.}
+\[\boxed{R_{\bm n}(\alpha)=\ee^{-i\alpha\bm n\cdot\bm\sigma/2}},\qquad
+\rho'=R\rho R^\dagger.\]
+Use $R\sigma_jR^\dagger$ and read off the new Bloch-vector coefficients. For example,
+\[\begin{aligned}R_x:\ (r_x,r_y,r_z)\mapsto \big(&r_x,\ r_y\cos\alpha-r_z\sin\alpha,\\&r_y\sin\alpha+r_z\cos\alpha\big).\end{aligned}\]
+The analogous cyclic expressions give $R_y,R_z$. General rotation is described by Rodrigues' formula:
+\[\boxed{\bm r'=\bm r\cos\alpha+(\bm n\times\bm r)\sin\alpha+\bm n(\bm n\cdot\bm r)(1-\cos\alpha)}.\]
+\caution{A positive sign in $\exp(+i\alpha\bm n\cdot\bm\sigma/2)$ gives the opposite active rotation under the convention $\rho'=R\rho R^\dagger$. State your sign convention.}
+
+\columnbreak
+\topic{D. Hamiltonian $\to$ rotation axis $\to$ pulse time}
+\paper{Q1.2(a)--(c): recognise the $X$ and $Z$ controls.}
+\[H=\hbar(t_cX+\Delta Z),\quad\omega=\sqrt{t_c^2+\Delta^2},\]
+\[\boxed{U(\tau)=\cos(\omega\tau)\I-i\sin(\omega\tau)\frac{t_cX+\Delta Z}{\omega}}.\]
+The Bloch rotation angle is $\alpha=2\omega\tau$. For $X_\alpha$, set $\Delta=0$; for $Z_\alpha$, set $t_c=0$. Hence
+\[\boxed{\tau_X=\frac\alpha{2t_c},\qquad\tau_Z=\frac\alpha{2\Delta}}.\]
+At the specified maxima $t_c/2\pi=5$ GHz and $\Delta/2\pi=40$ GHz,
+\[\tau_{X_\pi}^{\min}=50\,\mathrm{ps},\qquad\tau_{Z_\pi}^{\min}=6.25\,\mathrm{ps}.\]
+Use Euler decompositions for other axes, e.g.
+\[R_y(\alpha)=R_z(\pi/2)R_x(\alpha)R_z(-\pi/2),\]
+with matrix order as written (the rightmost pulse acts first). An explicit Hadamard synthesis, up to a global phase, is
+\[\boxed{H\sim R_z(\pi/2)R_x(\pi/2)R_z(\pi/2)}.\]
+
+\topic{E. Timing diagrams with 1 ns resolution}
+\paper{Q1.2(d) and advanced conditional control.}
+\begin{enumerate}
+\item Rewrite every target gate as an ordered sequence of $X_\alpha$ and $Z_\alpha$ rotations; rightmost matrix acts first.
+\item Choose an \emph{integer} number $m$ of 1 ns slots; set $t_c=\alpha/(2m\,\mathrm{ns})$ or $\Delta=\alpha/(2m\,\mathrm{ns})$ (if within the hardware bounds).
+\item Draw horizontal levels for $t_c(t)$, $\Delta(t)$, and the interaction switch $C(t)$; label durations and accumulated angles.
+\item At the measurement stage choose $t_c=0$, so a $Z$ Hamiltonian does not change computational-basis outcome probabilities.
+\end{enumerate}
+\smallbox{\textbf{Concrete pulse:} an $X_\pi$ rotation in one 1 ns step needs $t_c/(2\pi)=0.25$ GHz (not the 5 GHz maximum). The 1 ns clock constrains duration, not the available analogue amplitude.}
+
+\topic{F. Conditional $ZZ$ phase and CNOT}
+\paper{Q1.2 Part B: two control-state-dependent shifts.}
+With interaction on ($C=1$) and $t_c=0$, the target has $Z$ rate $\Delta+\delta_{0,1}$ according to control $\ket0,\ket1$. Their \emph{difference} produces the entangling phase:
+\[\boxed{\chi=2(\delta_1-\delta_0)\tau\pmod{2\pi}}.\]
+For $\delta_1-\delta_0=2\pi\,50$ MHz, $\chi=\pi$ at $\tau=5$ ns. Correct the additional \emph{local} $Z$ phases to obtain CZ; then
+\[\boxed{\mathrm{CNOT}=(\I\otimes H)\,\mathrm{CZ}\,(\I\otimes H)}.\]
+\topic{G. No-cloning theorem in three lines}
+\paper{Q1.1 Part B(b).}
+Suppose a unitary clones $\ket u$ and $\ket v$. Inner products are preserved, but those of two copies square:
+\[\braket uv=\braket uv^2\Rightarrow\braket uv\in\{0,1\}.\]
+Nonorthogonal, distinct states violate this: \emph{linearity/unitarity forbids universal cloning}.
+\end{multicols}
