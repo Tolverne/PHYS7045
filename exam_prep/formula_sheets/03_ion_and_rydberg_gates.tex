@@ -1,0 +1,74 @@
+\pagetitle{3. Physical gates: trapped ions and Rydberg atoms}{2023 Q1; 2024 Q3; 2025 Q2}
+\smallbox{\textbf{Physical-gate recipe:} State which electronic/motional transition is resonant; identify dark (uncoupled) branches; track each basis state through \emph{each} pulse; retain factors $-i$ and $-1$; check the bus/auxiliary system is restored; read off the computational unitary.}
+\begin{multicols}{2}
+\topic{A. Ions: sidebands and phonon factors}
+Write the state as $\ket{\text{ion},n}$, including phonon number $n$.
+\begin{center}\footnotesize
+\begin{tabular}{@{}lll@{}}\toprule
+Laser&Transition&Rate\\\midrule
+Carrier&$\ket{g,n}\leftrightarrow\ket{e,n}$&$\Omega$\\
+Red&$\ket{g,n}\leftrightarrow\ket{e,n-1}$&$\eta\Omega\sqrt{n}$\\
+Blue&$\ket{g,n}\leftrightarrow\ket{e,n+1}$&$\eta\Omega\sqrt{n+1}$\\
+\bottomrule\end{tabular}
+\end{center}
+$a\ket n=\sqrt n\ket{n-1}$; $a^\dagger\ket n=\sqrt{n+1}\ket{n+1}$. Therefore $\ket{g,0}$ is \emph{dark to red-sideband excitation}, but $\ket{e,0}\leftrightarrow\ket{g,1}$ couples.
+
+\topic{B. 2025 Q2: $\pi_A\!\to2\pi_B\!\to\pi_A$}
+Let $\ket e=\ket1$, $\ket g=\ket0$, initial $n=0$. Ion $A$: red sideband $g\leftrightarrow e$; ion $B$: auxiliary $g\leftrightarrow a$. The active $\pi$ step multiplies by $-i$; the active $2\pi$ cycle multiplies by $-1$.
+\begin{center}\footnotesize\renewcommand{\arraystretch}{1.14}
+\begin{tabular}{@{}llll@{}}\toprule
+Input&after $\pi_A$&after $2\pi_B$&final $\pi_A$\\\midrule
+$gg,0$&$gg,0$&$gg,0$&$gg,0$\\
+$ge,0$&$ge,0$&$ge,0$&$ge,0$\\
+$eg,0$&$-i gg,1$&$+i gg,1$&$+eg,0$\\
+$ee,0$&$-i ge,1$&$-i ge,1$&$-ee,0$\\
+\bottomrule\end{tabular}
+\end{center}
+\[\boxed{U=\operatorname{diag}(1,1,1,-1)=\mathrm{CZ}.}\]
+\textbf{Method:} the $B$ $2\pi$ pulse is active \emph{only when} a phonon exists and $B=g$. Every branch ends with $n=0$; put its final phase on the diagonal.
+
+\textbf{Extension:} 2025 Q2B, a CCZ uses five pulses $\pi_A\to\pi_B\to2\pi_C\to\pi_B\to\pi_A$, so only $\ket{111}$ acquires $-1$. A Toffoli is $H$ on the target before/after CCZ.
+
+\topic{C. 2023 Q1: the M\o lmer--S\o rensen mechanism}
+Two virtual paths exchange phonons with opposite detunings $\pm\delta$. Using the problem's second-order rate $\Omega_{2\gamma}=\Omega_1\Omega_2/(2\delta)$ and summing both ion orderings,
+\[\Omega_{n+1}=\frac{\eta^2\Omega_r\Omega_b(n+1)}{\delta},\quad
+\Omega_{n}=-\frac{\eta^2\Omega_r\Omega_b n}{\delta}.\]
+\[\boxed{\Omega_{\rm eff}=|\Omega_{n+1}+\Omega_n|=\frac{\eta^2|\Omega_r\Omega_b|}{|\delta|}.}\]
+The $n$-dependent pieces cancel: $(n+1)-n=1$. A Bell state from $\ket{gg}$ requires a $\pi/2$ \emph{effective} pulse:
+\[\boxed{t_{\rm Bell}=\pi/(2\Omega_{\rm eff}).}\]
+This relies on virtual intermediate states ($|\delta|\gg$ sideband coupling), correct relative detuning signs, and laser-phase calibration.
+
+\columnbreak
+\topic{D. 2024 Q3: simultaneous Rydberg drives}
+\emph{Levels:} the control has $\Omega_1:\ket0\leftrightarrow\ket r$; the target also receives $\Omega_2:\ket1\leftrightarrow\ket r$. Simultaneous two-colour target driving can swap $\ket0\leftrightarrow\ket1$ via $\ket r$ \emph{unless} the control is Rydberg excited.
+
+\begin{center}
+\begin{tikzpicture}[>=Latex,scale=.73]
+ \foreach \x/\lab in {0/Control,4.1/Target}{
+  \draw[thick] (\x,0)--(\x+1.8,0) node[right] {$\ket0$};
+  \draw[thick] (\x,1.1)--(\x+1.8,1.1) node[right] {$\ket1$};
+  \draw[thick] (\x,2.3)--(\x+1.8,2.3) node[right] {$\ket r$};
+  \node[below] at (\x+.8,-.12) {\lab};
+  \draw[->,thick,accent] (\x+.55,.1)--(\x+.55,2.2) node[midway,left] {$\Omega_1$};}
+ \draw[->,thick,muted] (5.3,1.2)--(5.3,2.2) node[midway,right] {$\Omega_2$};
+\end{tikzpicture}
+\end{center}
+\textbf{Blockade:} $|U_{rr}|/\hbar\gg\Omega_1,\Omega_2$ shifts the target's intermediate level off resonance when the control is $\ket r$.
+
+\begin{center}\footnotesize
+\begin{tabular}{@{}ccc@{}}\toprule
+Input&Target flip?&Output (ignoring phases)\\\midrule
+$\ket{1_c0_t}$&yes&$\ket{1_c1_t}$\\
+$\ket{1_c1_t}$&yes&$\ket{1_c0_t}$\\
+$\ket{0_c0_t}$&blocked&$\ket{0_c0_t}$\\
+$\ket{0_c1_t}$&blocked&$\ket{0_c1_t}$\\
+\bottomrule\end{tabular}
+\end{center}
+\textbf{Pulse method:} engineer a \emph{closed} $2\pi$ control excursion and a target \emph{effective} $\pi$ bit flip in the unblocked branch. For equal resonant target couplings, the physical 3-level \emph{bright-state} cycle is $2\pi$ to implement the swap ($-X$), not a naive direct two-level $\pi$ pulse. Exact durations need the coupling ratio/detuning/envelopes.
+
+\topic{E. Extend the geometry to Toffoli}
+Place controls at opposite sides of a central target ($c_1-t-c_2$) so each control can blockade the target, but controls do not mutually blockade. Only $c_1=c_2=1$ leaves the target unblocked:
+\[\ket{c_1c_2t}\mapsto\ket{c_1c_2,\ t\oplus(c_1c_2)}.\]
+\textbf{Check:} identify any local phases from completed Rydberg cycles and compensate if the task requires the \emph{exact} gate, rather than the classical truth table.
+\caution{\textbf{Key distinction:} MS motion is approximately \emph{virtually} excited and need not start in $n=0$; the 2025 resonant three-pulse gate explicitly uses a real phonon and starts in the motional ground state.}
+\end{multicols}

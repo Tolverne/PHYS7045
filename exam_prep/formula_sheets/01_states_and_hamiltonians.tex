@@ -1,0 +1,59 @@
+\pagetitle{1. States, matrices and entangling gates}{2023 Q3; all pulse and protocol questions}
+\smallbox{\textbf{Universal exam procedure:} (1) State the basis and qubit ordering; (2) identify the physical subspace or operator; (3) apply it to each relevant basis input, preserving relative phases; (4) normalise or assemble the matrix; (5) check unitarity, probabilities and whether any ancilla returns to its initial state.}
+\begin{multicols}{2}
+\topic{A. Translate a Hamiltonian into a gate}
+For a time-independent closed-system Hamiltonian,
+\[U(t)=\ee^{-iHt/\hbar}.\]
+If $A^2=\I$ (a Pauli matrix or Pauli product),
+\[\boxed{\ee^{-i\theta A}=\cos\theta\,\I-i\sin\theta\,A.}\]
+\textbf{Method:} expand $H$; move any term proportional to $\I$ into a global phase; identify $A^2=\I$; substitute into the identity; \emph{apply to input states rather than guessing the gate}. Keep the global phase if asked for the exact unitary, omit it only when identifying physical gate action.
+
+\topic{B. Worked pattern: the 2023 $YY$ Hamiltonian}
+\paper{2023 Q3A1--2: $H=\frac{\hbar g}{2}(Y_1+Y_2)^2$.}
+Since $Y_i^2=\I$ and $[Y_1,Y_2]=0$,
+\[H=\hbar g(\I+Y\otimes Y),\]
+\[U=\ee^{-igt}\{\cos(gt)\I-i\sin(gt)Y\otimes Y\}.\]
+The overall $\ee^{-igt}$ is a global phase. Using $Y\ket0=i\ket1$,
+\[U\ket{00}\sim\cos(gt)\ket{00}+i\sin(gt)\ket{11}.\]
+\textbf{Bell-state condition:} equal amplitudes $\Rightarrow\cos(gt)=\sin(gt)$, so
+\[\boxed{t_{\rm ent}=\frac{\pi}{4g},\quad \ket\psi\sim\frac{\ket{00}+i\ket{11}}{\sqrt2}.}\]
+\textbf{Test:} the reduced state of either qubit is $\I/2$, confirming maximal entanglement.
+
+\topic{C. Convert an entangler to CNOT}
+\paper{2023 Q3B; 2025 Q2A5.}
+Use local rotations to change the Pauli axis, then transform CZ into CNOT:
+\[R_x(\pi/2)Y R_x(-\pi/2)=Z,\]
+\[\ee^{-i\pi YY/4}\xrightarrow{\ R_x\otimes R_x\ }\ee^{-i\pi ZZ/4}.\]
+For $S=\operatorname{diag}(1,i)$,
+\[(S^\dagger\!\otimes S^\dagger)\ee^{-i\pi ZZ/4}=\ee^{-i\pi/4}\mathrm{CZ},\]
+\[\boxed{\mathrm{CNOT}_{A\to B}=(\I\otimes H)\mathrm{CZ}(\I\otimes H).}\]
+\textbf{Procedure:} show axes $YY\to ZZ$; remove local phase gates; put Hadamards around \emph{target} to turn controlled phase into controlled flip.
+
+\columnbreak
+\topic{D. Qubit rotations and pulse areas}
+For a resonantly driven qubit,
+\[H=\frac{\hbar\Omega}{2}\,\hat{\bm n}\!\cdot\!\bm\sigma,\qquad \theta=\Omega t,\]
+\[R_{\hat{\bm n}}(\theta)=\cos\tfrac\theta2\I-i\sin\tfrac\theta2\hat{\bm n}\!\cdot\!\bm\sigma.\]
+A $\pi$ pulse transfers population in the addressed two-state subspace (phase $-i$ for a standard $x$ pulse); a $2\pi$ pulse returns the state with phase $-1$. For a general drive
+\[H_{\rm rot}=\tfrac{\hbar}{2}(\Omega X+\delta Z),\quad \Omega_R=\sqrt{\Omega^2+\delta^2}.\]
+\textbf{Watch the factor of two:} if $H=\hbar t_c X$ (rather than $\hbar\Omega X/2$), then $\theta=2t_ct$.
+
+\topic{E. Work with qubit states and density matrices}
+\[\ket\psi=\cos\tfrac\theta2\ket0+\ee^{i\phi}\sin\tfrac\theta2\ket1,\]
+\[\rho=\tfrac12(\I+r_xX+r_yY+r_zZ)\]
+\[\phantom{\rho}=\tfrac12\begin{pmatrix}1+r_z&r_x-ir_y\\r_x+ir_y&1-r_z\end{pmatrix}.\]
+Reading a matrix: diagonal $\to$ populations; off-diagonals $\to$ coherence. Bloch components $r_j=\Tr(\rho\sigma_j)$; pure states $|\bm r|=1$, mixed states $|\bm r|<1$.
+\[\Tr(\rho^2)=\tfrac12(1+|\bm r|^2),\quad \langle A\rangle=\Tr(\rho A).\]
+For a bipartite state, discard an inaccessible system by $\rho_B=\Tr_A\rho_{AB}$. For a Bell state, $\rho_{AB}$ is pure but $\rho_A=\rho_B=\I/2$.
+
+\topic{F. Recognise the physical answer being sought}
+\begin{tabularx}{\linewidth}{@{}p{.36\linewidth}X@{}}\toprule
+Question wording & What to show \\ \midrule
+``Determine unitary'' & $U=\exp(-iHt/\hbar)$, basis, phases \\
+``Maximally entangled'' & two equal Schmidt coefficients \\
+``Gate matrix'' & transform \emph{all} basis vectors; outputs are columns \\
+``CNOT from CZ'' & Hadamards on the target \\
+``Fastest gate'' & maximise available angular frequency; $t=\theta/\Omega_R$ \\
+\bottomrule\end{tabularx}
+\caution{\textbf{Common mistake:} $Y\otimes Y$ is not $Y\otimes\I+\I\otimes Y$. Distinguish the Hamiltonian's stated Pauli product from its square and include all global factors in an exact exponential.}
+\end{multicols}

@@ -1,0 +1,39 @@
+name: Build PHYS7045 formula and method sheet
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'exam_prep/formula_sheets/*.tex'
+      - '.github/workflows/build-formula-sheet.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile the five-page formula and method sheet
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: exam_prep/formula_sheets
+          args: -pdf -file-line-error -interaction=nonstopmode -halt-on-error
+      - name: Publish PDF to the repository
+        run: |
+          cp exam_prep/formula_sheets/main.pdf exam_prep/formula_sheets/PHYS7045_Formula_and_Methods_5pp.pdf
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add exam_prep/formula_sheets/PHYS7045_Formula_and_Methods_5pp.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m 'Build five-page PHYS7045 exam formula and method sheet'
+            for attempt in 1 2 3; do
+              if git push origin HEAD:main; then exit 0; fi
+              echo "GitHub push unsuccessful (attempt $attempt); retrying"
+              sleep "$((attempt * 4))"
+            done
+            exit 1
+          fi

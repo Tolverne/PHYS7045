@@ -88,6 +88,9 @@ Empty directories are kept visible in Git using `.gitkeep` files; you can leave 
 
 ## 2026 open-book exam reference project
 
+- **[Five-page Formula and Method Sheet (PDF)](exam_prep/formula_sheets/PHYS7045_Formula_and_Methods_5pp.pdf)** — formulas, exam question workflows and a nine-question navigation index.
+- [Five-page sheet: editable LaTeX source](exam_prep/formula_sheets/)
+
 - **[Complete worked solutions to all 2023–2025 past exams (PDF)](exam_prep/past_exam_solutions/PHYS7045_Past_Exams_2023-2025_Fully_Worked.pdf)** — every Part A and B, including syndrome tables and physical gate derivations.
 - [Editable LaTeX for the three-year solution book](exam_prep/past_exam_solutions/)
 

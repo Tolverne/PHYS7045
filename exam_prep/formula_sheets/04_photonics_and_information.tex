@@ -1,0 +1,65 @@
+\pagetitle{4. Photons, teleportation and state preparation}{2024 Q2; 2025 Q3; 2026 HOM}
+\smallbox{\textbf{Photonics rule:} choose the encoding first. \emph{Dual-rail:} one photon distributed between two modes, $\ket{0_L}=\ket{1,0}$ and $\ket{1_L}=\ket{0,1}$. \emph{Single-rail:} vacuum $\ket0$ vs one photon $\ket1$ in one mode. The 2024 paper switches encoding between its two parts.}
+\begin{multicols}{2}
+\topic{A. Beam-splitter matrix from creation operators}
+\paper{2024 Q2A.} If the given mapping is
+\begin{align*}
+a^\dagger&\mapsto a^\dagger\cos\theta+b^\dagger\ee^{i\phi}\sin\theta,\\
+b^\dagger&\mapsto b^\dagger\cos\theta-a^\dagger\ee^{-i\phi}\sin\theta,
+\end{align*}
+\textbf{apply to $a^\dagger\ket{\rm vac}$ and $b^\dagger\ket{\rm vac}$.} Place resulting coefficients as columns:
+\[B(\theta,\phi)=\begin{pmatrix}\cos\theta&-\ee^{-i\phi}\sin\theta\\\ee^{i\phi}\sin\theta&\cos\theta\end{pmatrix}.\]
+For $\theta=\pi/4$, $\phi=0$: $B=HZ$, so an \emph{input $\pi$ phase shift} on the second rail gives exactly
+\[\boxed{H=B(\pi/4,0)Z.}\]
+Check matrix column order and phase convention: a bare beam splitter of this form has equal diagonal entries, so cannot equal the standard $H$ alone.
+
+\topic{B. Hong--Ou--Mandel: two identical photons}
+For a balanced splitter in a convenient phase convention,
+\[a^\dagger\mapsto(c^\dagger+d^\dagger)/\sqrt2,\quad
+b^\dagger\mapsto(c^\dagger-d^\dagger)/\sqrt2.\]
+Apply \emph{both} operators to $\ket{1,1}=a^\dagger b^\dagger\ket{\rm vac}$:
+\[\ket{1,1}\mapsto\frac{(c^\dagger)^2-(d^\dagger)^2}{2}\ket{\rm vac}=\frac{\ket{2,0}-\ket{0,2}}{\sqrt2}.\]
+\textbf{Check:} no $\ket{1,1}$ coincidence term. The two alternatives cancel when photons are indistinguishable; distinguishability destroys that cancellation. Use $\ket{2,0}=(c^\dagger)^2\ket{\rm vac}/\sqrt2$ to get the factors right.
+
+\topic{C. 2024 Q2B: heralded single-rail teleportation}
+Input in mode 0: $\ket\psi_0=\alpha\ket0+\beta\ket1$; resource across modes 1--2:
+\[\ket t_{12}=\frac{\ket{0,1}+\ket{1,0}}{\sqrt2}.\]
+Expand $(\alpha\ket0+\beta\ket1)\otimes\ket t$. \textbf{Project first} onto $n_0+n_1=1$ at Alice's detectors. The unnormalised surviving state is
+\[\ket{\Psi_1}=\frac{\alpha\ket{0,1}_{01}\ket0_2+\beta\ket{1,0}_{01}\ket1_2}{\sqrt2}.\]
+$\Vert\Psi_1\Vert^2=(|\alpha|^2+|\beta|^2)/2=1/2$. After Alice's splitter, each one-click detector pattern has probability $1/4$:
+\begin{center}\footnotesize
+\begin{tabular}{@{}ccc@{}}\toprule
+$(n_0,n_1)$&Bob's conditional state&Correction\\\midrule
+$(0,1)$&$\alpha\ket0+\beta\ket1$&$I$\\
+$(1,0)$&$\alpha\ket0-\beta\ket1$&$Z$\\
+\bottomrule\end{tabular}
+\end{center}
+\[\boxed{P_{\rm success}=\tfrac14+\tfrac14=\tfrac12.}\]
+Zero or two counts are failure events, not alternate recoveries.
+
+\columnbreak
+\topic{D. Standard qubit teleportation}
+Alice possesses an \emph{unknown} $\ket\psi$ and her half of a Bell pair; Bob has the other half. Procedure:
+\begin{enumerate}
+\item Alice performs a Bell measurement on the unknown qubit and her resource qubit.
+\item Send its \emph{two classical bits} to Bob.
+\item Bob applies the corresponding $I,X,Z,XZ$ correction (depending on Bell convention).
+\end{enumerate}
+The input is consumed (no cloning). Bob's unconditioned state cannot reveal Alice's outcome: no superluminal signalling.
+
+\topic{E. 2025 Q3: equatorial remote preparation}
+\paper{State known to Alice, singlet shared with Bob.}
+Target and axis are
+\[\ket\beta=\frac{\ket0+\ee^{i\phi}\ket1}{\sqrt2},\quad \bm n=(-\sin\phi,\cos\phi,0).\]
+Alice acts with $R_{\bm n}(\pi/2)$ then measures $Z$:
+\[R=\frac1{\sqrt2}\begin{pmatrix}1&-\ee^{-i\phi}\\\ee^{i\phi}&1\end{pmatrix}.\]
+Apply $(R\otimes I)$ to $\ket{\Psi^-}=(\ket{01}-\ket{10})/\sqrt2$; group by Alice's $\ket0,\ket1$ and normalise Bob's states:
+\[\boxed{m=0:\ \ket\beta,\qquad m=1:\ Z\ket\beta}\]
+(up to global phases; each probability $1/2$). Alice sends \emph{one bit}; Bob corrects with $Z^m$. Polarisation implementation: entangled-photon source $\to$ Alice waveplates $\to$ PBS and two detectors $\to$ classical bit $\to$ Bob phase plate.
+
+\textbf{Arbitrary target} $\ket{\beta'}=\cos(\theta/2)\ket0+\ee^{i\phi}\sin(\theta/2)\ket1$: Alice also controls $\theta$ via waveplates. The other measurement outcome is orthogonal and \emph{cannot} be corrected by a single universal $Z$ for all $\theta,\phi$; accept a heralded $1/2$ branch or use more general feed-forward/protocol resources.
+
+\topic{F. CV teleportation (2025 Q3B)}
+Two-mode squeezing supplies quadrature entanglement; beam splitter + two homodyne measurements provide $x,p$ results; Bob uses classical feed-forward displacement. \textbf{Strength:} efficient detectors, often near-deterministic Gaussian operation. \textbf{Limitation:} finite squeezing adds noise; optical loss and finite bandwidth reduce fidelity. For ideal unity-gain coherent-state teleportation, $F=1/(1+\ee^{-2r})$ (squeezing $r$).
+\caution{\textbf{Three checks:} photon-number conservation in a passive splitter; normalise $\ket{2}$ with $\sqrt{2!}$; distinguish a \emph{known} state (RSP) from an \emph{unknown} state (teleportation).}
+\end{multicols}

@@ -1,0 +1,72 @@
+\pagetitle{5. Noise, circuit quantisation and lookup map}{2026 assignments + full past-paper index}
+\begin{multicols}{2}\small
+\topic{A. Quantum channels: input $\rho\to$ output $\rho'$}
+\[\boxed{\mathcal E(\rho)=\sum_jK_j\rho K_j^\dagger,\qquad\sum_jK_j^\dagger K_j=\I.}\]
+\textbf{Procedure:} write $\rho$ in the stated basis; compute each $K_j\rho K_j^\dagger$; add; check trace $1$, positivity and limiting cases ($p=0$, $p=1$). For energy relaxation $\ket1\to\ket0$ with probability $p$,
+\[K_0=\begin{pmatrix}1&0\\0&\sqrt{1-p}\end{pmatrix},\quad
+K_1=\begin{pmatrix}0&\sqrt p\\0&0\end{pmatrix}.\]
+In Bloch form, amplitude damping maps
+\[\boxed{(r_x,r_y,r_z)\mapsto(\sqrt{1-p}\,r_x,\sqrt{1-p}\,r_y,p+(1-p)r_z).}\]
+Pure dephasing instead reduces $r_x,r_y$ but leaves $r_z$ fixed (when no driving). Unitary gates \emph{rotate} the Bloch ball; channels may contract/translate it.
+
+\topic{B. Lindblad master equations (2026 A2)}
+\[\boxed{\dot\rho=-\frac{i}{\hbar}[H,\rho]+\sum_j\gamma_j\D[L_j]\rho},\]
+\[\D[L]\rho=L\rho L^\dagger-\tfrac12\{L^\dagger L,\rho\}.\]
+\textbf{Method:} (1) expand $\rho=(I+r_xX+r_yY+r_zZ)/2$; (2) calculate commutator and dissipators using Pauli products; (3) collect $X,Y,Z$ coefficients; (4) solve $\dot{\bm r}=A\bm r+\bm b$; (5) find steady state from $A\bm r_{\rm ss}+\bm b=0$; check purity.
+
+For $\dot\rho=-i\Omega[X,\rho]/2+\gamma\D[Z]\rho$:
+\[\boxed{\begin{aligned}
+\dot r_x&=-2\gamma r_x,\\
+\dot r_y&=-\Omega r_z-2\gamma r_y,\\
+\dot r_z&=\Omega r_y.
+\end{aligned}}\]
+If $\Omega,\gamma>0$, $\bm r_{\rm ss}=0$, so $\rho_{\rm ss}=I/2$. If $\Omega=0$ (only dephasing), $r_z$ is conserved: there is \emph{not} a unique steady state. A conventional decoherence relation is $1/T_2=1/(2T_1)+1/T_\phi$.
+
+\topic{C. Cooper-pair box: derive, do not memorise only}
+\paper{2026 A3: a capacitor--Josephson circuit.}
+Use flux $\Phi$ as coordinate; voltage $\dot\Phi$. The Lagrangian is
+\[\mathcal L=\tfrac12C_0\dot\Phi^2+\tfrac12C_c(\dot\Phi-V_g)^2+E_J\cos\varphi,\quad\varphi=2\pi\Phi/\Phi_0.\]
+\textbf{Steps:} (1) compute $Q=\partial\mathcal L/\partial\dot\Phi=C_\Sigma\dot\Phi-C_cV_g$; (2) solve for $\dot\Phi$; (3) Legendre transform $H=Q\dot\Phi-\mathcal L$; (4) quantise $[\Phi,Q]=i\hbar$.
+\[\boxed{H=\frac{(Q+C_cV_g)^2}{2C_\Sigma}-E_J\cos\varphi,\quad C_\Sigma=C_0+C_c.}\]
+With $E_C=e^2/(2C_\Sigma)$ and $n_g=-C_cV_g/(2e)$,
+\[H=4E_C(n-n_g)^2-E_J\cos\varphi.\]
+Expand $\cos\varphi\simeq1-\varphi^2/2$ near the well minimum:
+\[\boxed{\hbar\omega_p\simeq\sqrt{8E_JE_C}.}\]
+The quartic correction gives the anharmonicity that isolates the qubit levels; large $E_J/E_C$ reduces charge sensitivity but reduces anharmonicity.
+
+\columnbreak
+\topic{D. At a glance: question-to-method index}
+\begin{center}\footnotesize
+\begin{tabularx}{\linewidth}{@{}p{16mm}Xc@{}}\toprule
+Source&Start with\ldots&Page\\\midrule
+2023 Q1&Red/blue phonon paths, detunings, $n$ cancellation&3\\
+2023 Q2&Stabiliser syndrome, degeneracy, logical $X,Z$, $d$&2\\
+2023 Q3&Square $Y_1+Y_2$, exponentiate $YY$, entangling time&1\\
+2024 Q1&Syndrome collisions, detectable vs correctable&2\\
+2024 Q2&Mode operators, dual-rail $H$, one-count teleportation&4\\
+2024 Q3&Rydberg blockade, truth table, geometry for Toffoli&3\\
+2025 Q1&Shor code: $Z$ checks / $X$ checks, logical weight&2\\
+2025 Q2&Track $\ket{AB,n}$ through $\pi,2\pi,\pi$&3\\
+2025 Q3&Singlet rotation, condition on Alice outcome, $Z^m$&4\\\midrule
+2026 A1&Pauli rotations, fidelity, teleportation&1,4\\
+2026 A2&Lindblad and $[[7,1,3]]$ Steane&2,5\\
+2026 A3&Rydberg, ion, CPB, HOM&3--5\\
+\bottomrule\end{tabularx}
+\end{center}
+
+\topic{E. Five checks before submitting an answer}
+\begin{enumerate}
+\item \textbf{Basis:} specify order ($\ket{00},\ket{01},\ket{10},\ket{11}$, and motional/auxiliary labels if relevant).
+\item \textbf{Conventions:} are lasers/on-$0$ controls and beam-splitter signs clearly declared? Is an ignored phase truly \emph{global}?
+\item \textbf{Normalization:} $\sum p=1$, $\Tr\rho=1$, $U^\dagger U=I$; for photons include Fock factorials.
+\item \textbf{Reasoning:} explain why each physical transition is allowed, dark or blocked. For QEC, explain why equal syndromes are harmless or harmful.
+\item \textbf{Answer the exact demand:} ``detect'' vs ``correct'', ``gate up to phases'' vs exact matrix, ``pulse area'' vs pulse time, and ``known'' vs unknown state.
+\end{enumerate}
+
+\topic{F. Useful mathematical one-liners}
+\[XY=iZ,\quad YZ=iX,\quad ZX=iY,\quad \{X,Z\}=0.\]
+\[\ket\psi\to U\ket\psi,\quad \rho\to U\rho U^\dagger,\quad F=\bra\psi\rho\ket\psi.\]
+\[\ket\psi_{AB}\text{ entangled}\ \not\Rightarrow\ \rho_A\text{ pure}.\]
+\[\text{QEC: }[[n,k,d]],\quad k=n-r,\quad t=\lfloor(d-1)/2\rfloor.\]
+\caution{\textbf{This sheet is a navigation tool, not a substitute for full derivations.} For unfamiliar signs or detailed physical assumptions, consult the companion \emph{Part II Worked Examples} and \emph{2023--2025 Fully Worked Past Exams} in the same repository.}
+\end{multicols}

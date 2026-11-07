@@ -1,0 +1,65 @@
+\pagetitle{2. Stabiliser codes: solve any unfamiliar code}{2023 Q2; 2024 Q1; 2025 Q1}
+\smallbox{\textbf{Six-step workflow for every past-paper QEC problem:} Check generators commute $\to$ calculate $k$ $\to$ compute syndromes $\to$ test correctability (including degeneracy) $\to$ find $X_L,Z_L$ $\to$ prove the minimum distance $d$. This is a method, not a code to memorise.}
+\begin{multicols}{2}
+\topic{A. Commutation without large matrices}
+At a qubit position, distinct nonidentity Paulis ($X/Y$, $X/Z$, $Y/Z$) \emph{anticommute}; equal Paulis or any $I$ commute. Two tensor-product Paulis obey
+\[PQ=(-1)^mQP,\]
+where $m$ is the \emph{number of anticommuting positions}. Even $m\to$ commute; odd $m\to$ anticommute.
+\[\begin{array}{@{}lcl@{}}ZIZ &\text{vs}& XIY:\ m=2\;\checkmark\\ZIZ &\text{vs}& XII:\ m=1\;\times\end{array}\]
+For $n$ qubits and $r$ independent, commuting generators (with $-I$ excluded):
+\[\boxed{k=n-r.}\]
+\textbf{Why?} Each independent $+1$ stabiliser halves the $2^n$-dimensional Hilbert space; the code has dimension $2^{n-r}$.
+
+\topic{B. Syndrome table, one physical error at a time}
+For an error $E$, define $b_i=0$ if $[E,S_i]=0$ and $b_i=1$ if $\{E,S_i\}=0$. The measured eigenvalue is $(-1)^{b_i}$. \emph{Calculate each $b_i$ by counting overlaps.}
+
+\textbf{Example:} $S_1=Z_1Z_2$, $S_2=Z_2Z_3$ for the three-qubit bit-flip code:
+\begin{center}\footnotesize
+\begin{tabular}{@{}cccc@{}}\toprule
+$E$ & $S_1$ & $S_2$ & syndrome $b_1b_2$ \\ \midrule
+$I$ & $+$ & $+$ & $00$\\
+$X_1$ & $-$ & $+$ & $10$\\
+$X_2$ & $-$ & $-$ & $11$\\
+$X_3$ & $+$ & $-$ & $01$\\
+$Z_1$ & $+$ & $+$ & $00$\\
+\bottomrule\end{tabular}
+\end{center}
+The two checks identify any \emph{single bit flip} but cannot detect $Z_1$: this is not a general one-error quantum code.
+
+\topic{C. Detection vs correction; resolve collisions}
+\textbf{Detect} an error if its syndrome is nonzero (or it is a stabiliser acting trivially). To \textbf{correct an entire set} $\{E_a\}$, comparing two possible errors matters:
+\begin{enumerate}
+\item Different syndromes $\to$ decoder can distinguish them.
+\item Same syndrome $\to$ calculate $E_a^\dagger E_b$.
+\item If $E_a^\dagger E_b\in\mathcal S$, the collision is \emph{harmless degeneracy}. If it lies in $\mathcal N(\mathcal S)\setminus\mathcal S$, it is an uncorrectable logical ambiguity.
+\end{enumerate}
+General condition: $PE_a^\dagger E_bP=c_{ab}P$, with $P$ the code-space projector.
+
+\columnbreak
+\topic{D. Two actual collisions to recognise}
+\textbf{2023 Q2:} $\synd(Z_1)=\synd(Z_3)$, but $Z_1Z_3=S_1$ (a stabiliser). Either correction has the same logical action: \emph{correctable}.
+
+\textbf{2024 Q1:} $\synd(X_1)=\synd(X_2)$, but $X_1X_2=X_L$ is a nontrivial logical operation. Wrong recovery changes the encoded state: \emph{not fully correctable}.
+
+\topic{E. Find logical Paulis and code distance}
+Candidate logical $L$ must commute with \emph{every} stabiliser but not belong to $\mathcal S$. Select $X_L,Z_L$ with
+\[[L,S_i]=0,\quad X_LZ_L=-Z_LX_L.\]
+Multiplication by a stabiliser gives an equivalent logical representative. Weight $\wt(L)$ counts non-$I$ factors. The distance is
+\[\boxed{d=\min_{L\in\mathcal N(\mathcal S)\setminus\mathcal S}\wt(L),\qquad t=\left\lfloor\frac{d-1}{2}\right\rfloor.}\]
+\textbf{To prove $d$:} (1) show a particular logical operator of weight $w$ $\Rightarrow d\le w$; (2) rule out all lower-weight nontrivial logicals (often by showing correction of all one-qubit Pauli errors) $\Rightarrow d\ge w$.
+
+\topic{F. Historical code results (reusable checks)}
+\begin{center}\footnotesize
+\begin{tabular}{@{}llll@{}}\toprule
+Paper&$[[n,k,d]]$&$X_L$ example&$Z_L$ example\\\midrule
+2023&$[[6,1,3]]$&$XZXZII$&$XYYXII$\\
+2024&$[[5,1,2]]$&$XXIII$&$ZIIZI$\\
+2025&$[[9,1,3]]$&$Z_1Z_4Z_7$&$X_1X_2X_3$\\
+\bottomrule\end{tabular}
+\end{center}
+\textbf{2025 Shor-type code:} six $Z$-pair checks identify a bit flip within a 3-qubit block. Two six-body $X$ checks locate a phase-flip \emph{block}. Different $Z$ errors within the same block differ by stabilisers, so they are equivalent and correctable. $Y$ triggers both patterns.
+
+\topic{G. CSS and transversal-gate cue}
+In CSS codes, \emph{$Z$ checks detect $X$ errors}, while \emph{$X$ checks detect $Z$ errors}. The Steane code is $[[7,1,3]]$; it corrects one arbitrary physical Pauli error. A transversal CNOT is formed by applying physical CNOTs between \emph{corresponding} qubits of two blocks; show its action on $X_L,Z_L$ to establish the logical gate.
+\caution{\textbf{Exam trap:} all 15 weight-one Paulis can have nonzero syndromes and the code can still fail to \emph{correct} one error. The 2024 code is precisely this example: $d=2$, so $t=0$ for arbitrary noise.}
+\end{multicols}
